@@ -3,10 +3,34 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FrontindexComponent } from './common/front/frontindex/frontindex.component';
+import { FrontNavbarComponent } from './common/front/front-navbar/front-navbar.component';
+import { FrontFooterComponent } from './common/front/front-footer/front-footer.component';
+import { BackindexComponent } from './common/back/backindex/backindex.component';
+import { BackFooterComponent } from './common/back/back-footer/back-footer.component';
+import { BackNavbarComponent } from './common/back/back-navbar/back-navbar.component';
+import { BackSidebarComponent } from './common/back/back-sidebar/back-sidebar.component';
+import { ListarticlesBackComponent } from './back/news/listarticles-back/listarticles-back.component';
+import { AddarticleBackComponent } from './back/news/addarticle-back/addarticle-back.component';
+import { ListoffersBackComponent } from './back/offer/listoffers-back/listoffers-back.component';
+import { ListarticlesFrontComponent } from './front/news/listarticles-front/listarticles-front.component';
+import { ListoffersFrontComponent } from './front/offer/listoffers-front/listoffers-front.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FrontindexComponent,
+    FrontNavbarComponent,
+    FrontFooterComponent,
+    BackindexComponent,
+    BackFooterComponent,
+    BackNavbarComponent,
+    BackSidebarComponent,
+    ListarticlesBackComponent,
+    AddarticleBackComponent,
+    ListoffersBackComponent,
+    ListarticlesFrontComponent,
+    ListoffersFrontComponent
   ],
   imports: [
     BrowserModule,

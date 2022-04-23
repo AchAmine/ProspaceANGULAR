@@ -4,7 +4,7 @@
     <div class="col-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Post new article..</h4>
+          <h4 class="card-title">Edit article..</h4>
           <form class="forms-sample" [formGroup]="form">
             <div class="form-group">
               <label for="exampleInputName1">Title</label>
@@ -33,15 +33,8 @@
   
               </textarea>
             </div>
-
-            <div class="form-group">
-                <label class="form-check-label">
-                    <input class="checkbox" type="checkbox"  [ngModelOptions]="{standalone : true}" [(ngModel)] ="article.enableComments">
-                    Enable comments
-                </label>
-            </div>
-            <button type="submit" class="btn btn-primary mr-2" (click)="addArticle(article)" >Submit</button>
-            <button class="btn btn-light">Cancel</button>
+            <button type="submit" class="btn btn-primary mr-2" (click)="editArticle(article)" >Submit</button>
+            <button class="btn btn-light" (click)="Cancel()" >Cancel</button>
           </form>
         </div>
       </div>

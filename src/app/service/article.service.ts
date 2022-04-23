@@ -30,5 +30,10 @@ export class ArticleService {
     return this.http.get(`${this.baseUrl}/retrieve-article/${id}`);
   }
 
+  public viewInc(article: any) 
+  {
+   return  this.http.put(`${this.baseUrl}/viewinc`,article)
+  }
+
   
 }

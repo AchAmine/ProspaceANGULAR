@@ -1,22 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Article } from 'src/app/model/Article';
 import { ArticleService } from 'src/app/service/article.service';
 
 @Component({
-  selector: 'app-addarticle-back',
-  templateUrl: './addarticle-back.component.html',
-  styleUrls: ['./addarticle-back.component.css']
+  selector: 'app-updatearticle-back',
+  templateUrl: './updatearticle-back.component.html',
+  styleUrls: ['./updatearticle-back.component.css']
 })
-export class AddarticleBackComponent implements OnInit {
+export class UpdatearticleBackComponent implements OnInit {
 
+  artic: any;
+  id: number;
   article: Article = new Article();
-  listArticles?: any;
   form: FormGroup;
-  constructor(private articleService: ArticleService,private router: Router, public fb: FormBuilder) { }
+  constructor(private articleService: ArticleService,private router: Router,private route: ActivatedRoute,public fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.params['id'];
+    this.articleService.getArticle(this.id).subscribe(data => this.artic = data);
+
     this.form = this.fb.group({
       article: [''],
       file: [null],
@@ -30,23 +34,20 @@ export class AddarticleBackComponent implements OnInit {
     }
   }
 
-  addArticle(article: any) {
+  editArticle(article: any) {
     console.log(article);
     const formData = new FormData();
     formData.append('file', this.form.get('file')?.value);
+    article.idArticle = this.route.snapshot.params['id'];
     formData.append('article', JSON.stringify(article));
-    this.articleService.addArticle(formData).subscribe(
-      () => {
-        this.getAllArticles();
-      }
-    );
-  }
 
-  getAllArticles(){
-    this.articleService.getAllArticles().subscribe(res=> { this.listArticles=res; console.log(res);})
+    this.articleService.editArticle(formData).subscribe();
+
+    
   }
 
   Cancel() {
-    this.router.navigate(['/listarticles']);
+    this.router.navigate(['listarticles']);
   }
+
 }

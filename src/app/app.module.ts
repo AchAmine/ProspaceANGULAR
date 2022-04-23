@@ -16,9 +16,11 @@ import { AddarticleBackComponent } from './back/news/addarticle-back/addarticle-
 import { ListoffersBackComponent } from './back/offer/listoffers-back/listoffers-back.component';
 import { ListarticlesFrontComponent } from './front/news/listarticles-front/listarticles-front.component';
 import { ListoffersFrontComponent } from './front/offer/listoffers-front/listoffers-front.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArticledetailsFrontComponent } from './front/news/articledetails-front/articledetails-front.component';
 import { DatePipe } from '@angular/common';
+import { UpdatearticleBackComponent } from './back/news/updatearticle-back/updatearticle-back.component';
+import { ArticledetailsBackComponent } from './back/news/articledetails-back/articledetails-back.component';
 
 @NgModule({
   declarations: [
@@ -35,13 +37,16 @@ import { DatePipe } from '@angular/common';
     ListoffersBackComponent,
     ListarticlesFrontComponent,
     ListoffersFrontComponent,
-    ArticledetailsFrontComponent
+    ArticledetailsFrontComponent,
+    UpdatearticleBackComponent,
+    ArticledetailsBackComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

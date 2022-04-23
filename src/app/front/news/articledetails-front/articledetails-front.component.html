@@ -79,18 +79,19 @@
                             <!--/.media-->
                             </div>
 
-                            <div id="comments-form" class="row wow">
+                            <div id="comments-form" class="row wow" *ngIf="article.enableComments == 1">
                                 <div class="col-md-12">
                                     <div class="mt60 mb50 single-section-title">
                                         <h3>Leave A Comment</h3>
                                     </div>
                                     <div id="comment_message"></div>
-                                    <form method="post" id="commentform" class="comment-form">
+                                    <form method="post" id="commentform" class="comment-form" #f="ngForm">
                                         <textarea name="comment" class="form-control" id="comments1" 
-                                        placeholder="Add comment here... " [(ngModel)]='comment_value'>
+                                        placeholder="Add comment here... " required [(ngModel)]='comment_value' #comment="ngModel">
 
                                         </textarea>
-                                        <a class="btn btn-primary pull-right" (click)="addComment()">Post</a>
+                                       
+                                        <button class="btn btn-primary pull-right"  [disabled]="f.invalid" (click)="addComment()">Post </button>
                                     </form>
                                 </div>
                             </div>

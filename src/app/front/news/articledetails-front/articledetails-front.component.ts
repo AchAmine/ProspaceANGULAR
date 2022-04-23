@@ -64,5 +64,4 @@ export class ArticledetailsFrontComponent implements OnInit {
     this.router.navigate(['/articles']);
   }
 
- 
 }

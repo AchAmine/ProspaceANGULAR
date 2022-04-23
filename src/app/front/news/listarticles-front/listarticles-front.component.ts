@@ -22,7 +22,6 @@ export class ListarticlesFrontComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllArticles();
-    this.date = this.datepipe.transform(this.article.createdAt, 'yyyy-MM-dd');
   }
   getAllArticles(){
     this.articleService.getAllArticles().subscribe((res: any)=> { this.listArticles=res; console.log(res);})
@@ -35,4 +34,7 @@ export class ListarticlesFrontComponent implements OnInit {
   convertDate(date: any){
     return this.date = this.datepipe.transform(date, 'yyyy-MM-dd HH:mm');
   }
+
+  
+  
 }

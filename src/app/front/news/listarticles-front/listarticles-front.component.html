@@ -1,1 +1,38 @@
-<p>listarticles-front works!</p>
+<section>
+    <div class="section-inner">
+        <div class="container">
+            <div class="row" *ngFor="let article of listArticles">
+
+                <div class="col-sm-10 col-sm-offset-1 blog-item mb100 wow match-height">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="hover-item mb30">
+                                <img src="assets/img/news/1-wide.jpeg" class="img-responsive smoothie" alt="title">
+                                
+                            </div>
+                            <h2 class="post-title">{{article.title}}</h2>
+                            <div class="item-metas text-muted mb30">
+                                <span class="meta-item"><i class="pe-icon pe-7s-folder"></i> POSTED IN <span>News</span></span>
+                                <span class="meta-item"><i class="pe-icon pe-7s-user"></i> AUTHOR <span> {{article.user.userName}} </span></span>
+                                <span class="meta-item"><i class="pe-icon pe-7s-clock"></i> &nbsp;<span> {{convertDate(article.createdAt) }} </span></span>
+                            
+                                
+                            </div>
+                            <p>{{article.content}}</p>
+                            <a class="btn btn-primary mt30" (click)="articleDetails(article.idArticle)">Read More</a>
+
+                            <!-- <button class="btn btn-primary mt30" (click)="articleDetails(article.idArticle)">Read More</button> -->
+                        </div>
+                    </div>
+                </div>
+
+                
+
+            </div>
+
+            <div class="row paging text-center">
+                <a class="btn btn-primary mt30" href="#">Older Posts</a>
+            </div>
+        </div>
+    </div>
+</section>

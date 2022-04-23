@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,27 @@ import { Injectable } from '@angular/core';
 })
 export class ArticleService {
 
-  constructor() { }
+  private baseUrl = 'http://localhost:8089/SpringMVC/Article'
+
+  constructor(private http: HttpClient) { }
+
+  public getAllArticles(){
+    return this.http.get(`${this.baseUrl}/retrieve-all-articles`);
+  } 
+  public addArticle(article: any){
+    return this.http.post(`${this.baseUrl}/add-article/1`,article);
+  }
+
+  public deleteArticle(articleId: any) {
+    return this.http.delete(`${this.baseUrl}/remove-article/${articleId}`);
+  }
+
+  public editArticle(article: any) 
+  {
+   return  this.http.put(`${this.baseUrl}/modify-article`,article)
+  }
+
+  getArticle(id: number){
+    return this.http.get(`${this.baseUrl}/retrieve-article/${id}`);
+  }
 }

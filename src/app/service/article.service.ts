@@ -29,4 +29,6 @@ export class ArticleService {
   getArticle(id: number){
     return this.http.get(`${this.baseUrl}/retrieve-article/${id}`);
   }
+
+  
 }

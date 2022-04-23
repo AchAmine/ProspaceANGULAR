@@ -46,7 +46,14 @@ export class ArticledetailsFrontComponent implements OnInit {
     this.newcomment.content = this.comment_value.toString();
     console.log('comment_value',this.comment_value);
     console.log('new comment:',this.newcomment);
-    this.commentService.addComment(this.newcomment,this.article.idArticle).subscribe();
+    this.commentService.addComment(this.newcomment,this.article.idArticle).subscribe(
+      () => {
+        this.getComments(this.id) ; 
+        this.comment_value='';
+      }
+
+    );
+  
   }
 
   convertDate(date: any){
@@ -56,4 +63,6 @@ export class ArticledetailsFrontComponent implements OnInit {
   ToArticles() {
     this.router.navigate(['/articles']);
   }
+
+ 
 }

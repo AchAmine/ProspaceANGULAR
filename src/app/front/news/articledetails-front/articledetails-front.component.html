@@ -1,3 +1,4 @@
+<router-outlet></router-outlet> 
 <section *ngIf="comments">
     <div class="section-inner text-center">
         <div class="container">
@@ -7,7 +8,7 @@
                         <span class="meta-item"><i class="pe-icon pe-7s-folder"></i> POSTED IN <span>News</span></span>
                         <span class="meta-item"><i class="pe-icon pe-7s-user"></i> AUTHOR <span>{{article.user.userName}}</span></span>
                         <span class="meta-item"><i class="pe-icon pe-7s-comment"></i> COMMENTS <span>{{ comments?.length || '0' }}</span></span>
-                        <span class="meta-item post-date"><i class="pe-icon pe-7s-clock"></i> POSTED 
+                        <span class="meta-item post-date"><i class="pe-icon pe-7s-clock"></i> POSTED AT 
                             <span> {{ convertDate(article.createdAt) }} </span>
                         </span>
                     

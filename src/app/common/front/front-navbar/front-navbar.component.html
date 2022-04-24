@@ -1,103 +1,68 @@
-<!-- Navigation -->
-<nav class="navbar navbar-default navbar-fixed-top fadeInDown" data-wow-delay="0.5s">
-    <div class="top-bar smoothie hidden-xs">
-        <div class="container">
-     
-        </div>
-    </div>
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navigation">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand smoothie logo logo-light" href="index.html"><img src="assets/img/logo.png" alt="logo"></a>
-            <a class="navbar-brand smoothie logo logo-dark" href="index.html"><img src="assets/img/logo_reverse.png" alt="logo"></a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="main-navigation">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#">Home</a>
-                </li>
+<body>
 
-                <li>
-                    <a href="#">Forum</a>
-                </li>
-                
-
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Events <span class="pe-7s-angle-down"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="header-1.html">Header 1</a></li>
-                        <li><a href="header-2.html">Header 2</a></li>
-                        <li><a href="header-3.html">Header 3</a></li>
-                        <li><a href="header-4.html">Header 4</a></li>
-                        <li><a href="header-5.html">Header 5</a></li>
-                        <li><a href="header-6.html">Header 6</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">News <span class="pe-7s-angle-down"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a [routerLink]="['/articles']">Articles</a></li>
-                        <li><a href="footer-2.html">Footer 2</a></li>
-                        <li><a href="footer-3.html">Footer 3</a></li>
-                        <li><a href="footer-4.html">Footer 4</a></li>
-                        <li><a href="footer-5.html">Footer 5</a></li>
-                        <li><a href="footer-6.html">Footer 6</a></li>
-                    </ul>
-                </li>
-               
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Offers <span class="pe-7s-angle-down"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="footer-1.html">Footer 1</a></li>
-                        <li><a href="footer-2.html">Footer 2</a></li>
-                        <li><a href="footer-3.html">Footer 3</a></li>
-                        <li><a href="footer-4.html">Footer 4</a></li>
-                        <li><a href="footer-5.html">Footer 5</a></li>
-                        <li><a href="footer-6.html">Footer 6</a></li>
-                    </ul>
-                </li>
-
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Others <span class="pe-7s-angle-down"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="footer-1.html">Complaint</a></li>
-                        <li><a href="footer-2.html">Contact</a></li>
-                        
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown">Shop </a>
-                    
-                </li>
-                <li><a href="#"><i class="pe-7s-search"></i></a></li>
-                <li><a><i class="fa fa-bars"></i></a></li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-fluid -->
-</nav>
-
-
-
-<!-- Header -->
-<section class="dark-wrapper opaqued parallax" data-parallax="scroll" data-image-src="assets/img/bg/bg2.jpg" data-speed="0.7">
-    <div class="section-inner pad-top-200">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 mt30 wow text-center">
-                    <h2 class="section-heading">Prospace</h2>
+<header>
+    <div class="header-area ">
+        <div id="sticky-header" class="main-header-area">
+            <div class="container-fluid p-0">
+                <div class="row align-items-center no-gutters">
+                    <div class="col-xl-2 col-lg-2">
+                        <div class="logo-img">
+                            <a href="index.html">
+                                <img src="img/logo.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-7 col-lg-7">
+                        <div class="main-menu  d-none d-lg-block">
+                            <nav>
+                                <ul id="navigation">
+                                    <li><a class="active" href="index.html">home</a></li>
+                                    <li><a href="Courses.html">Forum</a></li>
+                                    <li><a href="#">Offers <i class="ti-angle-down"></i></a>
+                                        <ul class="submenu">
+                                            <li><a href="course_details.html">course details</a></li>
+                                            <li><a href="elements.html">elements</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">News <i class="ti-angle-down"></i></a>
+                                        <ul class="submenu">
+                                            <li><a [routerLink]="['/articles']">Articles</a></li>
+                                            <li><a href="single-blog.html">single-blog</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact.html">Events</a></li>
+                                    <li><a href="#">Others <i class="ti-angle-down"></i></a>
+                                        <ul class="submenu">
+                                            <li><a href="#">Complaints</a></li>
+                                            <li><a href="single-blog.html">Formations</a></li>
+                                            <li><a href="single-blog.html">Contact</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                        <div class="log_chat_area d-flex align-items-center">
+                            <a href="#test-form" class="login popup-with-form">
+                                <i class="flaticon-user"></i>
+                                <span>log in</span>
+                            </a>
+                            
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</header>
+<router-outlet></router-outlet> 
+            
 
+<app-front-footer></app-front-footer>
+        
+</body>

@@ -35,6 +35,16 @@ export class ListarticlesFrontComponent implements OnInit {
     return this.date = this.datepipe.transform(date, 'yyyy-MM-dd HH:mm');
   }
 
+  viewsInc(article: Article){
+    article.views++;
+    console.log("views b4 service call",article);
+    this.articleService.editArticle(article).subscribe(
+      (res: any)=> { this.listArticles=res; console.log("article views : ",res.views) ;
+      console.log("article  : ",res)
+      }
+    );
+  }
+
   
   
 }

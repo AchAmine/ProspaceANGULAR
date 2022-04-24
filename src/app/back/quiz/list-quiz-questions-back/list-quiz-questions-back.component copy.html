@@ -1,0 +1,38 @@
+<h3>Add Question to {{quiz.title}}</h3>
+<div class="row">
+            
+    <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">list questions of quiz</h4>
+              
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  
+                    <tr *ngFor="let question of listQuestions ">
+                     
+                        <td>
+                        {{question.content}}
+                      </td>
+                      <td>
+                      <button type="button" class="btn btn-outline-danger"
+                        (click)="deleteQuizQuestion(question.idQuestion)">Delete</button>
+                      </td>
+                      
+                      
+                   
+                    
+      
+  
+                      
+                     
+                    
+      
+                    </tr>
+                    
+                          </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>

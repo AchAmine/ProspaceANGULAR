@@ -1,0 +1,22 @@
+<div class="row">
+            
+           
+    <div class="col-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Post new quiz question..</h4>
+          <form class="forms-sample">
+            <div class="form-group">
+              <label for="exampleInputName1">Title</label>
+              <input class="form-control" name="title" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="Title" [(ngModel)] ="question.content
+            ">
+            </div>      
+            <button type="submit" class="btn btn-primary mr-2" (click)="addQuizQuestion(question)" >Submit</button>
+            <button class="btn btn-light" (click)="Cancel()">Cancel</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+    
+  </div>

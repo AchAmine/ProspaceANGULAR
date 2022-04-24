@@ -21,6 +21,16 @@ import { ArticledetailsFrontComponent } from './front/news/articledetails-front/
 import { DatePipe } from '@angular/common';
 import { UpdatearticleBackComponent } from './back/news/updatearticle-back/updatearticle-back.component';
 import { ArticledetailsBackComponent } from './back/news/articledetails-back/articledetails-back.component';
+import { UpdatequizBackComponent } from './back/quiz/updatequiz-back/updatequiz-back.component';
+import { AddquizBackComponent } from './back/quiz/addquiz-back/addquiz-back.component';
+import { ListquizBackComponent } from './back/quiz/listquiz-back/listquiz-back.component';
+import { AddquizquestionBackComponent } from './back/quiz/addquizquestion-back/addquizquestion-back.component';
+import { ListQuizQuestionsBackComponent } from './back/quiz/list-quiz-questions-back/list-quiz-questions-back.component';
+import { AddquizanswerBackComponent } from './back/quiz/addquizanswer-back/addquizanswer-back.component';
+import { ListQuizAnswerBackComponent } from './back/quiz/list-quiz-answer-back/list-quiz-answer-back.component';
+import { UpdateQuizAnswerBackComponent } from './back/quiz/update-quiz-answer-back/update-quiz-answer-back.component';
+import { UpdateQuizQuestionBackComponent } from './back/quiz/update-quiz-question-back/update-quiz-question-back.component';
+import { UpdateoffersBackComponent } from './back/offer/updateoffers-back/updateoffers-back.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +49,17 @@ import { ArticledetailsBackComponent } from './back/news/articledetails-back/art
     ListoffersFrontComponent,
     ArticledetailsFrontComponent,
     UpdatearticleBackComponent,
-    ArticledetailsBackComponent
+    ArticledetailsBackComponent,
+    UpdateoffersBackComponent,
+    UpdatequizBackComponent,
+    AddquizBackComponent,
+    ListquizBackComponent,
+    AddquizquestionBackComponent,
+    ListQuizQuestionsBackComponent,
+    AddquizanswerBackComponent,
+    ListQuizAnswerBackComponent,
+    UpdateQuizAnswerBackComponent,
+    UpdateQuizQuestionBackComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,11 @@ import { AddarticleBackComponent } from './back/news/addarticle-back/addarticle-
 import { ListoffersBackComponent } from './back/offer/listoffers-back/listoffers-back.component';
 import { ListarticlesFrontComponent } from './front/news/listarticles-front/listarticles-front.component';
 import { ListoffersFrontComponent } from './front/offer/listoffers-front/listoffers-front.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ArticledetailsFrontComponent } from './front/news/articledetails-front/articledetails-front.component';
+import { DatePipe } from '@angular/common';
+import { UpdatearticleBackComponent } from './back/news/updatearticle-back/updatearticle-back.component';
+import { ArticledetailsBackComponent } from './back/news/articledetails-back/articledetails-back.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +36,19 @@ import { ListoffersFrontComponent } from './front/offer/listoffers-front/listoff
     AddarticleBackComponent,
     ListoffersBackComponent,
     ListarticlesFrontComponent,
-    ListoffersFrontComponent
+    ListoffersFrontComponent,
+    ArticledetailsFrontComponent,
+    UpdatearticleBackComponent,
+    ArticledetailsBackComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

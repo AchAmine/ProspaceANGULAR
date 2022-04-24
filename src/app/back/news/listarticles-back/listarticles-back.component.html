@@ -1,1 +1,87 @@
-<p>listarticles-back works!</p>
+<div class="row">
+            
+    <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">list of articles</h4>
+              
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        Title
+                      </th>
+                      <th>
+                        Content
+                      </th>
+                      <th>
+                        Created At
+                      </th>
+                      <th>
+                        Updated At
+                      </th>
+                      <th>
+                        views
+                      </th>
+      
+                      <th>
+                        Details
+                      </th>
+      
+                      <th>
+                          
+                      </th>
+      
+                      <th>
+                          
+                      </th>
+      
+                        
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let article of listArticles ">
+                      <td>
+                        {{article.title}}
+                      </td>
+                      <td>
+                        {{(article.content.length>15)? (article.content | slice:0:15)+' ...':(article.content) }}
+                      </td>
+                      <td>
+                        {{ convertDate(article.createdAt) }}
+                      </td>
+                      <td>
+                        {{ convertDate(article.updatedAt) }}
+                      </td>
+                      <td>
+                        {{article.views}}
+                      </td>
+      
+      
+      
+                      <td> <button type="button" class="btn btn-outline-warning"
+                        (click)="articleDetails(article.idArticle)">See more...</button>
+                      </td>
+  
+                      
+                     
+  
+                      <td> <button type="button" class="btn btn-outline-warning"
+                        (click)="editArticle(article.idArticle)">Edit</button>
+                      </td>
+  
+                      <td> <button type="button" class="btn btn-outline-danger"
+                        (click)="deleteArticle(article.idArticle)">Delete</button>
+                      </td>
+      
+                    </tr>
+                    
+                  </tbody>
+                          </table>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+        

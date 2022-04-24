@@ -9,7 +9,7 @@ import { ArticledetailsFrontComponent } from './front/news/articledetails-front/
 import { ListarticlesFrontComponent } from './front/news/listarticles-front/listarticles-front.component';
 
 const routes: Routes = [
-  {path:'', component: FrontindexComponent},
+  {path:'home', component: FrontindexComponent},
   {path: 'listarticles', component: ListarticlesBackComponent},
   {path: 'addarticle', component: AddarticleBackComponent},
   {path: 'articles', component: ListarticlesFrontComponent},

@@ -13,10 +13,10 @@
                         </div>
 
                         <div class="blog_details">
-                            <a class="d-inline-block" (click)="articleDetails(article.idArticle)">
+                            <a class="d-inline-block"  (click)="articleDetails(article.idArticle)">
                                 <h2>{{article.title}}</h2>
                             </a>
-                            <p>{{article.content}}</p>
+                            <p> {{(article.content.length>200)? (article.content | slice:0:200)+' ...':(article.content) }}</p>
                             <ul class="blog-info-link">
                                 <li><a href="#"><i class="fa fa-thumbs-up"></i> 15 </a></li>
                                 <li><a ><i class="fa fa-comments"></i> 05 Comments</a></li>

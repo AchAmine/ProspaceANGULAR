@@ -15,7 +15,7 @@ export class ArticledetailsFrontComponent implements OnInit {
   id: number;
   article: any;
   comments: any;
-  user: any;
+  //user: any;
   nbrComments: any;
   date: any;
   comment_value: any;
@@ -58,6 +58,13 @@ export class ArticledetailsFrontComponent implements OnInit {
 
   convertDate(date: any){
    return this.date = this.datepipe.transform(date, 'yyyy-MM-dd HH:mm');
+  }
+
+  getDateMonth(date:any){
+    let months: Array<string>;
+    months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    return months[date.getMonth()];
+
   }
 
   ToArticles() {

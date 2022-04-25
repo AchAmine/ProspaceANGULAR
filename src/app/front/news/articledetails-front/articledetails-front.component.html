@@ -24,17 +24,19 @@
           </div>
           <div class="navigation-top">
              <div class="d-sm-flex justify-content-between text-center">
-                <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span> Lily and 4
-                   people like this</p>
+                
+                   <ul class="social-icons">
+                     <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                     <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                     <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                  </ul>
                 <div class="col-sm-4 text-center my-2 my-sm-0">
                    <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
                 </div>
-                <ul class="social-icons">
-                   <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                   <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                   <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                   <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                </ul>
+                <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span> Lily and 4
+                  people reacted to this</p>
+                
              </div>
              <div class="navigation-area">
                 <div class="row">
@@ -92,6 +94,7 @@
                          <p class="comment">
                            {{comment.content}}
                          </p>
+                         
                          <div class="d-flex justify-content-between">
                             <div class="d-flex align-items-center">
                                <h5>
@@ -101,7 +104,22 @@
                             </div>
                          </div>
                       </div>
+
+                      
                    </div>
+                   
+                   <div class="col-sm-4 text-center my-2 my-sm-0">
+                     <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
+                  </div>
+                  
+                  <li>
+                     <a href="#"><i class="fa fa-edit"></i></a>
+                     &nbsp;
+                     <a href="#"><i class="fa fa-trash"></i></a>
+                  </li>
+                   
+                
+
                 </div>
              </div>
              
@@ -274,17 +292,7 @@
               </li>
            </ul>
              </aside>
-             <aside class="single_sidebar_widget newsletter_widget">
-                <h4 class="widget_title">Newsletter</h4>
-                <form action="#">
-                   <div class="form-group">
-                      <input type="email" class="form-control" onfocus="this.placeholder = ''"
-                         onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
-                   </div>
-                   <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                      type="submit">Subscribe</button>
-                </form>
-             </aside>
+             
           </div>
        </div>
     </div>

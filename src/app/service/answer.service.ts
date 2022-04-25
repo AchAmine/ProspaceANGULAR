@@ -18,6 +18,15 @@ export class AnswerService {
   DeleteQuestionAnswer(idAnswer : any){
     return this.http.delete(`http://localhost:8089/SpringMVC/Quizz/Question/Answers/remove-Answer/${idAnswer}`);
   }
+  getAnswer(id: number){
+    return this.http.get(`http://localhost:8089/SpringMVC/Quizz/Question/Answers/retrieve-answer/${id}`);
+  }
+  public editAnswer(answer: any) 
+  {
+   return  this.http.put(`http://localhost:8089/SpringMVC/Quizz/Question/Answers/modify-Answer`,answer)
+  }
+
+
 
 
 

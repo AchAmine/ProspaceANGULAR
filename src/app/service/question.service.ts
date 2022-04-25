@@ -24,6 +24,14 @@ export class QuestionService {
    return  this.http.put(`http://localhost:8089/SpringMVC/Quizz/Question/modify-Question/${idQuiz}`,question)
   }
 
+  getQuestion(id: number){
+    return this.http.get(`http://localhost:8089/SpringMVC/Quizz/Question/retrieve-question/${id}`);
+
+  }
+  getQuizQuestionsForTest(idQuiz: any){
+    return this.http.get(`http://localhost:8089/SpringMVC/Quizz/Question/retrieve-quizz-Questions/${idQuiz}`);
+  }
+
 
 
 }

@@ -1,1 +1,28 @@
-<p>update-quiz-answer-back works!</p>
+<div class="row">
+            
+           
+    <div class="col-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Update question answer..</h4>
+          <form class="forms-sample">
+            <div class="form-group">
+              <label for="exampleInputName1">Content</label>
+              <input class="form-control" name="Content" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="Content" [(ngModel)] ="answer.content
+            ">
+            <label for="exampleInputName1">is Correct</label>
+            <input class="form-control" is Correct="title" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="is Correct" [(ngModel)] ="answer.isCorrect
+            ">
+            <label for="exampleInputName1">nb pts </label>
+
+            <input class="form-control" name="nb pts" ngModel [ngModelOptions]="{standalone: true}" type="number"  placeholder="nb pts" [(ngModel)] ="answer.nbreptsanswer
+            ">
+            </div>      
+            <button type="submit" class="btn btn-primary mr-2" (click)="updateAnswer()" >Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+    
+  </div>

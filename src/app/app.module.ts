@@ -31,6 +31,8 @@ import { ListQuizAnswerBackComponent } from './back/quiz/list-quiz-answer-back/l
 import { UpdateQuizAnswerBackComponent } from './back/quiz/update-quiz-answer-back/update-quiz-answer-back.component';
 import { UpdateQuizQuestionBackComponent } from './back/quiz/update-quiz-question-back/update-quiz-question-back.component';
 import { UpdateoffersBackComponent } from './back/offer/updateoffers-back/updateoffers-back.component';
+import { QuizpageFrontComponent } from './front/quiz/quizpage-front/quizpage-front.component';
+import { StartQuizFrontComponent } from './front/quiz/start-quiz-front/start-quiz-front.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { UpdateoffersBackComponent } from './back/offer/updateoffers-back/update
     AddquizanswerBackComponent,
     ListQuizAnswerBackComponent,
     UpdateQuizAnswerBackComponent,
-    UpdateQuizQuestionBackComponent
+    UpdateQuizQuestionBackComponent,
+    QuizpageFrontComponent,
+    StartQuizFrontComponent
   ],
   imports: [
     BrowserModule,

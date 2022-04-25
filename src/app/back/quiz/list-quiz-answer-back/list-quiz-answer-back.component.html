@@ -47,6 +47,10 @@
                         <button type="button" class="btn btn-outline-danger"
                           (click)="deleteQuizQuestionAnswer(answer.idAnswer)"  >Delete</button>
                         </td>
+                        <td>
+                          <button type="button" class="btn btn-outline-danger"
+                            [routerLink]="'/editquizanswer/'+answer.idAnswer"  >Update</button>
+                          </td>
                    
                     
                          

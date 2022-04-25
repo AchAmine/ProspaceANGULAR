@@ -1,0 +1,21 @@
+
+<div class="row">
+            
+    <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">list questions of quiz</h4>
+              <div>
+                <ol>
+                     <li *ngFor="let question of questions" > {{question.content}} 
+                     <ol>
+                          <li *ngFor="let answer of question.answers"> {{answer.content}} </li>
+                     </ol>
+                    </li>
+                </ol>
+           </div>
+            
+            </div>
+          </div>
+        </div>
+        </div>

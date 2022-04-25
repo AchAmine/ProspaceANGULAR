@@ -44,8 +44,8 @@ export class ListQuizQuestionsBackComponent implements OnInit {
 getQuizQuestionAnswers(Question: any){
   this.router.navigate(['quizquestionAnswers', Question]);
 }
-editQuizQuestions(Question: any){
-  this.router.navigate(['editquizquestion', Question]);
+editQuizQuestions(){
+  this.router.navigate([`/editquizquestion/${this.route.snapshot.params.id}`]);
 }
 Cancel() {
   this.router.navigate(['/listquiz']);

@@ -16,6 +16,8 @@ import { ListquizBackComponent } from './back/quiz/listquiz-back/listquiz-back.c
 import { UpdateQuizAnswerBackComponent } from './back/quiz/update-quiz-answer-back/update-quiz-answer-back.component';
 import { UpdateQuizQuestionBackComponent } from './back/quiz/update-quiz-question-back/update-quiz-question-back.component';
 import { UpdatequizBackComponent } from './back/quiz/updatequiz-back/updatequiz-back.component';
+import { QuizpageFrontComponent } from './front/quiz/quizpage-front/quizpage-front.component';
+import { StartQuizFrontComponent } from './front/quiz/start-quiz-front/start-quiz-front.component';
 
 
 const routes: Routes = [
@@ -34,7 +36,11 @@ const routes: Routes = [
   {path: 'quizquestionAnswers/:id', component: ListQuizAnswerBackComponent},
   {path: 'addquizquestionAnswers/:id', component: AddquizanswerBackComponent},
   {path: 'editquizanswer/:id', component: UpdateQuizAnswerBackComponent},
-  {path: 'editquizquestion/:id', component: UpdateQuizQuestionBackComponent}
+  {path: 'editquizquestion/:id', component: UpdateQuizQuestionBackComponent},
+  {path: 'quizpageFront', component: QuizpageFrontComponent},
+  {path: 'startQuiz/:id', component: StartQuizFrontComponent}
+
+
 ];
 
 @NgModule({

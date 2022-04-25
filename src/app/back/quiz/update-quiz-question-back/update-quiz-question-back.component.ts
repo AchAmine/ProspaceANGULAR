@@ -12,33 +12,25 @@ import { QuizService } from 'src/app/service/quiz.service';
   styleUrls: ['./update-quiz-question-back.component.css']
 })
 export class UpdateQuizQuestionBackComponent implements OnInit {
-
-  id: number;
-  question: Question = new Question();
-  quiz: Quiz = new Quiz();
-
-  form: FormGroup;
-  constructor(private quizService: QuizService,private questionService: QuestionService,private router: Router,private route: ActivatedRoute,public fb: FormBuilder) { }
-
+  constructor(private route: ActivatedRoute,private  questionService: QuestionService,private router: Router) { }
+  id=0;
+  question?: any;
+  form: boolean=false;
   ngOnInit(): void {
- 
-    
+    this.id= this.route.snapshot.params.id;
+    //alert(this.id);
+    this.questionService.getQuestion(this.id).subscribe(
+      (data:any)=>{
+        this.question=data;
+        console.log("QUEEEESTION ",data);
+        console.log("QUEEEESTION ",this.id);
+
+      });
+
+
+      
   }
 
-  getquizQuestions(){
-    this.questionService.getQuizQuestions(this.id).subscribe(data => {
-      this.question = data;
-      console.log("DATAAA",data);
-
-  });
-}
-
-
-  editQuizQuestion(question: Question) {
-    
-  this.questionService.editQuizQuestion(question,this.route.snapshot.params.id).subscribe();
-    
-  }
 
  
 

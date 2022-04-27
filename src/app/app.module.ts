@@ -18,9 +18,10 @@ import { ListarticlesFrontComponent } from './front/news/listarticles-front/list
 import { ListoffersFrontComponent } from './front/offer/listoffers-front/listoffers-front.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArticledetailsFrontComponent } from './front/news/articledetails-front/articledetails-front.component';
-import { DatePipe } from '@angular/common';
+import { DatePipe, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { UpdatearticleBackComponent } from './back/news/updatearticle-back/updatearticle-back.component';
 import { ArticledetailsBackComponent } from './back/news/articledetails-back/articledetails-back.component';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 
 @NgModule({
   declarations: [
@@ -46,9 +47,10 @@ import { ArticledetailsBackComponent } from './back/news/articledetails-back/art
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PickerModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,{provide: LocationStrategy,useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

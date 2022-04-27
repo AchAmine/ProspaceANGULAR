@@ -25,17 +25,28 @@
           <div class="navigation-top">
              <div class="d-sm-flex justify-content-between text-center">
                 
-                   <ul class="social-icons">
-                     <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                     <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                     <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                  </ul>
+
+               <div class="react" (mouseenter)="toggleShow()" (mouseleave)="toggleShow()">
+                  <div class="emojis" *ngIf="showEmojis">
+                
+                    <span *ngFor="let emoji of emojiList; index as i;">
+                      <img [src]="emojiPath(emoji)" width='50px'>
+                    </span>
+                
+                  </div>
+
+                  
+                     <span class="like">
+                        Like
+                  </span>
+            </div>
+                   
+
                 <div class="col-sm-4 text-center my-2 my-sm-0">
                    <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
                 </div>
-                <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span> Lily and 4
-                  people reacted to this</p>
+                <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span>
+                  4 people reacted to this</p>
                 
              </div>
              <div class="navigation-area">
@@ -115,7 +126,7 @@
                   <li>
                      <a href="#"><i class="fa fa-edit"></i></a>
                      &nbsp;
-                     <a href="#"><i class="fa fa-trash"></i></a>
+                     <a (click)="deleteComment(comment.idComment)"><i class="fa fa-trash"></i></a>
                   </li>
                    
                 
@@ -130,15 +141,30 @@
                 <div class="row">
                    <div class="col-12">
                       <div class="form-group">
-                         <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
+                         <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="4"
                             placeholder="Write Comment" required [(ngModel)]='comment_value' #comment="ngModel"></textarea>
-                      </div>
+                           
+
+                        </div>
                    </div>
                    
                 </div>
                 <div class="form-group">
+                  <div class="container2">
                    <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
                   name="comment" [disabled]="f.invalid" (click)="addComment()">Send</button>
+
+
+                  <div style="float:right;">
+                  <button (click)="isEmojiPickerVisible = !isEmojiPickerVisible;">😀</button>
+                  <br>
+                  <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible"  (emojiSelect)="addEmoji($event)" 
+                  title="Choose your emoji">
+                 </emoji-mart>
+                 </div>
+                 </div>
+
+
                 </div>
              </form>
           </div>
@@ -275,21 +301,7 @@
                     <img class="img-fluid" src="../../assets/img/post/post_7.png" alt="">
                  </a>
               </li>
-              <li>
-                 <a href="#">
-                    <img class="img-fluid" src="../../assets/img/post/post_8.png" alt="">
-                 </a>
-              </li>
-              <li>
-                 <a href="#">
-                    <img class="img-fluid" src="../../assets/img/post/post_9.png" alt="">
-                 </a>
-              </li>
-              <li>
-                 <a href="#">
-                    <img class="img-fluid" src="../../assets/img/post/post_10.png" alt="">
-                 </a>
-              </li>
+              
            </ul>
              </aside>
              

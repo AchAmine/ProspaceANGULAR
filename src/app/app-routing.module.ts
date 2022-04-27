@@ -10,11 +10,11 @@ import { ListarticlesFrontComponent } from './front/news/listarticles-front/list
 
 const routes: Routes = [
   {path:'home', component: FrontindexComponent},
+  {path: 'editarticle/:id', component: UpdatearticleBackComponent},
   {path: 'listarticles', component: ListarticlesBackComponent},
   {path: 'addarticle', component: AddarticleBackComponent},
   {path: 'articles', component: ListarticlesFrontComponent},
   {path: 'article/:id', component: ArticledetailsFrontComponent},
-  {path: 'editarticle/:id', component: UpdatearticleBackComponent},
   {path: 'articledetails/:id' , component: ArticledetailsBackComponent}
 ];
 

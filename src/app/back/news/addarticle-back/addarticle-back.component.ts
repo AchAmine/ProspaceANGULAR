@@ -47,6 +47,6 @@ export class AddarticleBackComponent implements OnInit {
   }
 
   Cancel() {
-    this.router.navigate(['/listarticles']);
+    this.router.navigate(['listarticles']);
   }
 }

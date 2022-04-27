@@ -18,8 +18,11 @@ export class UpdatearticleBackComponent implements OnInit {
   constructor(private articleService: ArticleService,private router: Router,private route: ActivatedRoute,public fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
-    this.articleService.getArticle(this.id).subscribe(data => this.artic = data);
+    console.log('test');
+    
+   this.route.paramMap.subscribe(res=>{this.id=Number(res.get('id')),this.articleService.getArticle(this.id).subscribe(data => {this.artic = data
+     this.article=data; 
+    })});
 
     this.form = this.fb.group({
       article: [''],

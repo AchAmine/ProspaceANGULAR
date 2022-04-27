@@ -8,8 +8,13 @@
                 <div class="blog_left_sidebar" *ngFor="let article of listArticles">
                     <article class="blog_item">
                         <div class="blog_item_img">
-                            <img class="card-img rounded-0" src="../../assets/img/blog/single_blog_1.png" alt="">
-                            
+                            <!-- <img class="card-img rounded-0" src="../../assets/img/blog/single_blog_1.png" alt=""> -->
+                            <img class="card-img rounded-0" src="{{'../../../../../../FileUploads/'+article.image.path}}" 
+
+                           
+                            width="200" height="300" alt="">
+                        
+                        
                         </div>
 
                         <div class="blog_details">

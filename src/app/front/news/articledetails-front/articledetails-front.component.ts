@@ -24,6 +24,7 @@ export class ArticledetailsFrontComponent implements OnInit {
   public isEmojiPickerVisible: boolean;
   emojiList: string[];
   showEmojis = false;
+  userReaction: any;
   
 
   constructor(private articleService: ArticleService, private route: ActivatedRoute,private router: Router,
@@ -95,6 +96,10 @@ export class ArticledetailsFrontComponent implements OnInit {
 
     toggleShow() {
       this.showEmojis = !this.showEmojis
+    }
+
+    react(val: any){
+      console.log("React : ",val);
     }
 
 }

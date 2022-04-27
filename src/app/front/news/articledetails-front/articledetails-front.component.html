@@ -30,16 +30,24 @@
                   <div class="emojis" *ngIf="showEmojis">
                 
                     <span *ngFor="let emoji of emojiList; index as i;">
-                      <img [src]="emojiPath(emoji)" width='50px'>
+                      <img [src]="emojiPath(emoji)" width='50px' (click)="react(i)">
                     </span>
                 
                   </div>
 
                   
-                     <span class="like">
+                  <span class="like">
                         Like
                   </span>
-            </div>
+
+                  
+                  <span>
+                     <!-- <span *ngIf="userReaction != null"> -->
+                     | You reacted <strong>{{ emojiList[1] }}</strong>
+                   </span>
+
+                   
+                </div>
                    
 
                 <div class="col-sm-4 text-center my-2 my-sm-0">

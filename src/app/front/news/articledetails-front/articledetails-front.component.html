@@ -46,6 +46,18 @@
                      | You reacted <strong>{{ emojiList[1] }}</strong>
                    </span>
 
+                   <div class="reactions">
+
+                     <div *ngFor="let emoji of emojiList; index as i;" class="reaction-counts">
+                 
+                       <span>
+                        <!-- <span *ngIf="hasReactions(i)"> -->
+                         <!-- <img [src]="emojiPath(emoji)"> {{ reactionCount[i] }} -->
+                         <img [src]="emojiPath(emoji)"> {{ 15 }}
+                       </span>
+                 
+                     </div>
+                   </div>
                    
                 </div>
                    

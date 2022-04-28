@@ -5,7 +5,7 @@
     <span>
      <!-- <span *ngIf="hasReactions(i)"> -->
       <!-- <img [src]="emojiPath(emoji)"> {{ reactionCount[i] }} -->
-      <img [src]="emojiPath(emoji)"> {{ 15 }}
+      <img [src]="emojiPath(emoji)"> {{ getReactionCountByType(i) }}
     </span>
 
   </div>

@@ -12,7 +12,7 @@ import { ArticlereactionService } from 'src/app/service/articlereaction.service'
 export class ArticlereactionsFrontComponent implements OnInit {
 
   // id of user 
-  idUser = 1;
+  idUser = 2;
   // id de l'article
   idArticle: any;
   reaction = new Reaction();
@@ -24,8 +24,10 @@ export class ArticlereactionsFrontComponent implements OnInit {
   showEmojis = false;
   // hashmap : user , reactionType
   usersReaction = new Map();
-  // reactions count 
-  reactionsNumber:any;
+  // reactions count (all)
+  reactionsCount:any;
+  // reaction count (per type)
+  reactionCount:any;
   // check currentReaction of a user 
   currentReaction: any;
 
@@ -37,8 +39,8 @@ export class ArticlereactionsFrontComponent implements OnInit {
     this.emojiList = ['Like', 'Love', 'Funny'];
      this.reactionService.getAllReactions(this.idArticle).subscribe(data => {
       this.reactions = data;
-      this.reactionsNumber = this.reactions.length;
-      console.log(this.reactionsNumber)
+      this.reactionsCount = this.reactions.length;
+      console.log(this.reactionsCount)
       console.log(this.reactions);
       this.getCurrentReaction();
     }); 
@@ -105,8 +107,8 @@ export class ArticlereactionsFrontComponent implements OnInit {
   getUsersReactions(){
     this.reactionService.getUsersReaction(this.idArticle).subscribe(data => {
       this.usersReaction = new Map(Object.entries(data));
-      this.reactionsNumber = this.usersReaction.size;
-      console.log(this.reactionsNumber)
+      this.reactionsCount = this.usersReaction.size;
+      console.log(this.reactionsCount)
       console.log(this.usersReaction);
     });
   }
@@ -119,7 +121,22 @@ export class ArticlereactionsFrontComponent implements OnInit {
   }
 
   // get count for each reaction type
-  getReactionCount(val: any) {
+  getReactionCountByType(val: any) {
+    let type = this.emojiList[val] as ReactionType;
+    /* this.reactionService.getArticleReactorsByType(this.idArticle,type).subscribe(data => {
 
+  
+      this.reactionCount == data.length
+      console.log(this.reactionCount);
+      }) */
+      this.reactionCount= 0;
+      for (let reaction in this.reactions) {
+        if (this.reactions[reaction].type == type )
+        {
+          this.reactionCount++;
+        }
+      }
+      console.log("REACTION COUNT",this.reactionCount);
+      return this.reactionCount;
   }
 }

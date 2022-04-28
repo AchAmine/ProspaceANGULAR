@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { User } from '../model/User';
 
 @Injectable({
   providedIn: 'root'
@@ -33,11 +34,13 @@ export class ArticlereactionService {
     return this.http.get(`${this.baseUrl}/retrieve-usersreaction/${articleId}`);
   }
 
-  public getArticleReactorsByType(articleId: any , reactionType:any) {
-    return this.http.get(`${this.baseUrl}/retrieve-articlereactors/${articleId}/type/${reactionType}`);
+  public getArticleReactorsByType(articleId: any , reactionType:any) : Observable<Number[]>{
+    return this.http.get<Number[]>(`${this.baseUrl}/retrieve-articlereactors/${articleId}/type/${reactionType}`);
   }
 
   public getUserReaction(articleId: any , userId: any) {
     return this.http.get(`${this.baseUrl}/retrieve-user-reaction/${articleId}/${userId}`);
   }
+
+  
 }

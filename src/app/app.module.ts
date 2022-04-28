@@ -22,6 +22,7 @@ import { DatePipe, HashLocationStrategy, LocationStrategy } from '@angular/commo
 import { UpdatearticleBackComponent } from './back/news/updatearticle-back/updatearticle-back.component';
 import { ArticledetailsBackComponent } from './back/news/articledetails-back/articledetails-back.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { ArticlereactionsFrontComponent } from './front/news/articlereactions-front/articlereactions-front.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
     ListoffersFrontComponent,
     ArticledetailsFrontComponent,
     UpdatearticleBackComponent,
-    ArticledetailsBackComponent
+    ArticledetailsBackComponent,
+    ArticlereactionsFrontComponent
   ],
   imports: [
     BrowserModule,

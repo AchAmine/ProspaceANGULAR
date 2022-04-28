@@ -22,9 +22,8 @@ export class ArticledetailsFrontComponent implements OnInit {
   newcomment: Article_Comment;
 
   public isEmojiPickerVisible: boolean;
-  emojiList: string[];
-  showEmojis = false;
-  userReaction: any;
+
+ 
   
 
   constructor(private articleService: ArticleService, private route: ActivatedRoute,private router: Router,
@@ -40,8 +39,7 @@ export class ArticledetailsFrontComponent implements OnInit {
     // recuperation des commentaires de l'article avc id
     this.getComments(this.id);
 
-    // reaction 
-    this.emojiList = ['like', 'love', 'haha'];
+    
   }
 
   getComments(idComment: any){
@@ -89,17 +87,6 @@ export class ArticledetailsFrontComponent implements OnInit {
     this.isEmojiPickerVisible = false;
  }
 
- // reaction
-    emojiPath(emoji: any) {
-      return `assets/reactions/${emoji}.png`
-    }
-
-    toggleShow() {
-      this.showEmojis = !this.showEmojis
-    }
-
-    react(val: any){
-      console.log("React : ",val);
-    }
+ 
 
 }

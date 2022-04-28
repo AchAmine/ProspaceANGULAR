@@ -9,12 +9,11 @@ export class ArticlereactionService {
 
   private baseUrl = 'http://localhost:8089/SpringMVC/Article_reactions'
 
-  userId: string;
   emojiList = ['like', 'love','haha']
 
   constructor(private http: HttpClient) { }
 
-  public getAllReactions(articleId: any): Observable<any>{
+  public getAllReactions(articleId: any){
     return this.http.get(`${this.baseUrl}/retrieve-articlereactions/${articleId}`);
   } 
 
@@ -22,7 +21,23 @@ export class ArticlereactionService {
     return this.http.delete(`${this.baseUrl}/remove-reaction/${reactionId}`);
   }
 
-  public addReaction(article: any, user: any){
-    return this.http.post(`${this.baseUrl}/add-reaction/1`,article);
+  public addReaction(article: any, user: any , reaction: any){
+    return this.http.post(`${this.baseUrl}/add-reaction/${user}/${article}`,reaction);
+  }
+
+  public updateReaction(reaction: any){
+    return this.http.put(`${this.baseUrl}/modify-reaction`,reaction);
+  }
+
+  public getUsersReaction(articleId: any) {
+    return this.http.get(`${this.baseUrl}/retrieve-usersreaction/${articleId}`);
+  }
+
+  public getArticleReactorsByType(articleId: any , reactionType:any) {
+    return this.http.get(`${this.baseUrl}/retrieve-articlereactors/${articleId}/type/${reactionType}`);
+  }
+
+  public getUserReaction(articleId: any , userId: any) {
+    return this.http.get(`${this.baseUrl}/retrieve-user-reaction/${articleId}/${userId}`);
   }
 }

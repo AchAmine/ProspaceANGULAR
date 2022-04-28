@@ -23,52 +23,15 @@
              </div>
           </div>
           <div class="navigation-top">
-             <div class="d-sm-flex justify-content-between text-center">
+             
                 
 
-               <div class="react" (mouseenter)="toggleShow()" (mouseleave)="toggleShow()">
-                  <div class="emojis" *ngIf="showEmojis">
-                
-                    <span *ngFor="let emoji of emojiList; index as i;">
-                      <img [src]="emojiPath(emoji)" width='50px' (click)="react(i)">
-                    </span>
-                
-                  </div>
-
-                  
-                  <span class="like">
-                        Like
-                  </span>
-
-                  
-                  <span>
-                     <!-- <span *ngIf="userReaction != null"> -->
-                     | You reacted <strong>{{ emojiList[1] }}</strong>
-                   </span>
-
-                   <div class="reactions">
-
-                     <div *ngFor="let emoji of emojiList; index as i;" class="reaction-counts">
-                 
-                       <span>
-                        <!-- <span *ngIf="hasReactions(i)"> -->
-                         <!-- <img [src]="emojiPath(emoji)"> {{ reactionCount[i] }} -->
-                         <img [src]="emojiPath(emoji)"> {{ 15 }}
-                       </span>
-                 
-                     </div>
-                   </div>
-                   
-                </div>
+               <app-articlereactions-front></app-articlereactions-front>
                    
 
-                <div class="col-sm-4 text-center my-2 my-sm-0">
-                   <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
-                </div>
-                <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span>
-                  4 people reacted to this</p>
                 
-             </div>
+
+
              <div class="navigation-area">
                 <div class="row">
                    <div

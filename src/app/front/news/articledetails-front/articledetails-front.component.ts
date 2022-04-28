@@ -12,6 +12,7 @@ import { ArticlecommentsService } from 'src/app/service/articlecomments.service'
 })
 export class ArticledetailsFrontComponent implements OnInit {
 
+  idUser =1;
   id: number;
   article: any;
   comments: any;

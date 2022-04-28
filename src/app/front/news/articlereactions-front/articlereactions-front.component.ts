@@ -12,7 +12,7 @@ import { ArticlereactionService } from 'src/app/service/articlereaction.service'
 export class ArticlereactionsFrontComponent implements OnInit {
 
   // id of user 
-  idUser = 2;
+  idUser = 1;
   // id de l'article
   idArticle: any;
   reaction = new Reaction();

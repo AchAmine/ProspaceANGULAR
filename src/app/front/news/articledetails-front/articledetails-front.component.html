@@ -65,12 +65,13 @@
                      <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
                   </div>
                   
-                  <li>
+                  
+                  <li *ngIf="idUser == comment.user.idUser">
                      <a href="#"><i class="fa fa-edit"></i></a>
                      &nbsp;
                      <a (click)="deleteComment(comment.idComment)"><i class="fa fa-trash"></i></a>
                   </li>
-                   
+               
                 
 
                 </div>

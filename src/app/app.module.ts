@@ -23,6 +23,9 @@ import { UpdatearticleBackComponent } from './back/news/updatearticle-back/updat
 import { ArticledetailsBackComponent } from './back/news/articledetails-back/articledetails-back.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { ArticlereactionsFrontComponent } from './front/news/articlereactions-front/articlereactions-front.component';
+import { EditarticlecommentFrontComponent } from './front/news/editarticlecomment-front/editarticlecomment-front.component';
+import { ArticlesuggestionsFrontComponent } from './front/news/articlesuggestions-front/articlesuggestions-front.component';
+import { FollowingarticlesFrontComponent } from './front/news/followingarticles-front/followingarticles-front.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { ArticlereactionsFrontComponent } from './front/news/articlereactions-fr
     ArticledetailsFrontComponent,
     UpdatearticleBackComponent,
     ArticledetailsBackComponent,
-    ArticlereactionsFrontComponent
+    ArticlereactionsFrontComponent,
+    EditarticlecommentFrontComponent,
+    ArticlesuggestionsFrontComponent,
+    FollowingarticlesFrontComponent
   ],
   imports: [
     BrowserModule,

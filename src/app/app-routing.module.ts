@@ -6,6 +6,7 @@ import { ListarticlesBackComponent } from './back/news/listarticles-back/listart
 import { UpdatearticleBackComponent } from './back/news/updatearticle-back/updatearticle-back.component';
 import { FrontindexComponent } from './common/front/frontindex/frontindex.component';
 import { ArticledetailsFrontComponent } from './front/news/articledetails-front/articledetails-front.component';
+import { FollowingarticlesFrontComponent } from './front/news/followingarticles-front/followingarticles-front.component';
 import { ListarticlesFrontComponent } from './front/news/listarticles-front/listarticles-front.component';
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'listarticles', component: ListarticlesBackComponent},
   {path: 'addarticle', component: AddarticleBackComponent},
   {path: 'articles', component: ListarticlesFrontComponent},
+  {path: 'followingarticles', component: FollowingarticlesFrontComponent},
   {path: 'article/:id', component: ArticledetailsFrontComponent},
   {path: 'articledetails/:id' , component: ArticledetailsBackComponent}
 ];

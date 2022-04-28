@@ -13,13 +13,17 @@ import { ArticlecommentsService } from 'src/app/service/articlecomments.service'
 export class ArticledetailsFrontComponent implements OnInit {
 
   idUser =1;
+  // id parametre
   id: number;
+  // objet article contenant les details
   article: any;
   comments: any;
   //user: any;
   nbrComments: any;
   date: any;
+  // commentaire saisie par l'utilisateur
   comment_value: any='';
+  // instance commentaire a ajouter
   newcomment: Article_Comment;
 
   public isEmojiPickerVisible: boolean;

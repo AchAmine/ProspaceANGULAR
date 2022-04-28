@@ -35,5 +35,14 @@ export class ArticleService {
    return  this.http.put(`${this.baseUrl}/viewinc`,article)
   }
 
+  //
+  getuserPreferences(idUser: number){
+    return this.http.get(`${this.baseUrl}/userPreferences/user/${idUser}`);
+  }
+
+  getFollowingArticles(idUser: number){
+    return this.http.get(`${this.baseUrl}/followingarticles/user/${idUser}`);
+  }
+
   
 }

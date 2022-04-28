@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { ArticleType } from 'src/app/enum/ArticleType.enum';
 import { Article } from 'src/app/model/Article';
 import { ArticleService } from 'src/app/service/article.service';
 
@@ -16,6 +17,9 @@ export class ListarticlesFrontComponent implements OnInit {
   article :  Article=new Article();
   form: boolean=false;
   date: any;
+  // categorie des articles
+  categories = ['News','Jokes','Tips','Facts','WellBeing'];
+  articleCount: any;
 
   articles: Observable<Article[]>
   constructor(private articleService :ArticleService, private router: Router,public datepipe: DatePipe) { }
@@ -44,6 +48,25 @@ export class ListarticlesFrontComponent implements OnInit {
       }
     );
   } */
+
+  articleCountPerType(val:any){
+    let type = this.categories[val] as ArticleType;
+    /* this.reactionService.getArticleReactorsByType(this.idArticle,type).subscribe(data => {
+
+  
+      this.reactionCount == data.length
+      console.log(this.reactionCount);
+      }) */
+      this.articleCount= 0;
+      for (let article in this.listArticles) {
+        if (this.listArticles[article].type == type )
+        {
+          this.articleCount++;
+        }
+      }
+      console.log("ARTICLE TYPE : ",type,"ARTICLE COUNT",this.articleCount);
+      return this.articleCount;
+  }
 
   
   

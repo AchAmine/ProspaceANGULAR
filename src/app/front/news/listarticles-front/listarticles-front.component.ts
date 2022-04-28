@@ -72,6 +72,17 @@ export class ListarticlesFrontComponent implements OnInit {
       return this.articleCount;
   }
 
+  // getImage() {
+  //   this.httpClient.get('http://localhost:8080/image/get/' + this.imageName)
+  //     .subscribe(
+  //       res => {
+  //         this.retrieveResonse = res;
+  //         this.base64Data = this.retrieveResonse.picByte;
+  //         this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+  //       }
+  //     );
+  // }
+
   
   
 }

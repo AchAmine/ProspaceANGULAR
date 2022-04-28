@@ -44,5 +44,9 @@ export class ArticleService {
     return this.http.get(`${this.baseUrl}/followingarticles/user/${idUser}`);
   }
 
+  getImage(path: any){
+    return this.http.get(`${this.baseUrl}/image/${path}`);
+  }
+
   
 }

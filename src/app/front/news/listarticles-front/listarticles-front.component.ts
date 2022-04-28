@@ -19,14 +19,16 @@ export class ListarticlesFrontComponent implements OnInit {
   date: any;
   //retrieve img
   image:any;
+  retrieveimg:any;
   path:any;
   base64Data:any;
   // categorie des articles
   categories = ['News','Jokes','Tips','Facts','WellBeing'];
   articleCount: any;
+  url:any;
 
   articles: Observable<Article[]>
-  constructor(private articleService :ArticleService, private router: Router,public datepipe: DatePipe) { }
+  constructor(public articleService :ArticleService, private router: Router,public datepipe: DatePipe) { }
 
   ngOnInit(): void {
     this.getAllArticles();
@@ -72,17 +74,15 @@ export class ListarticlesFrontComponent implements OnInit {
       return this.articleCount;
   }
 
-  // getImage() {
-  //   this.httpClient.get('http://localhost:8080/image/get/' + this.imageName)
-  //     .subscribe(
-  //       res => {
-  //         this.retrieveResonse = res;
-  //         this.base64Data = this.retrieveResonse.picByte;
-  //         this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
-  //       }
-  //     );
-  // }
+    getImage(path:any){
+     return this.articleService.getImage(path).subscribe(
+        data => {
+         this.image = data;
 
-  
+          console.log("Image : ",this.image);
+        }
+        
+      );
+    }
   
 }

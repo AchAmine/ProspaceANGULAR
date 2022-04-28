@@ -1,3 +1,17 @@
+<div>
+
+  <div *ngFor="let emoji of emojiList; index as i;" class="reaction-counts">
+
+    <span>
+     <!-- <span *ngIf="hasReactions(i)"> -->
+      <!-- <img [src]="emojiPath(emoji)"> {{ reactionCount[i] }} -->
+      <img [src]="emojiPath(emoji)"> {{ 15 }}
+    </span>
+
+  </div>
+</div>
+
+<div class="navigation-top">
 <div class="d-sm-flex justify-content-between text-center">
 <div class="react" (mouseenter)="toggleShow()" (mouseleave)="toggleShow()">
     <div class="emojis" *ngIf="showEmojis">
@@ -9,29 +23,29 @@
     </div>
 
     
-    <span class="like">
+      <ng-container *ngIf="currentReaction!= null">
+    <span class="like" [class.liked]="currentReaction != null">
         <!-- <img [src]="emojiPath(emojiList[0])" class="like-info"> -->
-        Like
+        {{currentReaction.type}}
     </span>
+    </ng-container>
+    <ng-container *ngIf="currentReaction == null">
+      <span class="like">
+          <!-- <img [src]="emojiPath(emojiList[0])" class="like-info"> -->
+        Like
+      </span>
+      </ng-container>
+    
 
     
-    <span>
-       <!-- <span *ngIf="userReaction != null"> -->
-       | You reacted <strong>{{ emojiList[1] }}</strong>
-     </span>
-
-     <div class="reactions">
-
-       <div *ngFor="let emoji of emojiList; index as i;" class="reaction-counts">
-   
-         <span>
-          <!-- <span *ngIf="hasReactions(i)"> -->
-           <!-- <img [src]="emojiPath(emoji)"> {{ reactionCount[i] }} -->
-           <img [src]="emojiPath(emoji)"> {{ 15 }}
-         </span>
-   
-       </div>
-     </div>
+   <!--  <span *ngIf="currentReaction != null">
+      | You reacted <strong>{{ currentReaction.type }}</strong>
+    </span>
+    <span *ngIf="currentReaction == null">
+      | You haven't reacted yet !  
+    </span> -->
+    
+     
      
   </div>
     <div class="col-sm-4 text-center my-2 my-sm-0">
@@ -44,6 +58,4 @@
      
   </div>
 
-  <div *ngFor="let reaction of reactions"> 
-   {{ reaction.user.idUser  }} {{reaction.type}}
-  </div>
+</div>

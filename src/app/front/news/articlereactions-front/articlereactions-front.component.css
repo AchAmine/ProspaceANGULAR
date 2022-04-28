@@ -27,14 +27,14 @@
     border-radius: 80px;
     
 }
-.reactions {
+/* .reactions {
     height: 40px;
     margin-bottom: 20px;
-}
+} */
 .reaction-counts {
-    height: 100px;
+    height: 50px;
     display: inline;
-    float: left;
+    /* float: left; */
 }
 .reaction-counts img {
     position: relative;

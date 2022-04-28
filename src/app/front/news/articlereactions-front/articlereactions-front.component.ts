@@ -117,4 +117,9 @@ export class ArticlereactionsFrontComponent implements OnInit {
       console.log("Current REACTION : ",this.currentReaction);
     })
   }
+
+  // get count for each reaction type
+  getReactionCount(val: any) {
+
+  }
 }

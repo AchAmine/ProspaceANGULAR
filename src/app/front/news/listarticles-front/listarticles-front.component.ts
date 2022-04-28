@@ -17,6 +17,10 @@ export class ListarticlesFrontComponent implements OnInit {
   article :  Article=new Article();
   form: boolean=false;
   date: any;
+  //retrieve img
+  image:any;
+  path:any;
+  base64Data:any;
   // categorie des articles
   categories = ['News','Jokes','Tips','Facts','WellBeing'];
   articleCount: any;

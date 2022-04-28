@@ -26,6 +26,8 @@ import { ArticlereactionsFrontComponent } from './front/news/articlereactions-fr
 import { EditarticlecommentFrontComponent } from './front/news/editarticlecomment-front/editarticlecomment-front.component';
 import { ArticlesuggestionsFrontComponent } from './front/news/articlesuggestions-front/articlesuggestions-front.component';
 import { FollowingarticlesFrontComponent } from './front/news/followingarticles-front/followingarticles-front.component';
+import { ArticlesNavComponent } from './front/news/articles-nav/articles-nav.component';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { FollowingarticlesFrontComponent } from './front/news/followingarticles-
     ArticlereactionsFrontComponent,
     EditarticlecommentFrontComponent,
     ArticlesuggestionsFrontComponent,
-    FollowingarticlesFrontComponent
+    FollowingarticlesFrontComponent,
+    ArticlesNavComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,106 @@
-<p>listoffers-back works!</p>
+<div class="row">
+            
+    <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              
+              <h4 class="card-title">list of offers</h4>
+              
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        type
+                      </th>
+                      <th>
+                        title
+                      </th>
+                     
+      
+                      <th>
+                        description
+                      </th>
+      
+                      <th>
+                        startsAt
+                    
+                    </th>
+                      
+                      <th>
+                        endsAt
+                      </th>
+                      state
+                      <th>
+                          
+                      </th>
+                     <th></th>
+                     <th></th>
+      
+                        
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let offer of listOffers ">
+                    <tr *ngIf="offer.state=='Waiting' ">
+                    
+                      <td>
+                        {{offer.type}}
+                      </td>
+                      <td>
+                        {{offer.title}}
+                      </td>
+                      <td>
+                        {{offer.description}}
+                      </td>
+                      <td>
+                        {{offer.startsAt| date:'longDate'}}
+                      </td>
+                      <td>
+                        {{offer.endsAt| date:'longDate'}}
+                      </td>
+                      <td>
+                        {{offer.state}}
+                      </td>
+
+                      <td>
+                        
+                        <div>
+                        <button type="button"  routerLink = "/offerDetails/{{offer.idOffer}}" class="btn btn-secondary">See details</button>
+                      </div>
+                      </td>
+
+                      <td>
+                        
+                          <div>
+                          <button type="button"  (click)="acceptOffer(offer.idOffer)" class="btn btn-secondary">Accepter</button>
+                        </div>
+                        
+                        </td>
+                        <td>
+                        <div>
+                          <button type="button" class="btn btn-danger" (click)="rejectOffer(offer.idOffer)">Rejeter</button>
+                        </div>
+                     
+
+                      </td>
+                   
+                    
+      
+  
+                      
+                    
+
+
+
+                   
+                    </tr>
+                    
+                  </tbody>
+                          </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+    

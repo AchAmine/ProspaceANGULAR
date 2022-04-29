@@ -40,7 +40,8 @@
         </a>
         <div class="collapse" id="charts">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="#">ChartJs</a></li>
+            <li class="nav-item"> <a class="nav-link" [routerLink]="['/listquiz']">Quiz list</a></li>
+            <li class="nav-item"> <a class="nav-link" [routerLink]="['/addquiz']">Post new quiz</a></li> 
           </ul>
         </div>
       </li>
@@ -52,8 +53,13 @@
         </a>
         <div class="collapse" id="tables">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" [routerLink]="['/listquiz']">Quiz list</a></li>
-            <li class="nav-item"> <a class="nav-link" [routerLink]="['/addquiz']">Post new quiz</a></li>          </ul>
+     
+            <li class="nav-item"> <a class="nav-link" [routerLink]="['/listoffersBack']">offers list</a></li> 
+
+                     
+          
+          
+          </ul>
         </div>
       </li>
       <li class="nav-item">

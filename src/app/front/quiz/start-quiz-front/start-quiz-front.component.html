@@ -1,21 +1,46 @@
+<div class="bradcam_area breadcam_bg overlay2">
+  <h3>Quiz</h3>
+</div>
 
-<div class="row">
+<div class="mx-auto" style="width: 200px;"style="background:#FFF;">
+  
+ <div class="mx-auto" style="width: 200px;">  
+   <div class="mx-auto" style="width: 200px;">
+             
+                <div class="quiz-question">
+                   <div class="row">
+                   
+                       <div class="col-sm-11 col-xs-10">
+                         <div class="quiz-que-margin">
+      <ul *ngFor="let question of questions; let j = index"
+       [(ngModel)]="question.givenAnswer " 
+      
+      name={{j}} ngDefaultControl
+      [ngModelOptions]="{standalone: true}" >
+      
+        <b> Q {{j+1}})</b>
+        {{question.content}} 
+     
             
-    <div class="col-lg-12 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">list questions of quiz</h4>
-              <div>
-                <ol>
-                     <li *ngFor="let question of questions" > {{question.content}} 
-                     <ol>
-                          <li *ngFor="let answer of question.answers"> {{answer.content}} </li>
-                     </ol>
-                    </li>
-                </ol>
-           </div>
-            
-            </div>
-          </div>
-        </div>
-        </div>
+               <div class="quiz-question-answer">
+               <div>
+                  <a *ngFor="let answer of question.answers ; let i= index">
+                    <form [formGroup]="StartQuizFrontFormGroup">
+                   <input formControlName="answer" type="checkbox"
+                   [value]="answer.idAnswer" 
+                   
+                   
+                   name={{i}}
+                   
+                   />
+                   
+                    
+              
+                          {{answer.content}}   
+                 </form> </a></div></div></ul></div></div></div></div></div></div>
+                
+                 <button type="submit" class="btn btn-primary mr-2" >Start</button></div>
+               
+                     
+          
+                   

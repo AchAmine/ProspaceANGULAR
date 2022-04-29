@@ -18,6 +18,12 @@ import { UpdateQuizQuestionBackComponent } from './back/quiz/update-quiz-questio
 import { UpdatequizBackComponent } from './back/quiz/updatequiz-back/updatequiz-back.component';
 import { QuizpageFrontComponent } from './front/quiz/quizpage-front/quizpage-front.component';
 import { StartQuizFrontComponent } from './front/quiz/start-quiz-front/start-quiz-front.component';
+import { ResultQuizFrontComponent } from './front/quiz/result-quiz-front/result-quiz-front.component';
+import { ListoffersBackComponent } from './back/offer/listoffers-back/listoffers-back.component';
+import { UpdateoffersBackComponent } from './back/offer/updateoffers-back/updateoffers-back.component';
+import { ListoffersFrontComponent } from './front/offer/listoffers-front/listoffers-front.component';
+import { SendofferFrontComponent } from './front/offer/sendoffer-front/sendoffer-front.component';
+import { OfferdetailsBackComponent } from './back/offer/offerdetails-back/offerdetails-back.component';
 
 
 const routes: Routes = [
@@ -38,7 +44,17 @@ const routes: Routes = [
   {path: 'editquizanswer/:id', component: UpdateQuizAnswerBackComponent},
   {path: 'editquizquestion/:id', component: UpdateQuizQuestionBackComponent},
   {path: 'quizpageFront', component: QuizpageFrontComponent},
-  {path: 'startQuiz/:id', component: StartQuizFrontComponent}
+  {path: 'startQuiz/:id', component: StartQuizFrontComponent},
+  {path: 'resultQuiz/:id', component: ResultQuizFrontComponent },
+  {path: 'listoffersBack', component: ListoffersBackComponent },
+  //{path: 'offerDetails/:id', component: UpdateoffersBackComponent },
+  {path: 'offerDetails/:id', component: OfferdetailsBackComponent },
+  {path: 'listoffersFront', component: ListoffersFrontComponent },
+  {path: 'sendOfferFront', component: SendofferFrontComponent }
+
+
+
+
 
 
 ];

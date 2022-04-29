@@ -5,33 +5,57 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Post new quiz..</h4>
-          <form class="forms-sample">
+          <form #form="ngForm">
             <div class="form-group">
               <label for="exampleInputName1">Title</label>
-              <input class="form-control" name="title" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="Title" [(ngModel)] ="quiz.title">
+              <input class="form-control" name="title" ngModel [ngModelOptions]="{standalone: true}" 
+              
+            type="text"  placeholder="Title" 
+            required [(ngModel)] ="quiz.title"
+            #title="ngModel"
+            [(ngModel)] ="quiz.title">
             </div>
       
             <div class="form-group">
               <label for="exampleTextarea1">Description</label>
-              <textarea class="form-control" rows="4" ngModel [ngModelOptions]="{standalone : true}" placeholder="Description..."[(ngModel)] ="quiz.description" >
+              <input class="form-control" rows="4" ngModel [ngModelOptions]="{standalone : true}" 
+              placeholder="Description..."  
+              name="description"
+              type="text"
+              required [(ngModel)] ="quiz.description"
+               #description="ngModel"
+              
+              />
                 
   
-              </textarea>
             </div>
             <div class="form-group">
               <label for="exampleTextarea1">Categorie</label>
-              <textarea class="form-control" rows="4" ngModel [ngModelOptions]="{standalone : true}" placeholder="Categorie..."[(ngModel)] ="quiz.categorie" >
+              <textarea class="form-control" rows="4" ngModel [ngModelOptions]="{standalone : true}" 
+              placeholder="Categorie..."[(ngModel)] ="quiz.categorie" 
+              name="categorie"
+              type="text"
+              required [(ngModel)] ="quiz.categorie"
+               #categorie="ngModel"
+              
+              >
                 
   
               </textarea>
             </div>
             <div class="form-group">
               <label for="exampleTextarea1">nbQuestions</label>
-                <input class="form-control" name="title" ngModel [ngModelOptions]="{standalone: true}" type="number"  placeholder="nbQuestions" [(ngModel)] ="quiz.nbQuestions">
-
+                <input class="form-control" name="nbQuestions" ngModel [ngModelOptions]="{standalone: true}" type="number"  
+                name="nbQuestions"
+                required [(ngModel)] ="quiz.nbQuestions"
+                 #nbQuestions="ngModel"
   
+                placeholder="nbQuestions" [(ngModel)] ="quiz.nbQuestions">
+              
             </div>
-            <button type="submit" class="btn btn-primary mr-2" (click)="addQuiz(quiz)" >Add</button>
+            <button type="submit" class="btn btn-primary mr-2" (click)="addQuiz(quiz)"[disabled]="form.invalid">
+
+           Add</button>
             <button class="btn btn-light" (click)="Cancel()">Cancel</button>
           </form>
         </div>

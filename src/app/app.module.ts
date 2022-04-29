@@ -18,7 +18,7 @@ import { ListarticlesFrontComponent } from './front/news/listarticles-front/list
 import { ListoffersFrontComponent } from './front/offer/listoffers-front/listoffers-front.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArticledetailsFrontComponent } from './front/news/articledetails-front/articledetails-front.component';
-import { DatePipe } from '@angular/common';
+import { DatePipe, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { UpdatearticleBackComponent } from './back/news/updatearticle-back/updatearticle-back.component';
 import { ArticledetailsBackComponent } from './back/news/articledetails-back/articledetails-back.component';
 import { UpdatequizBackComponent } from './back/quiz/updatequiz-back/updatequiz-back.component';
@@ -33,6 +33,11 @@ import { UpdateQuizQuestionBackComponent } from './back/quiz/update-quiz-questio
 import { UpdateoffersBackComponent } from './back/offer/updateoffers-back/updateoffers-back.component';
 import { QuizpageFrontComponent } from './front/quiz/quizpage-front/quizpage-front.component';
 import { StartQuizFrontComponent } from './front/quiz/start-quiz-front/start-quiz-front.component';
+import { ResultQuizFrontComponent } from './front/quiz/result-quiz-front/result-quiz-front.component';
+import { MatCardModule } from '@angular/material/card';
+import { SendofferFrontComponent } from './front/offer/sendoffer-front/sendoffer-front.component';
+import { OfferdetailsBackComponent } from './back/offer/offerdetails-back/offerdetails-back.component';
+
 
 @NgModule({
   declarations: [
@@ -63,16 +68,22 @@ import { StartQuizFrontComponent } from './front/quiz/start-quiz-front/start-qui
     UpdateQuizAnswerBackComponent,
     UpdateQuizQuestionBackComponent,
     QuizpageFrontComponent,
-    StartQuizFrontComponent
+    StartQuizFrontComponent,
+    ResultQuizFrontComponent,
+    SendofferFrontComponent,
+    OfferdetailsBackComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule
+  
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,{provide: LocationStrategy,useClass:HashLocationStrategy}],
+   
   bootstrap: [AppComponent]
 })
 export class AppModule { }

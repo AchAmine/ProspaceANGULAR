@@ -38,6 +38,8 @@ export class OfferService {
   }
 
   
-
+  uploadFile(file:any) {
+    return this.http.post(`http://localhost:8089/SpringMVC/Offer/upload-file`,file);
+  }
 
 }

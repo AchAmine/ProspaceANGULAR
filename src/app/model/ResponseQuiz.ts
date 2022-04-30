@@ -4,7 +4,7 @@ import { User } from "./User";
 
 export class ResponseQuiz {
     idResponse?: number;
-    selectedAnswers?: Answer[];
+    selectedAnswers?: Answer[]=[];
     quizz?: Quiz;
     user?:User;
   

@@ -27,19 +27,14 @@
                   <a *ngFor="let answer of question.answers ; let i= index">
                     <form [formGroup]="StartQuizFrontFormGroup">
                    <input formControlName="answer" type="checkbox"
-                   [value]="answer.idAnswer" 
-                   
-                   
-                   name={{i}}
-                   
-                   />
+                   [value]="answer.idAnswer"  (click) ="selectedAnswers(answer)" name={{i}}/>
                    
                     
               
                           {{answer.content}}   
                  </form> </a></div></div></ul></div></div></div></div></div></div>
                 
-                 <button type="submit" class="btn btn-primary mr-2" >Start</button></div>
+                 <button type="submit" class="btn btn-primary mr-2" (click)="submitQuiz()">Submit</button></div>
                
                      
           

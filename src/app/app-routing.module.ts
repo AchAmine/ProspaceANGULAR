@@ -24,6 +24,7 @@ import { UpdateoffersBackComponent } from './back/offer/updateoffers-back/update
 import { ListoffersFrontComponent } from './front/offer/listoffers-front/listoffers-front.component';
 import { SendofferFrontComponent } from './front/offer/sendoffer-front/sendoffer-front.component';
 import { OfferdetailsBackComponent } from './back/offer/offerdetails-back/offerdetails-back.component';
+import { UploadFileComponent } from './front/offer/sendoffer-front/upload-file/upload-file.component';
 
 
 const routes: Routes = [
@@ -50,12 +51,8 @@ const routes: Routes = [
   //{path: 'offerDetails/:id', component: UpdateoffersBackComponent },
   {path: 'offerDetails/:id', component: OfferdetailsBackComponent },
   {path: 'listoffersFront', component: ListoffersFrontComponent },
-  {path: 'sendOfferFront', component: SendofferFrontComponent }
-
-
-
-
-
+  {path: 'sendOfferFront', component: SendofferFrontComponent },
+  {path: 'uploadOfferFile', component: UploadFileComponent}
 
 ];
 

@@ -37,6 +37,7 @@ import { ResultQuizFrontComponent } from './front/quiz/result-quiz-front/result-
 import { MatCardModule } from '@angular/material/card';
 import { SendofferFrontComponent } from './front/offer/sendoffer-front/sendoffer-front.component';
 import { OfferdetailsBackComponent } from './back/offer/offerdetails-back/offerdetails-back.component';
+import { UploadFileComponent } from './front/offer/sendoffer-front/upload-file/upload-file.component';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import { OfferdetailsBackComponent } from './back/offer/offerdetails-back/offerd
     StartQuizFrontComponent,
     ResultQuizFrontComponent,
     SendofferFrontComponent,
-    OfferdetailsBackComponent
+    OfferdetailsBackComponent,
+    UploadFileComponent
   ],
   imports: [
     BrowserModule,

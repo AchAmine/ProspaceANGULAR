@@ -74,15 +74,5 @@ export class ListarticlesFrontComponent implements OnInit {
       return this.articleCount;
   }
 
-    getImage(path:any){
-     return this.articleService.getImage(path).subscribe(
-        data => {
-         this.image = data;
-
-          console.log("Image : ",this.image);
-        }
-        
-      );
-    }
   
 }

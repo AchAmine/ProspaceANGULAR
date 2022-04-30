@@ -28,6 +28,9 @@ import { ArticlesuggestionsFrontComponent } from './front/news/articlesuggestion
 import { FollowingarticlesFrontComponent } from './front/news/followingarticles-front/followingarticles-front.component';
 import { ArticlesNavComponent } from './front/news/articles-nav/articles-nav.component';
 import { ProfanityComponent } from './back/news/profanity/profanity.component';
+import { ChatComponent } from './front/chat/chat.component';
+import { ContactListComponent } from './front/chat/contact-list/contact-list.component';
+import { ConversationComponent } from './front/chat/conversation/conversation.component';
 
 
 @NgModule({
@@ -53,7 +56,10 @@ import { ProfanityComponent } from './back/news/profanity/profanity.component';
     ArticlesuggestionsFrontComponent,
     FollowingarticlesFrontComponent,
     ArticlesNavComponent,
-    ProfanityComponent
+    ProfanityComponent,
+    ChatComponent,
+    ContactListComponent,
+    ConversationComponent
   ],
   imports: [
     BrowserModule,

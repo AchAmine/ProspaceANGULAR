@@ -1,0 +1,26 @@
+
+    <div class="blog_right_sidebar">
+       <aside class="single_sidebar_widget search_widget">
+          
+       </aside>
+    
+       <aside class="single_sidebar_widget popular_post_widget" *ngFor="let contact of contactList">
+          
+          <div class="media post_item">
+             <img src="assets/img/post/post_1.png" alt="post">
+             <div class="media-body">
+                <a href="single-blog.html">
+                   <!-- <h3 (click)="chatWindow(contact.idUser)"> {{contact.userName}} </h3> -->
+                   <h3> {{contact.userName}} </h3>
+                </a>
+                
+             </div>
+             
+          </div>
+          <br>
+          <hr>
+         
+       </aside>
+       
+       
+    </div>

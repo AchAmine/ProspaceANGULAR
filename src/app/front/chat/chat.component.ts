@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChange } from '@angular/core';
 import { MessageStatus } from 'src/app/enum/MessageStatus.enum';
 import { Chat } from 'src/app/model/Chat';
 import { User } from 'src/app/model/User';
@@ -20,6 +20,9 @@ export class ChatComponent implements OnInit {
   date: any;
    msg:any = [];
 
+   // entrer
+   inputs = [1];
+
    public isEmojiPickerVisible: boolean;
   
   constructor(private chatService : ChatService,public datepipe: DatePipe) { }
@@ -36,11 +39,7 @@ export class ChatComponent implements OnInit {
    this.recipient.firstName="amine";
    this.stompClient.connect({}, () => {console.log("connected");
 
-   this.stompClient.subscribe(
-   "/user/"+this.recipient.userName+"/queue/messages",(message:any) => {
-    if (message.body) {
-      that.msg.push(JSON.parse(message.body));
-    }});
+    this.chatService.getMessages(this.sender.userName,this.recipient.userName).subscribe(data=> this.msg = data);
 
     this.stompClient.subscribe('/user/'+this.recipient.userName+'/queue/message', (message:any) => {
       if (message.body) {
@@ -99,4 +98,24 @@ export class ChatComponent implements OnInit {
         this.isEmojiPickerVisible = false;
      }
 
+     countNewMsgs(recipient:any){
+       return this.chatService.countNewMsgs(this.sender.userName,recipient).subscribe();
+     }
+
+     /* ngOnChanges(changes:SimpleChange){
+      console.log(changes);
+    } */
+
+     /* ngOnDestroy(){
+      if (this.stompClient !== null) {
+       this.stompClient.disconnect();
+      }
+     } */
+
+    
+
+     onKeyUp(event:any) { 
+      this.sendMessage();
+    }
+    
 }

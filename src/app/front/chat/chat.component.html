@@ -105,9 +105,11 @@
           <div class="chat-box-tray">
         
           <input type="text" name="comment" id="comment" placeholder="Type your message here..." 
-          required  [(ngModel)]='inputMsg' >
+          required  [(ngModel)]='inputMsg' (keyup.enter)="onKeyUp($event)">
 
-          <i class="icon send fa fa-paper-plane-o clickable" aria-hidden="true" (click)="sendMessage()" ></i>
+          <i class="icon send fa fa-paper-plane-o clickable" aria-hidden="true" (click)="sendMessage()" >
+            
+          </i>
           <i class="material-icons" (click)="isEmojiPickerVisible = !isEmojiPickerVisible;">
             😀
           </i> 

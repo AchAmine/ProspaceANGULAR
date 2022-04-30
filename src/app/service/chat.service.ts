@@ -34,6 +34,14 @@ export class ChatService {
      
     }
 
+    getMessages(sender:any , recipient:any) {
+      return this.http.get(`http://localhost:8089/SpringMVC/messages/${sender}/${recipient}`);
+    }
+
+    countNewMsgs(sender:any , recipient:any){
+      return this.http.get(`http://localhost:8089/SpringMVC/messages/${sender}/${recipient}/count`);
+    }
+
     getContactList(idUser: any) {
       return this.http.get(`${this.baseUrl}/listfollowers/${idUser}`);
     }

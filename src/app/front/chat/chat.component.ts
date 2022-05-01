@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit, SimpleChange } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageStatus } from 'src/app/enum/MessageStatus.enum';
 import { Chat } from 'src/app/model/Chat';
 import { User } from 'src/app/model/User';
@@ -21,22 +22,26 @@ export class ChatComponent implements OnInit {
    msg:any = [];
 
    // entrer
-   inputs = [1];
-
+   idUser = 1 ; 
+   contactList :any;
    public isEmojiPickerVisible: boolean;
   
-  constructor(private chatService : ChatService,public datepipe: DatePipe) { }
+  constructor(private chatService : ChatService,public datepipe: DatePipe,private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const that = this;
+    this.getContacts();
+    this.route.paramMap.subscribe(res=>
+      {
+        this.recipient.userName = res.get('user') as string;
+        const that = this;
     this.chatContent="";
     this.stompClient = this.chatService.stompClient;
-   this.sender.userName = "essia";
-   this.sender.firstName= "essia";
+   this.sender.userName = "amine";
+   this.sender.firstName= "amine";
 
 
-   this.recipient.userName="amine";
-   this.recipient.firstName="amine";
+   //this.recipient.userName="amine";
+   this.recipient.firstName="essia";
    this.stompClient.connect({}, () => {console.log("connected");
 
     this.chatService.getMessages(this.sender.userName,this.recipient.userName).subscribe(data=> this.msg = data);
@@ -57,6 +62,11 @@ export class ChatComponent implements OnInit {
   }
   
 });
+    
+    }
+    );
+
+    
   console.log("FINAL MSGS LIST--------------------",this.msg);
   }
      //
@@ -116,6 +126,14 @@ export class ChatComponent implements OnInit {
 
      onKeyUp(event:any) { 
       this.sendMessage();
+    }
+
+    getContacts() {
+      this.chatService.getContactList(this.idUser).subscribe(data=> this.contactList = data);
+    }
+
+    chatWith(user:any){
+      this.router.navigate(['chat', user]);
     }
     
 }

@@ -42,6 +42,10 @@ export class ChatService {
       return this.http.get(`http://localhost:8089/SpringMVC/messages/${sender}/${recipient}/count`);
     }
 
+    updateStatus() {
+      
+    }
+
     getContactList(idUser: any) {
       return this.http.get(`${this.baseUrl}/listfollowers/${idUser}`);
     }

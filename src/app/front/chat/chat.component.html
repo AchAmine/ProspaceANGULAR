@@ -67,7 +67,24 @@
       </div>
      
       
-      <app-contact-list></app-contact-list>
+      <div class="search-box">
+        <div class="input-wrapper">
+        <i class="material-icons">search</i>
+        <input placeholder="Search here" type="text">
+        </div>
+      </div>
+      <ng-container *ngFor="let contact of contactList">
+     <div class="friend-drawer friend-drawer--onhover" >
+        <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/optimus-prime.jpeg" alt="">
+        <div class="text">
+        <h6 (click)="chatWith(contact.userName)">{{contact.userName}}</h6>
+        
+        </div>
+        <span class="time text-muted small">00:32</span>
+      </div>
+      <hr>
+     </ng-container>
+     
       
       </div>
       <div class="col-md-8">

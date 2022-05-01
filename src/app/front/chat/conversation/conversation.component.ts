@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/User';
 import { ChatService } from 'src/app/service/chat.service';
 
@@ -14,50 +14,41 @@ export class ConversationComponent implements OnInit {
   inputMsg ="";
   chatContent="";
   sender = new User(); //sender:any;
-  recipient = new User();
-   //recipient:any;
+  recipient = new User(); //recipient:any;
   stompClient: any;
   date: any;
    msg:any = [];
-   // --------------------------------------------- user
-   currentUser = 2 ;
+
+   // entrer
+   inputs = [1];
+
+   public isEmojiPickerVisible: boolean;
   
-  constructor(private chatService : ChatService,public datepipe: DatePipe, public route: ActivatedRoute) { }
+  constructor(private chatService : ChatService,public datepipe: DatePipe,private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const that = this;
-    // initializing chat content 
+
+    this.route.paramMap.subscribe(res=>
+      {
+        this.recipient.userName = res.get('user') as string;
+        const that = this;
     this.chatContent="";
-    // static users
+    this.stompClient = this.chatService.stompClient;
    this.sender.userName = "essia";
    this.sender.firstName= "essia";
 
-  // this.recipient.userName="amine";
-   
-    // end static users
-    // ---------------------------------------------
-    // get sendTo
-    this.route.paramMap.subscribe(res=>{this.recipient.userName=res.get('username') as string});
-    this.recipient.firstName=this.recipient.userName;
-    //
-    // ---------------------------------------------
-    // stompclient
-   this.stompClient = this.chatService.stompClient;
+
+   //this.recipient.userName="amine";
+   this.recipient.firstName="amine";
    this.stompClient.connect({}, () => {console.log("connected");
-    // recup tt les msg
-   this.stompClient.subscribe(
-   "/user/"+this.recipient.userName+"/queue/messages",(message:any) => {
-    if (message.body) {
-      that.msg.push(JSON.parse(message.body));
-    }}); 
-    // sub new msg
+
+    this.chatService.getMessages(this.sender.userName,this.recipient.userName).subscribe(data=> this.msg = data);
+
     this.stompClient.subscribe('/user/'+this.recipient.userName+'/queue/message', (message:any) => {
       if (message.body) {
         that.msg.push(JSON.parse(message.body));
       }});
-      
-      // ---------------------------------------------
-      // load
+
    if (this.chatContent == "") {
     const chat = {
         senderId:    this.sender.userName,
@@ -66,16 +57,24 @@ export class ConversationComponent implements OnInit {
         recipientName:  this.recipient.firstName,
        };
     this.stompClient.send("/app/amine/msgs", {}, JSON.stringify(chat));
-  } // end load
-
-
+  }
+  
 });
+    
+    }
+    );
+
+    
   console.log("FINAL MSGS LIST--------------------",this.msg);
   }
-  // ---------------------------------------------
-    
+     //
+       onMessageReceived(payload: any) {
+        var msg = JSON.parse(payload.body);
+        var date = new Date(msg.timestamp);
+         
+    }
 
-  // envoi msg 
+
      sendMessage() {     
       console.log('connected to WS');
          
@@ -94,12 +93,37 @@ export class ConversationComponent implements OnInit {
 
         this.stompClient.send("/app/chat", {}, JSON.stringify(msg));
 
-        this.inputMsg="";
+          this.inputMsg="";
       }
 
 
       convertDate(date: any){
         return this.date = this.datepipe.transform(date, 'yyyy-MM-dd HH:mm');
        }
+
+       public addEmoji(event: any) {
+        this.inputMsg = `${this.inputMsg}${event.emoji.native}`;
+        this.isEmojiPickerVisible = false;
+     }
+
+     countNewMsgs(recipient:any){
+       return this.chatService.countNewMsgs(this.sender.userName,recipient).subscribe();
+     }
+
+     /* ngOnChanges(changes:SimpleChange){
+      console.log(changes);
+    } */
+
+     /* ngOnDestroy(){
+      if (this.stompClient !== null) {
+       this.stompClient.disconnect();
+      }
+     } */
+
+    
+
+     onKeyUp(event:any) { 
+      this.sendMessage();
+    }
 
 }

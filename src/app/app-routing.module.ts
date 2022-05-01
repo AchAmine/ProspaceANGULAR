@@ -24,7 +24,8 @@ const routes: Routes = [
   {path: 'article/:id', component: ArticledetailsFrontComponent},
   {path: 'articledetails/:id' , component: ArticledetailsBackComponent},
   {path: 'profanity', component: ProfanityComponent},
-  {path: 'chat/:user', component: ChatComponent}
+  {path: 'chat/:user', component: ChatComponent},
+  {path: 'conversation/:user', component: ConversationComponent}
 ];
 
 @NgModule({

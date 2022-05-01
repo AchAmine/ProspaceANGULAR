@@ -20,62 +20,70 @@ export class ConversationComponent implements OnInit {
    msg:any = [];
 
    // entrer
-   inputs = [1];
-
+   idUser = 1 ; 
+   contactList :any;
    public isEmojiPickerVisible: boolean;
   
   constructor(private chatService : ChatService,public datepipe: DatePipe,private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    this.getContacts();
+    console.log("--------------1---------------");
     this.route.paramMap.subscribe(res=>
       {
+        console.log("--------------2---------------");
         this.recipient.userName = res.get('user') as string;
-        const that = this;
+        console.log("--------------3---------------",this.recipient.userName);
+        
     this.chatContent="";
     this.stompClient = this.chatService.stompClient;
-   this.sender.userName = "essia";
-   this.sender.firstName= "essia";
+    console.log("--------------4---------------",this.stompClient);
+   this.sender.userName = "amine";
+   this.sender.firstName= "amine";
+   console.log("--------------5---------------",this.sender.userName);
 
 
    //this.recipient.userName="amine";
-   this.recipient.firstName="amine";
-   this.stompClient.connect({}, () => {console.log("connected");
-
-    this.chatService.getMessages(this.sender.userName,this.recipient.userName).subscribe(data=> this.msg = data);
-
-    this.stompClient.subscribe('/user/'+this.recipient.userName+'/queue/message', (message:any) => {
-      if (message.body) {
-        that.msg.push(JSON.parse(message.body));
-      }});
-
-   if (this.chatContent == "") {
-    const chat = {
-        senderId:    this.sender.userName,
-        recipientId:    this.recipient.userName,
-        senderName:  this.sender.firstName,
-        recipientName:  this.recipient.firstName,
-       };
-    this.stompClient.send("/app/amine/msgs", {}, JSON.stringify(chat));
-  }
-  
-});
-    
-    }
-    );
-
-    
+   this.recipient.firstName=this.recipient.userName;
+   this.stompClient.connect({}, () => {
+     console.log("coooo");
+      this.connect();
+}); 
+    });
   console.log("FINAL MSGS LIST--------------------",this.msg);
   }
-     //
-       onMessageReceived(payload: any) {
-        var msg = JSON.parse(payload.body);
-        var date = new Date(msg.timestamp);
-         
+  
+      //-------------------------------------------------------
+
+    connect(){
+      console.log("connected");
+      console.log("recipient : ",this.recipient.userName);
+      console.log("sender : ",this.sender.userName);
+
+      this.loadChat();
+
+      this.stompClient.subscribe('/user/'+this.recipient.userName+'/queue/message', (message:any) => {
+      if (message.body) {
+        this.msg.push(JSON.parse(message.body));
+      }});
+      }
+        //-------------------------------------------------------
+    loadChat(){
+      this.chatService.getMessages(this.sender.userName,this.recipient.userName).subscribe(data=> this.msg = data);
     }
+    //-------------------------------------------------------
 
 
-     sendMessage() {     
+   /*  errorCallBack(error:any) {
+      var that = this;
+      console.log("errorCallBack -> " + error)
+      setTimeout(() => {
+          that.connect();
+      }, 1000);
+  } */
+
+       //-------------------------------------------------------
+    sendMessage() {     
       console.log('connected to WS');
          
           if (!this.inputMsg) {
@@ -110,20 +118,20 @@ export class ConversationComponent implements OnInit {
        return this.chatService.countNewMsgs(this.sender.userName,recipient).subscribe();
      }
 
-     /* ngOnChanges(changes:SimpleChange){
-      console.log(changes);
-    } */
-
-     /* ngOnDestroy(){
-      if (this.stompClient !== null) {
-       this.stompClient.disconnect();
-      }
-     } */
-
-    
-
+     
      onKeyUp(event:any) { 
       this.sendMessage();
     }
 
+    getContacts() {
+      this.chatService.getContactList(this.idUser).subscribe(data=> this.contactList = data);
+    }
+
+    chatWith(user:any){
+    // this.stompClient.disconnect();
+      this.router.navigate(['chat', user]);
+    }
+
+    
+    
 }

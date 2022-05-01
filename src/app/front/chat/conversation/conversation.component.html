@@ -1,127 +1,144 @@
 <script > $(".messages").animate({ scrollTop: $(document).height() }, "fast");
 
-   $("#profile-img").click(function() {
-     $("#status-options").toggleClass("active");
-   });
-   
-   $(".expand-button").click(function() {
-     $("#profile").toggleClass("expanded");
-     $("#contacts").toggleClass("expanded");
-   });
-   
-   $("#status-options ul li").click(function() {
-     $("#profile-img").removeClass();
-     $("#status-online").removeClass("active");
-     $("#status-away").removeClass("active");
-     $("#status-busy").removeClass("active");
-     $("#status-offline").removeClass("active");
-     $(this).addClass("active");
-     
-     if($("#status-online").hasClass("active")) {
-       $("#profile-img").addClass("online");
-     } else if ($("#status-away").hasClass("active")) {
-       $("#profile-img").addClass("away");
-     } else if ($("#status-busy").hasClass("active")) {
-       $("#profile-img").addClass("busy");
-     } else if ($("#status-offline").hasClass("active")) {
-       $("#profile-img").addClass("offline");
-     } else {
-       $("#profile-img").removeClass();
-     };
-     
-     $("#status-options").removeClass("active");
-   });
-   
-   function newMessage() {
-     message = $(".message-input input").val();
-     if($.trim(message) == '') {
-       return false;
-     }
-     $('<li class="sent"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
-     $('.message-input input').val(null);
-     $('.contact.active .preview').html('<span>You: </span>' + message);
-     $(".messages").animate({ scrollTop: $(document).height() }, "fast");
-   };
-   
-   $('.submit').click(function() {
-     newMessage();
-   });
-   
-   $(window).on('keydown', function(e) {
-     if (e.which == 13) {
-       newMessage();
-       return false;
-     }
-   });
-   </script>
+  $("#profile-img").click(function() {
+    $("#status-options").toggleClass("active");
+  });
+  
+  $(".expand-button").click(function() {
+    $("#profile").toggleClass("expanded");
+    $("#contacts").toggleClass("expanded");
+  });
+  
+  $("#status-options ul li").click(function() {
+    $("#profile-img").removeClass();
+    $("#status-online").removeClass("active");
+    $("#status-away").removeClass("active");
+    $("#status-busy").removeClass("active");
+    $("#status-offline").removeClass("active");
+    $(this).addClass("active");
+    
+    if($("#status-online").hasClass("active")) {
+      $("#profile-img").addClass("online");
+    } else if ($("#status-away").hasClass("active")) {
+      $("#profile-img").addClass("away");
+    } else if ($("#status-busy").hasClass("active")) {
+      $("#profile-img").addClass("busy");
+    } else if ($("#status-offline").hasClass("active")) {
+      $("#profile-img").addClass("offline");
+    } else {
+      $("#profile-img").removeClass();
+    };
+    
+    $("#status-options").removeClass("active");
+  });
+  
+  function newMessage() {
+    message = $(".message-input input").val();
+    if($.trim(message) == '') {
+      return false;
+    }
+    $('<li class="sent"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
+    $('.message-input input').val(null);
+    $('.contact.active .preview').html('<span>You: </span>' + message);
+    $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+  };
+  
+  $('.submit').click(function() {
+    newMessage();
+  });
+  
+  $(window).on('keydown', function(e) {
+    if (e.which == 13) {
+      newMessage();
+      return false;
+    }
+  });
+  </script>
 <div class="bradcam_area breadcam_bg overlay2">
-         
+        
 </div>
 <section class="blog_area single-post-area section-padding">
- <div class="container">
-   <div class="row no-gutters">
-      <div class="col-md-4 border-right">
-      <div class="settings-tray">
-        <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/filip.jpg" alt="Profile img">
-        
-      </div>
+<div class="container">
+  <div class="row no-gutters">
+     <div class="col-md-4 border-right">
+     <div class="settings-tray">
+       <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/filip.jpg" alt="Profile img">
+       
+     </div>
+    
      
-      
-      <app-contact-list></app-contact-list>
-      
-      </div>
-      <div class="col-md-8">
-      <div class="settings-tray">
-        <div class="friend-drawer no-gutters friend-drawer--grey">
-        <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/robocop.jpg" alt="">
-        <div class="text">
-          <h6>{{recipient.userName}}</h6>
-          <!-- <p class="text-muted">Layin' down the law since like before Christ...</p> -->
-        </div>
-        
-        </div>
-      </div>
-      <div class="chat-panel" >
-         <ng-container *ngFor="let value of msg">
-        <div class="row no-gutters" *ngIf="value.recipientId == sender.userName">
-        <div class="col-md-3">
-          <div class="chat-bubble chat-bubble--left">
-            {{value.content}}
-          </div>
-        </div>
-        </div>
-        
-        <div class="row no-gutters" *ngIf="value.recipientId == recipient.userName">
-        <div class="col-md-3 offset-md-9">
-          <div class="chat-bubble chat-bubble--right">
-            {{value.content}}
-          </div>
-        </div>
-        </div>
-      </ng-container>
-        
-        <div class="row">
-        <div class="col-12">
-          <div class="chat-box-tray">
-        
-          <input type="text" name="comment" id="comment" placeholder="Type your message here..." 
-          required  [(ngModel)]='inputMsg' (keyup.enter)="onKeyUp($event)">
+     <div class="search-box">
+       <div class="input-wrapper">
+       <i class="material-icons">search</i>
+       <input placeholder="Search here" type="text">
+       </div>
+     </div>
+     <ng-container *ngFor="let contact of contactList">
+    <div class="friend-drawer friend-drawer--onhover" >
+       <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/optimus-prime.jpeg" alt="">
+       <div class="text">
+       <h6 (click)="chatWith(contact.userName)">{{contact.userName}}</h6>
+       
+       </div>
+       <span class="time text-muted small">00:32</span>
+     </div>
+     <hr>
+    </ng-container>
+    
+     
+     </div>
+     <div class="col-md-8">
+     <div class="settings-tray">
+       <div class="friend-drawer no-gutters friend-drawer--grey">
+       <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/robocop.jpg" alt="">
+       <div class="text">
+         <h6>{{recipient.userName}}</h6>
+         <!-- <p class="text-muted">Layin' down the law since like before Christ...</p> -->
+       </div>
+       
+       </div>
+     </div>
+     <div class="chat-panel" >
+        <ng-container *ngFor="let value of msg">
+       <div class="row no-gutters" *ngIf="value.recipientId == sender.userName">
+       <div class="col-md-3">
+         <div class="chat-bubble chat-bubble--left">
+           {{value.content}}
+         </div>
+       </div>
+       </div>
+       
+       <div class="row no-gutters" *ngIf="value.recipientId == recipient.userName">
+       <div class="col-md-3 offset-md-9">
+         <div class="chat-bubble chat-bubble--right">
+           {{value.content}}
+         </div>
+       </div>
+       </div>
+     </ng-container>
+       
+       <div class="row">
+       <div class="col-12">
+         <div class="chat-box-tray">
+       
+         <input type="text" name="comment" id="comment" placeholder="Type your message here..." 
+         required  [(ngModel)]='inputMsg' (keyup.enter)="onKeyUp($event)">
 
-          <i class="icon send fa fa-paper-plane-o clickable" aria-hidden="true" (click)="sendMessage()" >
-            
-          </i>
-          <i class="material-icons" (click)="isEmojiPickerVisible = !isEmojiPickerVisible;">
-            😀
-          </i> 
-          
-          </div>
-          <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible"  (emojiSelect)="addEmoji($event)" 
-          title="Choose your emoji">
-         </emoji-mart>
-        </div>
-        </div>
-      </div>
-      </div>
-    </div>
- </div>
+         <i class="icon send fa fa-paper-plane-o clickable" aria-hidden="true" (click)="sendMessage()" >
+           
+         </i>
+         <i class="material-icons" (click)="isEmojiPickerVisible = !isEmojiPickerVisible;">
+           😀
+         </i> 
+         
+         </div>
+         <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible"  (emojiSelect)="addEmoji($event)" 
+         title="Choose your emoji">
+        </emoji-mart>
+       </div>
+       </div>
+     </div>
+     </div>
+   </div>
+</div>
 </section>

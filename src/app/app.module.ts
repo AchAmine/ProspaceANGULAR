@@ -38,6 +38,9 @@ import { MatCardModule } from '@angular/material/card';
 import { SendofferFrontComponent } from './front/offer/sendoffer-front/sendoffer-front.component';
 import { OfferdetailsBackComponent } from './back/offer/offerdetails-back/offerdetails-back.component';
 import { UploadFileComponent } from './front/offer/sendoffer-front/upload-file/upload-file.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { OfferdetailsFrontComponent } from './front/offer/offerdetails-front/offerdetails-front.component';
+
 
 
 @NgModule({
@@ -73,7 +76,9 @@ import { UploadFileComponent } from './front/offer/sendoffer-front/upload-file/u
     ResultQuizFrontComponent,
     SendofferFrontComponent,
     OfferdetailsBackComponent,
-    UploadFileComponent
+    UploadFileComponent,
+    OfferdetailsFrontComponent
+ 
   ],
   imports: [
     BrowserModule,
@@ -81,7 +86,8 @@ import { UploadFileComponent } from './front/offer/sendoffer-front/upload-file/u
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatCardModule
+    MatCardModule,
+    NgbModule
   
   ],
   providers: [DatePipe,{provide: LocationStrategy,useClass:HashLocationStrategy}],

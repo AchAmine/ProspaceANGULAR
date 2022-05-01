@@ -1,34 +1,38 @@
 <div class="bradcam_area breadcam_bg overlay2">
-  <h3>Offers</h3>
+         
 </div>
-
-<div class="row">
-            
-    <div class="col-lg-12 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              
-              <h4 class="card-title">list of offers</h4>
-              
-             
-                    <div *ngFor="let offer of listOffers ">
-                      <div *ngIf="offer.state=='Accepted' ">
-                        <img class="card-img rounded-0" src="{{'http://localhost:7882/fileUploads/'+offer.image.path}}" 
-            width="300" height="400" alt="">
-                        {{offer.type}}<br>
-                    
-                        {{offer.title}}<br>
-                   
-                        {{offer.description}}<br>
-                    
-                        {{offer.startsAt| date:'longDate'}}<br>
-                   
-                        {{offer.endsAt| date:'longDate'}}
-                    </div>
-                
-            </div>
+<div class="our_latest_blog">
+  <div class="container">
+      <div class="row">
+          <div class="col-xl-12">
+              <div class="section_title text-center mb-100">
+                  <h3>Our Offers</h3>
+              </div>
           </div>
-        </div>
-        </div>
-
-    
+      </div>
+      <div *ngFor="let offer of listOffers ">
+         
+        
+          <div *ngIf="offer.state=='Accepted' ">
+              <div class="single_latest_blog">
+                  <div class="thumb">
+                    <img class="card-img rounded-0" src="{{'http://localhost:7882/fileUploads/'+offer.image.path}}" 
+                  alt="">
+                  </div>
+                  <div class="content_blog">
+                      <div class="date">
+                          <p>   {{offer.startsAt| date:'longDate'}} -  {{offer.endsAt| date:'longDate'}}<a href="#">{{offer.type}}</a></p>
+                      </div>
+                      <div class="blog_meta">
+                          <h3><a href=""> {{offer.title}}</a></h3>
+                      </div>
+                      <p class="blog_text">
+                        {{offer.description}}
+                      </p>
+                      <button type="button" (click)="offerDetails(offer.idOffer)"class="btn btn-secondary">See details</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

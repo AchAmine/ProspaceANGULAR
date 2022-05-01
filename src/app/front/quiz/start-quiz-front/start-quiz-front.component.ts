@@ -4,9 +4,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Answer } from 'src/app/model/Answer';
 import { Quiz } from 'src/app/model/Quiz';
 import { ResponseQuiz } from 'src/app/model/ResponseQuiz';
+import { ResultQuiz } from 'src/app/model/ResultQuiz';
 import { QuestionService } from 'src/app/service/question.service';
 import { QuizService } from 'src/app/service/quiz.service';
 import { ResponseQuizService } from 'src/app/service/response-quiz.service';
+import { ResultQuizService } from 'src/app/service/result-quiz.service';
 
 @Component({
   selector: 'app-start-quiz-front',
@@ -27,11 +29,13 @@ isSubmit=false;
 StartQuizFrontFormGroup!: FormGroup;
 quizzId : any;
 quiz : Quiz = new Quiz();
+resultQuizz: ResultQuiz = new ResultQuiz();
 // static user
   iduser = 1 ;
 
   constructor(private route: ActivatedRoute, private questionService: QuestionService,
     private responseService: ResponseQuizService,private router: Router , private quizService : QuizService
+   ,private resultQuizService : ResultQuizService
    ){ }
 
   ngOnInit(): void {
@@ -84,12 +88,16 @@ this.questionService.getQuizQuestionsForTest(this.quizzId).subscribe(
     console.log("Selected answers --------",this.Response.selectedAnswers);
   //  this.Response.user = this.iduser; 
      this.responseService.AddResponse(this.Response,this.quizzId).subscribe(() => {
+      
+      this.router.navigate([`resultQuiz/${this.route.snapshot.params.id}`]);
       // this.getAllQuiz();
        this.form = false;
-     }); 
+ 
+     });
+     
    
-  }
+  }}
   
   
 
-}
+

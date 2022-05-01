@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Offer } from 'src/app/model/Offer';
+import { Rating } from 'src/app/model/Rating';
 import { OfferService } from 'src/app/service/offer.service';
+import { RatingService } from 'src/app/service/rating.service';
 
 @Component({
   selector: 'app-listoffers-front',
@@ -18,10 +20,13 @@ export class ListoffersFrontComponent implements OnInit {
   path:any;
   image:any;
 
-
+currentRate : number=0;
+Ratings: Rating[] = [];
+Rating :  Rating=new Rating();
 
   offers: Observable<Offer[]>
-  constructor(private offerService :OfferService, private router: Router,private route: ActivatedRoute) { }
+  constructor(private offerService :OfferService, private router: Router,private route: ActivatedRoute,
+    private ratingService: RatingService) { }
 
   ngOnInit(): void {
     this.getAllOffers();
@@ -41,5 +46,14 @@ export class ListoffersFrontComponent implements OnInit {
        
      );
    }
+
+   offerDetails(id: number){
+    this.router.navigate(['offerDetailsFront', id]);
+  }
+
+
+  
+
+  
 
 }

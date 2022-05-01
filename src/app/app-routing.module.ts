@@ -25,6 +25,8 @@ import { ListoffersFrontComponent } from './front/offer/listoffers-front/listoff
 import { SendofferFrontComponent } from './front/offer/sendoffer-front/sendoffer-front.component';
 import { OfferdetailsBackComponent } from './back/offer/offerdetails-back/offerdetails-back.component';
 import { UploadFileComponent } from './front/offer/sendoffer-front/upload-file/upload-file.component';
+import { OfferdetailsFrontComponent } from './front/offer/offerdetails-front/offerdetails-front.component';
+
 
 
 const routes: Routes = [
@@ -49,10 +51,17 @@ const routes: Routes = [
   {path: 'resultQuiz/:id', component: ResultQuizFrontComponent },
   {path: 'listoffersBack', component: ListoffersBackComponent },
   //{path: 'offerDetails/:id', component: UpdateoffersBackComponent },
-  {path: 'offerDetails/:id', component: OfferdetailsBackComponent },
+  {path: 'offerDetailsBack/:id', component: OfferdetailsBackComponent },
   {path: 'listoffersFront', component: ListoffersFrontComponent },
   {path: 'sendOfferFront', component: SendofferFrontComponent },
-  {path: 'uploadOfferFile', component: UploadFileComponent}
+  {path: 'uploadOfferFile', component: UploadFileComponent},
+  {path: 'resultQuiz/:idQuiz', component: ResultQuizFrontComponent},
+  {path: 'offerDetailsFront/:id', component: OfferdetailsFrontComponent}
+
+
+
+
+
 
 ];
 

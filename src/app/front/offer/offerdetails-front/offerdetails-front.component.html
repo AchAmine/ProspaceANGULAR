@@ -1,0 +1,31 @@
+<div class="bradcam_area breadcam_bg overlay2">
+         
+</div>
+<section class="blog_area single-post-area section-padding">
+ <div class="container" *ngIf="offer">
+    <div class="row">
+       <div class="col-lg-8 posts-list">
+          <div class="single-post">
+            
+             <div class="blog_details">
+                <img class="card-img rounded-0" src="{{'http://localhost:7882/fileUploads/'+offer.image.path}}" 
+                width="300" height="900" alt="">
+                <h2> {{offer.title}}</h2>
+                
+                {{offer.description }}
+                <div style="font-size:x-large; color:orange;">
+                    <ngb-rating [max]="5" name="offer.idOffer" [(rate)]="currentRate"  [readonly]="false"
+                   [(ngModel)]="currentRate"  (click)="addRating(currentRate)"
+                    >
+                   </ngb-rating>
+
+                    </div>
+                
+             </div>
+          </div>
+       
+          </div>
+       </div>
+    </div>
+    
+</section>

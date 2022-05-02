@@ -32,23 +32,24 @@ export class ListarticlesFrontComponent implements OnInit {
     this.articleService.getAllArticles().subscribe((res: any)=> { this.listArticles=res; console.log(res);})
   }
   
-  articleDetails(id: number){
-    this.router.navigate(['article', id]);
+  articleDetails(article: Article){
+    this.viewsInc(article);
+    this.router.navigate(['article', article.idArticle]);
   }
 
   convertDate(date: any){
     return this.date = this.datepipe.transform(date, 'yyyy-MM-dd HH:mm');
   }
 
-  /* viewsInc(article: Article){
-    article.views++;
+     viewsInc(article: Article){
+    
     console.log("views b4 service call",article);
-    this.articleService.editArticle(article).subscribe(
+    this.articleService.viewInc(article).subscribe(
       (res: any)=> { this.listArticles=res; console.log("article views : ",res.views) ;
       console.log("article  : ",res)
       }
     );
-  } */
+  } 
 
   articleCountPerType(val:any){
     let type = this.categories[val] as ArticleType;

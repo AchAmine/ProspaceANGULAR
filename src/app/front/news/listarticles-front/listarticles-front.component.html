@@ -13,7 +13,7 @@
                         </div>
 
                         <div class="blog_details">
-                            <a class="d-inline-block"  (click)="articleDetails(article.idArticle)">
+                            <a class="d-inline-block"  (click)="articleDetails(article)">
                                 <h2>{{article.title}}</h2>
                             </a>
                             <p> {{(article.content.length>200)? (article.content | slice:0:200)+' ...':(article.content) }}</p>

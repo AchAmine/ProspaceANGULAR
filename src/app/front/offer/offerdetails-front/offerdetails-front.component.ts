@@ -13,7 +13,7 @@ import { RatingService } from 'src/app/service/rating.service';
 export class OfferdetailsFrontComponent implements OnInit {
   id: number;
   offer: any;
-  currentRate : any;
+  currentRate = 0;
   form: boolean=false;
   Rating :  Rating=new Rating();
   listRatings:any;
@@ -33,8 +33,11 @@ export class OfferdetailsFrontComponent implements OnInit {
       .subscribe(data => { this.offer = data; });;
      this.ratingService.getUserRating(this.id,this.idUser).subscribe(data => 
       {
-      this.currentRate = data.rate;
-      console.log("this current rate  -- ", this.currentRate);}
+        if (data != null) {
+      this.currentRate = data.rate; 
+      console.log("this current rate  -- ", this.currentRate);
+        }
+      }
       )
      
     

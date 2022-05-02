@@ -66,8 +66,8 @@ export class FollowingarticlesFrontComponent implements OnInit {
       console.log(this.reactionCount);
       }) */
       this.articleCount= 0;
-      for (let article in this.listArticles) {
-        if (this.listArticles[article].type == type )
+      for (let article in this.followingArticles) {
+        if (this.followingArticles[article].type == type )
         {
           this.articleCount++;
         }

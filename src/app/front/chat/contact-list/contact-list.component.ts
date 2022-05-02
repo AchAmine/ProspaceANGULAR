@@ -11,7 +11,7 @@ export class ContactListComponent implements OnInit {
 
   idUser = 1 ;
   contactList :any;
-  constructor(private chatService: ChatService , route: ActivatedRoute , router : Router) { }
+  constructor(private chatService: ChatService , private route: ActivatedRoute , private router : Router) { }
 
   ngOnInit(): void {
     this.getContacts();
@@ -20,4 +20,9 @@ export class ContactListComponent implements OnInit {
   getContacts() {
     this.chatService.getContactList(this.idUser).subscribe(data=> this.contactList = data);
   }
+
+  chatWith(user:any){
+    // this.stompClient.disconnect();
+      this.router.navigate(['chat', user]);
+    }
 }

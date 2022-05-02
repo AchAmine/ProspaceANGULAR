@@ -44,8 +44,9 @@ export class UpdatearticleBackComponent implements OnInit {
     article.idArticle = this.route.snapshot.params['id'];
     formData.append('article', JSON.stringify(article));
 
-    this.articleService.editArticle(formData).subscribe();
-
+    this.articleService.editArticle(formData).subscribe(()=> {
+      this.router.navigate(['listarticles']);
+    });
     
   }
 

@@ -37,7 +37,7 @@ export class ArticleService {
 
   //
   getuserPreferences(idUser: number){
-    return this.http.get(`${this.baseUrl}/userPreferences/user/${idUser}`);
+    return this.http.get(`${this.baseUrl}/preferences/user/${idUser}`);
   }
 
   getFollowingArticles(idUser: number){

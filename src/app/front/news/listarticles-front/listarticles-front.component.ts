@@ -14,9 +14,11 @@ import { ArticleService } from 'src/app/service/article.service';
 export class ListarticlesFrontComponent implements OnInit {
 
   listArticles: any;
+  userPreferences : any;
   article :  Article=new Article();
   form: boolean=false;
   date: any;
+  idUser = 2;
   // categorie des articles
   categories = ['News','Jokes','Tips','Facts','WellBeing'];
   articleCount: any;
@@ -27,6 +29,7 @@ export class ListarticlesFrontComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllArticles();
+    this.getuserPreferences();
   }
   getAllArticles(){
     this.articleService.getAllArticles().subscribe((res: any)=> { this.listArticles=res; console.log(res);})
@@ -71,4 +74,11 @@ export class ListarticlesFrontComponent implements OnInit {
   }
 
   
+  getuserPreferences(){
+    this.articleService.getuserPreferences(this.idUser).subscribe(data => 
+      {
+        this.userPreferences = data;
+        console.log("user pref",this.userPreferences);
+      })
+  }
 }

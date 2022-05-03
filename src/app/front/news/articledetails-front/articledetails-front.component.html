@@ -68,7 +68,7 @@
                   
                   
                   <li *ngIf="idUser == comment.user.idUser">
-                     <a href="#"><i class="fa fa-edit"></i></a>
+                     <a (click)="openEditForm(comment)"><i class="fa fa-edit"></i></a>
                      &nbsp;
                      <a (click)="deleteComment(comment.idComment)"><i class="fa fa-trash"></i></a>
                   </li>
@@ -76,6 +76,46 @@
                 
 
                 </div>
+                <!-- EDIT COMMENT SECTION -->
+                <ng-container *ngIf="comment == commentToEdit">
+                <div class="comment-form">
+                  <h4>Edit comment</h4>
+                  <form class="form-contact comment_form" action="#" id="editcommentForm" >
+                     <div class="row">
+                        <div class="col-12">
+                           <div class="form-group">
+                              <textarea class="form-control w-100" name="editcomment" id="editcomment" cols="30" rows="4"
+                                 placeholder="Write Comment" required [(ngModel)]='commentToEdit.content' ></textarea>
+                                
+     
+                             </div>
+                        </div>
+                        
+                     </div>
+                     <div class="form-group">
+                       <div class="container2">
+                        <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
+                       name="editcomment"  (click)="editComment()">Save</button> &nbsp;
+                       <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
+                       name="cancel"  (click)="Cancel()">Cancel</button>
+     
+     
+                       <div style="float:right;">
+                       <button (click)="isEmojiPickerVisible = !isEmojiPickerVisible;">😀</button>
+                       <br>
+                       <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible"  (emojiSelect)="addEmoji($event)" 
+                       title="Choose your emoji">
+                      </emoji-mart>
+                      </div>
+                      </div>
+     
+     
+                     </div>
+                  </form>
+               </div>
+               </ng-container>
+               <!-- END EDIT COMMENT SECTION -->
+
              </div>
              
           </div>

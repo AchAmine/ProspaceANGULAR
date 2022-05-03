@@ -23,6 +23,8 @@ export class ArticledetailsFrontComponent implements OnInit {
   date: any;
   // commentaire saisie par l'utilisateur
   comment_value: any='';
+  commentToEdit:Article_Comment;
+  hide=false;
   // instance commentaire a ajouter
   newcomment: Article_Comment;
 
@@ -92,6 +94,33 @@ export class ArticledetailsFrontComponent implements OnInit {
     this.isEmojiPickerVisible = false;
  }
 
- 
+  openEditForm(Comment:Article_Comment) {
+    console.log("comment : ",Comment);
+  //  console.log("id1", this.idCommentToEdit);
+//    this.idCommentToEdit = Comment.idComment;
+  //  console.log("id2", this.idCommentToEdit);
+    this.commentToEdit = Comment;
+    console.log("new edit vallue : ",this.commentToEdit);
+  }
+
+  editComment(){
+    console.log("Before edit",this.commentToEdit);
+    //
+    
+    this.commentService.editComment(this.commentToEdit).subscribe(
+     data => {
+        console.log("after edit 2",data);
+        this.commentToEdit = new Article_Comment();
+        this.hide = true;
+      //  this.router.navigate(['/article',this.id]);
+  
+      }
+
+    );
+  }
+
+  Cancel() {
+    this.router.navigate(['/article',this.id]);
+  }
 
 }

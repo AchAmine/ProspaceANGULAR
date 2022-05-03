@@ -15,21 +15,25 @@ export class UpdateQuizQuestionBackComponent implements OnInit {
   constructor(private route: ActivatedRoute,private  questionService: QuestionService,private router: Router) { }
   id=0;
   question?: any;
-  form: boolean=false;
   ngOnInit(): void {
     this.id= this.route.snapshot.params.id;
     //alert(this.id);
     this.questionService.getQuestion(this.id).subscribe(
       (data:any)=>{
         this.question=data;
-        console.log("QUEEEESTION ",data);
-        console.log("QUEEEESTION ",this.id);
+        console.log("QUEESTION ",data);
 
+        console.log(this.question);
       });
-
-
-      
   }
+
+  public updateQuizQuestion(Question: any, idQuiz: any){
+    this.questionService.editQuizQuestion(Question,idQuiz).subscribe(
+    );
+
+
+  }
+
 
 
  

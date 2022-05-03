@@ -6,11 +6,12 @@
       <div class="card-body">
         <h4 class="card-title">Post new quiz question..</h4>
         <form class="forms-sample">
-          <div class="form-group">
-            <label for="exampleInputName1">Content</label>
-            <input class="form-control" name="Content" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="Content" [(ngModel)] ="question.content
-          ">
-          </div>      
+          
+
+          <label for="exampleInputName1">Content</label>
+              <input class="form-control" name="Content" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="Content" [(ngModel)] ="question.content">
+          <button type="submit" class="btn btn-primary mr-2" (click)="updateQuizQuestion(question,question.Quiz.idQuizz)" >Add</button>
+  
         </form>
       </div>
     </div>

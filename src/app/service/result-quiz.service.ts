@@ -8,8 +8,12 @@ export class ResultQuizService {
 
   constructor(private http: HttpClient) { }
 
-  public getResultQuiz(idQuiz:any){
-    return this.http.get(`http://localhost:8089/SpringMVC/Quizz/Score/${idQuiz}/1`);
+  public getResultQuiz(idQuiz:any,idUser:any){
+    return this.http.get(`http://localhost:8089/SpringMVC/Quizz/Score/${idQuiz}/${idUser}`);
   } 
 
+  public getUserResult(idQuiz:any,idUser:any){
+    return this.http.get(`http://localhost:8089/SpringMVC/Quizz/Score/user-result/${idQuiz}/${idUser}`);
+  } 
+  
 }

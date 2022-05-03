@@ -29,7 +29,7 @@
                 
   
             </div>
-            <div class="form-group">
+           <!--  <div class="form-group">
               <label for="exampleTextarea1">Categorie</label>
               <textarea class="form-control" rows="4" ngModel [ngModelOptions]="{standalone : true}" 
               placeholder="Categorie..."[(ngModel)] ="quiz.categorie" 
@@ -38,10 +38,19 @@
               required [(ngModel)] ="quiz.categorie"
                #categorie="ngModel"
               
-              >
+             
                 
   
               </textarea>
+            </div>
+             > -->
+             <div class="form-group">
+              <label>Category</label>
+              <select class="js-example-basic-single w-100" id="category" name="category" (change)="getCategory($event)">
+                <option value="0"></option>
+                <option selected="selected" *ngFor="let category of categories">{{category}}</option>
+                
+              </select>
             </div>
             <div class="form-group">
               <label for="exampleTextarea1">nbQuestions</label>

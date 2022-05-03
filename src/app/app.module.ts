@@ -21,6 +21,8 @@ import { ArticledetailsFrontComponent } from './front/news/articledetails-front/
 import { DatePipe } from '@angular/common';
 import { UpdatearticleBackComponent } from './back/news/updatearticle-back/updatearticle-back.component';
 import { ArticledetailsBackComponent } from './back/news/articledetails-back/articledetails-back.component';
+import { AddSectionBackComponent } from './back/forum/add-section-back/add-section-back.component';
+import { ListSectionsBackComponent } from './back/forum/list-sections-back/list-sections-back.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { ArticledetailsBackComponent } from './back/news/articledetails-back/art
     ListoffersFrontComponent,
     ArticledetailsFrontComponent,
     UpdatearticleBackComponent,
-    ArticledetailsBackComponent
+    ArticledetailsBackComponent,
+    AddSectionBackComponent,
+    ListSectionsBackComponent
   ],
   imports: [
     BrowserModule,

@@ -27,4 +27,19 @@ export class ListSectionsBackComponent implements OnInit {
     this.sectionService.getAllSections().subscribe(res=> { this.listSections=res; console.log(res);})
   }
 
+  addQuiz(section: any){
+    this.sectionService.addSection(section,this.idUser).subscribe(() => {
+      this.getAllSections();
+      this.form = false;
+    });
+  }
+  deleteSection(idSection : any){
+    this.sectionService.deleteSection(idSection).subscribe(() => this.getAllSections())
+  }
+ 
+
+  editSection(section: any){
+    this.router.navigate(['editSection', section]);
+  }
+
 }

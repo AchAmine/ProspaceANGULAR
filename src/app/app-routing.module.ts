@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddSectionBackComponent } from './back/forum/add-section-back/add-section-back.component';
 import { ListSectionsBackComponent } from './back/forum/list-sections-back/list-sections-back.component';
+import { UpdateSectionBackComponent } from './back/forum/update-section-back/update-section-back.component';
 import { AddarticleBackComponent } from './back/news/addarticle-back/addarticle-back.component';
 import { ArticledetailsBackComponent } from './back/news/articledetails-back/articledetails-back.component';
 import { ListarticlesBackComponent } from './back/news/listarticles-back/listarticles-back.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'article/:id', component: ArticledetailsFrontComponent},
   {path: 'editarticle/:id', component: UpdatearticleBackComponent},
   {path: 'articledetails/:id' , component: ArticledetailsBackComponent},
+  {path: 'editSection/:id', component: UpdateSectionBackComponent},
 
   {path: 'listSections', component: ListSectionsBackComponent},
   {path: 'addSection', component: AddSectionBackComponent}

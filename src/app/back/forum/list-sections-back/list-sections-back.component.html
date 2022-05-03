@@ -38,7 +38,17 @@ Name                      </th>
                       <td>
                         {{section.description}}
                       </td>
-                   
+                      <td> <button type="button" class="btn btn-outline-warning"
+                        (click)="editSection(section.idSection)">Edit</button>
+                      </td>
+                      <td> 
+
+
+
+                        <button type="button" class="btn btn-outline-danger"
+                        (click)="deleteSection(section.idSection)">Delete</button>
+                      </td>
+      
                    
                     
       

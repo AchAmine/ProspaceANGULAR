@@ -23,6 +23,7 @@ import { UpdatearticleBackComponent } from './back/news/updatearticle-back/updat
 import { ArticledetailsBackComponent } from './back/news/articledetails-back/articledetails-back.component';
 import { AddSectionBackComponent } from './back/forum/add-section-back/add-section-back.component';
 import { ListSectionsBackComponent } from './back/forum/list-sections-back/list-sections-back.component';
+import { UpdateSectionBackComponent } from './back/forum/update-section-back/update-section-back.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ListSectionsBackComponent } from './back/forum/list-sections-back/list-
     UpdatearticleBackComponent,
     ArticledetailsBackComponent,
     AddSectionBackComponent,
-    ListSectionsBackComponent
+    ListSectionsBackComponent,
+    UpdateSectionBackComponent
   ],
   imports: [
     BrowserModule,

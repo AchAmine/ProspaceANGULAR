@@ -68,12 +68,13 @@
                         <h3 class="widget_title">Recommended Post</h3>
                         <ng-container *ngFor="let pref of userPreferences">
                         <div class="media post_item">
-                            <img src="img/post/post_1.png" alt="post">
+                            <img src="{{'http://localhost/FileUploads/'+pref.image.path}}" 
+                            width="50px" length="20px" alt="post">
                             <div class="media-body">
-                                <a href="single-blog.html">
+                                <a (click)="articleDetails(pref)">
                                     <h3>{{pref.title}}</h3>
                                 </a>
-                                <p>January 12, 2019</p>
+                                <p> {{convertDate(pref.createdAt) }}</p>
                             </div>
                         </div>
                         </ng-container>

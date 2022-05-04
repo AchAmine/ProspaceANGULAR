@@ -12,7 +12,7 @@ import { ArticlecommentsService } from 'src/app/service/articlecomments.service'
 })
 export class ArticledetailsFrontComponent implements OnInit {
 
-  idUser =1;
+  idUser =3;
   // id parametre
   id: number;
   // objet article contenant les details
@@ -29,9 +29,6 @@ export class ArticledetailsFrontComponent implements OnInit {
   newcomment: Article_Comment;
 
   public isEmojiPickerVisible: boolean;
-
- 
-  
 
   constructor(private articleService: ArticleService, private route: ActivatedRoute,private router: Router,
     private commentService: ArticlecommentsService,public datepipe: DatePipe) { }
@@ -96,26 +93,18 @@ export class ArticledetailsFrontComponent implements OnInit {
 
   openEditForm(Comment:Article_Comment) {
     console.log("comment : ",Comment);
-  //  console.log("id1", this.idCommentToEdit);
-//    this.idCommentToEdit = Comment.idComment;
-  //  console.log("id2", this.idCommentToEdit);
     this.commentToEdit = Comment;
     console.log("new edit vallue : ",this.commentToEdit);
   }
 
   editComment(){
-    console.log("Before edit",this.commentToEdit);
-    //
-    
+    console.log("Before edit",this.commentToEdit);   
     this.commentService.editComment(this.commentToEdit).subscribe(
      data => {
         console.log("after edit 2",data);
         this.commentToEdit = new Article_Comment();
         this.hide = true;
-      //  this.router.navigate(['/article',this.id]);
-  
       }
-
     );
   }
 
@@ -123,4 +112,22 @@ export class ArticledetailsFrontComponent implements OnInit {
     this.router.navigate(['/article',this.id]);
   }
 
+
+  //
+  editArticleBack(article: any){
+    this.router.navigate(['editarticle', article]);
+  }
+
+  editArticleFront(article: any){
+    this.router.navigate(['editarticle', article]);
+  }
+
+  deleteArticle(idArticle : any){
+    if (window.confirm('Are sure you want to delete this Article ?')) {
+    this.articleService.deleteArticle(idArticle).subscribe(() => {
+      this.router.navigate(['/Articlesnav']);
+    console.log("DELETE ID:",idArticle);}
+    )
+    }
+  }
 }

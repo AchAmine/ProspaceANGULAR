@@ -12,7 +12,7 @@ import { ArticlecommentsService } from 'src/app/service/articlecomments.service'
 })
 export class ArticledetailsFrontComponent implements OnInit {
 
-  idUser =3;
+  idUser =1;
   // id parametre
   id: number;
   // objet article contenant les details

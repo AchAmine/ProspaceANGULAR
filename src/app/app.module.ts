@@ -24,6 +24,11 @@ import { ArticledetailsBackComponent } from './back/news/articledetails-back/art
 import { AddSectionBackComponent } from './back/forum/add-section-back/add-section-back.component';
 import { ListSectionsBackComponent } from './back/forum/list-sections-back/list-sections-back.component';
 import { UpdateSectionBackComponent } from './back/forum/update-section-back/update-section-back.component';
+import { ListSectionsFrontComponent } from './front/forum/list-sections-front/list-sections-front.component';
+import { AddTopicFrontComponent } from './front/forum/add-topic-front/add-topic-front.component';
+import { ListTopicsFrontComponent } from './front/forum/list-topics-front/list-topics-front.component';
+import { SectionDetailsComponent } from './front/forum/section-details/section-details.component';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +50,11 @@ import { UpdateSectionBackComponent } from './back/forum/update-section-back/upd
     ArticledetailsBackComponent,
     AddSectionBackComponent,
     ListSectionsBackComponent,
-    UpdateSectionBackComponent
+    UpdateSectionBackComponent,
+    AddTopicFrontComponent,
+    ListSectionsFrontComponent,
+    ListTopicsFrontComponent,
+    SectionDetailsComponent
   ],
   imports: [
     BrowserModule,

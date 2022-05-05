@@ -1,3 +1,5 @@
+import { ForumReaction } from "./ForumReaction";
+import { Topic } from "./Topic";
 import { User } from "./User";
 
 export class Section{
@@ -5,4 +7,8 @@ export class Section{
     name?: string;
     description?: string;
    user?:User;
+   topics?: Topic[];
+   reactions?:ForumReaction[];
+
+ 
 }

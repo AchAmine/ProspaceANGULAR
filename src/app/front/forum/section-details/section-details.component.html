@@ -1,0 +1,139 @@
+<div class="bradcam_area breadcam_bg overlay2"></div>
+<section class="blog_area single-post-area section-padding" *ngIf="topics">
+<div class="container" *ngIf="section">
+   <div class="blog_area section-padding">
+      <section class="blog_area section-padding">
+
+      <div class="col-lg-8 posts-list">
+         <div class="single-post">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+               <div class="container">
+            <div class="blog_details">
+               <h1> {{section.name}}</h1>
+               <div class="float-right" *ngIf="idUser == section.user.idUser">
+                  <!-- <div class="dropdown">
+                     <button type="button" class="btn btn-outline-info dropdown-toggle" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     </button>
+                   <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton7">
+                        <button type="button" class="btn btn-outline-warning"
+                           (click)="editSectionBack(section.idSection)">Edit</button>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item"(click)="deleteSection(section.idSection)">
+                        <button type="button" class="btn btn-outline-danger"
+                           (click)="deleteSection(section.idSection)">Delete</button>                           </a>
+                     </div> 
+                  </div> -->
+               </div>
+               <ul class="blog-info-link mt-3 mb-4">
+                  <li><a href="#"><i class="fa fa-user"></i> {{section.user.userName}}</a></li>
+                  <li><a href="#"><i class="fa fa-topics"></i> {{ topics?.length || '0' }}</a></li>
+                  <!-- <li><a href="#"><i class="fa fa-clock-o"></i> {{ convertDate(section.topic.creationDate) }}</a></li> -->
+               </ul>
+               <p class="excert">
+                  {{section.description}}
+               </p>
+            </div>
+         </div>
+         </div>
+         </div>
+      </div>
+   </section>
+
+      <br><br>
+      &nbsp; &nbsp; <h4>{{ topics?.length || '0' }} topics</h4>
+      <br><br>
+
+      <div  class="col-lg-8 mb-5 mb-lg-0" *ngFor="let topic of topics">
+            <div class="topic-list" >
+               <div class="single-topic justify-content-between d-flex">
+                  <div class="user justify-content-between d-flex">
+                     <div class="thumb">
+                        <!-- <img src="../../assets/img/comment/comment_3.png" alt=""> -->
+                     </div>
+                     <div class="desc" >
+                        <!-- <a class="d-inline-block" (click)="articleDetails(sect.idArticle)">
+                           <h2>{{article.title}}</h2>
+                           </a> -->
+                        <h2>{{topic.title}}</h2>
+                        <p class="topic">{{topic.description}}</p>
+                        <div class="d-flex justify-content-between">
+                           <div class="d-flex align-items-center">
+                              <ul class="blog-info-link">
+                                 <!-- <li><a href="#"><i class="fa fa-thumbs-up"></i> 15 </a></li>
+                                    <li><a ><i class="fa fa-comments"></i> 05 Comments</a></li>
+                                    <li><a ><i class="fa fa-clock-o"></i> {{convertDate(article.createdAt) }} </a></li> -->
+                                 <li>
+                                   <a class="date">{{ convertDate(topic.creationDate) }}</a> &nbsp;
+                                 </li>
+                                 <li><a href="#" text-align="right">&nbsp;<i class="fa fa-user">&nbsp;</i> {{topic.user.userName}} </a></li>&nbsp;
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- <div class="desc">
+                        <h2> {{topic.title}}</h2>
+                        
+                        <p class="topic">
+                           
+                           {{topic.description}}
+                        </p>
+                        <div class="d-flex justify-content-between">
+                           <div class="d-flex align-items-center">
+                              <h5>
+                                 <a href="#">{{topic.user.userName}}</a>
+                              </h5>
+                              <p class="date">{{ convertDate(topic.creationDate) }}</p>
+                           </div>
+                        </div>
+                        </div> -->
+                  </div>
+                  <div class="col-sm-4 text-center my-2 my-sm-0">
+                  </div>
+                  <li *ngIf="idUser == topic.user.idUser">
+                     <a (click)="openEditForm(topic)"><i class="fa fa-edit"></i></a>
+                     &nbsp;
+                     <a (click)="deleteTopic(topic.idTopic)"><i class="fa fa-trash"></i></a>
+                  </li>
+               </div>
+               
+               <!-- EDIT COMMENT SECTION -->
+               <ng-container *ngIf="topic == topicToEdit">
+                  <div class="comment-form">
+                     <h4>Edit topic</h4>
+                     <form class="form-contact comment_form" action="#" id="editForm" >
+                        <div class="form-group">
+                           <div class="row">
+                              <div class="col-12">
+                                 <div class="form-group" >
+                                    <input type="text" name="editTopic" id="editTopic" placeholder="Write Comment" required [(ngModel)]='topicToEdit.title'  /> 
+                                    <textarea class="form-control w-20" name="editTopic" id="editTopic" cols="10" rows="4"
+                                    placeholder="Write Comment" required [(ngModel)]='topicToEdit.description' ></textarea>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="container3">
+                               <br><br><button type="submit" class="button button-contactForm btn_1 boxed-btn" 
+                                 name="editTopic"  (click)="editTopic()">Save</button> &nbsp;
+                              <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
+                                 name="cancel"  (click)="Cancel()">Cancel</button> 
+                              <div style="float:right;">
+                                 <!-- <button (click)="isEmojiPickerVisible = !isEmojiPickerVisible;">😀</button> -->
+                                 <br>
+                                 <!-- <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible"  (emojiSelect)="addEmoji($event)" 
+                                    title="Choose your emoji">
+                                    </emoji-mart> -->
+                              </div>
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+               </ng-container>
+               <!-- END EDIT COMMENT SECTION -->
+            </div>
+      </div>
+      
+      </div>
+      
+
+</div>
+</section>

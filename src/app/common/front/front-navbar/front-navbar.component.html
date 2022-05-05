@@ -18,7 +18,14 @@
                             <nav>
                                 <ul id="navigation">
                                     <li><a class="active"  [routerLink]="['/home']">home</a></li>
-                                    <li><a href="Courses.html">Forum</a></li>
+                                    
+                                     <li><a href="Courses.html">Forum<i class="ti-angle-down"></i></a>
+                                    <ul class="submenu">
+                                        <li><a [routerLink]="['/listSectionsFront']">Enter</a></li>
+                                        <!-- <li><a href="single-blog.html">single-blog</a></li> -->
+                                    </ul>
+                                     </li>
+
                                     <li><a href="#">Offers <i class="ti-angle-down"></i></a>
                                         <ul class="submenu">
                                             <li><a href="course_details.html">course details</a></li>

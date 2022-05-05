@@ -69,7 +69,6 @@
       
       <div class="search-box">
         <div class="input-wrapper">
-        <i class="material-icons">search</i>
         <input placeholder="Search here" type="text">
         </div>
       </div>
@@ -80,7 +79,22 @@
         <h6 (click)="chatWith(contact.userName)">{{contact.userName}}</h6>
         
         </div>
-        <span class="time text-muted small">00:32</span>
+        <div class="dropdown">
+          <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+            <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton3">
+            
+            <a class="dropdown-item">
+              <i class="fa fa-eye" aria-hidden="true"></i> &nbsp; See profile
+             </a>
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item">
+               <i class="fa fa-trash"></i> &nbsp; Delete contact
+             </a>
+          </div>
+        </div>
       </div>
       <hr>
      </ng-container>

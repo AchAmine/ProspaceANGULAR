@@ -18,6 +18,7 @@ export class ChatComponent implements OnInit {
   stompClient: any;
   date: any;
    msg:any = [];
+   subscription : any;
 
    // entrer
    idUser = 2 ; 
@@ -62,7 +63,7 @@ export class ChatComponent implements OnInit {
 
       this.loadChat();
 
-      this.stompClient.subscribe('/user/'+this.recipient.userName+'/queue/message', (message:any) => {
+    this.subscription =  this.stompClient.subscribe('/user/'+this.recipient.userName+'/queue/message', (message:any) => {
       if (message.body) {
         this.msg.push(JSON.parse(message.body));
       }});
@@ -129,8 +130,21 @@ export class ChatComponent implements OnInit {
 
     chatWith(user:any){
     // this.stompClient.disconnect();
+      this.msg.splice(0);
+      console.log("new msg list",this.msg);
+      this.connect();
       this.router.navigate(['chat', user]);
     }
+
+   /*  async chatWith(user:any){
+      // this.stompClient.disconnect();
+        this.msg.splice(0);
+        console.log("new msg list",this.msg);
+        this.chatContent="";
+        this.connect();
+        await new Promise(f => setTimeout(f, 5000));
+        this.router.navigate(['chat', user]);
+      } */
 
     
     

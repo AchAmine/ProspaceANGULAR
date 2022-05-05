@@ -31,6 +31,7 @@ import { ProfanityComponent } from './back/news/profanity/profanity.component';
 import { ChatComponent } from './front/chat/chat.component';
 import { ContactListComponent } from './front/chat/contact-list/contact-list.component';
 import { ConversationComponent } from './front/chat/conversation/conversation.component';
+import { FrontmenuComponent } from './common/front/frontmenu/frontmenu.component';
 
 
 @NgModule({
@@ -43,23 +44,7 @@ import { ConversationComponent } from './front/chat/conversation/conversation.co
     BackFooterComponent,
     BackNavbarComponent,
     BackSidebarComponent,
-    ListarticlesBackComponent,
-    AddarticleBackComponent,
-    ListoffersBackComponent,
-    ListarticlesFrontComponent,
-    ListoffersFrontComponent,
-    ArticledetailsFrontComponent,
-    UpdatearticleBackComponent,
-    ArticledetailsBackComponent,
-    ArticlereactionsFrontComponent,
-    EditarticlecommentFrontComponent,
-    ArticlesuggestionsFrontComponent,
-    FollowingarticlesFrontComponent,
-    ArticlesNavComponent,
-    ProfanityComponent,
-    ChatComponent,
-    ContactListComponent,
-    ConversationComponent
+    FrontmenuComponent
   ],
   imports: [
     BrowserModule,

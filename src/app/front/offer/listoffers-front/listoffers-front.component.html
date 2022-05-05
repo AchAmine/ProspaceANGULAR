@@ -14,12 +14,11 @@
          
         
           <div *ngIf="offer.state=='Accepted' ">
-              <div class="single_latest_blog">
+              <div >
                   <div class="thumb">
-                    <img class="card-img rounded-0" src="{{'http://localhost:7882/fileUploads/'+offer.image.path}}" 
+                    <img src="{{'http://localhost:7882/fileUploads/'+offer.image.path}}" 
                  width="200" height="200">
                   </div>
-                  <div class="content_blog">
                       <div class="date">
                           <p>   {{offer.startsAt| date:'longDate'}} -  {{offer.endsAt| date:'longDate'}}<a href="#">{{offer.type}}</a></p>
                       </div>
@@ -30,7 +29,6 @@
                         {{offer.description}}
                       </p>
                       <button type="button" (click)="offerDetails(offer.idOffer)"class="btn btn-secondary">See details</button>
-                  </div>
               </div>
           </div>
       </div>

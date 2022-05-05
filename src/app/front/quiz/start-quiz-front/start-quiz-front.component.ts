@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup,Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Answer } from 'src/app/model/Answer';
 import { Quiz } from 'src/app/model/Quiz';
@@ -16,8 +16,9 @@ import { ResultQuizService } from 'src/app/service/result-quiz.service';
   styleUrls: ['./start-quiz-front.component.css']
 })
 export class StartQuizFrontComponent implements OnInit {
-questions: any;
+   aFormGroup: FormGroup;
 
+questions: any;
 marksGot=0;
 correctAnswers=0;
 attempted=0;
@@ -30,34 +31,46 @@ StartQuizFrontFormGroup!: FormGroup;
 quizzId : any;
 quiz : Quiz = new Quiz();
 resultQuizz: ResultQuiz = new ResultQuiz();
+timer: any;
 // static user
   iduser = 1 ;
 
   constructor(private route: ActivatedRoute, private questionService: QuestionService,
     private responseService: ResponseQuizService,private router: Router , private quizService : QuizService
-   ,private resultQuizService : ResultQuizService
+   ,private resultQuizService : ResultQuizService,public formBuilder: FormBuilder
    ){ }
 
   ngOnInit(): void {
+  
     this.quizzId = this.route.snapshot.params.id; 
     this.quizService.getQuiz(this.quizzId).subscribe(data => this.quiz = data);
+    
     this.loadQuestions();
     
 
+    
+
   }
+  siteKey:string="6LfLGMUfAAAAAGhGpj1BOBPzXccGwpb3lg6-jgw4";
   loadQuestions() {
 this.questionService.getQuizQuestionsForTest(this.quizzId).subscribe(
   (data: any)=>{
     this.questions=data;
     console.log(data);
     this.questions.forEach((question: any)=>{
+      this.timer=this.questions.length*2*60;
+
      question['givenAnswer']='';
       
       this.StartQuizFrontFormGroup = new FormGroup({
         answer: new FormControl(),
         
+        
     });
-      
+    this.aFormGroup = this.formBuilder.group({
+      recaptcha: ['', Validators.required]
+    });
+      this.startTimer();
     })
   }
 );
@@ -96,7 +109,30 @@ this.questionService.getQuizQuestionsForTest(this.quizzId).subscribe(
      });
      
    
-  }}
+  }
+
+  startTimer(){
+    let t=window.setInterval(()=>{
+      if(this.timer<=0){
+        this.submitQuiz();
+        clearInterval(t);
+
+      }else{
+        this.timer--;
+      }
+
+
+    },1000);
+  }
+
+
+  getFormattedTime(){
+    let mm= Math.floor(this.timer /60);
+    let ss=this.timer - mm * 60;
+    return `${mm} min : ${ss} sec `;
+  }
+
+}
   
   
 

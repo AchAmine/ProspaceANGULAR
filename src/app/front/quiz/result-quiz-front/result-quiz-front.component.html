@@ -2,14 +2,16 @@
     <h3>Result</h3>
   </div>
   <!-- USER : {{ResultQuiz.user.userName}} <br> -->
-
+  <section class="section-1" id="section-1">
+    <main>
+        <div class="text-container">
 SCORE : {{ResultQuiz.score}}<br>
 FALSE ANSWERS : {{ResultQuiz.falseAnswers}} <br>
 CORRECT ANSWERS : {{ResultQuiz.correctAnswers}} <br>
 NB QUESTIONS : {{ResultQuiz.nbreQuestions}} <br>
+    </div>
 
+    <a id="btn" type="submit" (click)="getQuizCertif()">Submit</a>
+</main></section>
 <div >
-  <div>
-     <a>
-      <button type="submit" class="btn btn-primary mr-2" (click)="getQuizCertif()">Submit</button>
-    </a></div></div>
+ </div>

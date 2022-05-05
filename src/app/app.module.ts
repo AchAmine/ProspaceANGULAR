@@ -40,6 +40,9 @@ import { OfferdetailsBackComponent } from './back/offer/offerdetails-back/offerd
 import { UploadFileComponent } from './front/offer/sendoffer-front/upload-file/upload-file.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OfferdetailsFrontComponent } from './front/offer/offerdetails-front/offerdetails-front.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NgxCaptchaModule } from 'ngx-captcha';
+
 
 
 
@@ -87,7 +90,9 @@ import { OfferdetailsFrontComponent } from './front/offer/offerdetails-front/off
     HttpClientModule,
     ReactiveFormsModule,
     MatCardModule,
-    NgbModule
+    NgbModule,
+    MatProgressSpinnerModule,
+    NgxCaptchaModule
   
   ],
   providers: [DatePipe,{provide: LocationStrategy,useClass:HashLocationStrategy}],

@@ -15,23 +15,17 @@ export class ChatService {
   public msg = [];    
 
   initializeWebSocketConnection() {
-    
     SockJS = new SockJS("http://localhost:8089/SpringMVC/ws");
     this.stompClient = Stomp.over(SockJS);
     console.log("Service chat");
   }
-
-  
-
 
    sendMessage(input: any,msg:any) {   
     console.log('connected to WS');
         if (!msg) {
             return;
         }
-      this.stompClient.send("/app/chat", {}, JSON.stringify(msg));
-
-     
+      this.stompClient.send("/app/chat", {}, JSON.stringify(msg));     
     }
 
     getMessages(sender:any , recipient:any) {

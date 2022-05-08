@@ -18,6 +18,7 @@ export class ConversationComponent implements OnInit {
   stompClient: any;
   date: any;
    msg:any = [];
+   subscription : any;
 
    // entrer
    idUser = 1 ; 
@@ -39,12 +40,10 @@ export class ConversationComponent implements OnInit {
     this.stompClient = this.chatService.stompClient;
     console.log("--------------4---------------",this.stompClient);
    this.sender.userName = "amine";
-   this.sender.firstName= "amine";
    console.log("--------------5---------------",this.sender.userName);
 
 
    //this.recipient.userName="amine";
-   this.recipient.firstName=this.recipient.userName;
    this.stompClient.connect({}, () => {
      console.log("coooo");
       this.connect();
@@ -62,7 +61,7 @@ export class ConversationComponent implements OnInit {
 
       this.loadChat();
 
-      this.stompClient.subscribe('/user/'+this.recipient.userName+'/queue/message', (message:any) => {
+    this.subscription =  this.stompClient.subscribe('/user/'+this.recipient.userName+'/queue/message', (message:any) => {
       if (message.body) {
         this.msg.push(JSON.parse(message.body));
       }});
@@ -74,15 +73,6 @@ export class ConversationComponent implements OnInit {
     //-------------------------------------------------------
 
 
-   /*  errorCallBack(error:any) {
-      var that = this;
-      console.log("errorCallBack -> " + error)
-      setTimeout(() => {
-          that.connect();
-      }, 1000);
-  } */
-
-       //-------------------------------------------------------
     sendMessage() {     
       console.log('connected to WS');
          
@@ -93,8 +83,6 @@ export class ConversationComponent implements OnInit {
           const msg = {
             senderId: this.sender.userName,
             recipientId: this.recipient.userName,
-            senderName:  this.sender.firstName,
-            recipientName:  this.recipient.firstName,
             content: this.inputMsg,
             timestamp: new Date(),
            };
@@ -129,8 +117,22 @@ export class ConversationComponent implements OnInit {
 
     chatWith(user:any){
     // this.stompClient.disconnect();
-      this.router.navigate(['chat', user]);
+      this.msg.splice(0);
+      console.log("new msg list",this.msg);
+      this.subscription.unsubscribe();
+      this.connect();
+      this.router.navigate(['home/conversation', user]);
     }
+
+   /*  async chatWith(user:any){
+      // this.stompClient.disconnect();
+        this.msg.splice(0);
+        console.log("new msg list",this.msg);
+        this.chatContent="";
+        this.connect();
+        await new Promise(f => setTimeout(f, 5000));
+        this.router.navigate(['chat', user]);
+      } */
 
     
     

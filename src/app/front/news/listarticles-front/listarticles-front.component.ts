@@ -37,7 +37,7 @@ export class ListarticlesFrontComponent implements OnInit {
   
   articleDetails(article: Article){
     this.viewsInc(article);
-    this.router.navigate(['article', article.idArticle]);
+    this.router.navigate(['/home/article', article.idArticle]);
   }
 
   convertDate(date: any){

@@ -23,6 +23,6 @@ export class ContactListComponent implements OnInit {
 
   chatWith(user:any){
     // this.stompClient.disconnect();
-      this.router.navigate(['chat', user]);
+      this.router.navigate(['home/chat', user]);
     }
 }

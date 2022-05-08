@@ -40,7 +40,7 @@ export class FollowingarticlesFrontComponent implements OnInit {
   }
   
   articleDetails(id: number){
-    this.router.navigate(['article', id]);
+    this.router.navigate(['/home/article', id]);
   }
 
   convertDate(date: any){

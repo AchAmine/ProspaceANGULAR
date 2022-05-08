@@ -25,7 +25,8 @@ export class ChatComponent implements OnInit {
    contactList :any;
    public isEmojiPickerVisible: boolean;
   
-  constructor(private chatService : ChatService,public datepipe: DatePipe,private router: Router,private route: ActivatedRoute) { }
+  constructor(private chatService : ChatService,public datepipe: DatePipe,private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getContacts();
@@ -40,12 +41,10 @@ export class ChatComponent implements OnInit {
     this.stompClient = this.chatService.stompClient;
     console.log("--------------4---------------",this.stompClient);
    this.sender.userName = "essia";
-   this.sender.firstName= "essia";
    console.log("--------------5---------------",this.sender.userName);
 
 
    //this.recipient.userName="amine";
-   this.recipient.firstName=this.recipient.userName;
    this.stompClient.connect({}, () => {
      console.log("coooo");
       this.connect();
@@ -75,15 +74,6 @@ export class ChatComponent implements OnInit {
     //-------------------------------------------------------
 
 
-   /*  errorCallBack(error:any) {
-      var that = this;
-      console.log("errorCallBack -> " + error)
-      setTimeout(() => {
-          that.connect();
-      }, 1000);
-  } */
-
-       //-------------------------------------------------------
     sendMessage() {     
       console.log('connected to WS');
          
@@ -94,8 +84,6 @@ export class ChatComponent implements OnInit {
           const msg = {
             senderId: this.sender.userName,
             recipientId: this.recipient.userName,
-            senderName:  this.sender.firstName,
-            recipientName:  this.recipient.firstName,
             content: this.inputMsg,
             timestamp: new Date(),
            };
@@ -132,8 +120,9 @@ export class ChatComponent implements OnInit {
     // this.stompClient.disconnect();
       this.msg.splice(0);
       console.log("new msg list",this.msg);
+      this.subscription.unsubscribe();
       this.connect();
-      this.router.navigate(['chat', user]);
+      this.router.navigate(['home/chat', user]);
     }
 
    /*  async chatWith(user:any){

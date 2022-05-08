@@ -109,17 +109,17 @@ export class ArticledetailsFrontComponent implements OnInit {
   }
 
   Cancel() {
-    this.router.navigate(['/article',this.id]);
+    this.router.navigate(['home/article',this.id]);
   }
 
 
   //
   editArticleBack(article: any){
-    this.router.navigate(['editarticle', article]);
+    this.router.navigate(['home/editarticle', article]);
   }
 
   editArticleFront(article: any){
-    this.router.navigate(['editarticle', article]);
+    this.router.navigate(['home/editarticle', article]);
   }
 
   deleteArticle(idArticle : any){

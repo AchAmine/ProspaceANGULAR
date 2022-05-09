@@ -42,7 +42,7 @@ listTopics?:any;
 
  
   convertDate(date: any){
-    return this.date = this.datepipe.transform(date, 'yyyy-MM-dd HH:mm');
+    return this.date = this.datepipe.transform(date, 'yyyy-MM-dd ');
    }
 
 
@@ -81,8 +81,6 @@ listTopics?:any;
 //     this.topics = data;
 //   console.log(this.topics)});
 // }
-
-
 
 
 
@@ -142,4 +140,21 @@ deleteTopic(idTopic : any){
 
 
 
+
+
+////////////////////////
+topicDetails(topic: Topic){
+  this.viewsInc(topic);
+  this.router.navigate(['topic',topic.idTopic])  ;    
+}
+
+viewsInc(topic: Topic){
+  topic.views++;
+  console.log("views b4 service call",topic);
+  this.topicService.editTopic(topic).subscribe(
+    (res: any)=> { this.listTopics=res; console.log("topic views : ",res.views) ;
+    console.log("topic  : ",res)
+    }
+  );
+}
 }

@@ -75,13 +75,28 @@
                                  <li>
                                    <a class="date">{{ convertDate(topic.creationDate) }}</a> &nbsp;
                                  </li>
+                                 
                                  <li><a href="#" text-align="right">&nbsp;<i class="fa fa-user">&nbsp;</i> {{topic.user.userName}} </a></li>&nbsp;
                               </ul>
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <li *ngIf="idUser == topic.user.idUser">
+                                 <a (click)="openEditForm(topic)"><i class="fa fa-edit float-end "></i></a>
+                                 &nbsp;
+                                 <a (click)="deleteTopic(topic.idTopic)"><i class="fa fa-trash float-end "></i></a>
+                              </li>
                            </div>
+                           
                         </div>
+                        
                      </div>
+                     <div class="float-sm-right">
+                        <a class="float-sm-right"  (click)="topicDetails(topic)">
+                            <button class="btn btn-primary float-right-0 btn btn-primary btn-sm text-white w-10 btn_1 boxed-btn"
+                            type="submit">open</button>                      
+                                      </a>
+                   </div>
                      <br>
-                     <!-- <div class="desc">
+                     <!-- <div class="desc"> 
                         <h2> {{topic.title}}</h2>
                         
                         <p class="topic">
@@ -100,11 +115,11 @@
                   </div>
                   <div class="col-sm-4 text-center my-2 my-sm-0">
                   </div>
-                  <li *ngIf="idUser == topic.user.idUser">
-                     <a (click)="openEditForm(topic)"><i class="fa fa-edit"></i></a>
+                  <!-- <li *ngIf="idUser == topic.user.idUser">
+                     <a (click)="openEditForm(topic)"><i class="fa fa-edit float-end "></i></a>
                      &nbsp;
-                     <a (click)="deleteTopic(topic.idTopic)"><i class="fa fa-trash"></i></a>
-                  </li>
+                     <a (click)="deleteTopic(topic.idTopic)"><i class="fa fa-trash float-end "></i></a>
+                  </li> -->
                </div>
                
                <!-- EDIT topic SECTION -->
@@ -131,11 +146,7 @@
                               <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
                                  name="cancel"  (click)="Cancel()">Cancel</button> 
                               <div style="float:right;">
-                                 <!-- <button (click)="isEmojiPickerVisible = !isEmojiPickerVisible;">😀</button> -->
-                                 <br>
-                                 <!-- <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible"  (emojiSelect)="addEmoji($event)" 
-                                    title="Choose your emoji">
-                                    </emoji-mart> -->
+                                
                               </div>
                            </div>
                         </div>

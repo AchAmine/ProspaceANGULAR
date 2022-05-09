@@ -12,6 +12,7 @@ import { AddTopicFrontComponent } from './front/forum/add-topic-front/add-topic-
 import { ListSectionsFrontComponent } from './front/forum/list-sections-front/list-sections-front.component';
 import { ListTopicsFrontComponent } from './front/forum/list-topics-front/list-topics-front.component';
 import { SectionDetailsComponent } from './front/forum/section-details/section-details.component';
+import { TopicDetailsFrontComponent } from './front/forum/topic-details-front/topic-details-front.component';
 import { ArticledetailsFrontComponent } from './front/news/articledetails-front/articledetails-front.component';
 import { ListarticlesFrontComponent } from './front/news/listarticles-front/listarticles-front.component';
 
@@ -30,7 +31,9 @@ const routes: Routes = [
   {path: 'listSectionsFront', component: ListSectionsFrontComponent}, 
   {path:'addTopic',component:AddTopicFrontComponent},
   {path: 'listTopicsFront/ :id',component:ListTopicsFrontComponent},
-  {path:'section/:id',component:SectionDetailsComponent}
+  {path:'section/:id',component:SectionDetailsComponent},
+  {path:'topic/:id',component:TopicDetailsFrontComponent}
+
 
 
 ];

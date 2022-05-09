@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TopicService {
+  private baseUrl = 'http://localhost:8089/SpringMVC/Topic'
 
   constructor(private http: HttpClient) { }
 
@@ -27,4 +28,11 @@ export class TopicService {
     return this.http.get(`http://localhost:8089/SpringMVC/Topic/retrieve-topic/${id}`);
   }
   
+  public viewInc(topic: any) 
+  {
+   return  this.http.put(`${this.baseUrl}/viewinc`,topic);
+  }
+
+
+
 }

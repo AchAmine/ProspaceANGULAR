@@ -59,4 +59,8 @@ this.router.navigate(['section',section.idSection])  ;
       this.section_value = `${this.section_value}${event.emoji.native}`;
       this.isEmojiPickerVisible = false;
    }
-}
+
+
+
+
+  }

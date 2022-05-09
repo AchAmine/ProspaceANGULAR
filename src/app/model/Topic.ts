@@ -9,7 +9,7 @@ export class Topic{
     description?: string;
     creationDate?: Date;
    
-    views ?: number;
+    views : number;
   // closed ? : boolean;
 
     section?: Section;

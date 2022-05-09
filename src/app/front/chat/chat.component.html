@@ -58,7 +58,7 @@
      </div>
      <div class="chat-panel" >
         <ng-container *ngFor="let value of msg">
-       <div class="row no-gutters" *ngIf="value.recipientId == sender.userName">
+       <div class="row no-gutters" *ngIf="value.recipientId == user.userName">
        <div class="col-md-3">
          <div class="chat-bubble chat-bubble--left">
            {{value.content}}

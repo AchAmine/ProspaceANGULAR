@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Article_Comment } from 'src/app/model/Article_Comment';
 import { ArticleService } from 'src/app/service/article.service';
 import { ArticlecommentsService } from 'src/app/service/articlecomments.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-articledetails-front',
@@ -12,7 +13,7 @@ import { ArticlecommentsService } from 'src/app/service/articlecomments.service'
 })
 export class ArticledetailsFrontComponent implements OnInit {
 
-  idUser =1;
+  user: any;
   // id parametre
   id: number;
   // objet article contenant les details
@@ -31,11 +32,11 @@ export class ArticledetailsFrontComponent implements OnInit {
   public isEmojiPickerVisible: boolean;
 
   constructor(private articleService: ArticleService, private route: ActivatedRoute,private router: Router,
-    private commentService: ArticlecommentsService,public datepipe: DatePipe) { }
+    private commentService: ArticlecommentsService,private userService: UserService,public datepipe: DatePipe) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    
+    this.userService.getConnectedUser().subscribe(data => this.user = data);
     // recuperation de l'article avec id 
     this.articleService.getArticle(this.id)
       .subscribe(data => { this.article = data; });

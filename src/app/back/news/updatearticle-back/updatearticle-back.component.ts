@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Article } from 'src/app/model/Article';
 import { ArticleService } from 'src/app/service/article.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-updatearticle-back',
@@ -15,7 +16,7 @@ export class UpdatearticleBackComponent implements OnInit {
   id: number;
   article: Article = new Article();
   form: FormGroup;
-  constructor(private articleService: ArticleService,private router: Router,private route: ActivatedRoute,public fb: FormBuilder) { }
+  constructor(private articleService: ArticleService,private userService: UserService,private router: Router,private route: ActivatedRoute,public fb: FormBuilder) { }
 
   ngOnInit(): void {
     console.log('test');

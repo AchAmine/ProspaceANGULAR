@@ -12,15 +12,23 @@ import { ArticlecommentsService } from 'src/app/service/articlecomments.service'
 })
 export class ArticledetailsFrontComponent implements OnInit {
 
+  idUser =1;
+  // id parametre
   id: number;
+  // objet article contenant les details
   article: any;
   comments: any;
-  user: any;
+  //user: any;
   nbrComments: any;
   date: any;
-  comment_value: any;
+  // commentaire saisie par l'utilisateur
+  comment_value: any='';
+  commentToEdit:Article_Comment;
+  hide=false;
+  // instance commentaire a ajouter
   newcomment: Article_Comment;
-  
+
+  public isEmojiPickerVisible: boolean;
 
   constructor(private articleService: ArticleService, private route: ActivatedRoute,private router: Router,
     private commentService: ArticlecommentsService,public datepipe: DatePipe) { }
@@ -34,6 +42,8 @@ export class ArticledetailsFrontComponent implements OnInit {
 
     // recuperation des commentaires de l'article avc id
     this.getComments(this.id);
+
+    
   }
 
   getComments(idComment: any){
@@ -60,8 +70,64 @@ export class ArticledetailsFrontComponent implements OnInit {
    return this.date = this.datepipe.transform(date, 'yyyy-MM-dd HH:mm');
   }
 
+  getDateMonth(date:any){
+    let months: Array<string>;
+    months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    return months[date.getMonth()];
+
+  }
+
+  deleteComment(idComment : any){
+    this.commentService.deleteComment(idComment).subscribe(() => this.getComments(this.id))
+  }
+
+
   ToArticles() {
     this.router.navigate(['/articles']);
   }
 
+  public addEmoji(event: any) {
+    this.comment_value = `${this.comment_value}${event.emoji.native}`;
+    this.isEmojiPickerVisible = false;
+ }
+
+  openEditForm(Comment:Article_Comment) {
+    console.log("comment : ",Comment);
+    this.commentToEdit = Comment;
+    console.log("new edit vallue : ",this.commentToEdit);
+  }
+
+  editComment(){
+    console.log("Before edit",this.commentToEdit);   
+    this.commentService.editComment(this.commentToEdit).subscribe(
+     data => {
+        console.log("after edit 2",data);
+        this.commentToEdit = new Article_Comment();
+        this.hide = true;
+      }
+    );
+  }
+
+  Cancel() {
+    this.router.navigate(['home/article',this.id]);
+  }
+
+
+  //
+  editArticleBack(article: any){
+    this.router.navigate(['home/editarticle', article]);
+  }
+
+  editArticleFront(article: any){
+    this.router.navigate(['home/editarticle', article]);
+  }
+
+  deleteArticle(idArticle : any){
+    if (window.confirm('Are sure you want to delete this Article ?')) {
+    this.articleService.deleteArticle(idArticle).subscribe(() => {
+      this.router.navigate(['/Articlesnav']);
+    console.log("DELETE ID:",idArticle);}
+    )
+    }
+  }
 }

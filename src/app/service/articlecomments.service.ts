@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ArticlecommentsService {
 
+  private host = 'http://localhost:8089/SpringMVC'
   private baseUrl = 'http://localhost:8089/SpringMVC/Article_comments'
   constructor(private http: HttpClient) { }
 
@@ -25,6 +26,10 @@ export class ArticlecommentsService {
    return  this.http.put(`${this.baseUrl}/modify-comment`,comment)
   }
 
+
+  public addFile(file: any){
+    return this.http.post(`${this.host}/profanity/add-badwords/`,file);
+  }
   
 
 }

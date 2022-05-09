@@ -1,0 +1,23 @@
+.notifier {
+    position: relative;
+    display: inline-block;
+}
+.bell {
+    font-size: 18px;
+    color: #fff;
+    transition: 0.3s;
+}
+.bell:hover {
+    color: #ef476f;}
+
+.notifier.green .badge {
+    background: #06d6a0;
+}
+.notifier.green .bell:hover {
+    color: #06d6a0;
+}
+.notifier.new .badge {
+    animation: pulse 2s ease-out;
+    animation-iteration-count: infinite;
+}
+

@@ -33,15 +33,19 @@ export class ListarticlesBackComponent implements OnInit {
     });
   }
   deleteArticle(idArticle : any){
-    this.articleService.deleteArticle(idArticle).subscribe(() => this.getAllArticles())
+    if (window.confirm('Are sure you want to delete this Article ?')) {
+    this.articleService.deleteArticle(idArticle).subscribe(() => {this.getAllArticles();
+    console.log("DELETE ID:",idArticle);}
+    )
+    }
   }
 
   editArticle(article: any){
-    this.router.navigate(['editarticle', article]);
+    this.router.navigate(['dashboard/editarticle', article]);
   }
 
   articleDetails(id: number){
-    this.router.navigate(['articledetails', id]);
+    this.router.navigate(['dashboard/articledetails', id]);
   }
 
   convertDate(date: any){

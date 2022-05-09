@@ -1,22 +1,23 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddarticleBackComponent } from './back/news/addarticle-back/addarticle-back.component';
-import { ArticledetailsBackComponent } from './back/news/articledetails-back/articledetails-back.component';
-import { ListarticlesBackComponent } from './back/news/listarticles-back/listarticles-back.component';
-import { UpdatearticleBackComponent } from './back/news/updatearticle-back/updatearticle-back.component';
-import { FrontindexComponent } from './common/front/frontindex/frontindex.component';
-import { ArticledetailsFrontComponent } from './front/news/articledetails-front/articledetails-front.component';
-import { ListarticlesFrontComponent } from './front/news/listarticles-front/listarticles-front.component';
+import { BackindexComponent } from './common/back/backindex/backindex.component';
+import { FrontmenuComponent } from './common/front/frontmenu/frontmenu.component';
 
 const routes: Routes = [
-  {path:'home', component: FrontindexComponent},
-  {path: 'listarticles', component: ListarticlesBackComponent},
-  {path: 'addarticle', component: AddarticleBackComponent},
-  {path: 'articles', component: ListarticlesFrontComponent},
-  {path: 'article/:id', component: ArticledetailsFrontComponent},
-  {path: 'editarticle/:id', component: UpdatearticleBackComponent},
-  {path: 'articledetails/:id' , component: ArticledetailsBackComponent}
-];
+  {
+    path: 'home', 
+    component: FrontmenuComponent,
+    children: [{
+    path: '', loadChildren:() => import('./front/front/front.module').then(m=> m.FrontModule)
+  }]
+},
+{
+  path: 'dashboard', 
+  component: BackindexComponent,
+  children: [{
+  path: '', loadChildren:() => import('./back/back/back.module').then(m=> m.BackModule)
+}]
+}]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

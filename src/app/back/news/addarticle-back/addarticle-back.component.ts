@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/model/Article';
 import { ArticleService } from 'src/app/service/article.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-addarticle-back',
@@ -16,7 +17,8 @@ export class AddarticleBackComponent implements OnInit {
   form: FormGroup;
   categories : any = [];
   category: any;
-  constructor(private articleService: ArticleService,private router: Router, public fb: FormBuilder) { }
+  user:any;
+  constructor(private articleService: ArticleService,private userService: UserService, private router: Router, public fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -24,7 +26,7 @@ export class AddarticleBackComponent implements OnInit {
       file: [null],
     });
     this.categories = ['News','Jokes','Facts'];
-
+    this.userService.getConnectedUser().subscribe(data => this.user = data)
   }
   getCategory(event: any) {
     if (event.target.value != 0) {
@@ -44,6 +46,7 @@ export class AddarticleBackComponent implements OnInit {
     console.log(article);
     const formData = new FormData();
     article.type = this.category;
+    article.user = this.user;
     formData.append('file', this.form.get('file')?.value);
     formData.append('article', JSON.stringify(article));
     this.articleService.addArticle(formData).subscribe(

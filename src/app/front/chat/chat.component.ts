@@ -3,6 +3,7 @@ import { Component, OnInit, SimpleChange } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/User';
 import { ChatService } from 'src/app/service/chat.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-chat',
@@ -13,7 +14,7 @@ export class ChatComponent implements OnInit {
 
   inputMsg ="";
   chatContent="";
-  sender = new User(); //sender:any;
+  user : any //sender:any;
   recipient = new User(); //recipient:any;
   stompClient: any;
   date: any;
@@ -21,14 +22,15 @@ export class ChatComponent implements OnInit {
    subscription : any;
 
    // entrer
-   idUser = 2 ; 
+   
    contactList :any;
    public isEmojiPickerVisible: boolean;
   
-  constructor(private chatService : ChatService,public datepipe: DatePipe,private router: Router,
+  constructor(private chatService : ChatService,private userService: UserService,public datepipe: DatePipe,private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.userService.getConnectedUser().subscribe(data => this.user = data)
     this.getContacts();
     console.log("--------------1---------------");
     this.route.paramMap.subscribe(res=>
@@ -40,8 +42,8 @@ export class ChatComponent implements OnInit {
     this.chatContent="";
     this.stompClient = this.chatService.stompClient;
     console.log("--------------4---------------",this.stompClient);
-   this.sender.userName = "essia";
-   console.log("--------------5---------------",this.sender.userName);
+   this.user.userName = "essia";
+   console.log("--------------5---------------",this.user.userName);
 
 
    //this.recipient.userName="amine";
@@ -58,7 +60,7 @@ export class ChatComponent implements OnInit {
     connect(){
       console.log("connected");
       console.log("recipient : ",this.recipient.userName);
-      console.log("sender : ",this.sender.userName);
+      console.log("user : ",this.user.userName);
 
       this.loadChat();
 
@@ -69,7 +71,7 @@ export class ChatComponent implements OnInit {
       }
         //-------------------------------------------------------
     loadChat(){
-      this.chatService.getMessages(this.sender.userName,this.recipient.userName).subscribe(data=> this.msg = data);
+      this.chatService.getMessages(this.user.userName,this.recipient.userName).subscribe(data=> this.msg = data);
     }
     //-------------------------------------------------------
 
@@ -82,7 +84,7 @@ export class ChatComponent implements OnInit {
           }
          
           const msg = {
-            senderId: this.sender.userName,
+            senderId: this.user.userName,
             recipientId: this.recipient.userName,
             content: this.inputMsg,
             timestamp: new Date(),
@@ -104,7 +106,7 @@ export class ChatComponent implements OnInit {
      }
 
      countNewMsgs(recipient:any){
-       return this.chatService.countNewMsgs(this.sender.userName,recipient).subscribe();
+       return this.chatService.countNewMsgs(this.user.userName,recipient).subscribe();
      }
 
      
@@ -113,7 +115,7 @@ export class ChatComponent implements OnInit {
     }
 
     getContacts() {
-      this.chatService.getContactList(this.idUser).subscribe(data=> this.contactList = data);
+      this.chatService.getContactList(this.user.idUser).subscribe(data=> this.contactList = data);
     }
 
     chatWith(user:any){

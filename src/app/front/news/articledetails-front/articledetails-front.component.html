@@ -20,7 +20,7 @@
                   <a><i class="fa fa-trash"></i></a>
               </li>
                </div> -->
-               <div class="float-right" *ngIf="idUser == article.user.idUser">
+               <div class="float-right" *ngIf="user.idUser == article.user.idUser">
                <div class="dropdown">
                   <button type="button" class="btn btn-outline-info dropdown-toggle" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     
@@ -96,7 +96,7 @@
                   </div>
                   
                   
-                  <li *ngIf="idUser == comment.user.idUser">
+                  <li *ngIf="user.idUser == comment.user.idUser">
                      <a (click)="openEditForm(comment)"><i class="fa fa-edit"></i></a>
                      &nbsp;
                      <a (click)="deleteComment(comment.idComment)"><i class="fa fa-trash"></i></a>

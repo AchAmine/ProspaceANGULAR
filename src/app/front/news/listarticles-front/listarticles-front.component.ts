@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ArticleType } from 'src/app/enum/ArticleType.enum';
 import { Article } from 'src/app/model/Article';
 import { ArticleService } from 'src/app/service/article.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-listarticles-front',
@@ -25,7 +26,7 @@ export class ListarticlesFrontComponent implements OnInit {
   url:any;
 
   articles: Observable<Article[]>
-  constructor(public articleService :ArticleService, private router: Router,public datepipe: DatePipe) { }
+  constructor(public articleService :ArticleService,private userService: UserService, private router: Router,public datepipe: DatePipe) { }
 
   ngOnInit(): void {
     this.getAllArticles();

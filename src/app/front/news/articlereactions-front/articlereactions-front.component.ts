@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ReactionType } from 'src/app/enum/ReactionType.enum';
 import { Reaction } from 'src/app/model/Reaction';
 import { ArticlereactionService } from 'src/app/service/articlereaction.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-articlereactions-front',
@@ -12,7 +13,7 @@ import { ArticlereactionService } from 'src/app/service/articlereaction.service'
 export class ArticlereactionsFrontComponent implements OnInit {
 
   // id of user 
-  idUser = 1;
+  user: any;
   // id de l'article
   idArticle: any;
   reaction = new Reaction();
@@ -31,9 +32,10 @@ export class ArticlereactionsFrontComponent implements OnInit {
   // check currentReaction of a user 
   currentReaction: any;
 
-  constructor(private reactionService : ArticlereactionService, private route: ActivatedRoute) { }
+  constructor(private reactionService : ArticlereactionService,private userService: UserService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.userService.getConnectedUser().subscribe(data => this.user = data)
     this.idArticle = this.route.snapshot.params['id'];
     // reaction 
     this.emojiList = ['Like', 'Love', 'Funny'];
@@ -93,7 +95,7 @@ export class ArticlereactionsFrontComponent implements OnInit {
 
     // if user hasnt reacted yet :
     if (!this.currentReaction) {
-    this.reactionService.addReaction(this.idArticle,this.idUser,this.reaction).subscribe(
+    this.reactionService.addReaction(this.idArticle,this.user.idUser,this.reaction).subscribe(
       () => {
         console.log("NEW REACTION : ",this.reaction.type);
         console.log(this.reaction);
@@ -114,7 +116,7 @@ export class ArticlereactionsFrontComponent implements OnInit {
   }
   
   getCurrentReaction(){
-    this.reactionService.getUserReaction(this.idArticle,this.idUser).subscribe(data => {
+    this.reactionService.getUserReaction(this.idArticle,this.user.idUser).subscribe(data => {
       this.currentReaction = data;
       console.log("Current REACTION : ",this.currentReaction);
     })

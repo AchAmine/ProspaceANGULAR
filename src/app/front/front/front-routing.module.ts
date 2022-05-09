@@ -7,9 +7,12 @@ import { ConversationComponent } from '../chat/conversation/conversation.compone
 import { ArticledetailsFrontComponent } from '../news/articledetails-front/articledetails-front.component';
 import { ArticlesNavComponent } from '../news/articles-nav/articles-nav.component';
 import { FollowingarticlesFrontComponent } from '../news/followingarticles-front/followingarticles-front.component';
+import { SigninPageComponent } from '../user/signin-page/signin-page.component';
 
 const routes: Routes = [
+  
   {path:'', component: FrontindexComponent},
+  
   {path: 'article/:id', component: ArticledetailsFrontComponent},
   {path: 'chat/:user', component: ChatComponent},
   {path: 'conversation/:user', component: ConversationComponent},

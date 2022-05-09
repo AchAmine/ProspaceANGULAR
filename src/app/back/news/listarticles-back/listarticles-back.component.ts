@@ -22,6 +22,7 @@ export class ListarticlesBackComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllArticles();;
+    console.log(this.listArticles);
   }
   getAllArticles(){
     this.articleService.getAllArticles().subscribe(res=> { this.listArticles=res; console.log(res);})

@@ -4,7 +4,7 @@
    <div class="blog_area section-padding">
       <section class="blog_area section-padding">
 
-      <div class="ibox-content m-b-sm border-bottom">
+      <div class="shadow-lg p-3 mb-5 bg-white rounded">
          <div class="single-post">
             <div class="col-lg-8 mb-5 mb-lg-0">
                <div class="container">
@@ -40,7 +40,11 @@
          </div>
       </div>
    </section>
-   <br><br><br>
+   <br><br>
+
+
+
+
       <div class="topic-form" >
          <h5> add a new topic..</h5>
          <form class="form-contact topic-form" action="#" id="topicform" #f="ngForm">
@@ -66,15 +70,6 @@
               <div class="container2">
                <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
               name="comment" (click)="addTopic()">confirm</button>
-
-<!-- 
-              <div style="float:right;">
-              <button (click)="isEmojiPickerVisible = !isEmojiPickerVisible;">😀</button>
-              <br>
-              <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible"  (emojiSelect)="addEmoji($event)" 
-              title="Choose your emoji">
-             </emoji-mart>
-             </div> -->
              </div>
 
 
@@ -82,7 +77,36 @@
          </form>
       </div>
    </div>
-
+   <!-- <div class="modal fade" id="threadModal" tabindex="-1" role="dialog" aria-labelledby="threadModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+              <form>
+                  <div class="modal-header d-flex align-items-center bg-primary text-white">
+                      <h6 class="modal-title mb-0" id="threadModalLabel">add a new topic..</h6>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">×</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                     <label for="exampleInputName1">Title</label>
+                     <input class="form-control" name="title" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="title" [(ngModel)] ="topic.title
+                     ">                        
+                  </div>
+                  <div class="form-group">
+                     <label for="exampleTextarea1">Description</label>
+                      <input class="form-control" name="description" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="description" [(ngModel)] ="topic.description
+                     ">
+                  </div>
+                  <div class="modal-footer">
+                     <button type="submit" class="btn btn-light"  data-dismiss="modal"
+                                 name="cancel"   (click)="cancel()">Cancel</button> 
+                      <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
+                  name="comment" (click)="addTopic()">confirm</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div> -->
    
       <div  class="shadow p-3 mb-5 bg-white rounded" *ngFor="let topic of topics">
       

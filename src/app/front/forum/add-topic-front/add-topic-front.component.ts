@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Section } from 'src/app/model/Section';
 import { Topic } from 'src/app/model/Topic';
 import { SectionService } from 'src/app/service/section.service';
@@ -12,35 +12,43 @@ import { TopicService } from 'src/app/service/topic.service';
   styleUrls: ['./add-topic-front.component.css']
 })
 export class AddTopicFrontComponent implements OnInit {
-  listTopics?: any;
-  listSections?:any;
-  topic: Topic = new Topic();
-  section: Section=new Section();
+  idUser =1;
+  // id parametre
+  id: number;
+
+  section: any;
+  topics: any;
+  //user: any;
+  nbrComments: any;
+  date: any;
+  // commentaire saisie par l'utilisateur
+  topic_value: any='';
+  hide=false;
+  // instance commentaire a ajouter
+  topic: Topic=new Topic;
+
   form: boolean=false;
-  idUser=1;
-  
 
    constructor(private topicService:TopicService,private sectionService:SectionService,
-    private router: Router, public fb: FormBuilder) { }
+    private router: Router, public fb: FormBuilder,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
  }
+ 
 
-//   getAllSections(){
-//     this.sectionService.getAllSections().subscribe(res=>this.listSections=res)
-//   }
-//   getAllTopics(){
-//     this.topicService.getAllTopics().subscribe(res=>this.listTopics=res)
-//   }
-// addTopic(topic: any) {
-//   this.topicService.addTopic(topic,this.section.idSection,this.idUser).subscribe(() => {
-//    this.router.navigate(['/listTopics']);
-//     this.form = false;
-//   });
-// }
+ addTopic(topic: any) {
+  this.topicService.addTopic(topic,this.route.snapshot.params.id).subscribe(() => {
+    // this.getAllQuiz();
+    this.router.navigate([`/section/:id${this.route.snapshot.params.id}`]);
+     this.form = false;
+   });
+}
 
-// Cancel() {
-//   this.router.navigate(['/listTopics']);
-// }
+getTopics(){
+  this.topicService.getAllTopics(this.id).subscribe();  }
 
+
+  Cancel() {
+    this.router.navigate([`/section/${this.route.snapshot.params.id}`]);
+  }
 }

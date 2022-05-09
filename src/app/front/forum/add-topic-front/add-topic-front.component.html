@@ -1,56 +1,26 @@
-<!-- 
-<div class="bradcam_area breadcam_bg overlay2"></div>        
-<section class="blog_area section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mb-5 mb-lg-0">
-                <!-- <div class="blog_left_sidebar" *ngFor="let article of listArticles">
-                 </div> -->
-
-                 <!-- <h4 class="card-title">Post new topic..</h4>
-                 <form #form="ngForm">
-                    <div class="form-group">
-                          
-                        <select name="section" class="form-control">
-                            <option>choose a section</option>
-                            <option value="*ngFor= let section of listSections">
-                                {{section.name}} 
-                            </option>
-                        </select>
-                    </div>
-                       
-                    <div class="form-group">
-                      <label for="exampleInputName1">title</label>
-                      <input class="form-control" name="name" ngModel [ngModelOptions]="{standalone: true}" 
-                      
-                    type="text"  placeholder="title" 
-                    required [(ngModel)] ="topic.title"
-                    #title="ngModel"
-                    [(ngModel)] ="topic.title">
-                    </div>
-              
-                    <div class="form-group">
-                      <label for="exampleTextarea1">Description</label>
-                      <input class="form-control" rows="4" ngModel [ngModelOptions]="{standalone : true}" 
-                      placeholder="Description..."  
-                      name="description"
-                      type="text"
-                      required [(ngModel)] ="topic.description"
-                       #description="ngModel"
-                      
-                      />
-                        
+<div class="bradcam_area breadcam_bg overlay2">
+         
+</div>
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+       <div class="card">
+          <div class="card-body">
+             <h4 class="card-title">Add new topic..</h4>
+             <form #form="ngForm">
+             <div class="form-group">
+                <label for="exampleInputName1">Title</label>
+                <input class="form-control" name="title" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="title" [(ngModel)] ="topic.title
+                ">
+             </div>
+             <div class="form-group">
+                <label for="exampleTextarea1">Description</label>
+                <input class="form-control" name="description" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="description" [(ngModel)] ="topic.description
+                ">
+             </div>
+             <!-- <button type="submit" class="btn btn-primary mr-2" (click)="addTopic(topic)"[disabled]="form.invalid">
+                Add</button> -->
+                <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
+                name="topic"  (click)="addTopic(topic)">Send</button>&nbsp;
+                 <button class="btn btn-light" (click)="Cancel()">Cancel</button>
+                </form>
           
-                    </div>
-                  
-                    <button type="submit" class="btn btn-primary mr-2" (click)="addTopic(topic)"[disabled]="form.invalid">
-        
-                   Add</button> -->
-                    <!-- <button class="btn btn-light" (click)="Cancel()">Cancel</button> -->
-                  <!-- </form>
-
-            </div>
-           
-        </div>
-    </div>
-</section> --> -->

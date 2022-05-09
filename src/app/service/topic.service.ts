@@ -11,8 +11,8 @@ export class TopicService {
   public getAllTopics(sectionid:any){
     return this.http.get(`http://localhost:8089/SpringMVC/Topic//retrieve-all-topics/${sectionid}`);
   } 
-  public addTopic(topic: any,userid: any,sectionid:any){
-    return this.http.post(`http://localhost:8089/SpringMVC/Topic//add-topic/${userid}/${sectionid}`,topic);
+  public addTopic(topic: any,sectionid:any){
+    return this.http.post(`http://localhost:8089/SpringMVC/Topic//add-topic/1/${sectionid}`,topic);
   }
 
   deleteTopic(idTopic : any){

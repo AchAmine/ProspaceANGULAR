@@ -16,7 +16,11 @@ import { SectionService } from 'src/app/service/section.service';
     section: Section = new Section();
     form: boolean=false;
     idUser=1;
+    section_value: any='';
+
   
+    public isEmojiPickerVisible: boolean;
+
   
     Sections: Observable<Section[]>
     constructor(private sectionService :SectionService, private router: Router,private route: ActivatedRoute) { }
@@ -47,4 +51,12 @@ import { SectionService } from 'src/app/service/section.service';
 this.router.navigate(['section',section.idSection])  ;    
      //this.router.navigate(['listTopicsFront', id]);
     }
+
+
+
+
+    public addEmoji(event: any) {
+      this.section_value = `${this.section_value}${event.emoji.native}`;
+      this.isEmojiPickerVisible = false;
+   }
 }

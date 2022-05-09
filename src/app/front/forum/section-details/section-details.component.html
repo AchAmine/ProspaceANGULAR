@@ -4,7 +4,7 @@
    <div class="blog_area section-padding">
       <section class="blog_area section-padding">
 
-      <div class="col-lg-8 posts-list">
+      <div class="ibox-content m-b-sm border-bottom">
          <div class="single-post">
             <div class="col-lg-8 mb-5 mb-lg-0">
                <div class="container">
@@ -40,28 +40,38 @@
    </section>
 
       <br><br>
-      &nbsp; &nbsp; <h4>{{ topics?.length || '0' }} topics</h4>
+      <!-- &nbsp; &nbsp; <h4>{{ topics?.length || '0' }} topics</h4> -->
+  <!-- <div class="example-button-row">
+    <button mat-raised-button>Basic</button></div> -->
+    <!-- <div class="text-left">
+      <a class="d-inline-block"   [routerLink]="['/addTopic']">
+          <button class="button -0 btn btn-primary btn-sm text-white w-10 btn_1 boxed-btn"
+          type="submit">Add new topic..</button>                      
+                    </a>
+ </div> -->
       <br><br>
-
-      <div  class="col-lg-8 mb-5 mb-lg-0" *ngFor="let topic of topics">
+<br>
+      <div  class="ibox-content m-b-sm border-bottom" *ngFor="let topic of topics">
             <div class="topic-list" >
                <div class="single-topic justify-content-between d-flex">
                   <div class="user justify-content-between d-flex">
                      <div class="thumb">
                         <!-- <img src="../../assets/img/comment/comment_3.png" alt=""> -->
                      </div>
+                     <br>
                      <div class="desc" >
                         <!-- <a class="d-inline-block" (click)="articleDetails(sect.idArticle)">
                            <h2>{{article.title}}</h2>
                            </a> -->
-                        <h2>{{topic.title}}</h2>
+
+                        <h2 >{{topic.title}}</h2>
                         <p class="topic">{{topic.description}}</p>
                         <div class="d-flex justify-content-between">
                            <div class="d-flex align-items-center">
                               <ul class="blog-info-link">
                                  <!-- <li><a href="#"><i class="fa fa-thumbs-up"></i> 15 </a></li>
-                                    <li><a ><i class="fa fa-comments"></i> 05 Comments</a></li>
-                                    <li><a ><i class="fa fa-clock-o"></i> {{convertDate(article.createdAt) }} </a></li> -->
+                                    <li><a ><i class="fa fa-comments"></i> 05 Comments</a></li>-->
+                                    <!-- <li><a ><i class="fa fa-clock-o"></i> {{convertDate(topic.creationDate) }} </a></li>  -->
                                  <li>
                                    <a class="date">{{ convertDate(topic.creationDate) }}</a> &nbsp;
                                  </li>
@@ -70,6 +80,7 @@
                            </div>
                         </div>
                      </div>
+                     <br>
                      <!-- <div class="desc">
                         <h2> {{topic.title}}</h2>
                         
@@ -96,7 +107,7 @@
                   </li>
                </div>
                
-               <!-- EDIT COMMENT SECTION -->
+               <!-- EDIT topic SECTION -->
                <ng-container *ngIf="topic == topicToEdit">
                   <div class="comment-form">
                      <h4>Edit topic</h4>
@@ -105,9 +116,12 @@
                            <div class="row">
                               <div class="col-12">
                                  <div class="form-group" >
-                                    <input type="text" name="editTopic" id="editTopic" placeholder="Write Comment" required [(ngModel)]='topicToEdit.title'  /> 
+                                    <!-- <input type="text" name="editTopic" id="editTopic" placeholder="Write topic" required [(ngModel)]='topicToEdit.title'  />  -->
+                                      <input class="form-control" name="title" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="title" [(ngModel)] ="topic.title
+                        ">
+                     
                                     <textarea class="form-control w-20" name="editTopic" id="editTopic" cols="10" rows="4"
-                                    placeholder="Write Comment" required [(ngModel)]='topicToEdit.description' ></textarea>
+                                    placeholder="Write topic" required [(ngModel)]='topicToEdit.description' ></textarea>
                                  </div>
                               </div>
                            </div>
@@ -132,8 +146,64 @@
             </div>
       </div>
       
-      </div>
       
 
+
+
+
+
+
+
+<br><br><br>
+      <div class="topic-form" >
+         <h5> add a new topic..</h5>
+         <form class="form-contact topic-form" action="#" id="topicform" #f="ngForm">
+            <div class="row">
+               <div class="col-12">
+                  <div class="form-group">
+                     <div class="form-group">
+                        <label for="exampleInputName1">Title</label>
+                        <input class="form-control" name="title" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="title" [(ngModel)] ="topic.title
+                        ">                        
+                     </div>
+                     <div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                         <input class="form-control" name="description" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="description" [(ngModel)] ="topic.description
+                        ">
+                     </div>
+
+                    </div>
+               </div>
+               
+            </div>
+            <div class="form-group">
+              <div class="container2">
+               <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
+              name="comment" (click)="addTopic()">confirm</button>
+
+<!-- 
+              <div style="float:right;">
+              <button (click)="isEmojiPickerVisible = !isEmojiPickerVisible;">😀</button>
+              <br>
+              <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible"  (emojiSelect)="addEmoji($event)" 
+              title="Choose your emoji">
+             </emoji-mart>
+             </div> -->
+             </div>
+
+
+            </div>
+         </form>
+      </div>
+   </div>
+   
+   
+   
+   
+   
+   
+   
+   
+   
 </div>
 </section>

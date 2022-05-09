@@ -13,6 +13,8 @@ import { TopicService } from 'src/app/service/topic.service';
 })
 export class SectionDetailsComponent implements OnInit {
 idUser=1;
+topic: Topic=new Topic;
+
 id:number;
 section:any;
 topics:any;
@@ -22,6 +24,8 @@ date:any;
 listSections?: any;
 topicToEdit:Topic;
 hide=false;
+
+listTopics?:any;
 
 
 
@@ -36,28 +40,7 @@ hide=false;
   }
 
 
-  getTopics(idTopic:any){
-    this.topicService.getAllTopics(idTopic).subscribe(data=>{this.topics=data;
-    console.log(this.topics)}); 
-
-  }
-  addTopic(){
-    this.section=new Section();
-    this.newTopic= new Topic();
-    this.newTopic.description = this.topic_value.toString();
-    this.newTopic.title=this.topic_value.toString();
-    
-    console.log('comment_value',this.topic_value);
-    console.log('new comment:',this.newTopic);
-    this.topicService.addTopic(this.newTopic,this.section.sectionid,this.idUser).subscribe(
-      () => {
-        this.getTopics(this.id) ; 
-        this.topic_value='';
-      }
-
-    );
-  
-  }
+ 
   convertDate(date: any){
     return this.date = this.datepipe.transform(date, 'yyyy-MM-dd HH:mm');
    }
@@ -74,7 +57,6 @@ hide=false;
     this.router.navigate(['editSection', section]);
   }
 
-
     deleteSection(idSection : any){
     this.sectionService.deleteSection(idSection).subscribe(() => this.getAllSections())
   }
@@ -89,9 +71,20 @@ hide=false;
     console.log("new edit vallue : ",this.topicToEdit);
   }
 
-deleteTopic(idTopic : any){
-    this.topicService.deleteTopic(idTopic).subscribe(() => this.getTopics(this.id))
-  }
+// deleteTopic(idTopic : any){
+//   this.topicService.deleteTopic(idTopic).subscribe(() => this.getTopics(this.id))
+// }
+
+
+// getAllsectiontTopics(idTopic :any){
+//   this.topicService.getAllTopics(idTopic).subscribe(data => {
+//     this.topics = data;
+//   console.log(this.topics)});
+// }
+
+
+
+
 
   editTopic(){
     console.log("Before edit",this.topicToEdit);   
@@ -104,6 +97,49 @@ deleteTopic(idTopic : any){
     );
   }
   Cancel() {
-    this.router.navigate(['/section',this.id]);
+    this.router.navigate(['/section/',this.id]);
   }
+///////////////////////////////////
+
+addTopic(){
+  this.newTopic= new Topic();
+   this.newTopic.title = this.topic.title;
+   this.newTopic.description=this.topic.description;
+  // console.log('topic_value',this.topic_value);
+  // console.log('new topic:',this.newTopic);
+  this.topicService.addTopic(this.newTopic,this.section.idSection).subscribe(
+    () => {
+      this.getTopics(this.id) ; 
+      this.topic_value='';
+    }
+
+  );
+
+}
+
+
+getTopics(idTopic: any){
+  this.topicService.getAllTopics(idTopic).subscribe(data => { this.topics = data; 
+  console.log(this.topics)});
+}
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+getAlltopics(){
+  this.topicService.getAllTopics(this.id).subscribe(data => {
+    this.listTopics = data;})
+}
+
+deleteTopic(idTopic : any){
+  console.log("idTopic",idTopic);
+  this.topicService.deleteTopic(idTopic).subscribe(() => this.getAlltopics())
+}
+
+
+
+
 }

@@ -14,6 +14,8 @@ import { ResultQuizService } from 'src/app/service/result-quiz.service';
 })
 export class QuizpageFrontComponent implements OnInit {
   listQuiz?: any;
+  listTop3ResultQuiz?: any;
+
   quiz :  Quiz=new Quiz();
   form: boolean=false;
   listQuizQuestions? : any;
@@ -21,12 +23,13 @@ export class QuizpageFrontComponent implements OnInit {
 
   ResultQuiz:any;
   // user static
-  idUser = 2 ;
+  idUser = 1 ;
   constructor(private questionService :QuestionService,private quizService :QuizService,
     private resultQuizService :ResultQuizService, private router: Router,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getAllQuiz();;
+    console.log('REEESULT QUIIIZ 2',this.getResultQuiz(2));
 
   }
 
@@ -36,8 +39,11 @@ export class QuizpageFrontComponent implements OnInit {
   }
 
   getResultQuiz(idQuiz:any){
-    this.resultQuizService.getUserResult(idQuiz,this.idUser).subscribe(res=> { 
-      this.ResultQuiz=res; console.log(res);})
+    this.resultQuizService.getUserResult(idQuiz,this.idUser).subscribe();
   }
 
+  public Top3QuizResults(idQuiz:number){
+
+    this.resultQuizService.Top3QuizResults(idQuiz).subscribe(res=> { this.listTop3ResultQuiz=res; console.log(res);})
+}
 }

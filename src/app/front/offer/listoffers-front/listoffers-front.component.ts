@@ -12,15 +12,17 @@ import { RatingService } from 'src/app/service/rating.service';
   styleUrls: ['./listoffers-front.component.css']
 })
 export class ListoffersFrontComponent implements OnInit {
-
+  currentDate = new Date();
   listOffers?: any;
   offer :  Offer=new Offer();
   form: boolean=false;
   listQuizQuestions? : any;
   path:any;
   image:any;
+  p: number = 1;
+  searchTerm: string;
 
-currentRate : number=0;
+  currentRate: number;
 Ratings: Rating[] = [];
 Rating :  Rating=new Rating();
 
@@ -30,10 +32,27 @@ Rating :  Rating=new Rating();
 
   ngOnInit(): void {
     this.getAllOffers();
+    
+  
   }
   
   getAllOffers(){
-    this.offerService.getAllOffers().subscribe(res=> { this.listOffers=res; console.log(res);})
+    this.offerService.TriOffer().subscribe(res=> { this.listOffers=res; console.log(res);});
+
+   
+  }
+
+  getAvgRating(idoffer: number){
+
+   
+   return this.ratingService.getAvgOfferRating(idoffer).subscribe(data => 
+      {
+        if (data != null) {
+      console.log("this current rate  -- ", data);
+        }
+      });
+
+    
   }
 
   getImage(path:any){
@@ -51,7 +70,7 @@ Rating :  Rating=new Rating();
     this.router.navigate(['offerDetailsFront', id]);
   }
 
-
+  
   
 
   

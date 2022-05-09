@@ -1,54 +1,67 @@
 <div class="bradcam_area breadcam_bg overlay2">
     <h3>Quiz</h3>
   </div>
-  
-
-<body>
-    <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
-    <!-- header-start -->
-
-    <!-- bradcam_area_end -->
-
-    <div class="courses_details_info">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-7 col-lg-7">
-                   
-                    <div class="outline_courses_info">
-                            <div id="accordion">
-                                    <div class="card" *ngFor="let quiz of listQuiz ">
-                                        <div class="card-header" id="headingTwo">
-                                            <h5 class="mb-0">
-                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                    <i class="flaticon-question"></i>                        
-                                                 <a>    {{quiz.title}} </a><br>
-                                             description:       {{quiz.description}}<br>
-                                              Categorie:      {{quiz.categorie}}<br>
-                                            pts:        {{quiz.nbQuestions}}<br>
-
-          <button type="submit" class="btn btn-primary mr-2" [routerLink]="'/startQuiz/'+quiz.idQuizz" >Start</button>
-
-                                                </button>
-                                            </h5>
-                                        </div>
-                                     
-                                    </div>
-                                 
-                                   
-                                </div>
+  <div class="our_team_member">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-xl-3 col-md-6 col-lg-3">
+                <div class="single_team">
+                    <div class="thumb">
+                        <img src="../../assets/img/team/2.png" alt="">
+                        <div class="social_link">
+                            <a href="#"><i class="fa fa-envelope"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="master_name text-center">
+                        <h3>Dan Jacky</h3>
+                        <p>Mens Cut</p>
                     </div>
                 </div>
-      
+            </div>
+           
+            
+        </div>
+    </div>
+</div>
+<div class="our_courses">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section_title text-center mb-100">
+                    <h3>Our Course Speciality</h3>
+                    <p>Your domain control panel is designed for ease-of-use and <br>
+                        allows for all aspects of your domains.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-3 col-md-6 col-lg-6" *ngFor="let quiz of listQuiz ">
+                <div class="single_course text-center" >
+                    <div class="icon">
+                        <i class="flaticon-art-and-design"></i>
+                    </div>
+                    <h3>{{quiz.title}}</h3>
+                    <h3>{{quiz.categorie}}</h3>
+                    <p>
+                        {{quiz.description}}
+                    </p>
+                    <div class="prise">
+                                                        
+                        <span class="active_prise">
+                            {{quiz.nbQuestions}} Questions.
+                        </span>
+                    </div>
+                    <button  type="submit" class="btn btn-outline-dark" [routerLink]="'/startQuiz/'+quiz.idQuizz" >Start</button>
 
-
-
-
-   
-    <!-- testimonial_area_end -->
-
-    <!-- our_courses_start -->
-    
-    <!-- our_courses_end -->
+                </div>
+            </div>
+            
+            
+          
+        </div>
+    </div>
+</div>

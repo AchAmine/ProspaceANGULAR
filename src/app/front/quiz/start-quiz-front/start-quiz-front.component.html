@@ -40,10 +40,10 @@
             </div>
               
               </div>
-              <form [formGroup]="aFormGroup">
-                <ngx-recaptcha2 #captchaElem
+              <form [formGroup]="aFormGroup" class="d-flex justify-content-center">
+                <ngx-recaptcha2 #captchaElem class="d-flex justify-content-center"
                   [siteKey]="siteKey"
-            formControlName="recaptcha">
+            formControlName="recaptcha" >
                 </ngx-recaptcha2>
               </form>
               <a id="btn" type="submit" (click)="submitQuiz()">Submit</a>

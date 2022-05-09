@@ -30,4 +30,8 @@ export class RatingService {
     return this.http.get<Rating>(`http://localhost:8089/SpringMVC/Offer/Rating/user/${idUser}/offer-rating/${idOffer}`);
   }
 
+  public getAvgOfferRating(idOffer : number ) {
+    return this.http.get<number>(`http://localhost:8089/SpringMVC/Offer/Rating/AVGOffer/${idOffer}`);
+  }
+
 }

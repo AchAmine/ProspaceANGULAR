@@ -26,6 +26,7 @@ import { SendofferFrontComponent } from './front/offer/sendoffer-front/sendoffer
 import { OfferdetailsBackComponent } from './back/offer/offerdetails-back/offerdetails-back.component';
 import { UploadFileComponent } from './front/offer/sendoffer-front/upload-file/upload-file.component';
 import { OfferdetailsFrontComponent } from './front/offer/offerdetails-front/offerdetails-front.component';
+import { OffersStatsComponent } from './back/offer/offers-stats/offers-stats.component';
 
 
 
@@ -56,7 +57,10 @@ const routes: Routes = [
   {path: 'sendOfferFront', component: SendofferFrontComponent },
   {path: 'uploadOfferFile', component: UploadFileComponent},
   {path: 'resultQuiz/:idQuiz', component: ResultQuizFrontComponent},
-  {path: 'offerDetailsFront/:id', component: OfferdetailsFrontComponent}
+  {path: 'offerDetailsFront/:id', component: OfferdetailsFrontComponent},
+  {path: 'ratingStats', component: OffersStatsComponent}
+
+
 
 
 

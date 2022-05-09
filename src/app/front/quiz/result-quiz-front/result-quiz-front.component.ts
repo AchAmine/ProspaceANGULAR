@@ -57,5 +57,6 @@ export class ResultQuizFrontComponent implements OnInit {
      
     });
 
+    
   }
 }

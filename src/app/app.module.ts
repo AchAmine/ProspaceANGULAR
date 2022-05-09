@@ -42,6 +42,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OfferdetailsFrontComponent } from './front/offer/offerdetails-front/offerdetails-front.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NgxCaptchaModule } from 'ngx-captcha';
+import { CommonModule } from '@angular/common';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { OfferFilterPipe } from './front/offer/listoffers-front/offer-filter.pipe';
+import { OffersStatsComponent } from './back/offer/offers-stats/offers-stats.component';
+import { NgChartsModule } from 'ng2-charts';
 
 
 
@@ -80,7 +90,9 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     SendofferFrontComponent,
     OfferdetailsBackComponent,
     UploadFileComponent,
-    OfferdetailsFrontComponent
+    OfferdetailsFrontComponent,
+    OfferFilterPipe,
+    OffersStatsComponent
  
   ],
   imports: [
@@ -92,7 +104,14 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     MatCardModule,
     NgbModule,
     MatProgressSpinnerModule,
-    NgxCaptchaModule
+    NgxCaptchaModule,
+    CommonModule,
+    NgbModalModule,
+    BrowserAnimationsModule,
+    FlatpickrModule.forRoot(),
+   
+    NgxPaginationModule,
+    NgChartsModule
   
   ],
   providers: [DatePipe,{provide: LocationStrategy,useClass:HashLocationStrategy}],

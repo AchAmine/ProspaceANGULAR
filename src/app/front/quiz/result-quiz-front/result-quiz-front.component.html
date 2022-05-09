@@ -10,8 +10,10 @@ FALSE ANSWERS : {{ResultQuiz.falseAnswers}} <br>
 CORRECT ANSWERS : {{ResultQuiz.correctAnswers}} <br>
 NB QUESTIONS : {{ResultQuiz.nbreQuestions}} <br>
     </div>
-
-    <a id="btn" type="submit" (click)="getQuizCertif()">Submit</a>
+    <div  class="text-container" *ngIf="ResultQuiz.score > 80  || ResultQuiz.score==80.00 ">
+      BRAVO!
+    <a id="btn" type="submit" (click)="getQuizCertif()"> Download Your Certificate </a>
+    </div>
 </main></section>
 <div >
  </div>

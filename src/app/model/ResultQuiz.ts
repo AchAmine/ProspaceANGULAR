@@ -3,7 +3,7 @@ import { User } from "./User";
 
 export class ResultQuiz {
     idResultQuizz?: number;
-    score?: Float32Array;
+    score?: any;
     quizz?: Quiz;
     user?:User;
     correctAnswers?:number

@@ -70,7 +70,7 @@ this.questionService.getQuizQuestionsForTest(this.quizzId).subscribe(
     this.aFormGroup = this.formBuilder.group({
       recaptcha: ['', Validators.required]
     });
-      this.startTimer();
+     // this.startTimer();
     })
   }
 );

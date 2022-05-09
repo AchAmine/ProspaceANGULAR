@@ -29,13 +29,13 @@ export class ProfanityComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', this.form.get('file')?.value);
      this.articleCommentService.addFile(formData).subscribe(
-      data => {this.router.navigate(['listarticles']);}
+      data => {this.router.navigate(['dashboard/listarticles']);}
 
      ); 
   }
 
   Cancel() {
-    this.router.navigate(['listarticles']);
+    this.router.navigate(['dashboard/listarticles']);
   }
 
 }

@@ -48,7 +48,7 @@ export class AddarticleBackComponent implements OnInit {
     formData.append('article', JSON.stringify(article));
     this.articleService.addArticle(formData).subscribe(
       () => {
-        this.router.navigate(['listarticles']);
+        this.router.navigate(['/dashboard/listarticles']);
       }
     );
   }
@@ -58,6 +58,6 @@ export class AddarticleBackComponent implements OnInit {
   }
 
   Cancel() {
-    this.router.navigate(['listarticles']);
+    this.router.navigate(['/dashboard/listarticles']);
   }
 }

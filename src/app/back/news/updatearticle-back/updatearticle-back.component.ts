@@ -45,13 +45,13 @@ export class UpdatearticleBackComponent implements OnInit {
     formData.append('article', JSON.stringify(article));
 
     this.articleService.editArticle(formData).subscribe(()=> {
-      this.router.navigate(['listarticles']);
+      this.router.navigate(['dashboard/listarticles']);
     });
     
   }
 
   Cancel() {
-    this.router.navigate(['listarticles']);
+    this.router.navigate(['dashboard/listarticles']);
   }
 
 }

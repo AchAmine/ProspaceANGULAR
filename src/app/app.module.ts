@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +32,8 @@ import { ChatComponent } from './front/chat/chat.component';
 import { ContactListComponent } from './front/chat/contact-list/contact-list.component';
 import { ConversationComponent } from './front/chat/conversation/conversation.component';
 import { FrontmenuComponent } from './common/front/frontmenu/frontmenu.component';
+import { RequestInterceptorService } from './service/request-interceptor.service';
+
 
 
 @NgModule({
@@ -45,6 +47,7 @@ import { FrontmenuComponent } from './common/front/frontmenu/frontmenu.component
     BackNavbarComponent,
     BackSidebarComponent,
     FrontmenuComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,12 @@ import { FrontmenuComponent } from './common/front/frontmenu/frontmenu.component
     ReactiveFormsModule,
     PickerModule
   ],
-  providers: [DatePipe,{provide: LocationStrategy,useClass:HashLocationStrategy}],
+  providers: [DatePipe,{provide: LocationStrategy,useClass:HashLocationStrategy},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptorService,
+      multi:true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

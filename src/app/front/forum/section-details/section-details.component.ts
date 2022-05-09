@@ -39,19 +39,13 @@ listTopics?:any;
       this.getTopics(this.id);
   }
 
-
+ 
  
   convertDate(date: any){
-    return this.date = this.datepipe.transform(date, 'yyyy-MM-dd ');
+    return this.date = this.datepipe.transform(date, 'yyyy-MM-dd HH:mm');
    }
 
 
-   getDateMonth(date:any){
-    let months: Array<string>;
-    months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    return months[date.getMonth()];
-
-  }
 
   editSectionBack(section: any){
     this.router.navigate(['editSection', section]);
@@ -92,9 +86,9 @@ listTopics?:any;
         this.topicToEdit = new Topic();
         this.hide = true;
       }
-    );
+    ); 
   }
-  Cancel() {
+  cancel() {
     this.router.navigate(['/section/',this.id]);
   }
 ///////////////////////////////////

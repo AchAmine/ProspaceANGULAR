@@ -10,6 +10,9 @@
                <div class="container">
             <div class="blog_details">
                <h1> {{section.name}}</h1>
+               <p class="excert">
+                  {{section.description}}
+               </p>
                <div class="float-right" *ngIf="idUser == section.user.idUser">
                   <!-- <div class="dropdown">
                      <button type="button" class="btn btn-outline-info dropdown-toggle" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -29,29 +32,60 @@
                   <li><a href="#"><i class="fa fa-topics"></i> {{ topics?.length || '0' }}</a></li>
                   <!-- <li><a href="#"><i class="fa fa-clock-o"></i> {{ convertDate(section.topic.creationDate) }}</a></li> -->
                </ul>
-               <p class="excert">
-                  {{section.description}}
-               </p>
+               
+               
             </div>
          </div>
          </div>
          </div>
       </div>
    </section>
+   <br><br><br>
+      <div class="topic-form" >
+         <h5> add a new topic..</h5>
+         <form class="form-contact topic-form" action="#" id="topicform" #f="ngForm">
+            <div class="row">
+               <div class="col-12">
+                  <div class="form-group">
+                     <div class="form-group">
+                        <label for="exampleInputName1">Title</label>
+                        <input class="form-control" name="title" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="title" [(ngModel)] ="topic.title
+                        ">                        
+                     </div>
+                     <div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                         <input class="form-control" name="description" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="description" [(ngModel)] ="topic.description
+                        ">
+                     </div>
 
-      <br><br>
-      <!-- &nbsp; &nbsp; <h4>{{ topics?.length || '0' }} topics</h4> -->
-  <!-- <div class="example-button-row">
-    <button mat-raised-button>Basic</button></div> -->
-    <!-- <div class="text-left">
-      <a class="d-inline-block"   [routerLink]="['/addTopic']">
-          <button class="button -0 btn btn-primary btn-sm text-white w-10 btn_1 boxed-btn"
-          type="submit">Add new topic..</button>                      
-                    </a>
- </div> -->
-      <br><br>
-<br>
-      <div  class="ibox-content m-b-sm border-bottom" *ngFor="let topic of topics">
+                    </div>
+               </div>
+               
+            </div>
+            <div class="form-group">
+              <div class="container2">
+               <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
+              name="comment" (click)="addTopic()">confirm</button>
+
+<!-- 
+              <div style="float:right;">
+              <button (click)="isEmojiPickerVisible = !isEmojiPickerVisible;">😀</button>
+              <br>
+              <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible"  (emojiSelect)="addEmoji($event)" 
+              title="Choose your emoji">
+             </emoji-mart>
+             </div> -->
+             </div>
+
+
+            </div>
+         </form>
+      </div>
+   </div>
+
+   
+      <div  class="shadow p-3 mb-5 bg-white rounded" *ngFor="let topic of topics">
+      
             <div class="topic-list" >
                <div class="single-topic justify-content-between d-flex">
                   <div class="user justify-content-between d-flex">
@@ -73,28 +107,34 @@
                                     <li><a ><i class="fa fa-comments"></i> 05 Comments</a></li>-->
                                     <!-- <li><a ><i class="fa fa-clock-o"></i> {{convertDate(topic.creationDate) }} </a></li>  -->
                                  <li>
-                                   <a class="date">{{ convertDate(topic.creationDate) }}</a> &nbsp;
+                                   <a class="date">{{ convertDate(topic.creationDate) }}</a> 
                                  </li>
                                  
                                  <li><a href="#" text-align="right">&nbsp;<i class="fa fa-user">&nbsp;</i> {{topic.user.userName}} </a></li>&nbsp;
                               </ul>
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                              <li *ngIf="idUser == topic.user.idUser">
-                                 <a (click)="openEditForm(topic)"><i class="fa fa-edit float-end "></i></a>
-                                 &nbsp;
-                                 <a (click)="deleteTopic(topic.idTopic)"><i class="fa fa-trash float-end "></i></a>
-                              </li>
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              
                            </div>
                            
                         </div>
                         
                      </div>
-                     <div class="float-sm-right">
-                        <a class="float-sm-right"  (click)="topicDetails(topic)">
-                            <button class="btn btn-primary float-right-0 btn btn-primary btn-sm text-white w-10 btn_1 boxed-btn"
-                            type="submit">open</button>                      
-                                      </a>
-                   </div>
+                     <span>
+                        <div class="float-sm-right">
+                           <a class="float-sm-right"  (click)="topicDetails(topic)">
+                               <button class="btn btn-primary float-right-0 btn btn-primary btn-sm text-white w-10 btn_1 boxed-btn"
+                               type="submit">view posts..</button>                      
+                                         </a>
+                      </div>
+                      <br> 
+                      <ul>
+                         <li *ngIf="idUser == topic.user.idUser">
+                           <a (click)="openEditForm(topic)"><i class="fa fa-edit float-end "></i></a>
+                           &nbsp;
+                           <a (click)="deleteTopic(topic.idTopic)"><i class="fa fa-trash float-end "></i></a>
+                          </li>
+                      </ul>
+                  </span>
                      <br>
                      <!-- <div class="desc"> 
                         <h2> {{topic.title}}</h2>
@@ -144,7 +184,7 @@
                                <br><br><button type="submit" class="button button-contactForm btn_1 boxed-btn" 
                                  name="editTopic"  (click)="editTopic()">Save</button> &nbsp;
                               <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
-                                 name="cancel"  (click)="Cancel()">Cancel</button> 
+                                 name="cancel"  (click)="cancel()">Cancel</button> 
                               <div style="float:right;">
                                 
                               </div>
@@ -165,48 +205,7 @@
 
 
 
-<br><br><br>
-      <div class="topic-form" >
-         <h5> add a new topic..</h5>
-         <form class="form-contact topic-form" action="#" id="topicform" #f="ngForm">
-            <div class="row">
-               <div class="col-12">
-                  <div class="form-group">
-                     <div class="form-group">
-                        <label for="exampleInputName1">Title</label>
-                        <input class="form-control" name="title" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="title" [(ngModel)] ="topic.title
-                        ">                        
-                     </div>
-                     <div class="form-group">
-                        <label for="exampleTextarea1">Description</label>
-                         <input class="form-control" name="description" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="description" [(ngModel)] ="topic.description
-                        ">
-                     </div>
 
-                    </div>
-               </div>
-               
-            </div>
-            <div class="form-group">
-              <div class="container2">
-               <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
-              name="comment" (click)="addTopic()">confirm</button>
-
-<!-- 
-              <div style="float:right;">
-              <button (click)="isEmojiPickerVisible = !isEmojiPickerVisible;">😀</button>
-              <br>
-              <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible"  (emojiSelect)="addEmoji($event)" 
-              title="Choose your emoji">
-             </emoji-mart>
-             </div> -->
-             </div>
-
-
-            </div>
-         </form>
-      </div>
-   </div>
    
    
    

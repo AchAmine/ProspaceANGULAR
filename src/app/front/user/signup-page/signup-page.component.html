@@ -1,0 +1,54 @@
+<div class="bradcam_area breadcam_bg overlay2">
+        
+</div>
+<section class="blog_area single-post-area section-padding">
+  
+  <div class="col-lg-4 mx-auto">
+    <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+      <div class="brand-logo">
+        <img src="../../../../assets/images/logo.svg" alt="logo">
+      </div>
+      <h4>New here?</h4>
+      <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
+      <form class="pt-3" (ngSubmit)="signup(signupRequest)" [formGroup]="registerForm" >
+        <div class="form-group">
+          <input type="text" class="form-control form-control-lg"  placeholder="Username"  [(ngModel)]="signupRequest.userName" 
+          formControlName="username" >
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control form-control-lg"  placeholder="first name" [(ngModel)]="signupRequest.firstName" 
+          formControlName="firstName">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control form-control-lg"  placeholder="last name" [(ngModel)]="signupRequest.lastName" 
+            formControlName="lastName">
+          </div>
+          <div class="form-group">
+            <input type="date" class="form-control form-control-lg"  placeholder="birthdate" [(ngModel)]="signupRequest.birthDate" 
+            formControlName="birthdate">
+          </div>
+        <div class="form-group">
+            <input type="email" class="form-control form-control-lg"  placeholder="email" [(ngModel)]="signupRequest.email"  
+            formControlName="email">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control form-control-lg"  placeholder="Password"
+          formControlName="password1">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control form-control-lg"  placeholder="Password"[(ngModel)]="signupRequest.password" 
+            formControlName="password2">
+          </div>
+        
+        <div class="form-group">
+          <button type="submit"  [disabled]="!registerForm.valid">Register</button>
+        </div>
+        <div class="text-center mt-4 font-weight-light">
+          Already have an account? <a [routerLink]="['/login']" class="text-primary">Login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+     
+  
+</section>

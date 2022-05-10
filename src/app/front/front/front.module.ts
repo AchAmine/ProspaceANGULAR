@@ -15,6 +15,8 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { ChatComponent } from '../chat/chat.component';
 import { ConversationComponent } from '../chat/conversation/conversation.component';
 import { SigninPageComponent } from '../user/signin-page/signin-page.component';
+import { SignupPageComponent } from '../user/signup-page/signup-page.component';
+import { ResetComponent } from '../user/reset/reset.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { SigninPageComponent } from '../user/signin-page/signin-page.component';
     ArticlesNavComponent,
     ChatComponent,
     ConversationComponent,
-    SigninPageComponent
+    SigninPageComponent,
+    SignupPageComponent,
+    ResetComponent
   ],
   imports: [
     CommonModule,

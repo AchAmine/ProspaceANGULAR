@@ -33,6 +33,9 @@ import { ContactListComponent } from './front/chat/contact-list/contact-list.com
 import { ConversationComponent } from './front/chat/conversation/conversation.component';
 import { FrontmenuComponent } from './common/front/frontmenu/frontmenu.component';
 import { RequestInterceptorService } from './service/request-interceptor.service';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ResetComponent } from './front/user/reset/reset.component';
 
 
 
@@ -55,7 +58,10 @@ import { RequestInterceptorService } from './service/request-interceptor.service
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    PickerModule
+    PickerModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule
+    
   ],
   providers: [DatePipe,{provide: LocationStrategy,useClass:HashLocationStrategy},
     {

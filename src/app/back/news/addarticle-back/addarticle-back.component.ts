@@ -49,7 +49,7 @@ export class AddarticleBackComponent implements OnInit {
     article.user = this.user;
     formData.append('file', this.form.get('file')?.value);
     formData.append('article', JSON.stringify(article));
-    this.articleService.addArticle(formData).subscribe(
+    this.articleService.addArticle(formData,this.user.idUser).subscribe(
       () => {
         this.router.navigate(['/dashboard/listarticles']);
       }

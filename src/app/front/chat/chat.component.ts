@@ -14,7 +14,7 @@ export class ChatComponent implements OnInit {
 
   inputMsg ="";
   chatContent="";
-  user : any //sender:any;
+  user = new User(); //sender:any;
   recipient = new User(); //recipient:any;
   stompClient: any;
   date: any;
@@ -22,17 +22,21 @@ export class ChatComponent implements OnInit {
    subscription : any;
 
    // entrer
-   
+   idUser = 3 ; 
    contactList :any;
    public isEmojiPickerVisible: boolean;
   
-  constructor(private chatService : ChatService,private userService: UserService,public datepipe: DatePipe,private router: Router,
+  constructor(private chatService : ChatService, private userService: UserService,public datepipe: DatePipe,private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.userService.getConnectedUser().subscribe(data => this.user = data)
-    console.log("user : ",this.user);
-    this.getContacts();
+    this.userService.getConnectedUser().subscribe(data => {
+       this.user = data as User;
+      console.log(" User : ",this.user);
+      this.getContacts();
+      
+      })
+   
     console.log("--------------1---------------");
     this.route.paramMap.subscribe(res=>
       {
@@ -42,12 +46,6 @@ export class ChatComponent implements OnInit {
         
     this.chatContent="";
     this.stompClient = this.chatService.stompClient;
-    console.log("--------------4---------------",this.stompClient);
-   this.user.userName = "essia";
-   console.log("--------------5---------------",this.user.userName);
-
-
-   //this.recipient.userName="amine";
    this.stompClient.connect({}, () => {
      console.log("coooo");
       this.connect();
@@ -64,7 +62,7 @@ export class ChatComponent implements OnInit {
       console.log("user : ",this.user.userName);
 
       this.loadChat();
-
+      
     this.subscription =  this.stompClient.subscribe('/user/'+this.recipient.userName+'/queue/message', (message:any) => {
       if (message.body) {
         this.msg.push(JSON.parse(message.body));
@@ -116,7 +114,7 @@ export class ChatComponent implements OnInit {
     }
 
     getContacts() {
-      this.chatService.getContactList(this.user.idUser).subscribe(data=> this.contactList = data);
+      this.chatService.getContactList(this.idUser).subscribe(data=> this.contactList = data);
     }
 
     chatWith(user:any){

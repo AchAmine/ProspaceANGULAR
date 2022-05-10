@@ -16,6 +16,6 @@ export class Topic{
     user?: User;
     posts?:Post[];
 
-    reactions?:ForumReaction[];
+    // reactions?:ForumReaction[];
 
 }

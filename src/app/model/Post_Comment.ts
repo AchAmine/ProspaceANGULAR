@@ -13,6 +13,6 @@ export class Post_Comment{
     user?: User;
     post?:Post;
 
-    reactions?:ForumReaction[];
+    // reactions?:ForumReaction[];
 
 }

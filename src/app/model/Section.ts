@@ -6,9 +6,10 @@ export class Section{
     idSection?: number;
     name?: string;
     description?: string;
+    
    user?:User;
    topics?: Topic[];
-   reactions?:ForumReaction[];
+//    reactions?:ForumReaction[];
 
  
 }

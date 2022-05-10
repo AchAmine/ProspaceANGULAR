@@ -89,7 +89,8 @@ listTopics?:any;
     ); 
   }
   cancel() {
-    this.router.navigate(['/section/',this.id]);
+  
+    this.hide = true;
   }
 ///////////////////////////////////
 

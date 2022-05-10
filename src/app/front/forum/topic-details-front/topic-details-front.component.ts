@@ -130,6 +130,7 @@ getAllPosts(){
 deletePost(idPost : any){
   console.log("idPost",idPost);
   this.postService.deletePost(idPost).subscribe(() => this.getAllPosts())
+  
 }
 
 

@@ -11,18 +11,22 @@
                         <div class="pull-left m-r-md">
                             <i class="fa fa-globe text-navy mid-icon"></i>
                         </div>
-                        <h2>Welcome to our forum</h2>
-                        <span>Feel free to choose topic you're interested in.</span>
+                        <h2> &nbsp;&nbsp;   Welcome to our forum</h2>
+                        <span> &nbsp;&nbsp;   Feel free to choose topic you're interested in.
+                            <br>
+                        </span> 
                     </div>
                 </div>
+                <br><br>
+                <div class="container2">
                 <div class="blog_left_sidebar" *ngFor="let section of listSections">
-                    <article class="blog_item">
+                    <article class="blog_item shadow p-3 mb-5 bg-white rounded" >
                         <div class="blog_item_img">
                             <!-- <img class="card-img rounded-0" src="../../assets/img/blog/single_blog_1.png" alt=""> -->
                             
                         </div>
 
-                        <div class="blog_details">
+                        <div class="blog_details ">
                             <!-- <a class="d-inline-block" (click)="articleDetails(sect.idArticle)">
                                 <h2>{{article.title}}</h2>
                             </a> -->
@@ -35,7 +39,7 @@
                                 <div class="text-right">
                                     <a class="d-inline-block"  (click)="sectionDetails(section)">
                                         <button class="button -0 btn btn-primary btn-sm text-white w-10 btn_1 boxed-btn"
-                                        type="submit">open</button>                      
+                                        type="submit">JOIN</button>                      
                                                   </a>
                                </div>
                                 <li><a href="#" text-align="right"><i class="fa fa-user"></i> {{section.user.userName}} </a></li>
@@ -48,6 +52,7 @@
                     
 
                     
+                </div>
                 </div>
             </div>
             <div class="col-lg-4">

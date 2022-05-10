@@ -7,7 +7,7 @@
       <div class="shadow-lg p-3 mb-5 bg-white rounded">
          <div class="single-post">
             <div class="col-lg-8 mb-5 mb-lg-0">
-               <div class="container">
+               <div class="container1">
             <div class="blog_details">
                <h1> {{section.name}}</h1>
                <p class="excert">
@@ -30,6 +30,7 @@
                <ul class="blog-info-link mt-3 mb-4">
                   <li><a href="#"><i class="fa fa-user"></i> {{section.user.userName}}</a></li>
                   <li><a href="#"><i class="fa fa-topics"></i> {{ topics?.length || '0' }}</a></li>
+                  
                   <!-- <li><a href="#"><i class="fa fa-clock-o"></i> {{ convertDate(section.topic.creationDate) }}</a></li> -->
                </ul>
                
@@ -124,6 +125,8 @@
 
                         <h2 >{{topic.title}}</h2>
                         <p class="topic">{{topic.description}}</p>
+                        
+
                         <div class="d-flex justify-content-between">
                            <div class="d-flex align-items-center">
                               <ul class="blog-info-link">
@@ -135,8 +138,12 @@
                                  </li>
                                  
                                  <li><a href="#" text-align="right">&nbsp;<i class="fa fa-user">&nbsp;</i> {{topic.user.userName}} </a></li>&nbsp;
+                                 <li><a href="#"><i class="fa fa-eye"aria-hidden="true"></i>{{ topic.views }}</a></li>
+                                 <li><a (click)="topicDetails(topic)"><i class="fa fa-comment ml-2"aria-hidden="true"></i></a></li>
+
+                                 
                               </ul>
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                               
                            </div>
                            
@@ -144,12 +151,12 @@
                         
                      </div>
                      <span>
-                        <div class="float-sm-right">
+                        <!-- <div class="float-sm-right">
                            <a class="float-sm-right"  (click)="topicDetails(topic)">
                                <button class="btn btn-primary float-right-0 btn btn-primary btn-sm text-white w-10 btn_1 boxed-btn"
                                type="submit">view posts..</button>                      
                                          </a>
-                      </div>
+                      </div> -->
                       <br> 
                       <ul>
                          <li *ngIf="idUser == topic.user.idUser">

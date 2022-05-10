@@ -57,14 +57,14 @@ export class ChatComponent implements OnInit {
   
       //-------------------------------------------------------
 
-    async connect(){
+     connect(){
       console.log("connected");
       console.log("recipient : ",this.recipient.userName);
       console.log("user : ",this.user.userName);
 
       this.loadChat();
       console.log("chat id connect",this.chatId);
-      this.subscription =  await this.stompClient.subscribe('/user/'+this.chatId+'/queue/message', (message:any) => {
+      this.subscription = this.stompClient.subscribe('/user/'+this.chatId+'/queue/message', (message:any) => {
           if (message.body) {
             console.log("msg", this.msg);
             this.msg.push(JSON.parse(message.body));

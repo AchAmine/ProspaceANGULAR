@@ -20,7 +20,7 @@
     <div class="friend-drawer friend-drawer--onhover" >
        <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/optimus-prime.jpeg" alt="">
        <div class="text">
-       <h6 (click)="chatWith(contact.userName)">{{contact.userName}}</h6>
+       <h6 (click)="chatWith(contact)">{{contact.userName}}</h6>
        
        </div>
        <div class="dropdown">
@@ -56,7 +56,7 @@
        
        </div>
      </div>
-     <div class="chat-panel" >
+     <div class="chat-panel" #chatDiv>
         <ng-container *ngFor="let value of msg">
        <div class="row no-gutters" *ngIf="value.recipientId == user.userName">
        <div class="col-md-3">

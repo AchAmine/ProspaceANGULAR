@@ -31,6 +31,7 @@ export class ChatComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getConnectedUser().subscribe(data => this.user = data)
+    console.log("user : ",this.user);
     this.getContacts();
     console.log("--------------1---------------");
     this.route.paramMap.subscribe(res=>

@@ -37,7 +37,6 @@ export class ChatComponent implements OnInit {
       console.log("--------------1---------------",this.recipient.userName);
 
     this.stompClient = this.chatService.stompClient;
-    if (this.recipient.userName != "undefined") {
       console.log("NOT UNDEFINED",this.recipient.userName);
    this.stompClient.connect({}, () => {
      console.log("coooo");
@@ -49,7 +48,7 @@ export class ChatComponent implements OnInit {
       });
       
     });
-    } 
+    
       
       })
    

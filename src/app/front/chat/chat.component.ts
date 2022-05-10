@@ -11,9 +11,7 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-  @ViewChild("chatDiv") chatDiv: ElementRef;
-
-
+  
   inputMsg ="";
   chatContent="";
   user = new User(); //sender:any;
@@ -29,12 +27,8 @@ export class ChatComponent implements OnInit {
    public isEmojiPickerVisible: boolean;
   
   constructor(private chatService : ChatService, private userService: UserService,public datepipe: DatePipe,private router: Router,
-    private route: ActivatedRoute,private renderer:Renderer2) { }
+    private route: ActivatedRoute) { }
 
-  clearDiv() {
-      let valueYouWantToPut = "cleared";
-      this.renderer.setProperty(this.chatDiv.nativeElement, 'innerHTML', valueYouWantToPut)
-  }
 
   ngOnInit(): void {
     this.userService.getConnectedUser().subscribe(data => {

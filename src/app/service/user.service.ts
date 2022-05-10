@@ -94,6 +94,12 @@ deleteUser(idu:any){
 updateUser(u:profile){
   return this.httpClient.put(this.API_URL+'/updateuser',u);
 }
+resetPassword(newpass:any,token:any){
+  console.log("in service")
+  console.log("the token in service is"+token)
+  console.log("the new in service is"+newpass)
+  return this.httpClient.post(this.API_URL+'/reset/'+newpass+'/'+token,"");
+}
 
  
 }

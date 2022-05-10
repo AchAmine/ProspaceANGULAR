@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginRequest } from 'src/app/model/LoginRequest';
 import { UserService } from 'src/app/service/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signin-page',
@@ -13,7 +14,7 @@ export class SigninPageComponent implements OnInit {
   loginRequest:LoginRequest;
   isLoading:any=false;
 
-  constructor(private userService:UserService,private router: Router) { }
+  constructor(private userService:UserService,private router: Router, public snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     //this.isLoading=false;
@@ -30,31 +31,21 @@ export class SigninPageComponent implements OnInit {
     this.userService.signin(loginRequest).subscribe(
       (res: any) => {
         
+        
         console.log(res);
   
         this.userService.setSession(res);
         console.log(res.status);
         this.isLoading=false;
         this.router.navigateByUrl('/home'); 
-    }/*,errorRes => {
-      if (errorRes.error.status == 200) {
-        console.log(errorRes.error.status)
-        this.isLoading=false;
-        this.router.navigateByUrl('/homeAuthIn');
-        
-        
-      }
-      else{
-        this.isLoading=false;
-      }
-      
-    }*/
+    
+    }
     
     );
   }
- /* openSignupPopup(){
-    
-    this.dialogRef.open(SignupPageComponent);
-  }*/
+  forgotPassword(username:any){
+    this.userService.frogotpassword(username).subscribe();
+  }
+ 
 
 }

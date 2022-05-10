@@ -14,7 +14,7 @@ const routes: Routes = [
   {path:'', component: FrontindexComponent},
   
   {path: 'article/:id', component: ArticledetailsFrontComponent},
-  {path: 'chat/:user', component: ChatComponent},
+  {path: 'chat', component: ChatComponent},
   {path: 'conversation/:user', component: ConversationComponent},
   {path: 'contact', component: ContactListComponent},
   //{path: 'articles', component: ListarticlesFrontComponent},

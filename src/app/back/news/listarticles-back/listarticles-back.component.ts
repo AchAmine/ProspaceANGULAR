@@ -28,12 +28,7 @@ export class ListarticlesBackComponent implements OnInit {
   getAllArticles(){
     this.articleService.getAllArticles().subscribe(res=> { this.listArticles=res; console.log(res);})
   }
-  addArticle(article: any){
-    this.articleService.addArticle(article).subscribe(() => {
-      this.getAllArticles();
-      this.form = false;
-    });
-  }
+ 
   deleteArticle(idArticle : any){
     if (window.confirm('Are sure you want to delete this Article ?')) {
     this.articleService.deleteArticle(idArticle).subscribe(() => {this.getAllArticles();

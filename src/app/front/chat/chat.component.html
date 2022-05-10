@@ -6,8 +6,8 @@
   <div class="row no-gutters">
      <div class="col-md-4 border-right">
      <div class="settings-tray">
-       <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/filip.jpg" alt="Profile img">
-       
+       <img class="profile-image" src="{{'http://localhost/FileUploads/'+user.image?.path}}" alt="Profile img">
+       <p> {{user.userName }}</p>
      </div>
     
      
@@ -18,9 +18,9 @@
      </div>
      <ng-container *ngFor="let contact of contactList">
     <div class="friend-drawer friend-drawer--onhover" >
-       <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/optimus-prime.jpeg" alt="">
+      <img class="profile-image" src="{{'http://localhost/FileUploads/'+contact.image.path}}" alt="">
        <div class="text">
-       <h6 (click)="chatWith(contact.userName)">{{contact.userName}}</h6>
+       <h6 (click)="chatWith(contact)">{{contact.firstName}} {{contact.lastName}}</h6>
        
        </div>
        <div class="dropdown">
@@ -48,7 +48,7 @@
      <div class="col-md-8">
      <div class="settings-tray">
        <div class="friend-drawer no-gutters friend-drawer--grey">
-       <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/robocop.jpg" alt="">
+       <img class="profile-image" src="{{'http://localhost/FileUploads/'+recipient.image?.path}}" alt="">
        <div class="text">
          <h6>{{recipient.userName}}</h6>
          <!-- <p class="text-muted">Layin' down the law since like before Christ...</p> -->
@@ -56,7 +56,7 @@
        
        </div>
      </div>
-     <div class="chat-panel" >
+     <div class="chat-panel" #chatDiv>
         <ng-container *ngFor="let value of msg">
        <div class="row no-gutters" *ngIf="value.recipientId == user.userName">
        <div class="col-md-3">

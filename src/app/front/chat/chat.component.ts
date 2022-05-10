@@ -13,7 +13,6 @@ import { UserService } from 'src/app/service/user.service';
 export class ChatComponent implements OnInit {
   
   inputMsg ="";
-  chatContent="";
   user = new User(); //sender:any;
   recipient = new User(); //recipient:any;
   stompClient: any;
@@ -36,8 +35,6 @@ export class ChatComponent implements OnInit {
       console.log(" User : ",this.user);
       this.getContacts();
       console.log("--------------1---------------",this.recipient.userName);
-        
-         this.chatContent="";
 
     this.stompClient = this.chatService.stompClient;
     if (this.recipient.userName != "undefined") {

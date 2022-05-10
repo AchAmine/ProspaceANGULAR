@@ -13,8 +13,8 @@ export class ArticlecommentsService {
   public getAllComments(articleId: any){
     return this.http.get(`${this.baseUrl}/retrieve-articlecomments/${articleId}`);
   } 
-  public addComment(comment: any,articleId: any){
-    return this.http.post(`${this.baseUrl}/add-comment/${articleId}/1`,comment);
+  public addComment(comment: any,articleId: any,userId: any){
+    return this.http.post(`${this.baseUrl}/add-comment/${articleId}/${userId}`,comment);
   }
 
   public deleteComment(commentId: any) {

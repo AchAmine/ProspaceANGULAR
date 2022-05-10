@@ -36,7 +36,12 @@ export class ArticledetailsFrontComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.userService.getConnectedUser().subscribe(data => this.user = data);
+    this.userService.getConnectedUser().subscribe(data => {
+      console.log("data : ",data); 
+      this.user = data
+      console.log("user id: ",this.user.idUser);
+    });
+    console.log("user : ",this.user);
     // recuperation de l'article avec id 
     this.articleService.getArticle(this.id)
       .subscribe(data => { this.article = data; });
@@ -57,7 +62,7 @@ export class ArticledetailsFrontComponent implements OnInit {
     this.newcomment.content = this.comment_value.toString();
     console.log('comment_value',this.comment_value);
     console.log('new comment:',this.newcomment);
-    this.commentService.addComment(this.newcomment,this.article.idArticle).subscribe(
+    this.commentService.addComment(this.newcomment,this.article.idArticle,this.user.idUser).subscribe(
       () => {
         this.getComments(this.id) ; 
         this.comment_value='';

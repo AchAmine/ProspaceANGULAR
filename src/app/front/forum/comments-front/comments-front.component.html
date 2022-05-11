@@ -1,215 +1,312 @@
 <div class="bradcam_area breadcam_bg overlay2"></div>
-<section class="blog_area single-comment-area section-padding" *ngIf="comments">
-
+<section class="blog_area single-post-area section-padding" *ngIf="comments">
    <div class="container" *ngIf="post">
-         <div class="blog_area section-padding">
-            <section class="blog_area section-padding">
-               <div class="shadow-lg p-3 mb-5 bg-white rounded">
-                  <div class="single-post">
-                     <div class="col-lg-8 mb-5 mb-lg-0">
-                        <div class="container2">
-                           <div class="blog_details">
-                              <h1> {{post.title}}</h1>
-                              <p class="excert">
-                                 {{post.content}} 
-                              </p>
-                              <div class="float-right" *ngIf="idUser == post.user.idUser">
-                                 <!-- <div class="dropdown">
-                                    <button type="button" class="btn btn-outline-info dropdown-toggle" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton7">
-                                       <button type="button" class="btn btn-outline-warning"
-                                          (click)="editSectionBack(section.idSection)">Edit</button>
-                                       <div class="dropdown-divider"></div>
-                                       <a class="dropdown-item"(click)="deleteSection(section.idSection)">
-                                       <button type="button" class="btn btn-outline-danger"
-                                          (click)="deleteSection(section.idSection)">Delete</button>                           </a>
-                                    </div> 
-                                    </div> -->
-                              </div>
-                              <ul class="blog-info-link mt-3 mb-4">
-                                 <li><a href="#"><i class="fa fa-user"></i> {{post.user.userName}}</a></li>
-                                 <li><a href="#"><i class="fa fa-comments"></i> {{ comments?.length || '0' }}</a></li>
-                                 <li><a href="#"><i class="fa fa-clock-o"></i> {{ convertDate(post.createdAt) }}</a></li>
-                              </ul>
-                           </div>
+      <div class="blog_area section-padding">
+         <section class="blog_area section-padding">
+            <div class="shadow-lg p-3 mb-5 bg-white rounded">
+               <div class="single-post">
+                  <div class="col-lg-8 mb-5 mb-lg-0">
+                     <div class="container2">
+                        <div class="blog_details">
+                           <h1> {{post.title}}</h1>
+                           <p class="excert">
+                              {{post.content}} 
+                           </p>
+                           <ul class="blog-info-link mt-3 mb-4">
+                              <li><a href="#"><i class="fa fa-user"></i> {{post.user.userName}}</a></li>
+                              <li><a href="#"><i class="fa fa-comments"></i> {{ comments?.length || '0' }}</a></li>
+                              <li><a href="#"><i class="fa fa-clock-o"></i> {{ convertDate(post.createdAt) }}</a></li>
+                           </ul>
                         </div>
                      </div>
                   </div>
                </div>
-            </section>
-            <br><br>
-            <div class="comment-form" >
-               <h5> Leave  comment..</h5>
-               <form class="form-contact comment-form" action="#" id="commentform" #f="ngForm">
-                  <div class="row">
-                     <div class="col-12">
-                        <div class="form-group">
-                                           
-                          
-                           <div class="form-group">
-                              <!-- <label for="exampleTextarea1">Content</label> -->
-                              <input class="form-control" name="content" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="content" [(ngModel)] ="comment.content
-                              ">
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="form-group">
-                     <div class="container2">
-                        <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
-                           name="comment" (click)="addComment()">confirm</button>
-                     </div>
-                  </div>
-               </form>
             </div>
-         </div>
-         <!-- <div class="modal fade" id="threadModal" tabindex="-1" role="dialog" aria-labelledby="threadModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-header d-flex align-items-center bg-primary text-white">
-                            <h6 class="modal-title mb-0" id="threadModalLabel">add a new topic..</h6>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                           <label for="exampleInputName1">Title</label>
-                           <input class="form-control" name="title" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="title" [(ngModel)] ="topic.title
-                           ">                        
-                        </div>
+         </section>
+         <br><br>
+         <div class="comment-form" >
+            <div *ngIf="!comments.length">
+                <span>
+                 <h4> No comments!</h4>  
+                </span>
+            </div>
+            <br>
+            <h5> Leave  comment..</h5>
+            <form class="form-contact comment-form" action="#" id="commentform" #f="ngForm">
+               <div class="row">
+                  <div class="col-12">
+                     <div class="form-group">
                         <div class="form-group">
-                           <label for="exampleTextarea1">Description</label>
-                            <input class="form-control" name="description" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="description" [(ngModel)] ="topic.description
+                           <!-- <label for="exampleTextarea1">Content</label> -->
+                           <input class="form-control" name="content" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="content" [(ngModel)] ="comment.content
                            ">
                         </div>
-                        <div class="modal-footer">
-                           <button type="submit" class="btn btn-light"  data-dismiss="modal"
-                                       name="cancel"   (click)="cancel()">Cancel</button> 
-                            <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
-                        name="comment" (click)="addTopic()">confirm</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            </div> -->
-         <div  class="shadow p-3 mb-5 bg-white rounded" *ngFor="let comment of comments">
-            <div class="comment-list"  >
-               <div class="single-comment justify-content-between d-flex">
-                  <div class="user justify-content-between d-flex">
-                     <div class="thumb">
-                        <!-- <img src="../../assets/img/comment/comment_3.png" alt=""> -->
                      </div>
-                     <br>
-                     <div class="desc" >
-                        <!-- <a class="d-inline-block" (click)="articleDetails(sect.idArticle)">
-                           <h2>{{article.title}}</h2>
-                           </a> -->
-                        <p class="comment">{{comment.content}}</p>
-                        <div class="d-flex justify-content-between">
-                           <div class="d-flex align-items-center">
-                              <ul class="blog-info-link">
-                                 <!-- <li><a href="#"><i class="fa fa-thumbs-up"></i> 15 </a></li>
-                                    <li><a ><i class="fa fa-comments"></i> 05 Comments</a></li>-->
-                                 <!-- <li><a ><i class="fa fa-clock-o"></i> {{convertDate(topic.creationDate) }} </a></li>  -->
-                                 <li>
-                                    <a class="date">{{ convertDate(comment.postedAt) }}</a> 
-                                 </li>
-                                 <li><a href="#" text-align="right">&nbsp;<i class="fa fa-user">&nbsp;</i> {{comment.user.userName}} </a></li>
-                                 &nbsp;
-                              
-                              </ul>
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                              <!--  ///////////////////////////////////////////////////////////////////////////////////////////////// -->
-                              
-                              
-                           </div>
-                        </div>
-                     </div>
-                     <span>
-                        <!-- <div class="float-sm-right">
-                           <a class="float-sm-right"  (click)="postDetails(post)">
-                               <button class="btn btn-primary float-right-0 btn btn-primary btn-sm text-white w-10 btn_1 boxed-btn"
-                               type="submit">load comments</button>                      
-                                         </a>
-                           </div> -->
-                        <br> 
-                        <ul>
-                           <li *ngIf="idUser == comment.user.idUser">
-                              <a (click)="openEditForm(comment)"><i class="fa fa-edit float-end "></i></a>
-                              &nbsp;
-                              <a (click)="deleteComment(comment.idComment)"><i class="fa fa-trash float-end "></i></a>
-                           </li>
-                        </ul>
-                     </span>
-                     <br>
-                     <!-- <div class="desc"> 
-                        <h2> {{topic.title}}</h2>
-                        
-                        <p class="topic">
-                           
-                           {{topic.description}}
-                        </p>
-                        <div class="d-flex justify-content-between">
-                           <div class="d-flex align-items-center">
-                              <h5>
-                                 <a href="#">{{topic.user.userName}}</a>
-                              </h5>
-                              <p class="date">{{ convertDate(topic.creationDate) }}</p>
-                           </div>
-                        </div>
-                        </div> -->
                   </div>
-                  <div class="col-sm-4 text-center my-2 my-sm-0">
-                  </div>
-                  <!-- <li *ngIf="idUser == topic.user.idUser">
-                     <a (click)="openEditForm(topic)"><i class="fa fa-edit float-end "></i></a>
-                     &nbsp;
-                     <a (click)="deleteTopic(topic.idTopic)"><i class="fa fa-trash float-end "></i></a>
-                     </li> -->
                </div>
-               <!-- EDIT topic SECTION -->
-               <ng-container *ngIf="comment == commentToEdit">
-                  <div class="comment-form">
-                     <h4>Edit Comment</h4>
-                     <form class="form-contact comment_form" action="#" id="editForm" >
-                        <div class="form-group">
-                           <div class="row">
-                              <div class="col-12">
-                                 <div class="form-group" >
-                                  
-                                    <textarea class="form-control w-20" name="editTopic" id="editTopic" cols="10" rows="4"
-                                    placeholder="Write comment" required [(ngModel)]='commentToEdit.content' ></textarea>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="container3">
-                              <br><br><button type="submit" class="button button-contactForm btn_1 boxed-btn" 
-                                 name="editComment"  (click)="editComment()">Save</button> &nbsp;
-                              <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
-                                 name="cancel"  (click)="cancel()">Cancel</button> 
-                              <div style="float:right;">
+               <div class="form-group">
+                  <div class="container2">
+                     <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
+                        name="comment" (click)="addComment()">confirm</button>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+      <!-- <div class="modal fade" id="threadModal" tabindex="-1" role="dialog" aria-labelledby="threadModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-lg" role="document">
+             <div class="modal-content">
+                 <form>
+                     <div class="modal-header d-flex align-items-center bg-primary text-white">
+                         <h6 class="modal-title mb-0" id="threadModalLabel">add a new topic..</h6>
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">×</span>
+                         </button>
+                     </div>
+                     <div class="modal-body">
+                        <label for="exampleInputName1">Title</label>
+                        <input class="form-control" name="title" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="title" [(ngModel)] ="topic.title
+                        ">                        
+                     </div>
+                     <div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                         <input class="form-control" name="description" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="description" [(ngModel)] ="topic.description
+                        ">
+                     </div>
+                     <div class="modal-footer">
+                        <button type="submit" class="btn btn-light"  data-dismiss="modal"
+                                    name="cancel"   (click)="cancel()">Cancel</button> 
+                         <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
+                     name="comment" (click)="addTopic()">confirm</button>
+                     </div>
+                 </form>
+             </div>
+         </div>
+         </div> -->
+      <div  class="shadow p-3 mb-5 bg-white rounded" *ngFor="let comment of comments">
+         <div class="comment-list"  >
+            <div class="single-comment justify-content-between d-flex">
+               <div class="user justify-content-between d-flex">
+                  <div class="thumb">
+                     <!-- <img src="../../assets/img/comment/comment_3.png" alt=""> -->
+                  </div>
+                  <br>
+                  <div class="desc" >
+                     <!-- <a class="d-inline-block" (click)="articleDetails(sect.idArticle)">
+                        <h2>{{article.title}}</h2>
+                        </a> -->
+                     <p class="comment">{{comment.content}}</p>
+                     <div class="d-flex justify-content-between">
+                        <div class="d-flex align-items-center">
+                           <ul class="blog-info-link">
+                              <!-- <li><a href="#"><i class="fa fa-thumbs-up"></i> 15 </a></li>
+                                 <li><a ><i class="fa fa-comments"></i> 05 Comments</a></li>-->
+                              <!-- <li><a ><i class="fa fa-clock-o"></i> {{convertDate(topic.creationDate) }} </a></li>  -->
+                              <li>
+                                 <a class="date">{{ convertDate(comment.postedAt) }}</a> 
+                              </li>
+                              <li><a href="#" text-align="right">&nbsp;<i class="fa fa-user">&nbsp;</i> {{comment.user.userName}} </a></li>
+                              &nbsp;
+                           </ul>
+                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           <!--  ///////////////////////////////////////////////////////////////////////////////////////////////// -->
+                        </div>
+
+
+
+
+                        
+                     </div>
+
+
+                    
+
+
+
+
+
+                  </div>
+
+
+
+                  <span>
+                     <!-- <div class="float-sm-right">
+                        <a class="float-sm-right"  (click)="postDetails(post)">
+                            <button class="btn btn-primary float-right-0 btn btn-primary btn-sm text-white w-10 btn_1 boxed-btn"
+                            type="submit">load comments</button>                      
+                                      </a>
+                        </div> -->
+                     <br> 
+                     <ul>
+                        <li *ngIf="idUser == comment.user.idUser">
+                           <a (click)="openEditForm(comment)"><i class="fa fa-edit float-end "></i></a>
+                           &nbsp;
+                           <a (click)="deleteComment(comment.idComment)"><i class="fa fa-trash float-end "></i></a>
+                        </li>
+                     </ul>
+                  </span>
+                  <br>
+                  <!-- <div class="desc"> 
+                     <h2> {{topic.title}}</h2>
+                     
+                     <p class="topic">
+                        
+                        {{topic.description}}
+                     </p>
+                     <div class="d-flex justify-content-between">
+                        <div class="d-flex align-items-center">
+                           <h5>
+                              <a href="#">{{topic.user.userName}}</a>
+                           </h5>
+                           <p class="date">{{ convertDate(topic.creationDate) }}</p>
+                        </div>
+                     </div>
+                     </div> -->
+               </div>
+               <div class="col-sm-4 text-center my-2 my-sm-0">
+               </div>
+               <!-- <li *ngIf="idUser == topic.user.idUser">
+                  <a (click)="openEditForm(topic)"><i class="fa fa-edit float-end "></i></a>
+                  &nbsp;
+                  <a (click)="deleteTopic(topic.idTopic)"><i class="fa fa-trash float-end "></i></a>
+                  </li> -->
+            </div>
+            <!-- EDIT topic SECTION -->
+            <ng-container *ngIf="comment == commentToEdit">
+               <div class="comment-form">
+                  <h4>Edit Comment</h4>
+                  <form class="form-contact comment_form" action="#" id="editForm" >
+                     <div class="form-group">
+                        <div class="row">
+                           <div class="col-12">
+                              <div class="form-group" >
+                                 <textarea class="form-control w-20" name="editTopic" id="editTopic" cols="10" rows="4"
+                                 placeholder="Write comment" required [(ngModel)]='commentToEdit.content' ></textarea>
                               </div>
                            </div>
                         </div>
-                     </form>
-                  </div>
-               </ng-container>
-               <!-- END EDIT COMMENT SECTION -->
-            </div>
-           
-            <!-- <comments-front-app></comments-front-app>  -->
+                        <div class="container3">
+                           <br><br><button type="submit" class="button button-contactForm btn_1 boxed-btn" 
+                              name="editComment"  (click)="editComment()">Save</button> &nbsp;
+                           <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
+                              name="cancel"  (click)="cancel()">Cancel</button> 
+                           <div style="float:right;">
+                           </div>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+               <div>
+
+               </div>
+            </ng-container>
+            <!-- END EDIT COMMENT SECTION -->
 
 
 
 
+
+
+
+
+
+
+
+
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- ////////////////////////////////////////////////////////////////////////////////////TEEEEEEEEEEEEEEEEEEEEEEST////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////: -->
             
+
 
 
 
             
          </div>
-       
+         
+      </div>
    </div>
 </section>

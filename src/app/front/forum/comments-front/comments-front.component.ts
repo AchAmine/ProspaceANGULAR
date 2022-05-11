@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post_Comment } from 'src/app/model/Post_Comment';
 import { PostCommentService } from 'src/app/service/post-comment.service';
@@ -25,6 +26,20 @@ commentToEdit:Post_Comment;
 hide=false;
 
 listComments?:any;
+
+
+
+
+
+///////////////////////////////////replies
+commentReply: Post_Comment=new Post_Comment;
+commentReplies:any;
+newCommentReply:Post_Comment;
+commentReply_value: any='';
+commentReplyToEdit:Post_Comment;
+
+listCommentsReplies?:any;
+
 
 
 
@@ -134,8 +149,119 @@ listComments?:any;
       // this.viewsInc(topic);
       this.router.navigate(['comment',comment.idComment])  ;    
     }
-    ////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     
 
+      
+      
+        
+        openEditFormReply(commentReply:Post_Comment) {
+          console.log("comment reply: ",commentReply);
+          this.commentReplyToEdit = commentReply;
+          console.log("new edit vallue : ",this.commentReplyToEdit);
+        }
+      
+     
+      
+      
+      
+        editCommentReply(){
+          console.log("Before edit",this.commentReplyToEdit);   
+          this.post_commentService.editCommentReply(this.commentReplyToEdit).subscribe(
+           data => {
+              console.log("after edit 2",data);
+              this.commentReplyToEdit = new Post_Comment();
+              this.hide = true;
+            }
+          ); 
+        }
+       
+      ///////////////////////////////////
+      
+      addCommentREply(){
+        this.newCommentReply= new Post_Comment();
+         this.newCommentReply.content=this.commentReply.content;
+        // console.log('topic_value',this.topic_value);
+        // console.log('new topic:',this.newTopic);
+        this.post_commentService.addCommentReply(this.commentReply,this.comment.idComment).subscribe(
+          () => {
+            this.getCommentsReplies(this.id) ; 
+            this.comment_value='';
+          }
+      
+        );
+      
+      }
+      
+      
+      getCommentsReplies(idComment: any){
+        this.post_commentService.getAllCommentsreplies(idComment).subscribe(data => { this.commentReplies = data; 
+        console.log(this.commentReplies)});
+      }
+      
+      
+      
+    
+      
+      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      
+      getAllCommentsReplies(){
+        this.post_commentService.getAllCommentsreplies(this.id).subscribe(data => {
+          this.listCommentsReplies = data;})
+      }
+      
+      deleteCommentReply(idComment : any){
+        console.log("idComment",idComment);
+        this.post_commentService.deleteComment(idComment).subscribe(() => this.getAllCommentsReplies())
+        
+      }
+      
+      
+      
+      
+       
+      
+     
 }

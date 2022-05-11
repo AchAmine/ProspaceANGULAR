@@ -36,6 +36,13 @@ import { RequestInterceptorService } from './service/request-interceptor.service
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResetComponent } from './front/user/reset/reset.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { UserManagmentComponent } from './back/user/user-managment/user-managment.component';
+import { FormationManagmentComponent } from './back/user/formation-managment/formation-managment.component';
+import { AddFormationComponent } from './back/user/add-formation/add-formation.component';
+import { FullCalenderComponent } from './front/user/full-calender/full-calender.component';
+
+
 
 
 
@@ -50,6 +57,7 @@ import { ResetComponent } from './front/user/reset/reset.component';
     BackNavbarComponent,
     BackSidebarComponent,
     FrontmenuComponent
+   
     
   ],
   imports: [
@@ -60,6 +68,7 @@ import { ResetComponent } from './front/user/reset/reset.component';
     ReactiveFormsModule,
     PickerModule,
     MatSnackBarModule,
+    MatDialogModule,
     BrowserAnimationsModule
     
   ],

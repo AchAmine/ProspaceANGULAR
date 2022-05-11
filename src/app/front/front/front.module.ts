@@ -17,7 +17,22 @@ import { ConversationComponent } from '../chat/conversation/conversation.compone
 import { SigninPageComponent } from '../user/signin-page/signin-page.component';
 import { SignupPageComponent } from '../user/signup-page/signup-page.component';
 import { ResetComponent } from '../user/reset/reset.component';
+import { ProfileComponent } from '../user/profile/profile.component';
+import { FormationComponent } from '../user/formation/formation.component';
+import { AllformationComponent } from '../user/allformation/allformation.component';
+import { MyformationComponent } from '../user/myformation/myformation.component';
+import { NewBadgeComponent } from '../user/new-badge/new-badge.component';
+import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
+import { FullCalenderComponent } from '../user/full-calender/full-calender.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
 
 @NgModule({
   declarations: [
@@ -33,14 +48,23 @@ import { ResetComponent } from '../user/reset/reset.component';
     ConversationComponent,
     SigninPageComponent,
     SignupPageComponent,
-    ResetComponent
+    ResetComponent,
+    ProfileComponent,
+    FormationComponent,
+    AllformationComponent,
+    MyformationComponent,
+    NewBadgeComponent,
+    FullCalenderComponent
   ],
   imports: [
     CommonModule,
     FrontRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    PickerModule
+    PickerModule,
+    FullCalendarModule,
+    
+    
   ]
 })
 export class FrontModule { }

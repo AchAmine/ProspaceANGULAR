@@ -1,0 +1,199 @@
+<div class="row">
+            
+    <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">list of users</h4>
+              
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        First Name
+                      </th>
+                      <th>
+                        Last Name
+                      </th>
+
+                      <th>
+                        Username
+                      </th>
+                      <th>
+                        age
+                      </th>
+                      <th>
+                        email
+                      </th>
+                      <th>
+                        Created At
+                      </th>
+                      <th>
+                        Updated At
+                      </th>
+                      
+      
+                      
+      
+                      <th>
+                          
+                      </th>
+      
+                      <th>
+                          
+                      </th>
+      
+                        
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let u of users ">
+                      <td>
+                        {{u.firstName}}
+                      </td>
+                      <td>
+                        {{u.lastName}}
+                      </td>
+                      <td>
+                        {{u.userName}}
+                      </td>
+                      <td>
+                        {{ u.age }}
+                      </td>
+                      <td>
+                        {{ u.email }}
+                      </td>
+                      <td>
+                       {{ convertDate(u.createdAt) }}
+                      </td>
+                      <td>
+                        {{ convertDate(u.modifiedAt)  }}
+                      </td>
+                      
+      
+      
+      
+                      
+  
+                      
+                     
+  
+                      <td> 
+                        <select #rname>
+                            <option value="User">User</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Staff">Staff</option>
+                            <option value="Partner">Partner</option>
+                            
+                          </select>
+                      </td>
+  
+                      <td> <button type="button" class="btn btn-outline-danger"
+                       (click)="addRole(u.idUser,rname.value)" >Delete</button>
+                      </td>
+      
+                    </tr>
+                    
+                  </tbody>
+                          </table>
+              </div>
+              <h4>List of deleted users</h4>
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        First Name
+                      </th>
+                      <th>
+                        Last Name
+                      </th>
+
+                      <th>
+                        Username
+                      </th>
+                      
+                      <th>
+                        deleted At
+                      </th>
+                      
+      
+                      
+      
+                      <th>
+                          
+                      </th>
+      
+                      <th>
+                          
+                      </th>
+      
+                        
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let u2 of users2 ">
+                      <td>
+                        {{u2.firstName}}
+                      </td>
+                      <td>
+                        {{u2.lastName}}
+                      </td>
+                      <td>
+                        {{u2.userName}}
+                      </td>
+                      
+                      <td>
+                       {{ convertDate(u2.deletedAt) }}
+                      </td>
+                      
+                      
+      
+      
+      
+                      
+  
+                      
+                     
+  
+                     
+      
+                    </tr>
+                    
+                  </tbody>
+                          </table>
+                          <h4>Users Par Titre</h4>
+                          <div class="table-responsive">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th>
+                                    Users Par Titre
+                                  </th>
+                                  
+                                  
+                  
+                                  
+                  
+                                  
+                  
+                                    
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr >
+                                  <td>
+                                    {{titres}}
+                                  </td>
+
+                                 
+                  
+                                </tr>
+                                
+                              </tbody>
+                                      </table>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>

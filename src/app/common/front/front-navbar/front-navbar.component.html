@@ -16,12 +16,13 @@
                                 <ul id="navigation">
                                     <li><a class="active"  [routerLink]="['/home']">home</a></li>
                                     <li><a href="Courses.html">Forum</a></li>
-                                    <li><a href="#">Offers <i class="ti-angle-down"></i></a>
+                                    <li><a href="Courses.html" [routerLink]="['/home/formation']">formation</a></li>
+                                   <!-- <li><a href="#">Offers <i class="ti-angle-down"></i></a>
                                         <ul class="submenu">
                                             <li><a href="course_details.html">course details</a></li>
                                             <li><a href="elements.html">elements</a></li>
                                         </ul>
-                                    </li>
+                                    </li>-->
                                     <li><a href="#">News <i class="ti-angle-down"></i></a>
                                         <ul class="submenu">
                                             <li><a [routerLink]="['/home/articles']">Articles</a></li>
@@ -50,7 +51,7 @@
                                   </div>
                             </a>
 
-                            <a href="#test-form" class="login popup-with-form">
+                            <a [routerLink]="['/dashboard']"  href="#test-form" class="login popup-with-form">
                                 <div class="notifier new">
                                   <i class="bell fa fa-bell-o"></i>
                                 </div>
@@ -58,11 +59,13 @@
                               
                             
 
-                            <a [routerLink]="['/dashboard']" class="login popup-with-form">
-                                <i class="flaticon-user"></i>
-                                <span>log in</span>
+                            <a class="login popup-with-form">
+                                <i class="flaticon-user" (click)="openProfileDialog()"></i>
+                                <span>{{username}}</span>
                             </a>
-
+                            <div class="logoutPannel">
+                                <i class='fa fa-sign-out'  (click)="logout()"></i>
+                            </div>
                            
                             
                         </div>

@@ -1,0 +1,66 @@
+<section class="blog_area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="blog_left_sidebar" *ngFor="let f of formation">
+                    <article class="blog_item">
+                        
+                        <div class="blog_item_img">
+                            
+                             <img class="card-img rounded-0" src="../../assets/img/blog/single_blog_1.png" alt=""> 
+ <!--<img class="card-img rounded-0" src="{{'http://localhost/FileUploads/'+article.image.path}}" 
+            width="300" height="400" alt="">-->
+                        
+                        
+                        </div>
+
+                        <div class="blog_details">
+                            <a class="d-inline-block"  >
+                                <h2>{{f.subject}}</h2>
+                            </a>
+                            
+                            <ul class="blog-info-link">
+                                <li><a ><i class="fa fa-clock-o"></i>begin at: {{convertDate(f.startsAt)}}</a></li>
+                                <li><a ><i class="fa fa-clock-o"></i>ends at: {{convertDate(f.endsAt) }} </a></li>
+                                
+                            </ul>
+                          <!--  <div class="col-xl-12">
+                                <button type="submit" class="boxed_btn_orange" style="    position: absolute;left: 550;top: -70;" (click)="participer(f.idFormation)">partciper</button>
+                            </div>-->
+                        </div>
+                    </article>
+
+                    
+
+                    
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    <aside class="single_sidebar_widget search_widget">
+                        <form action="#">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder='Search Keyword'
+                                        onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Search Keyword'">
+                                    <div class="input-group-append">
+                                        <button class="btn" type="button"><i class="ti-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                type="submit">Search</button>
+                        </form>
+                    </aside>
+
+                   
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>

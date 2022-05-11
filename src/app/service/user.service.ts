@@ -100,6 +100,21 @@ resetPassword(newpass:any,token:any){
   console.log("the new in service is"+newpass)
   return this.httpClient.post(this.API_URL+'/reset/'+newpass+'/'+token,"");
 }
+getUndeletedUsers():Observable<profile[]>{
+  return this.httpClient.get<profile[]>(this.API_URL+'/getusers2')
+}
+addRole(idu:any,rname:any){
+  return this.httpClient.put(this.API_URL+'/addRole/'+idu+'/'+rname,"")
+}
+getDeletedUsers():Observable<profile[]>{
+  return this.httpClient.get<profile[]>(this.API_URL+'/getDeletedUsers')
+}
+getUsersParTitre(){
+  return this.httpClient.get(this.API_URL+'/getParTitre',{responseType: 'text'})
+}
+getrole(){
+  return this.httpClient.get(this.API_URL+'/getAuthoritie')
+}
 
  
 }

@@ -1,0 +1,66 @@
+<div class="row">
+            
+    <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">list of users</h4>
+              
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        subject
+                      </th>
+                      <th>
+                        begin at
+                      </th>
+
+                      <th>
+                        ends at
+                      </th>
+                     
+                      
+      
+                      
+      
+                      
+      
+                        
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let f of formation ">
+                      <td>
+                        {{f.subject}}
+                      </td>
+                      
+                      <td>
+                       {{ convertDate(f.startsAt) }}
+                      </td>
+                      <td>
+                        {{ convertDate(f.endsAt)  }}
+                      </td>
+                      
+      
+      
+      
+                      
+  
+                      
+                     
+  
+  
+                      <td> <button type="button" class="btn btn-outline-danger"
+                      (click)="deleteFormation(f.idFormation)" >Delete</button>
+                      </td>
+      
+                    </tr>
+                    
+                  </tbody>
+                          </table>
+              </div>
+             
+          </div>
+        </div>
+    </div>

@@ -19,4 +19,15 @@ export class FormationService {
   getCurrentUserFormation():Observable<Formation[]>{
     return this.httpClient.get<Formation[]>(this.API_URL+'/getCurrentUserFormation');
   }
+  getFormation(): Observable<Formation[]>{
+    return this.httpClient.get<Formation[]>(this.API_URL+'/getundfor')
+  }
+  deleteFormation(idf:any){
+    return this.httpClient.put(this.API_URL+'/deleteformation/'+idf,"")
+  }
+  addFormation(f:any,idu:any){
+    console.log("in service"+f.subject)
+    console.log("idu in service"+idu)
+    return this.httpClient.post(this.API_URL+'/addformation/'+idu,f)
+  }
 }

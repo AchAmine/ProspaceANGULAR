@@ -7,6 +7,7 @@ import { ConversationComponent } from '../chat/conversation/conversation.compone
 import { ArticledetailsFrontComponent } from '../news/articledetails-front/articledetails-front.component';
 import { ArticlesNavComponent } from '../news/articles-nav/articles-nav.component';
 import { FollowingarticlesFrontComponent } from '../news/followingarticles-front/followingarticles-front.component';
+import { FormationComponent } from '../user/formation/formation.component';
 import { SigninPageComponent } from '../user/signin-page/signin-page.component';
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'chat/:user', component: ChatComponent},
   {path: 'conversation/:user', component: ConversationComponent},
   {path: 'contact', component: ContactListComponent},
+  {path: 'formation',component:FormationComponent},
   //{path: 'articles', component: ListarticlesFrontComponent},
   {path: 'articles', component: ArticlesNavComponent},
   {path: 'followingarticles', component: FollowingarticlesFrontComponent}

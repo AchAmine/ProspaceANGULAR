@@ -20,4 +20,8 @@
     animation: pulse 2s ease-out;
     animation-iteration-count: infinite;
 }
+.logoutPannel{
+    display: flex;
+    color: white;
+}
 

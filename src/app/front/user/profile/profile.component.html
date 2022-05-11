@@ -1,0 +1,67 @@
+<div class="profilePanel">
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">{{user.userName}}</span><div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" (click)="deleteUser(user.idUser)">delete</button></div></div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profile Detail </h4>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6"><label class="labels">First Name </label><input type="text" class="form-control" value={{user.firstName}}  #PFirstname  ></div>
+                        <div class="col-md-6"><label class="labels">Last Name</label><input type="text" class="form-control" value={{user.lastName}} #PLasstname ></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">e-mail</label><input type="text" class="form-control" value={{user.email}} #PEmail ></div>
+                        <div class="col-md-12"><label class="labels">Age</label><input type="text" class="form-control" value={{user.age}} #PAge ></div>
+              
+                    </div>
+                    <div class="buttonPanel">
+                        
+                    
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" (click)="updateUser(PFirstname.value,PLasstname.value,PEmail.value,PAge.value)">update</button></div>
+                    
+                </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center experience"><span>List Of Skills</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus" (click)="editSkill()"></i>&nbsp;Skill</span></div><br>
+    
+                   
+                 <div *ngIf="editableSkill">
+                    <form >
+    
+                        <label class="labels">skill title: </label>
+                        <input class="form-control" type="text"placeholder="EX:DEVLOPPER" [(ngModel)]="ski.type" [ngModelOptions]="{standalone: true}">
+                      
+                      
+                        <div class="mt-5 text-center">  <button class="btn btn-primary profile-button" type="button"  (click)="addNewSkill(user.idUser,ski)">ADD</button> </div>
+                      
+                      </form>
+                    </div>
+    
+                    <div >
+                    <div class="col-md-12" *ngFor = 'let s of user.skills '><label class="text-right">{{s.type}} :</label><br><label class="text-right" *ngFor='let e of s.experiences'>Experience :{{e.title}} duration :{{e.duration}} years</label><br>
+                        
+                        <div *ngIf="editableExp">
+                            <form>
+                            <input class="form-control" type="text"placeholder="location" [(ngModel)]="exp.title" [ngModelOptions]="{standalone: true}">
+                            <input class="form-control" type="text"placeholder="duration" [(ngModel)]="exp.duration" [ngModelOptions]="{standalone: true}"> 
+                            <div class="mt-5 text-center">  <button class="btn btn-primary profile-button" type="button" (click)="addNewExp(s.idSkill,exp)" >ADD</button> </div>
+                        </form>
+                        </div>
+                        <hr><br></div> 
+                        <span class="border px-3 p-1 add-experience"><i class="fa fa-plus" (click)="editExp()"></i>&nbsp;Experience</span>
+    
+                </div>
+    
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    

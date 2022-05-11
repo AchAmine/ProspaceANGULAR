@@ -5,6 +5,9 @@ import { ArticledetailsBackComponent } from '../news/articledetails-back/article
 import { ListarticlesBackComponent } from '../news/listarticles-back/listarticles-back.component';
 import { ProfanityComponent } from '../news/profanity/profanity.component';
 import { UpdatearticleBackComponent } from '../news/updatearticle-back/updatearticle-back.component';
+import { AddFormationComponent } from '../user/add-formation/add-formation.component';
+import { FormationManagmentComponent } from '../user/formation-managment/formation-managment.component';
+import { UserManagmentComponent } from '../user/user-managment/user-managment.component';
 
 const routes: Routes = [
   
@@ -13,6 +16,9 @@ const routes: Routes = [
   {path: 'addarticle', component: AddarticleBackComponent},
   {path: 'profanity', component: ProfanityComponent},
   {path: 'articledetails/:id' , component: ArticledetailsBackComponent},
+  {path:'users' , component:UserManagmentComponent },
+  {path:'formations',component:FormationManagmentComponent},
+  {path:'addfromation',component:AddFormationComponent}
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,11 +32,14 @@ import { ChatComponent } from './front/chat/chat.component';
 import { ContactListComponent } from './front/chat/contact-list/contact-list.component';
 import { ConversationComponent } from './front/chat/conversation/conversation.component';
 import { FrontmenuComponent } from './common/front/frontmenu/frontmenu.component';
+
 import { AddcomplaintBackComponent } from './back/complaint/addcomplaint-back/addcomplaint-back.component';
 import { ListcomplaintBackComponent } from './back/complaint/listcomplaint-back/listcomplaint-back.component';
 import { DetailscomplaintBackComponent } from './back/complaint/detailscomplaint-back/detailscomplaint-back.component';
 import { AddcomplaintFrontComponent } from './front/complaint/addcomplaint-front/addcomplaint-front.component';
 import { DetailscomplaintFrontComponent } from './front/complaint/detailscomplaint-front/detailscomplaint-front.component';
+
+
 
 
 @NgModule({
@@ -49,22 +52,30 @@ import { DetailscomplaintFrontComponent } from './front/complaint/detailscomplai
     BackFooterComponent,
     BackNavbarComponent,
     BackSidebarComponent,
+
     FrontmenuComponent,
     AddcomplaintBackComponent,
     ListcomplaintBackComponent,
     DetailscomplaintBackComponent,
     AddcomplaintFrontComponent,
     DetailscomplaintFrontComponent
+
+    FrontmenuComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    PickerModule
+    
   ],
-  providers: [DatePipe,{provide: LocationStrategy,useClass:HashLocationStrategy}],
+  providers: [DatePipe,{provide: LocationStrategy,useClass:HashLocationStrategy},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptorService,
+      multi:true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

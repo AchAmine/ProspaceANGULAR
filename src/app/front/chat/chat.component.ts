@@ -1,8 +1,9 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit, SimpleChange } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, SimpleChange, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/User';
 import { ChatService } from 'src/app/service/chat.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-chat',
@@ -10,66 +11,78 @@ import { ChatService } from 'src/app/service/chat.service';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-
+  
   inputMsg ="";
-  chatContent="";
-  sender = new User(); //sender:any;
+  user = new User(); //sender:any;
   recipient = new User(); //recipient:any;
   stompClient: any;
   date: any;
    msg:any = [];
    subscription : any;
-
+  chatId: any;
    // entrer
-   idUser = 2 ; 
+    
    contactList :any;
    public isEmojiPickerVisible: boolean;
   
-  constructor(private chatService : ChatService,public datepipe: DatePipe,private router: Router,
+  constructor(private chatService : ChatService, private userService: UserService,public datepipe: DatePipe,private router: Router,
     private route: ActivatedRoute) { }
 
+
   ngOnInit(): void {
-    this.getContacts();
-    console.log("--------------1---------------");
-    this.route.paramMap.subscribe(res=>
-      {
-        console.log("--------------2---------------");
-        this.recipient.userName = res.get('user') as string;
-        console.log("--------------3---------------",this.recipient.userName);
-        
-    this.chatContent="";
+    this.userService.getConnectedUser().subscribe(data => {
+      this.user = data as User;
+      console.log(" User : ",this.user);
+      this.getContacts();
+      console.log("--------------1---------------",this.recipient.userName);
+
     this.stompClient = this.chatService.stompClient;
-    console.log("--------------4---------------",this.stompClient);
-   this.sender.userName = "essia";
-   console.log("--------------5---------------",this.sender.userName);
-
-
-   //this.recipient.userName="amine";
+      console.log("NOT UNDEFINED",this.recipient.userName);
    this.stompClient.connect({}, () => {
      console.log("coooo");
-      this.connect();
-}); 
+     this.chatService.getChatId(this.user.userName,this.recipient.userName).subscribe(data=>
+      { 
+        this.chatId = data;
+        console.log("Chat ID",+this.chatId);
+        this.connect();
+      });
+      
     });
+    
+      
+      })
+   
   console.log("FINAL MSGS LIST--------------------",this.msg);
   }
   
       //-------------------------------------------------------
 
-    connect(){
+     connect(){
       console.log("connected");
       console.log("recipient : ",this.recipient.userName);
-      console.log("sender : ",this.sender.userName);
+      console.log("user : ",this.user.userName);
 
       this.loadChat();
-
-    this.subscription =  this.stompClient.subscribe('/user/'+this.recipient.userName+'/queue/message', (message:any) => {
-      if (message.body) {
-        this.msg.push(JSON.parse(message.body));
-      }});
+      console.log("chat id connect",this.chatId);
+      this.subscription = this.stompClient.subscribe('/user/'+this.chatId+'/queue/message', (message:any) => {
+          if (message.body) {
+            console.log("msg", this.msg);
+            this.msg.push(JSON.parse(message.body));
+            console.log("msg after push",this.msg);
+          }});
+   
       }
         //-------------------------------------------------------
     loadChat(){
-      this.chatService.getMessages(this.sender.userName,this.recipient.userName).subscribe(data=> this.msg = data);
+      this.chatService.getMessages(this.user.userName,this.recipient.userName).subscribe(data=> this.msg = data);
+    }
+
+    getChatId() 
+    {
+      this.chatService.getChatId(this.user.userName,this.recipient.userName).subscribe(data=>
+        { this.chatId = data;
+          console.log("Chat ID",+this.chatId);
+        });
     }
     //-------------------------------------------------------
 
@@ -82,15 +95,15 @@ export class ChatComponent implements OnInit {
           }
          
           const msg = {
-            senderId: this.sender.userName,
+            senderId: this.user.userName,
             recipientId: this.recipient.userName,
             content: this.inputMsg,
             timestamp: new Date(),
            };
 
         this.stompClient.send("/app/chat", {}, JSON.stringify(msg));
-
           this.inputMsg="";
+          
       }
 
 
@@ -104,7 +117,7 @@ export class ChatComponent implements OnInit {
      }
 
      countNewMsgs(recipient:any){
-       return this.chatService.countNewMsgs(this.sender.userName,recipient).subscribe();
+       return this.chatService.countNewMsgs(this.user.userName,recipient).subscribe();
      }
 
      
@@ -113,27 +126,35 @@ export class ChatComponent implements OnInit {
     }
 
     getContacts() {
-      this.chatService.getContactList(this.idUser).subscribe(data=> this.contactList = data);
+      this.chatService.getContactList(this.user.idUser).subscribe(data=> this.contactList = data);
     }
 
-    chatWith(user:any){
+    async chatWith(user:any){
     // this.stompClient.disconnect();
-      this.msg.splice(0);
+    console.log("chat with user",user);
+     try { 
+      this.recipient = user;
+     await console.log("this recip",this.recipient);
+      await this.msg.splice(0);
       console.log("new msg list",this.msg);
-      this.subscription.unsubscribe();
-      this.connect();
-      this.router.navigate(['home/chat', user]);
+      if (this.subscription) {
+      await this.subscription.unsubscribe();
+    }
+    await this.chatService.getChatId(this.user.userName,this.recipient.userName).subscribe(data=>
+      { 
+        this.chatId = data;
+        console.log("Chat ID",+this.chatId);
+        this.connect();
+        this.ngOnInit();
+      });
+      }catch(error){
+        console.log(error);
+      }
     }
 
-   /*  async chatWith(user:any){
-      // this.stompClient.disconnect();
-        this.msg.splice(0);
-        console.log("new msg list",this.msg);
-        this.chatContent="";
-        this.connect();
-        await new Promise(f => setTimeout(f, 5000));
-        this.router.navigate(['chat', user]);
-      } */
+
+    
+
 
     
     

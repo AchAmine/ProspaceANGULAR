@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 declare var SockJS:any;
 declare var Stomp:any;
 
@@ -42,6 +43,10 @@ export class ChatService {
 
     getContactList(idUser: any) {
       return this.http.get(`${this.baseUrl}/listfollowers/${idUser}`);
+    }
+
+    getChatId(username: any,recipientId: any) {
+      return this.http.get(`http://localhost:8089/SpringMVC/chatId/${username}/${recipientId}`, { responseType: 'text' });
     }
      
     

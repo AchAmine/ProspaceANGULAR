@@ -13,6 +13,7 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { ListcomplaintBackComponent } from '../complaint/listcomplaint-back/listcomplaint-back.component';
 
 
+
 @NgModule({
   declarations: [
     ListarticlesBackComponent,

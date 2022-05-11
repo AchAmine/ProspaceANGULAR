@@ -13,8 +13,8 @@ export class ArticleService {
   public getAllArticles(){
     return this.http.get(`${this.baseUrl}/retrieve-all-articles`);
   } 
-  public addArticle(article: any){
-    return this.http.post(`${this.baseUrl}/add-article/1`,article);
+  public addArticle(article: any,userId: any){
+    return this.http.post(`${this.baseUrl}/add-article/${userId}`,article);
   }
 
   public deleteArticle(articleId: any) {

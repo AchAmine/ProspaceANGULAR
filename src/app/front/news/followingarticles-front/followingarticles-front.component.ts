@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ArticleType } from 'src/app/enum/ArticleType.enum';
 import { Article } from 'src/app/model/Article';
 import { ArticleService } from 'src/app/service/article.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-followingarticles-front',
@@ -16,8 +17,8 @@ export class FollowingarticlesFrontComponent implements OnInit {
   listArticles: any;
   form: boolean=false;
   date: any;
-  idUser = 1;
   article: any;
+  user: any;
   followingArticles:any;
   // categorie des articles
   categories = ['News','Jokes','Tips','Facts','WellBeing'];
@@ -25,15 +26,15 @@ export class FollowingarticlesFrontComponent implements OnInit {
   url:any;
 
   articles: Observable<Article[]>
-  constructor(public articleService :ArticleService, private router: Router,public datepipe: DatePipe) { }
+  constructor(public articleService :ArticleService,private userService: UserService, private router: Router,public datepipe: DatePipe) { }
 
   ngOnInit(): void {
-    
+    this.userService.getConnectedUser().subscribe(data => this.user = data)
     this.getFollowingArticles();
   }
 
   getFollowingArticles(){
-    this.articleService.getFollowingArticles(this.idUser).subscribe((res: any)=> {
+    this.articleService.getFollowingArticles(this.user.idUser).subscribe((res: any)=> {
        this.followingArticles=res;
         console.log(res);
       })

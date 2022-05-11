@@ -31,6 +31,7 @@
               "node_modules/@ctrl/ngx-emoji-mart/picker.css"
             ],
             "scripts": []
+         
           },
           "configurations": {
             "production": {
@@ -83,6 +84,7 @@
             "browserTarget": "prospace-frontend:build"
           }
         },
+        
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {

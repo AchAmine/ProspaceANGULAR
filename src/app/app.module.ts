@@ -32,10 +32,13 @@ import { ChatComponent } from './front/chat/chat.component';
 import { ContactListComponent } from './front/chat/contact-list/contact-list.component';
 import { ConversationComponent } from './front/chat/conversation/conversation.component';
 import { FrontmenuComponent } from './common/front/frontmenu/frontmenu.component';
-import { RequestInterceptorService } from './service/request-interceptor.service';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ResetComponent } from './front/user/reset/reset.component';
+
+import { AddcomplaintBackComponent } from './back/complaint/addcomplaint-back/addcomplaint-back.component';
+import { ListcomplaintBackComponent } from './back/complaint/listcomplaint-back/listcomplaint-back.component';
+import { DetailscomplaintBackComponent } from './back/complaint/detailscomplaint-back/detailscomplaint-back.component';
+import { AddcomplaintFrontComponent } from './front/complaint/addcomplaint-front/addcomplaint-front.component';
+import { DetailscomplaintFrontComponent } from './front/complaint/detailscomplaint-front/detailscomplaint-front.component';
+
 
 
 
@@ -49,18 +52,22 @@ import { ResetComponent } from './front/user/reset/reset.component';
     BackFooterComponent,
     BackNavbarComponent,
     BackSidebarComponent,
+
+    FrontmenuComponent,
+    AddcomplaintBackComponent,
+    ListcomplaintBackComponent,
+    DetailscomplaintBackComponent,
+    AddcomplaintFrontComponent,
+    DetailscomplaintFrontComponent
+
     FrontmenuComponent
-    
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    PickerModule,
-    MatSnackBarModule,
-    BrowserAnimationsModule
     
   ],
   providers: [DatePipe,{provide: LocationStrategy,useClass:HashLocationStrategy},

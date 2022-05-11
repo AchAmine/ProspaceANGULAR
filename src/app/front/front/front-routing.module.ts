@@ -7,7 +7,11 @@ import { ConversationComponent } from '../chat/conversation/conversation.compone
 import { ArticledetailsFrontComponent } from '../news/articledetails-front/articledetails-front.component';
 import { ArticlesNavComponent } from '../news/articles-nav/articles-nav.component';
 import { FollowingarticlesFrontComponent } from '../news/followingarticles-front/followingarticles-front.component';
+
+import { AddcomplaintFrontComponent } from "src/app/front/complaint/addcomplaint-front/addcomplaint-front.component";
+
 import { SigninPageComponent } from '../user/signin-page/signin-page.component';
+
 
 const routes: Routes = [
   
@@ -19,8 +23,8 @@ const routes: Routes = [
   {path: 'contact', component: ContactListComponent},
   //{path: 'articles', component: ListarticlesFrontComponent},
   {path: 'articles', component: ArticlesNavComponent},
-  {path: 'followingarticles', component: FollowingarticlesFrontComponent}
-  
+  {path: 'followingarticles', component: FollowingarticlesFrontComponent},
+  {path: 'addcomplaint', component: AddcomplaintFrontComponent },
 ];
 
 @NgModule({

@@ -14,9 +14,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { ChatComponent } from '../chat/chat.component';
 import { ConversationComponent } from '../chat/conversation/conversation.component';
+
+import { AddcomplaintFrontComponent } from "src/app/front/complaint/addcomplaint-front/addcomplaint-front.component";
+
+
 import { SigninPageComponent } from '../user/signin-page/signin-page.component';
 import { SignupPageComponent } from '../user/signup-page/signup-page.component';
 import { ResetComponent } from '../user/reset/reset.component';
+
 
 
 @NgModule({
@@ -31,9 +36,12 @@ import { ResetComponent } from '../user/reset/reset.component';
     ArticlesNavComponent,
     ChatComponent,
     ConversationComponent,
+
+
     SigninPageComponent,
     SignupPageComponent,
     ResetComponent
+
   ],
   imports: [
     CommonModule,

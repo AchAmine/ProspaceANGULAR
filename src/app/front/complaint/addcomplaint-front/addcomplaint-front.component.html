@@ -1,0 +1,27 @@
+<div class="bradcam_area breadcam_bg overlay2">
+         
+</div>
+<div class="container">
+    <div>
+      <h2>Add a new Complaint :</h2>
+    </div>
+    <form >
+      <div hidden class="col-sm-2 col-md-2 col-lg-2">
+        <label >ID Réclamation</label>
+        <input type="number" [(ngModel)]="complaint.idComplaint"
+               name="idComplaint" class="form-control">
+      </div>
+      <div class="col-sm-4 col-md-4 col-lg-4" >
+        <label >Type</label>
+        <input type="text" [(ngModel)]= "complaint.type"
+               name="typeComplaint" class="form-control">
+      </div>
+ 
+      <div class="mt-2">
+        <button type="submit" (click)="addComplaint()" class="btn btn-success">Add </button>
+        
+      </div>
+    </form>
+  </div>
+  
+  

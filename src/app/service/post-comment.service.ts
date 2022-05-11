@@ -38,6 +38,13 @@ public editCommentReply(comment: any)
 public getAllCommentsreplies(commentid:any){
   return this.http.get(`http://localhost:8089/SpringMVC/Post_comments//retrieve-postcomments-replies/${commentid}`);
 } 
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
+public addPost_Reaction(forumReaction :any,postid:any){
+  return this.http.post(`http://localhost:8089/SpringMVC/Forum-Reactions//add-reaction/1/${postid}`,forumReaction);
+}
+public removeReaction(reactionid:any){
+  return this.http.delete(`http://localhost:8089/SpringMVC/Forum-Reactions///delete-reaction/1/${reactionid}`)
+}
 
 }

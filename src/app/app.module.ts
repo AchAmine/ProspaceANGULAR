@@ -31,7 +31,6 @@ import { SectionDetailsComponent } from './front/forum/section-details/section-d
 import { TopicDetailsFrontComponent } from './front/forum/topic-details-front/topic-details-front.component';
 import { CommentsFrontComponent } from './front/forum/comments-front/comments-front.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,8 +57,7 @@ import { CommentsFrontComponent } from './front/forum/comments-front/comments-fr
     ListTopicsFrontComponent,
     SectionDetailsComponent,
     TopicDetailsFrontComponent,
-    CommentsFrontComponent
-  ],
+    CommentsFrontComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

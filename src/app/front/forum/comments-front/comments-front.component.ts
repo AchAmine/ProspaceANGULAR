@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ForumReaction } from 'src/app/model/ForumReaction';
 import { Post_Comment } from 'src/app/model/Post_Comment';
 import { PostCommentService } from 'src/app/service/post-comment.service';
 import { PostService } from 'src/app/service/post.service';
@@ -26,6 +27,7 @@ commentToEdit:Post_Comment;
 hide=false;
 
 listComments?:any;
+newReaction:any;
 
 
 
@@ -259,7 +261,39 @@ listCommentsReplies?:any;
       }
       
       
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////::
+
       
+     
+
+      // addReaction(){
+      //   this.newReaction= new ForumReaction();
+      //    this.newReaction.type=this.comment.content;
+      //   // console.log('topic_value',this.topic_value);
+      //   // console.log('new topic:',this.newTopic);
+      //   this.post_commentService.addComment(this.newComment,this.post.idPost).subscribe(
+      //     () => {
+      //       this.getComments(this.id) ; 
+      //       this.comment_value='';
+      //     }
+      
+      //   );
+      
+      // } 
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
       
        
       

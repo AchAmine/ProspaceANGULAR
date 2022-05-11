@@ -32,6 +32,8 @@ quizzId : any;
 quiz : Quiz = new Quiz();
 resultQuizz: ResultQuiz = new ResultQuiz();
 timer: any;
+listTop3ResultQuiz?: any;
+
 // static user
   iduser = 1 ;
 
@@ -44,7 +46,7 @@ timer: any;
   
     this.quizzId = this.route.snapshot.params.id; 
     this.quizService.getQuiz(this.quizzId).subscribe(data => this.quiz = data);
-    
+    this.Top3QuizResults();
     this.loadQuestions();
     
 
@@ -75,11 +77,7 @@ this.questionService.getQuizQuestionsForTest(this.quizzId).subscribe(
   }
 );
   }
-  public resultQuiz(){
-    
-    
-
-  }
+ 
   selectedAnswers(reponse : Answer){
     if (this.listResp.includes(reponse)) {
       const index = this.listResp.indexOf(reponse);
@@ -131,6 +129,12 @@ this.questionService.getQuizQuestionsForTest(this.quizzId).subscribe(
     let ss=this.timer - mm * 60;
     return `${mm} min : ${ss} sec `;
   }
+
+  public Top3QuizResults(){
+
+    this.resultQuizService.Top3QuizResults(this.route.snapshot.params.id).subscribe(res=> { this.listTop3ResultQuiz=res; console.log(res);})
+}
+
 
 }
   

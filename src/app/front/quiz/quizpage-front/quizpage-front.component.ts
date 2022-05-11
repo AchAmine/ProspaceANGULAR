@@ -14,14 +14,15 @@ import { ResultQuizService } from 'src/app/service/result-quiz.service';
 })
 export class QuizpageFrontComponent implements OnInit {
   listQuiz?: any;
-  listTop3ResultQuiz?: any;
 
   quiz :  Quiz=new Quiz();
   form: boolean=false;
   listQuizQuestions? : any;
   quizz: Observable<Quiz[]>
-
+  userExits:any; 
+  exists=false;
   ResultQuiz:any;
+  lisResults: any;
   // user static
   idUser = 1 ;
   constructor(private questionService :QuestionService,private quizService :QuizService,
@@ -29,8 +30,7 @@ export class QuizpageFrontComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllQuiz();;
-    console.log('REEESULT QUIIIZ 2',this.getResultQuiz(2));
-
+    console.log('REEESULT QUIIIZ 2111',this.getUserResultQuiz(1));
   }
 
 
@@ -38,12 +38,28 @@ export class QuizpageFrontComponent implements OnInit {
     this.quizService.getAllQuiz().subscribe(res=> { this.listQuiz=res; console.log(res);})
   }
 
-  getResultQuiz(idQuiz:any){
-    this.resultQuizService.getUserResult(idQuiz,this.idUser).subscribe();
+  async getUserResultQuiz(idQuiz: any){
+  // return  this.resultQuizService.userResult(idQuiz,this.idUser).subscribe(res=> { this.userExits=res; console.log('REEESULT QUIIIZ 2111',this.userExits);});
+   //return this.resultQuizService.getAllResults().subscribe(res=> { this.lisResults=res; console.log("REEESUULTS",res);});
+  this.resultQuizService.userResultExists(idQuiz,this.idUser).subscribe
+(res=> {  return this.lisResults=res; console.log("REEESUULTS",res);
+
+
+
+})
+}
+  
+
+  
+  save(idQuiz:number){
+    if(this.lisResults==true){
+    return  true;
+   
+    }else return false;
+    }
+ 
+   
+
   }
-
-  public Top3QuizResults(idQuiz:number){
-
-    this.resultQuizService.Top3QuizResults(idQuiz).subscribe(res=> { this.listTop3ResultQuiz=res; console.log(res);})
-}
-}
+ 
+  

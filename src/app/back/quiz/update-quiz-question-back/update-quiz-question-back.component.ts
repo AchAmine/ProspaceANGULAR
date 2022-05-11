@@ -15,6 +15,7 @@ export class UpdateQuizQuestionBackComponent implements OnInit {
   constructor(private route: ActivatedRoute,private  questionService: QuestionService,private router: Router) { }
   id=0;
   question?: any;
+  
   ngOnInit(): void {
     this.id= this.route.snapshot.params.id;
     //alert(this.id);
@@ -23,12 +24,13 @@ export class UpdateQuizQuestionBackComponent implements OnInit {
         this.question=data;
         console.log("QUEESTION ",data);
 
-        console.log(this.question);
+        console.log("ID QUIIIZ",this.question.Quiz.idQuizz);
       });
   }
 
-  public updateQuizQuestion(Question: any, idQuiz: any){
-    this.questionService.editQuizQuestion(Question,idQuiz).subscribe(
+  public updateQuizQuestion(){
+    this.questionService.editQuizQuestion(this.question,2).subscribe(
+      
     );
 
 

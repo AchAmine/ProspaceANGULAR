@@ -52,6 +52,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { OfferFilterPipe } from './front/offer/listoffers-front/offer-filter.pipe';
 import { OffersStatsComponent } from './back/offer/offers-stats/offers-stats.component';
 import { NgChartsModule } from 'ng2-charts';
+import { ShowResultQuizFrontComponent } from './front/quiz/show-result-quiz-front/show-result-quiz-front.component';
 
 
 
@@ -92,7 +93,8 @@ import { NgChartsModule } from 'ng2-charts';
     UploadFileComponent,
     OfferdetailsFrontComponent,
     OfferFilterPipe,
-    OffersStatsComponent
+    OffersStatsComponent,
+    ShowResultQuizFrontComponent
  
   ],
   imports: [

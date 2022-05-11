@@ -10,7 +10,7 @@
 
           <label for="exampleInputName1">Content</label>
               <input class="form-control" name="Content" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="Content" [(ngModel)] ="question.content">
-          <button type="submit" class="btn btn-primary mr-2" (click)="updateQuizQuestion(question,question.Quiz.idQuizz)" >Add</button>
+          <button type="submit" class="btn btn-primary mr-2" (click)="updateQuizQuestion()" >Add</button>
   
         </form>
       </div>

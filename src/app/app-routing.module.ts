@@ -27,6 +27,7 @@ import { OfferdetailsBackComponent } from './back/offer/offerdetails-back/offerd
 import { UploadFileComponent } from './front/offer/sendoffer-front/upload-file/upload-file.component';
 import { OfferdetailsFrontComponent } from './front/offer/offerdetails-front/offerdetails-front.component';
 import { OffersStatsComponent } from './back/offer/offers-stats/offers-stats.component';
+import { ShowResultQuizFrontComponent } from './front/quiz/show-result-quiz-front/show-result-quiz-front.component';
 
 
 
@@ -50,6 +51,7 @@ const routes: Routes = [
   {path: 'quizpageFront', component: QuizpageFrontComponent},
   {path: 'startQuiz/:id', component: StartQuizFrontComponent},
   {path: 'resultQuiz/:id', component: ResultQuizFrontComponent },
+  {path: 'ShowresultQuiz/:id', component: ShowResultQuizFrontComponent },
   {path: 'listoffersBack', component: ListoffersBackComponent },
   //{path: 'offerDetails/:id', component: UpdateoffersBackComponent },
   {path: 'offerDetailsBack/:id', component: OfferdetailsBackComponent },

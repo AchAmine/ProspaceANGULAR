@@ -15,6 +15,7 @@ export class Offer{
     image: Image;
     partner: User;
     rating: Array<Rating>;
+    moyRatings: any;
 
 
 }

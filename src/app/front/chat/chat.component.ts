@@ -38,6 +38,7 @@ export class ChatComponent implements OnInit {
 
     this.stompClient = this.chatService.stompClient;
       console.log("NOT UNDEFINED",this.recipient.userName);
+      if (this.recipient){
    this.stompClient.connect({}, () => {
      console.log("coooo");
      this.chatService.getChatId(this.user.userName,this.recipient.userName).subscribe(data=>
@@ -47,7 +48,7 @@ export class ChatComponent implements OnInit {
         this.connect();
       });
       
-    });
+    });}
     
       
       })
@@ -145,7 +146,7 @@ export class ChatComponent implements OnInit {
         this.chatId = data;
         console.log("Chat ID",+this.chatId);
         this.connect();
-        this.ngOnInit();
+       // this.ngOnInit();
       });
       }catch(error){
         console.log(error);

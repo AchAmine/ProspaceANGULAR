@@ -10,6 +10,7 @@ import { ArticledetailsBackComponent } from '../news/articledetails-back/article
 import { ProfanityComponent } from '../news/profanity/profanity.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { ArticlesBackComponent } from '../news/articles-back/articles-back.component';
 
 
 
@@ -20,7 +21,8 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
     ListoffersBackComponent,
     UpdatearticleBackComponent,
     ArticledetailsBackComponent,
-    ProfanityComponent
+    ProfanityComponent,
+    ArticlesBackComponent
   ],
   imports: [
     CommonModule,

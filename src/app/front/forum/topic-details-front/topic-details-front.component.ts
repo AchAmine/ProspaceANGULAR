@@ -2,6 +2,8 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/app/model/Post';
+import { Post_Comment } from 'src/app/model/Post_Comment';
+import { PostCommentService } from 'src/app/service/post-comment.service';
 import { PostService } from 'src/app/service/post.service';
 import { TopicService } from 'src/app/service/topic.service';
 
@@ -13,7 +15,7 @@ import { TopicService } from 'src/app/service/topic.service';
 export class TopicDetailsFrontComponent implements OnInit {
   idUser=1;
 post: Post=new Post;
-
+comment:Post_Comment=new Post_Comment();
 id:number;
 topic:any;
 posts:any;
@@ -25,6 +27,8 @@ postToEdit:Post;
 hide=false;
 
 listPosts?:any;
+
+
 
 
   constructor(private topicService:TopicService,private route: ActivatedRoute,private router: Router,
@@ -143,6 +147,9 @@ postDetails(post: Post){
   // this.viewsInc(topic);
   this.router.navigate(['post',post.idPost])  ;    
 }
+////////////////////////////////////////
+
+
 
 
 }

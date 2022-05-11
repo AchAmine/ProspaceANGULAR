@@ -1,4 +1,5 @@
 import { ForumReaction } from "./ForumReaction";
+import { Post_Comment } from "./Post_Comment";
 import { Section } from "./Section";
 import { Topic } from "./Topic";
 import { User } from "./User";

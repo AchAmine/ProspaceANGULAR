@@ -29,6 +29,7 @@ import { AddTopicFrontComponent } from './front/forum/add-topic-front/add-topic-
 import { ListTopicsFrontComponent } from './front/forum/list-topics-front/list-topics-front.component';
 import { SectionDetailsComponent } from './front/forum/section-details/section-details.component';
 import { TopicDetailsFrontComponent } from './front/forum/topic-details-front/topic-details-front.component';
+import { CommentsFrontComponent } from './front/forum/comments-front/comments-front.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { TopicDetailsFrontComponent } from './front/forum/topic-details-front/to
     ListSectionsFrontComponent,
     ListTopicsFrontComponent,
     SectionDetailsComponent,
-    TopicDetailsFrontComponent
+    TopicDetailsFrontComponent,
+    CommentsFrontComponent
   ],
   imports: [
     BrowserModule,

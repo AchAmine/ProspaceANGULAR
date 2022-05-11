@@ -7,13 +7,13 @@ import { ArticleService } from 'src/app/service/article.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
-  selector: 'app-articledetails-back',
-  templateUrl: './articledetails-back.component.html',
-  styleUrls: ['./articledetails-back.component.css']
+  selector: 'app-articles-back',
+  templateUrl: './articles-back.component.html',
+  styleUrls: ['./articles-back.component.css']
 })
-export class ArticledetailsBackComponent implements OnInit {
+export class ArticlesBackComponent implements OnInit {
 
- 
+  
   listArticles?: any;
   article :  Article=new Article();
   form: boolean=false;
@@ -50,5 +50,4 @@ export class ArticledetailsBackComponent implements OnInit {
     return this.date = this.datepipe.transform(date, 'yyyy-MM-dd HH:mm');
    }
 
-   
 }

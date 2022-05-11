@@ -3,11 +3,13 @@
       <div class="card">
         <div class="card-body">
             <h2>{{article.title}}</h2>
-            <h5 id="date">  {{ convertDate(article.createdAt) }} </h5>
+          
             <img src="{{'http://localhost/FileUploads/'+article.image.path}}">
             <p> {{article.content}} </p>
-
-            <h4 id="date"> Published By : {{article.user.userName}}</h4>
+            <div id="date">
+            <h4> Published By : {{article.user.userName}}</h4> 
+            <p id="user">  {{ convertDate(article.createdAt) }} </p>
+        </div>
         </div>
       </div>
       <br>

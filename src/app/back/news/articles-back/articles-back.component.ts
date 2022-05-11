@@ -16,7 +16,6 @@ export class ArticlesBackComponent implements OnInit {
   
   listArticles?: any;
   article :  Article=new Article();
-  form: boolean=false;
   date: any;
 
   articles: Observable<Article[]>

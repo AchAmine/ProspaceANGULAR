@@ -14,6 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { ChatComponent } from '../chat/chat.component';
 import { ConversationComponent } from '../chat/conversation/conversation.component';
+import { AddcomplaintFrontComponent } from "src/app/front/complaint/addcomplaint-front/addcomplaint-front.component";
+
 
 
 @NgModule({
@@ -27,7 +29,7 @@ import { ConversationComponent } from '../chat/conversation/conversation.compone
     FollowingarticlesFrontComponent,
     ArticlesNavComponent,
     ChatComponent,
-    ConversationComponent
+    ConversationComponent,
   ],
   imports: [
     CommonModule,

@@ -5,6 +5,7 @@ import { ArticledetailsBackComponent } from '../news/articledetails-back/article
 import { ListarticlesBackComponent } from '../news/listarticles-back/listarticles-back.component';
 import { ProfanityComponent } from '../news/profanity/profanity.component';
 import { UpdatearticleBackComponent } from '../news/updatearticle-back/updatearticle-back.component';
+import {  ListcomplaintBackComponent } from "src/app/back/complaint/listcomplaint-back/listcomplaint-back.component";
 
 const routes: Routes = [
   
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'addarticle', component: AddarticleBackComponent},
   {path: 'profanity', component: ProfanityComponent},
   {path: 'articledetails/:id' , component: ArticledetailsBackComponent},
+  {path: 'listcomplaint', component: ListcomplaintBackComponent },
 ];
 
 @NgModule({

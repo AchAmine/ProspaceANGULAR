@@ -90,7 +90,7 @@ listTopics?:any;
   }
   cancel() {
   
-    this.hide = true;
+    this.getTopics(this.id) ; ;
   }
 ///////////////////////////////////
 

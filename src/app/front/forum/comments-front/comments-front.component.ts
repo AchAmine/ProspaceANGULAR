@@ -99,7 +99,7 @@ listCommentsReplies?:any;
         ); 
       }
       cancel() {
-        this.router.navigate(['/topic/',this.id]);
+        this.getComments(this.id) ; ;
       }
     ///////////////////////////////////
     

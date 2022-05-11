@@ -94,7 +94,7 @@ listPosts?:any;
     ); 
   }
   cancel() {
-    this.router.navigate(['/topic/',this.id]);
+    this.getPosts(this.id) ; ;
   }
 ///////////////////////////////////
 

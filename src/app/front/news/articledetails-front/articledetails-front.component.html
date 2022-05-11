@@ -7,10 +7,40 @@
        <div class="col-lg-8 posts-list">
           <div class="single-post">
              <div class="feature-img">
-                <img class="img-fluid" src="../../assets/img/blog/single_blog_1.png" alt="">
+               <img class="card-img rounded-0" src="{{'http://localhost/FileUploads/'+article.image.path}}" 
+               width="300" height="400" alt="">
              </div>
              <div class="blog_details">
                 <h2> {{article.title}}</h2>
+                
+               <!--  <div class="float-right">
+               <li>
+                  <a><i class="fa fa-edit"></i></a>
+                  &nbsp;
+                  <a><i class="fa fa-trash"></i></a>
+              </li>
+               </div> -->
+               <div class="float-right" *ngIf="user.idUser == article.user.idUser">
+               <div class="dropdown">
+                  <button type="button" class="btn btn-outline-info dropdown-toggle" id="dropdownMenuIconButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton3">
+                    
+                    <a class="dropdown-item" href="#"><i class="fa fa-edit"></i> &nbsp; Edit here</a>
+                    <a class="dropdown-item" (click)="editArticleBack(article.idArticle)">
+                       <i class="fa fa-edit"></i> &nbsp; Edit in admin panel
+                     </a>
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" (click)="deleteArticle(article.idArticle)">
+                       <i class="fa fa-trash"></i> &nbsp; Delete this article
+                     </a>
+                  </div>
+                </div>
+                </div>
+
+
                 <ul class="blog-info-link mt-3 mb-4">
                    <li><a href="#"><i class="fa fa-user"></i> {{article.user.userName}}</a></li>
                    <li><a href="#"><i class="fa fa-comments"></i> {{ comments?.length || '0' }}</a></li>
@@ -22,63 +52,18 @@
                 
              </div>
           </div>
-          <div class="navigation-top">
-             <div class="d-sm-flex justify-content-between text-center">
-                <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span> Lily and 4
-                   people like this</p>
-                <div class="col-sm-4 text-center my-2 my-sm-0">
-                   <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
-                </div>
-                <ul class="social-icons">
-                   <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                   <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                   <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                   <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                </ul>
-             </div>
-             <div class="navigation-area">
-                <div class="row">
-                   <div
-                      class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                      <div class="thumb">
-                         <a href="#">
-                            <img class="img-fluid" src="img/post/preview.png" alt="">
-                         </a>
-                      </div>
-                      <div class="arrow">
-                         <a href="#">
-                            <span class="lnr text-white ti-arrow-left"></span>
-                         </a>
-                      </div>
-                      <div class="detials">
-                         <p>Prev Post</p>
-                         <a href="#">
-                            <h4>Space The Final Frontier</h4>
-                         </a>
-                      </div>
-                   </div>
-                   <div
-                      class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
-                      <div class="detials">
-                         <p>Next Post</p>
-                         <a href="#">
-                            <h4>Telescopes 101</h4>
-                         </a>
-                      </div>
-                      <div class="arrow">
-                         <a href="#">
-                            <span class="lnr text-white ti-arrow-right"></span>
-                         </a>
-                      </div>
-                      <div class="thumb">
-                         <a href="#">
-                            <img class="img-fluid" src="img/post/next.png" alt="">
-                         </a>
-                      </div>
-                   </div>
-                </div>
-             </div>
-          </div>
+          
+             
+                
+
+               <app-articlereactions-front></app-articlereactions-front>
+                   
+
+                
+
+
+             
+          
           
           <div class="comments-area" *ngFor="let comment of comments">
              <h4>{{ comments?.length || '0' }} Comments</h4>
@@ -92,6 +77,7 @@
                          <p class="comment">
                            {{comment.content}}
                          </p>
+                         
                          <div class="d-flex justify-content-between">
                             <div class="d-flex align-items-center">
                                <h5>
@@ -101,8 +87,64 @@
                             </div>
                          </div>
                       </div>
+
+                      
                    </div>
+                   
+                   <div class="col-sm-4 text-center my-2 my-sm-0">
+                     <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
+                  </div>
+                  
+                  
+                  <li *ngIf="user.idUser == comment.user.idUser">
+                     <a (click)="openEditForm(comment)"><i class="fa fa-edit"></i></a>
+                     &nbsp;
+                     <a (click)="deleteComment(comment.idComment)"><i class="fa fa-trash"></i></a>
+                  </li>
+               
+                
+
                 </div>
+                <!-- EDIT COMMENT SECTION -->
+                <ng-container *ngIf="comment == commentToEdit">
+                <div class="comment-form">
+                  <h4>Edit comment</h4>
+                  <form class="form-contact comment_form" action="#" id="editcommentForm" >
+                     <div class="row">
+                        <div class="col-12">
+                           <div class="form-group">
+                              <textarea class="form-control w-100" name="editcomment" id="editcomment" cols="30" rows="4"
+                                 placeholder="Write Comment" required [(ngModel)]='commentToEdit.content' ></textarea>
+                                
+     
+                             </div>
+                        </div>
+                        
+                     </div>
+                     <div class="form-group">
+                       <div class="container2">
+                        <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
+                       name="editcomment"  (click)="editComment()">Save</button> &nbsp;
+                       <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
+                       name="cancel"  (click)="Cancel()">Cancel</button>
+     
+     
+                       <div style="float:right;">
+                       <button (click)="isEmojiPickerVisible = !isEmojiPickerVisible;">😀</button>
+                       <br>
+                       <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible"  (emojiSelect)="addEmoji($event)" 
+                       title="Choose your emoji">
+                      </emoji-mart>
+                      </div>
+                      </div>
+     
+     
+                     </div>
+                  </form>
+               </div>
+               </ng-container>
+               <!-- END EDIT COMMENT SECTION -->
+
              </div>
              
           </div>
@@ -112,15 +154,30 @@
                 <div class="row">
                    <div class="col-12">
                       <div class="form-group">
-                         <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
+                         <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="4"
                             placeholder="Write Comment" required [(ngModel)]='comment_value' #comment="ngModel"></textarea>
-                      </div>
+                           
+
+                        </div>
                    </div>
                    
                 </div>
                 <div class="form-group">
+                  <div class="container2">
                    <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
                   name="comment" [disabled]="f.invalid" (click)="addComment()">Send</button>
+
+
+                  <div style="float:right;">
+                  <button (click)="isEmojiPickerVisible = !isEmojiPickerVisible;">😀</button>
+                  <br>
+                  <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible"  (emojiSelect)="addEmoji($event)" 
+                  title="Choose your emoji">
+                 </emoji-mart>
+                 </div>
+                 </div>
+
+
                 </div>
              </form>
           </div>
@@ -257,34 +314,10 @@
                     <img class="img-fluid" src="../../assets/img/post/post_7.png" alt="">
                  </a>
               </li>
-              <li>
-                 <a href="#">
-                    <img class="img-fluid" src="../../assets/img/post/post_8.png" alt="">
-                 </a>
-              </li>
-              <li>
-                 <a href="#">
-                    <img class="img-fluid" src="../../assets/img/post/post_9.png" alt="">
-                 </a>
-              </li>
-              <li>
-                 <a href="#">
-                    <img class="img-fluid" src="../../assets/img/post/post_10.png" alt="">
-                 </a>
-              </li>
+              
            </ul>
              </aside>
-             <aside class="single_sidebar_widget newsletter_widget">
-                <h4 class="widget_title">Newsletter</h4>
-                <form action="#">
-                   <div class="form-group">
-                      <input type="email" class="form-control" onfocus="this.placeholder = ''"
-                         onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
-                   </div>
-                   <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                      type="submit">Subscribe</button>
-                </form>
-             </aside>
+             
           </div>
        </div>
     </div>

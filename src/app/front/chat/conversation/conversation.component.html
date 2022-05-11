@@ -1,0 +1,102 @@
+<div class="bradcam_area breadcam_bg overlay2">
+        
+</div>
+<section class="blog_area single-post-area section-padding">
+<div class="container">
+  <div class="row no-gutters">
+     <div class="col-md-4 border-right">
+     <div class="settings-tray">
+       <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/filip.jpg" alt="Profile img">
+       
+     </div>
+    
+     
+     <div class="search-box">
+       <div class="input-wrapper">
+       <input placeholder="Search here" type="text">
+       </div>
+     </div>
+     <ng-container *ngFor="let contact of contactList">
+    <div class="friend-drawer friend-drawer--onhover" >
+       <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/optimus-prime.jpeg" alt="">
+       <div class="text">
+       <h6 (click)="chatWith(contact.userName)">{{contact.userName}}</h6>
+       
+       </div>
+       <div class="dropdown">
+         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+           <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+         </a>
+         <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton3">
+           
+           <a class="dropdown-item">
+             <i class="fa fa-eye" aria-hidden="true"></i> &nbsp; See profile
+            </a>
+
+           <div class="dropdown-divider"></div>
+           <a class="dropdown-item">
+              <i class="fa fa-trash"></i> &nbsp; Delete contact
+            </a>
+         </div>
+       </div>
+     </div>
+     <hr>
+    </ng-container>
+    
+     
+     </div>
+     <div class="col-md-8">
+     <div class="settings-tray">
+       <div class="friend-drawer no-gutters friend-drawer--grey">
+       <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/robocop.jpg" alt="">
+       <div class="text">
+         <h6>{{recipient.userName}}</h6>
+         <!-- <p class="text-muted">Layin' down the law since like before Christ...</p> -->
+       </div>
+       
+       </div>
+     </div>
+     <div class="chat-panel" >
+        <ng-container *ngFor="let value of msg">
+       <div class="row no-gutters" *ngIf="value.recipientId == sender.userName">
+       <div class="col-md-3">
+         <div class="chat-bubble chat-bubble--left">
+           {{value.content}}
+         </div>
+       </div>
+       </div>
+       
+       <div class="row no-gutters" *ngIf="value.recipientId == recipient.userName">
+       <div class="col-md-3 offset-md-9">
+         <div class="chat-bubble chat-bubble--right">
+           {{value.content}}
+         </div>
+       </div>
+       </div>
+     </ng-container>
+       
+       <div class="row">
+       <div class="col-12">
+         <div class="chat-box-tray">
+       
+         <input type="text" name="comment" id="comment" placeholder="Type your message here..." 
+         required  [(ngModel)]='inputMsg' (keyup.enter)="onKeyUp($event)">
+
+         <i class="icon send fa fa-paper-plane-o clickable" aria-hidden="true" (click)="sendMessage()" >
+           
+         </i>
+         <i class="material-icons" (click)="isEmojiPickerVisible = !isEmojiPickerVisible;">
+           😀
+         </i> 
+         
+         </div>
+         <emoji-mart class="emoji-mart" *ngIf="isEmojiPickerVisible"  (emojiSelect)="addEmoji($event)" 
+         title="Choose your emoji">
+        </emoji-mart>
+       </div>
+       </div>
+     </div>
+     </div>
+   </div>
+</div>
+</section>

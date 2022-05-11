@@ -1,0 +1,9 @@
+img {
+    float: left;
+    margin-right: 15px;
+    height: 250px;
+  }
+  #date{
+      float: right;
+      margin-left: 15px;
+  }

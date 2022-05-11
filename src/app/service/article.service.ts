@@ -13,8 +13,8 @@ export class ArticleService {
   public getAllArticles(){
     return this.http.get(`${this.baseUrl}/retrieve-all-articles`);
   } 
-  public addArticle(article: any){
-    return this.http.post(`${this.baseUrl}/add-article/1`,article);
+  public addArticle(article: any,userId: any){
+    return this.http.post(`${this.baseUrl}/add-article/${userId}`,article);
   }
 
   public deleteArticle(articleId: any) {
@@ -33,6 +33,19 @@ export class ArticleService {
   public viewInc(article: any) 
   {
    return  this.http.put(`${this.baseUrl}/viewinc`,article)
+  }
+
+  //
+  getuserPreferences(idUser: number){
+    return this.http.get(`${this.baseUrl}/preferences/user/${idUser}`);
+  }
+
+  getFollowingArticles(idUser: number){
+    return this.http.get(`${this.baseUrl}/followingarticles/user/${idUser}`);
+  }
+
+  getImage(path: any){
+    return this.http.get(`${this.baseUrl}/image/${path}`);
   }
 
   

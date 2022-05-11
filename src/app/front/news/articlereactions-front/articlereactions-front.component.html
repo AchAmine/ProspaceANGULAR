@@ -1,0 +1,61 @@
+<div>
+
+  <div *ngFor="let emoji of emojiList; index as i;" class="reaction-counts">
+
+    <span>
+     <!-- <span *ngIf="hasReactions(i)"> -->
+      <!-- <img [src]="emojiPath(emoji)"> {{ reactionCount[i] }} -->
+      <img [src]="emojiPath(emoji)"> {{ getReactionCountByType(i) }}
+    </span>
+
+  </div>
+</div>
+
+<div class="navigation-top">
+<div class="d-sm-flex justify-content-between text-center">
+<div class="react" (mouseenter)="toggleShow()" (mouseleave)="toggleShow()">
+    <div class="emojis" *ngIf="showEmojis">
+  
+      <span *ngFor="let emoji of emojiList; index as i;">
+        <img [src]="emojiPath(emoji)" width='50px' (click)="react(i)">
+      </span>
+  
+    </div>
+
+    
+      <ng-container *ngIf="currentReaction!= null">
+    <span class="like" [class.liked]="currentReaction != null">
+        <!-- <img [src]="emojiPath(emojiList[0])" class="like-info"> -->
+        {{currentReaction.type}}
+    </span>
+    </ng-container>
+    <ng-container *ngIf="currentReaction == null">
+      <span class="like">
+          <!-- <img [src]="emojiPath(emojiList[0])" class="like-info"> -->
+        Like
+      </span>
+      </ng-container>
+    
+
+    
+   <!--  <span *ngIf="currentReaction != null">
+      | You reacted <strong>{{ currentReaction.type }}</strong>
+    </span>
+    <span *ngIf="currentReaction == null">
+      | You haven't reacted yet !  
+    </span> -->
+    
+     
+     
+  </div>
+    <div class="col-sm-4 text-center my-2 my-sm-0" >
+    <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> Comment</p>
+    
+
+    </div>
+     <p class="like-info"><span class="align-middle"><i class="fa fa-heart"></i></span>
+       {{reactions?.length}} people reacted to this</p>
+     
+  </div>
+
+</div>

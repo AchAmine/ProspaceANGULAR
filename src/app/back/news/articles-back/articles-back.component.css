@@ -1,0 +1,13 @@
+img {
+    float: left;
+    margin-right: 15px;
+    height: 250px;
+  }
+  #date{
+      float: right;
+      margin-left: 15px;
+  }
+  #user{
+      float:right;
+      margin-left:25px;
+  }

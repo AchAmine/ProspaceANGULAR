@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Article } from 'src/app/model/Article';
 import { ArticleService } from 'src/app/service/article.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-listarticles-back',
@@ -18,30 +19,30 @@ export class ListarticlesBackComponent implements OnInit {
   date: any;
 
   articles: Observable<Article[]>
-  constructor(private articleService :ArticleService, private router: Router,public datepipe: DatePipe) { }
+  constructor(private articleService :ArticleService, private userService: UserService,private router: Router,public datepipe: DatePipe) { }
 
   ngOnInit(): void {
     this.getAllArticles();;
+    console.log(this.listArticles);
   }
   getAllArticles(){
     this.articleService.getAllArticles().subscribe(res=> { this.listArticles=res; console.log(res);})
   }
-  addArticle(article: any){
-    this.articleService.addArticle(article).subscribe(() => {
-      this.getAllArticles();
-      this.form = false;
-    });
-  }
+ 
   deleteArticle(idArticle : any){
-    this.articleService.deleteArticle(idArticle).subscribe(() => this.getAllArticles())
+    if (window.confirm('Are sure you want to delete this Article ?')) {
+    this.articleService.deleteArticle(idArticle).subscribe(() => {this.getAllArticles();
+    console.log("DELETE ID:",idArticle);}
+    )
+    }
   }
 
   editArticle(article: any){
-    this.router.navigate(['editarticle', article]);
+    this.router.navigate(['dashboard/editarticle', article]);
   }
 
   articleDetails(id: number){
-    this.router.navigate(['articledetails', id]);
+    this.router.navigate(['dashboard/articledetails', id]);
   }
 
   convertDate(date: any){

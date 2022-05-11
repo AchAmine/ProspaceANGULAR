@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/model/Article';
 import { ArticleService } from 'src/app/service/article.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-addarticle-back',
@@ -14,13 +15,24 @@ export class AddarticleBackComponent implements OnInit {
   article: Article = new Article();
   listArticles?: any;
   form: FormGroup;
-  constructor(private articleService: ArticleService,private router: Router, public fb: FormBuilder) { }
+  categories : any = [];
+  category: any;
+  user:any;
+  constructor(private articleService: ArticleService,private userService: UserService, private router: Router, public fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
       article: [''],
       file: [null],
     });
+    this.categories = ['News','Jokes','Facts'];
+    this.userService.getConnectedUser().subscribe(data => this.user = data)
+  }
+  getCategory(event: any) {
+    if (event.target.value != 0) {
+     console.log("category",event.target.value);
+      this.category = event.target.value;
+    } 
   }
 
   uploadFile(event: any) {
@@ -33,11 +45,13 @@ export class AddarticleBackComponent implements OnInit {
   addArticle(article: any) {
     console.log(article);
     const formData = new FormData();
+    article.type = this.category;
+    article.user = this.user;
     formData.append('file', this.form.get('file')?.value);
     formData.append('article', JSON.stringify(article));
-    this.articleService.addArticle(formData).subscribe(
+    this.articleService.addArticle(formData,this.user.idUser).subscribe(
       () => {
-        this.getAllArticles();
+        this.router.navigate(['/dashboard/listarticles']);
       }
     );
   }
@@ -47,6 +61,6 @@ export class AddarticleBackComponent implements OnInit {
   }
 
   Cancel() {
-    this.router.navigate(['/listarticles']);
+    this.router.navigate(['/dashboard/listarticles']);
   }
 }

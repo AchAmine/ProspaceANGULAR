@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,11 +11,6 @@ import { BackindexComponent } from './common/back/backindex/backindex.component'
 import { BackFooterComponent } from './common/back/back-footer/back-footer.component';
 import { BackNavbarComponent } from './common/back/back-navbar/back-navbar.component';
 import { BackSidebarComponent } from './common/back/back-sidebar/back-sidebar.component';
-import { ListarticlesBackComponent } from './back/news/listarticles-back/listarticles-back.component';
-import { AddarticleBackComponent } from './back/news/addarticle-back/addarticle-back.component';
-import { ListoffersBackComponent } from './back/offer/listoffers-back/listoffers-back.component';
-import { ListarticlesFrontComponent } from './front/news/listarticles-front/listarticles-front.component';
-import { ListoffersFrontComponent } from './front/offer/listoffers-front/listoffers-front.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArticledetailsFrontComponent } from './front/news/articledetails-front/articledetails-front.component';
 import { DatePipe, HashLocationStrategy, LocationStrategy } from '@angular/common';
@@ -53,8 +48,12 @@ import { OfferFilterPipe } from './front/offer/listoffers-front/offer-filter.pip
 import { OffersStatsComponent } from './back/offer/offers-stats/offers-stats.component';
 import { NgChartsModule } from 'ng2-charts';
 import { ShowResultQuizFrontComponent } from './front/quiz/show-result-quiz-front/show-result-quiz-front.component';
-
-
+import { DatePipe, HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { FrontmenuComponent } from './common/front/frontmenu/frontmenu.component';
+import { RequestInterceptorService } from './service/request-interceptor.service';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -67,35 +66,7 @@ import { ShowResultQuizFrontComponent } from './front/quiz/show-result-quiz-fron
     BackFooterComponent,
     BackNavbarComponent,
     BackSidebarComponent,
-    ListarticlesBackComponent,
-    AddarticleBackComponent,
-    ListoffersBackComponent,
-    ListarticlesFrontComponent,
-    ListoffersFrontComponent,
-    ArticledetailsFrontComponent,
-    UpdatearticleBackComponent,
-    ArticledetailsBackComponent,
-    UpdateoffersBackComponent,
-    UpdatequizBackComponent,
-    AddquizBackComponent,
-    ListquizBackComponent,
-    AddquizquestionBackComponent,
-    ListQuizQuestionsBackComponent,
-    AddquizanswerBackComponent,
-    ListQuizAnswerBackComponent,
-    UpdateQuizAnswerBackComponent,
-    UpdateQuizQuestionBackComponent,
-    QuizpageFrontComponent,
-    StartQuizFrontComponent,
-    ResultQuizFrontComponent,
-    SendofferFrontComponent,
-    OfferdetailsBackComponent,
-    UploadFileComponent,
-    OfferdetailsFrontComponent,
-    OfferFilterPipe,
-    OffersStatsComponent,
-    ShowResultQuizFrontComponent
- 
+    FrontmenuComponent
   ],
   imports: [
     BrowserModule,
@@ -114,10 +85,17 @@ import { ShowResultQuizFrontComponent } from './front/quiz/show-result-quiz-fron
    
     NgxPaginationModule,
     NgChartsModule
-  
+    PickerModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule
+    
   ],
-  providers: [DatePipe,{provide: LocationStrategy,useClass:HashLocationStrategy}],
-   
+  providers: [DatePipe,{provide: LocationStrategy,useClass:HashLocationStrategy},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptorService,
+      multi:true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

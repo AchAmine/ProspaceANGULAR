@@ -18,6 +18,7 @@
     "@angular/forms": "~12.2.0",
     "@angular/localize": "~12.2.0",
     "@angular/material": "^12.2.13",
+     "@ctrl/ngx-emoji-mart": "^6.2.0",
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
@@ -41,6 +42,7 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.2.16",
     "@angular/cli": "~12.2.16",
+    "@angular/material": "^12.2.13",
     "@angular/compiler-cli": "~12.2.0",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",

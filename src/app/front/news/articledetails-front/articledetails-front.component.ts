@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Article_Comment } from 'src/app/model/Article_Comment';
 import { ArticleService } from 'src/app/service/article.service';
 import { ArticlecommentsService } from 'src/app/service/articlecomments.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-articledetails-front',
@@ -12,28 +13,43 @@ import { ArticlecommentsService } from 'src/app/service/articlecomments.service'
 })
 export class ArticledetailsFrontComponent implements OnInit {
 
+  user: any;
+  // id parametre
   id: number;
+  // objet article contenant les details
   article: any;
   comments: any;
-  user: any;
+  //user: any;
   nbrComments: any;
   date: any;
-  comment_value: any;
+  // commentaire saisie par l'utilisateur
+  comment_value: any='';
+  commentToEdit:Article_Comment;
+  hide=false;
+  // instance commentaire a ajouter
   newcomment: Article_Comment;
-  
+
+  public isEmojiPickerVisible: boolean;
 
   constructor(private articleService: ArticleService, private route: ActivatedRoute,private router: Router,
-    private commentService: ArticlecommentsService,public datepipe: DatePipe) { }
+    private commentService: ArticlecommentsService,private userService: UserService,public datepipe: DatePipe) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    
+    this.userService.getConnectedUser().subscribe(data => {
+      console.log("data : ",data); 
+      this.user = data
+      console.log("user id: ",this.user.idUser);
+    });
+    console.log("user : ",this.user);
     // recuperation de l'article avec id 
     this.articleService.getArticle(this.id)
       .subscribe(data => { this.article = data; });
 
     // recuperation des commentaires de l'article avc id
     this.getComments(this.id);
+
+    
   }
 
   getComments(idComment: any){
@@ -46,7 +62,7 @@ export class ArticledetailsFrontComponent implements OnInit {
     this.newcomment.content = this.comment_value.toString();
     console.log('comment_value',this.comment_value);
     console.log('new comment:',this.newcomment);
-    this.commentService.addComment(this.newcomment,this.article.idArticle).subscribe(
+    this.commentService.addComment(this.newcomment,this.article.idArticle,this.user.idUser).subscribe(
       () => {
         this.getComments(this.id) ; 
         this.comment_value='';
@@ -60,8 +76,64 @@ export class ArticledetailsFrontComponent implements OnInit {
    return this.date = this.datepipe.transform(date, 'yyyy-MM-dd HH:mm');
   }
 
+  getDateMonth(date:any){
+    let months: Array<string>;
+    months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    return months[date.getMonth()];
+
+  }
+
+  deleteComment(idComment : any){
+    this.commentService.deleteComment(idComment).subscribe(() => this.getComments(this.id))
+  }
+
+
   ToArticles() {
     this.router.navigate(['/articles']);
   }
 
+  public addEmoji(event: any) {
+    this.comment_value = `${this.comment_value}${event.emoji.native}`;
+    this.isEmojiPickerVisible = false;
+ }
+
+  openEditForm(Comment:Article_Comment) {
+    console.log("comment : ",Comment);
+    this.commentToEdit = Comment;
+    console.log("new edit vallue : ",this.commentToEdit);
+  }
+
+  editComment(){
+    console.log("Before edit",this.commentToEdit);   
+    this.commentService.editComment(this.commentToEdit).subscribe(
+     data => {
+        console.log("after edit 2",data);
+        this.commentToEdit = new Article_Comment();
+        this.hide = true;
+      }
+    );
+  }
+
+  Cancel() {
+    this.router.navigate(['home/article',this.id]);
+  }
+
+
+  //
+  editArticleBack(article: any){
+    this.router.navigate(['home/editarticle', article]);
+  }
+
+  editArticleFront(article: any){
+    this.router.navigate(['home/editarticle', article]);
+  }
+
+  deleteArticle(idArticle : any){
+    if (window.confirm('Are sure you want to delete this Article ?')) {
+    this.articleService.deleteArticle(idArticle).subscribe(() => {
+      this.router.navigate(['/Articlesnav']);
+    console.log("DELETE ID:",idArticle);}
+    )
+    }
+  }
 }

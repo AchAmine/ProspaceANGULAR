@@ -1,0 +1,66 @@
+<div class="bradcam_area breadcam_bg overlay2">
+    <h3>Send new offer</h3>
+</div>
+<div class="row">
+            
+           
+    <div class="col-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="form-horizontal">Send new offer..</h4>
+          <form class="form-horizontal" [formGroup]="form">
+            <div class="form-group">
+              <label for="exampleInputName1">type</label>
+              <input class="form-control" name="type" 
+              ngModel [ngModelOptions]="{standalone: true}"   placeholder="type" [(ngModel)] ="offer.type">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail3">title</label>
+              <input type="text" class="form-control" id="exampleInputEmail3" placeholder="title"
+              ngModel [ngModelOptions]="{standalone: true}" placeholder="title" [(ngModel)] ="offer.title">
+            </div>
+           
+              <div class="form-group">
+                <label for="exampleInputEmail3">endsAt</label>
+                <input type="date" class="form-control" id="exampleInputEmail3" placeholder="endsAt"
+                ngModel [ngModelOptions]="{standalone: true}"  placeholder="endsAt" [(ngModel)] ="offer.endsAt">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail3">startsAt</label>
+                <input type="date" class="form-control" id="exampleInputEmail3" placeholder="startsAt"
+                ngModel [ngModelOptions]="{standalone: true}" placeholder="startsAt" [(ngModel)] ="offer.startsAt">
+              </div>
+              
+            
+            <div class="form-group">
+              <label>File upload</label>
+              <input type="file" name="file" class="file-upload-default" (change)="uploadFile($event)">
+              <div class="input-group col-xs-12">
+                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                <span class="input-group-append">
+                  <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                </span>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="exampleTextarea1">description</label>
+              <textarea class="form-control" rows="4" ngModel [ngModelOptions]="{standalone : true}"
+               placeholder="description..."[(ngModel)] ="offer.description" >
+                
+  
+              </textarea>
+            </div>
+
+          
+            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+            type="submit"(click)="sendOffer(offer)" >Submit</button>
+            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                    type="submit" (click)="Cancel()">Cancel</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+    
+  </div>

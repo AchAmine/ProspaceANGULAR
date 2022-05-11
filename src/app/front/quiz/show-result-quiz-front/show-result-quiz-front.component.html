@@ -1,0 +1,19 @@
+<div class="bradcam_area breadcam_bg overlay2">
+    <h3>Result</h3>
+  </div>
+  <!-- USER : {{ResultQuiz.user.userName}} <br> -->
+  <section class="section-1" id="section-1">
+    <main>
+        <div class="text-container">
+SCORE : {{ResultQuiz.score}}<br>
+FALSE ANSWERS : {{ResultQuiz.falseAnswers}} <br>
+CORRECT ANSWERS : {{ResultQuiz.correctAnswers}} <br>
+NB QUESTIONS : {{ResultQuiz.nbreQuestions}} <br>
+    </div>
+    <div  class="text-container" *ngIf="ResultQuiz.score > 80  || ResultQuiz.score==80.00 ">
+      BRAVO!
+    <a id="btn" type="submit" (click)="getQuizCertif()"> Download Your Certificate </a>
+    </div>
+</main></section>
+<div >
+ </div>

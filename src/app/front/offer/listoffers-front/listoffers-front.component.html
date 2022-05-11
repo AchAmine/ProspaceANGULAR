@@ -1,1 +1,66 @@
-<p>listoffers-front works!</p>
+<div class="bradcam_area breadcam_bg overlay2">
+         
+</div>
+<div class="popular_courses plus_padding">
+<div class="all_courses">
+            <div class="container">
+                <div class="tab-content" id="myTabContent">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search By Title"
+                                style="width:300px" [(ngModel)]="searchTerm" />
+                    </div>
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row"> 
+                                <ng-container *ngFor="let offer of listOffers  | paginate: { itemsPerPage: 6, currentPage: p }  | offerFilter:searchTerm">
+                                <ng-container *ngIf="offer.state=='Accepted' && (offer.endsAt > currentDate  || offer.endsAt==currentDate)">
+
+                                    <div class="col-xl-4 col-lg-4 col-md-6">
+                                        <div class="single_courses">
+                                            <div class="thumb">
+                                                <a (click)="offerDetails(offer.idOffer)" style="cursor:pointer">
+                                                    <img src="{{'http://localhost:7882/fileUploads/'+offer.image.path}}"
+                                                    width="150px" height="150px">
+                                                </a>
+                                            </div>
+                                            <div class="courses_info">
+                                                <span>{{offer.type}}</span>
+                                                <h3><a (click)="offerDetails(offer.idOffer)" style="cursor:pointer">{{offer.title}}</a></h3>
+                                                <div class="star_prise d-flex justify-content-between">
+                                                    <!-- <div class="star">
+                                                        <i class="flaticon-mark-as-favorite-star"></i>
+                                                        <span>
+                                                            <ngb-rating [max]="5" name="offer.idOffer" [(rate)]="currentRate"  [readonly]="false" [(ngModel)]="currentRate" >
+                                                      </ngb-rating>
+                                                    </span>
+                                                    </div> -->
+                                                    <div class="star">
+                                                        <i class="flaticon-mark-as-favorite-star"></i>
+                                                        <span>( {{offer.moyRatings}} )</span> 
+                                                    </div>
+                                                    <div class="prise">
+                                                        
+                                                        <span class="active_prise">
+                                                          Ends {{offer.endsAt| date:'longDate'}}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </ng-container> 
+                              
+                                </ng-container> 
+                                
+                                   <!--  <div class="col-xl-12">
+                                        <div class="more_courses text-center">
+                                            <a href="#" class="boxed_btn_rev">More Courses</a>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <pagination-controls class="d-flex justify-content-center" (pageChange)="p = $event" ></pagination-controls>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        </div>

@@ -1,0 +1,55 @@
+<div class="row">
+            
+    <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">list questions of quiz</h4>
+             <button type="button" class="btn btn-outline-warning"
+             [routerLink]="['/addquizquestions/',id]" >Add new question</button>
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  
+                    <tr *ngFor="let question of listQuestions">
+                     
+                        <td>
+                        {{question.content}}
+                      </td>
+                      <td>
+                      <button type="button" class="btn btn-outline-danger"
+                        (click)="deleteQuizQuestion(question.idQuestion)"  >Delete</button>
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-outline-danger"
+                        (click)="getQuizQuestionAnswers(question.idQuestion)"  > Answers list </button>
+                      </td>
+                    
+                      <td> 
+                        <button type="button" class="btn btn-outline-danger"
+                        [routerLink]="'/editquizquestion/'+question.idQuestion"  >Update</button>
+                      </td>
+                    
+
+                        
+                       
+                        
+                        
+                       
+
+                      
+                   
+                    
+      
+  
+                      
+                     
+                    
+      
+                    </tr>
+                    
+                          </table>
+                          <button class="btn btn-light" (click)="Cancel()">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>

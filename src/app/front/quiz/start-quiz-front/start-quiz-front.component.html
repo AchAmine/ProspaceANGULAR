@@ -1,0 +1,75 @@
+<div class="bradcam_area breadcam_bg overlay2">
+   <h3>{{quiz.title}}</h3> 
+  </div>  
+  <div class="our_team_member">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-xl-3 col-md-6 col-lg-3">
+                <div class="single_team" *ngFor="let top3 of listTop3ResultQuiz | keyvalue; let j = index" >
+                    <div class="thumb">
+                        <img src="../../assets/img/team/2.png" alt="">
+                        <div class="social_link">
+                            <a href="#"><i class="fa fa-envelope"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="master_name text-center">
+                        <h3>{{top3.key}}</h3>
+                        <p> Score :{{top3.value}}</p>
+                    </div>
+                </div>
+            </div>
+           
+            
+        </div>
+    </div>
+</div>
+  <!-- QUIZ ONE -->
+  <section class="section-1" id="section-1">
+    <main>
+        <div class="text-container" *ngFor="let question of questions; let j = index">
+           
+            <p style="color: black;"
+            [(ngModel)]="question.givenAnswer " 
+           
+           name={{j}} ngDefaultControl
+           [ngModelOptions]="{standalone: true}" >  Q {{j+1}})  {{question.content}} </p>
+        <!-- <form *ngFor="let answer of question.answers ; let i= index"  [formGroup]="StartQuizFrontFormGroup"> -->
+            <!-- <div class="quiz-options">
+                <input type="radio" class="input-radio one-a jshdgdgwgdwfdfwdwjfdjwwdwdco" id="one-a" name="yes-1" required
+                
+                formControlName="answer" 
+            [value]="answer.idAnswer"  (click) ="selectedAnswers(answer)" name={{i}}
+                >
+                <label class="radio-label jsjwjdwjdwjdwco" for="one-a">
+                    <span class="alphabet">{{i+1}}</span>  {{answer.content}}  <img class="icon jdsjkefkefkefefexco" src="https://res.cloudinary.com/dvhndpbun/image/upload/v1588518387/jdsjkefkefkefefexco.svg" alt="">
+                </label>
+               
+            </div> -->
+            <div>
+                  
+  
+                <a *ngFor="let answer of question.answers ; let i= index">
+                  <form [formGroup]="StartQuizFrontFormGroup">
+                 <input formControlName="answer" type="checkbox"
+                 [value]="answer.idAnswer"  (click) ="selectedAnswers(answer)" name={{i}}/>
+                 
+                  
+            
+                        {{answer.content}}   
+                    </form>
+                </a>
+            </div>
+              
+              </div>
+              <form [formGroup]="aFormGroup" class="d-flex justify-content-center">
+                <ngx-recaptcha2 #captchaElem class="d-flex justify-content-center"
+                  [siteKey]="siteKey"
+            formControlName="recaptcha" >
+                </ngx-recaptcha2>
+              </form>
+              <a id="btn" type="submit" (click)="submitQuiz()">Submit</a>
+    </main>
+</section>

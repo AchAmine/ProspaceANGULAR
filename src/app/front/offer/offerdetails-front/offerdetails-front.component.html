@@ -1,0 +1,114 @@
+<div class="bradcam_area breadcam_bg overlay2">
+         
+</div>
+<section class="blog_area single-post-area section-padding">
+ <div class="container" *ngIf="offer">
+    <div class="row">
+       <div class="col-lg-8 posts-list">
+          <div class="single-post">
+            
+             <div class="blog_details">
+                <img class="card-img rounded-0" src="{{'http://localhost:7882/fileUploads/'+offer.image.path}}" 
+                width="150px" height="700px">
+                <h2> {{offer.title}}</h2>
+                
+                {{offer.description }}
+                <div style="font-size:x-large; color:orange;">
+                    <ngb-rating [max]="5" name="offer.idOffer" [(rate)]="currentRate"  [readonly]="false"
+                   [(ngModel)]="currentRate"  (click)="addRating(currentRate)"
+                    >
+                   </ngb-rating>
+
+                    </div>
+                
+             </div>
+             <h4>{{ offercomments?.length || '0' }} Comments</h4>
+             <div class="comments-area" *ngFor="let comment of offercomments">
+              
+               <div class="comment-list">
+                  <div class="single-comment justify-content-between d-flex">
+                     <div class="user justify-content-between d-flex">
+                        <div class="thumb">
+                           <img src="../../assets/img/comment/comment_3.png" alt="">
+                        </div>
+                        <div class="desc">
+                           <h5>
+                              <a href="#">{{comment.user.userName}}</a>
+                           </h5>
+                           <p class="comment">
+                             {{comment.content}}
+                             <a (click)="openEditOfferCommentForm(comment)"><i class="fa fa-edit"></i></a>
+                              <i type="button" style="font-size:15px" class="fa" (click)="deleteOfferComment(comment.idOfferComment)" >&#xf014;
+                               </i>
+                                <!-- EDIT COMMENT SECTION -->
+                <ng-container *ngIf="comment == commentToEdit">
+                  <div class="comment-form">
+                    <h4>Edit comment</h4>
+                    <form class="form-contact comment_form" action="#" id="editcommentForm" >
+                       <div class="row">
+                          <div class="col-12">
+                             <div class="form-group">
+                                <textarea class="form-control w-100" name="editcomment" id="editcomment" cols="30" rows="4"
+                                   placeholder="Write Comment" required [(ngModel)]='commentToEdit.content' ></textarea>
+                                  
+       
+                               </div>
+                          </div>
+                          
+                       </div>
+                       <div class="form-group">
+                         <div class="container2">
+                          <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
+                         name="editcomment"  (click)="editOfferComment()">Save</button> &nbsp;
+                         <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
+                         name="cancel"  (click)="Cancel()">Cancel</button>
+       
+                        </div>
+       
+       
+                       </div>
+                    </form>
+                 </div>
+                 </ng-container>
+                 <!-- END EDIT COMMENT SECTION -->
+                               
+                           </p>
+                           <div class="d-flex justify-content-between">
+                              <div class="d-flex align-items-center">
+                                
+                                 <p class="date">{{ comment.postedAt | date:'longDate' }}</p>
+                              </div>
+                             
+                              
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               
+            </div>
+             <div class="comment-form" >
+               <h4>Leave a Reply</h4>
+               <form class="form-contact comment_form" action="#" id="commentForm" #f="ngForm">
+                  <div class="row">
+                     <div class="col-12">
+                        <div class="form-group">
+                           <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
+                              placeholder="Write Comment" required [(ngModel)]='comment_value' #comment="ngModel"></textarea>
+                        </div>
+                     </div>
+                     
+                  </div>
+                  <div class="form-group">
+                     <button type="submit" class="button button-contactForm btn_1 boxed-btn" 
+                    name="comment" [disabled]="f.invalid" (click)="addOfferComment()">Send</button>
+                  </div>
+               </form>
+            </div>
+          </div>
+       
+          </div>
+       </div>
+    </div>
+    
+</section>

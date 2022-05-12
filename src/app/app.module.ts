@@ -25,8 +25,6 @@ import { AddSectionBackComponent } from './back/forum/add-section-back/add-secti
 import { ListSectionsBackComponent } from './back/forum/list-sections-back/list-sections-back.component';
 import { UpdateSectionBackComponent } from './back/forum/update-section-back/update-section-back.component';
 import { ListSectionsFrontComponent } from './front/forum/list-sections-front/list-sections-front.component';
-import { AddTopicFrontComponent } from './front/forum/add-topic-front/add-topic-front.component';
-import { ListTopicsFrontComponent } from './front/forum/list-topics-front/list-topics-front.component';
 import { SectionDetailsComponent } from './front/forum/section-details/section-details.component';
 import { TopicDetailsFrontComponent } from './front/forum/topic-details-front/topic-details-front.component';
 import { CommentsFrontComponent } from './front/forum/comments-front/comments-front.component';
@@ -55,9 +53,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AddSectionBackComponent,
     ListSectionsBackComponent,
     UpdateSectionBackComponent,
-    AddTopicFrontComponent,
     ListSectionsFrontComponent,
-    ListTopicsFrontComponent,
     SectionDetailsComponent,
     TopicDetailsFrontComponent,
     CommentsFrontComponent,

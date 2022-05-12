@@ -8,10 +8,8 @@ import { ArticledetailsBackComponent } from './back/news/articledetails-back/art
 import { ListarticlesBackComponent } from './back/news/listarticles-back/listarticles-back.component';
 import { UpdatearticleBackComponent } from './back/news/updatearticle-back/updatearticle-back.component';
 import { FrontindexComponent } from './common/front/frontindex/frontindex.component';
-import { AddTopicFrontComponent } from './front/forum/add-topic-front/add-topic-front.component';
 import { CommentsFrontComponent } from './front/forum/comments-front/comments-front.component';
 import { ListSectionsFrontComponent } from './front/forum/list-sections-front/list-sections-front.component';
-import { ListTopicsFrontComponent } from './front/forum/list-topics-front/list-topics-front.component';
 import { SectionDetailsComponent } from './front/forum/section-details/section-details.component';
 import { TopicDetailsFrontComponent } from './front/forum/topic-details-front/topic-details-front.component';
 import { ArticledetailsFrontComponent } from './front/news/articledetails-front/articledetails-front.component';
@@ -30,13 +28,11 @@ const routes: Routes = [
   {path: 'listSections', component: ListSectionsBackComponent}, 
   {path: 'addSection', component: AddSectionBackComponent},
   {path: 'listSectionsFront', component: ListSectionsFrontComponent}, 
-  {path:'addTopic',component:AddTopicFrontComponent},
-  {path: 'listTopicsFront/ :id',component:ListTopicsFrontComponent},
   {path:'section/:id',component:SectionDetailsComponent},
   {path:'topic/:id',component:TopicDetailsFrontComponent},
   {path:'post/:id',component:CommentsFrontComponent}
 
-
+ 
 
 ];
 

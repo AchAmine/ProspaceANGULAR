@@ -145,7 +145,7 @@ deletePost(idPost : any){
 
 
 
-
+ 
 ////////////////////////
 postDetails(post: Post){
   // this.viewsInc(topic);

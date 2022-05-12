@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Section } from 'src/app/model/Section';
 import { Topic } from 'src/app/model/Topic';
 import { SectionService } from 'src/app/service/section.service';
@@ -39,6 +40,7 @@ export class AddTopicFrontComponent implements OnInit {
  addTopic(topic: any) {
   this.topicService.addTopic(topic,this.route.snapshot.params.id).subscribe(() => {
     // this.getAllQuiz();
+   
     this.router.navigate([`/section/:id${this.route.snapshot.params.id}`]);
      this.form = false;
    });

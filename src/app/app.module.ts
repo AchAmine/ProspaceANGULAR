@@ -31,6 +31,8 @@ import { SectionDetailsComponent } from './front/forum/section-details/section-d
 import { TopicDetailsFrontComponent } from './front/forum/topic-details-front/topic-details-front.component';
 import { CommentsFrontComponent } from './front/forum/comments-front/comments-front.component';
 import { sectionFilterPipe } from './front/forum/list-sections-front/section-filter.pipe';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -60,13 +62,21 @@ import { sectionFilterPipe } from './front/forum/list-sections-front/section-fil
     TopicDetailsFrontComponent,
     CommentsFrontComponent,
     sectionFilterPipe
+    
     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      progressBar:true,
+      progressAnimation:'increasing',
+      preventDuplicates:true
+    }),     // ToastrModule added
+    BrowserAnimationsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

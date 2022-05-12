@@ -152,7 +152,7 @@ listCommentsReplies?:any;
     
     deleteComment(idComment : any){
       console.log("idComment",idComment);
-      this.post_commentService.deleteComment(idComment).subscribe(() => this.getAllComments())
+      this.post_commentService.deleteComment(idComment).subscribe(() => this.getComments(this.id))
       
     }
     
@@ -283,13 +283,11 @@ listCommentsReplies?:any;
 
       addReaction(){
         this.newReaction= new ForumReaction();
-        //  this.newReaction.Rtype=this.reaction_value.like;
        
         this.post_commentService.addPost_Reaction(this.newReaction,this.post.idPost).subscribe(
           () => {
             this.getComments(this.id) ; 
             this.reaction_value='';
-            this.reactionCount++;
 
           }
       

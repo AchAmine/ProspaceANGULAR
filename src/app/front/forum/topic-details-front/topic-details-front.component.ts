@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Post } from 'src/app/model/Post';
 import { Post_Comment } from 'src/app/model/Post_Comment';
 import { PostCommentService } from 'src/app/service/post-comment.service';
@@ -32,7 +33,7 @@ listPosts?:any;
 
 
   constructor(private topicService:TopicService,private route: ActivatedRoute,private router: Router,
-    private postService: PostService,public datepipe: DatePipe) { }
+    private postService: PostService,public datepipe: DatePipe,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -94,7 +95,7 @@ listPosts?:any;
     ); 
   }
   cancel() {
-    this.getPosts(this.id) ; ;
+    this.getPosts(this.id) ;
   }
 ///////////////////////////////////
 
@@ -133,7 +134,10 @@ getAllPosts(){
 
 deletePost(idPost : any){
   console.log("idPost",idPost);
-  this.postService.deletePost(idPost).subscribe(() => this.getAllPosts())
+  this.postService.deletePost(idPost).subscribe(() =>this.getPosts(this.id));
+  this.toastr.error(" post deleted");
+
+
   
 }
 

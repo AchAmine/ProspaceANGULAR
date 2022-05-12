@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { Section } from 'src/app/model/Section';
 import { SectionService } from 'src/app/service/section.service';
@@ -24,10 +25,12 @@ searchTerm:string;
 
   
     Sections: Observable<Section[]>
-    constructor(private sectionService :SectionService, private router: Router,private route: ActivatedRoute) { }
+    constructor(private sectionService :SectionService, private router: Router,private route: ActivatedRoute,private toastr: ToastrService) { }
   
     ngOnInit(): void {
-      this.getAllSections();;
+      this.getAllSections();
+      this.toastr.info("WELCOME TO OUR FORUM !");
+
     }
     getAllSections(){
       this.sectionService.getAllSections().subscribe(res=> { this.listSections=res; console.log(res);})

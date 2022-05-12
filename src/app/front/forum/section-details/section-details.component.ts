@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Section } from 'src/app/model/Section';
 import { Topic } from 'src/app/model/Topic';
 import { SectionService } from 'src/app/service/section.service';
@@ -30,7 +31,7 @@ listTopics?:any;
 
 
   constructor(private sectionService:SectionService,private route: ActivatedRoute,private router: Router,
-    private topicService: TopicService,public datepipe: DatePipe) { }
+    private topicService: TopicService,public datepipe: DatePipe,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -90,8 +91,7 @@ listTopics?:any;
   }
   cancel() {
   
-    this.getTopics(this.id) ; ;
-  }
+    this.getTopics(this.id);  }
 ///////////////////////////////////
 
 addTopic(){
@@ -102,6 +102,8 @@ addTopic(){
   // console.log('new topic:',this.newTopic);
   this.topicService.addTopic(this.newTopic,this.section.idSection).subscribe(
     () => {
+      this.toastr.success("Your Topic is added successfully !!");
+
       this.getTopics(this.id) ; 
       this.topic_value='';
     }
@@ -129,7 +131,7 @@ getAlltopics(){
 
 deleteTopic(idTopic : any){
   console.log("idTopic",idTopic);
-  this.topicService.deleteTopic(idTopic).subscribe(() => this.getAlltopics())
+  this.topicService.deleteTopic(idTopic).subscribe(() =>  this.getTopics(this.id))
 }
 
 

@@ -6,6 +6,7 @@ import { ResultQuiz } from 'src/app/model/ResultQuiz';
 import { QuestionService } from 'src/app/service/question.service';
 import { QuizService } from 'src/app/service/quiz.service';
 import { ResultQuizService } from 'src/app/service/result-quiz.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-quizpage-front',
@@ -23,12 +24,12 @@ export class QuizpageFrontComponent implements OnInit {
   exists=false;
   ResultQuiz:any;
   lisResults: any;
-  // user static
-  idUser = 1 ;
+user: any;
   constructor(private questionService :QuestionService,private quizService :QuizService,
-    private resultQuizService :ResultQuizService, private router: Router,private route: ActivatedRoute) { }
+    private resultQuizService :ResultQuizService, private router: Router,private route: ActivatedRoute,private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getConnectedUser().subscribe(data => this.user = data)
     this.getAllQuiz();;
     console.log('REEESULT QUIIIZ 2111',this.getUserResultQuiz(1));
   }
@@ -41,7 +42,7 @@ export class QuizpageFrontComponent implements OnInit {
   async getUserResultQuiz(idQuiz: any){
   // return  this.resultQuizService.userResult(idQuiz,this.idUser).subscribe(res=> { this.userExits=res; console.log('REEESULT QUIIIZ 2111',this.userExits);});
    //return this.resultQuizService.getAllResults().subscribe(res=> { this.lisResults=res; console.log("REEESUULTS",res);});
-  this.resultQuizService.userResultExists(idQuiz,this.idUser).subscribe
+  this.resultQuizService.userResultExists(idQuiz,this.user.idUser).subscribe
 (res=> {  return this.lisResults=res; console.log("REEESUULTS",res);
 
 

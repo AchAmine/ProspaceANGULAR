@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Offer } from 'src/app/model/Offer';
 import { OfferService } from 'src/app/service/offer.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-sendoffer-front',
@@ -14,13 +15,28 @@ export class SendofferFrontComponent implements OnInit {
   offer: Offer = new Offer();
   listOffers?: any;
   form: FormGroup;
-  constructor(private offerService: OfferService,private router: Router, public fb: FormBuilder) { }
+  user:any;
+  constructor(private offerService: OfferService,private router: Router, public fb: FormBuilder,private userService: UserService) { }
 
   ngOnInit(): void {
-    this.form = this.fb.group({
+    this.userService.getConnectedUser().subscribe(data => this.user = data)
+       this.form = this.fb.group({
       offer: [''],
       file: [null],
     });
+    
+    this.form= this.fb.group({
+      offer: [''],
+      type:['', [Validators.required, Validators.minLength(5)]],
+      title:['', [Validators.required, Validators.minLength(5)]],
+      endsAt:['', [Validators.required]],
+      startsAt:['', [Validators.required]],
+      description:['', [Validators.required, Validators.minLength(20)]],
+      file:['', [Validators.required]],
+
+sendCatalog: false
+    })
+   
   }
 
   uploadFile(event: any) {
@@ -35,7 +51,7 @@ export class SendofferFrontComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', this.form.get('file')?.value);
     formData.append('offer', JSON.stringify(offer));
-    this.offerService.addOffer(formData).subscribe(
+    this.offerService.addOffer(formData,this.user.idUser).subscribe(
       () => {
         this.getAllOffers();
       }
@@ -44,11 +60,11 @@ export class SendofferFrontComponent implements OnInit {
 
   getAllOffers(){
     this.offerService.getAllOffers().subscribe(res=> { this.listOffers=res; console.log(res);})
-    this.router.navigate(['/listoffersFront']);
+    this.router.navigate(['/home/listoffersFront']);
    
   }
 
   Cancel() {
-    this.router.navigate(['/listoffersFront']);
+    this.router.navigate(['/home/listoffersFront']);
   
 }}

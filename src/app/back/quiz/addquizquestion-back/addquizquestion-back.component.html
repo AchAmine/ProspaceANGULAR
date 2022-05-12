@@ -5,13 +5,33 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Post new quiz question..</h4>
-          <form class="forms-sample">
+          <form class="forms-sample" [formGroup]="form">
             <div class="form-group">
               <label for="exampleInputName1">Content</label>
-              <input class="form-control" name="Content" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="Content" [(ngModel)] ="question.content
+              <input class="form-control" name="Content" 
+              formControlName="Content"
+              [ngClass]="{
+                'is-invalid':
+                form.get('Content')?.touched &&
+                  !form.get('Content')?.valid
+              }"
+              type="text" 
+              
+              
+              
+              placeholder="Content" [(ngModel)] ="question.content
             ">
+            <div class="invalid-feedback">
+              <span *ngIf="form.get('Content')?.errors?.required">
+                Entrez votre question
+              </span>
+              <span *ngIf="form.get('Content')?.errors?.minlength">
+                Minimum  10 caractères
+              </span>
+             
+             </div>
             </div>      
-            <button type="submit" class="btn btn-primary mr-2" (click)="addQuizQuestion(question)" >Add</button>
+            <button type="submit" class="btn btn-primary mr-2" (click)="addQuizQuestion(question)" [disabled]="form.invalid">Add</button>
             <button class="btn btn-light" (click)="Cancel()">Cancel</button>
           </form>
         </div>

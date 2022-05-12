@@ -28,26 +28,26 @@ export class ListquizBackComponent implements OnInit {
   getAllQuiz(){
     this.quizService.getAllQuiz().subscribe(res=> { this.listQuiz=res; console.log(res);})
   }
-  addQuiz(quiz: any){
+ /*  addQuiz(quiz: any){
     this.quizService.addQuiz(quiz).subscribe(() => {
       this.getAllQuiz();
       this.form = false;
     });
-  }
+  } */
   deleteQuiz(idQuiz : any){
     this.quizService.deleteQuiz(idQuiz).subscribe(() => this.getAllQuiz())
   }
  
 
   editQuiz(quiz: any){
-    this.router.navigate(['editquiz', quiz]);
+    this.router.navigate(['/dashboard/editquiz', quiz]);
   }
 
   quizDetails(id: number){
-    this.router.navigate(['quizdetails', id]);
+    this.router.navigate(['/dashboard/quizdetails', id]);
   }
   getQuizQuestions(quiz: any){
-    this.router.navigate(['quizquestions', quiz]);
+    this.router.navigate(['/dashboard/quizquestions', quiz]);
   }
 
 

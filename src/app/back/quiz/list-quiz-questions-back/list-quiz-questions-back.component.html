@@ -5,7 +5,7 @@
             <div class="card-body">
               <h4 class="card-title">list questions of quiz</h4>
              <button type="button" class="btn btn-outline-warning"
-             [routerLink]="['/addquizquestions/',id]" >Add new question</button>
+             [routerLink]="['/dashboard/addquizquestions/',id]" >Add new question</button>
               <div class="table-responsive">
                 <table class="table table-striped">
                   
@@ -25,7 +25,7 @@
                     
                       <td> 
                         <button type="button" class="btn btn-outline-danger"
-                        [routerLink]="'/editquizquestion/'+question.idQuestion"  >Update</button>
+                        [routerLink]="'/dashboard/editquizquestion/'+question.idQuestion"  >Update</button>
                       </td>
                     
 

@@ -10,7 +10,7 @@ export class ResultQuizService {
 
   constructor(private http: HttpClient) { }
 
-  public getResultQuiz(idQuiz:number,idUser:number){
+  public getResultQuiz(idQuiz:any,idUser:any){
     return this.http.get(`http://localhost:8089/SpringMVC/Quizz/Score/${idQuiz}/${idUser}`);
   } 
 

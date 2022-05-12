@@ -36,7 +36,7 @@ a {
 section {
     background: white;
     /* background: -webkit-linear-gradient(to right, #3f2b96, #a8c0ff); */
-    background: linear-gradient(to right, #3f2b96, #a8c0ff);
+    background: linear-gradient(to right, white);
     padding-top: 80px;
     overflow-y: hidden;
 }

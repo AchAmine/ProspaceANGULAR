@@ -4,7 +4,8 @@
         <div class="card-body">
             <h2>{{article.title}}</h2>
           
-            <img src="{{'http://localhost/FileUploads/'+article.image.path}}">
+            <!-- <img src="{{'http://localhost/FileUploads/'+article.image.path}}"> -->
+            <img src="{{'http://localhost:7882/FileUploads/'+article.image.path}}">
             <p> {{article.content}} </p>
             <div id="date">
             <h4> Published By : {{article.user.userName}}</h4> 

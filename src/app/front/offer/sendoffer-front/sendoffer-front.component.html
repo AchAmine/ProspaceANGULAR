@@ -1,5 +1,4 @@
 <div class="bradcam_area breadcam_bg overlay2">
-    <h3>Send new offer</h3>
 </div>
 <div class="row">
             
@@ -8,55 +7,147 @@
       <div class="card">
         <div class="card-body">
           <h4 class="form-horizontal">Send new offer..</h4>
-          <form class="form-horizontal" [formGroup]="form">
+          <form class="form-horizontal" [formGroup]="form" >
             <div class="form-group">
               <label for="exampleInputName1">type</label>
               <input class="form-control" name="type" 
-              ngModel [ngModelOptions]="{standalone: true}"   placeholder="type" [(ngModel)] ="offer.type">
+               
+              
+              formControlName="type"
+
+              placeholder="type" [(ngModel)] ="offer.type"
+              
+              [ngClass]="{
+                'is-invalid':
+                form.get('type')?.touched &&
+                  !form.get('type')?.valid
+              }"
+              >
+              <div class="invalid-feedback">
+            <span *ngIf="form.get('type')?.errors?.required">
+              Entrez le type de votre offre
+            </span>
+            <span *ngIf="form.get('type')?.errors?.minlength">
+              Minimum 5 caractères
+            </span>
+          </div>
+          
             </div>
             <div class="form-group">
               <label for="exampleInputEmail3">title</label>
               <input type="text" class="form-control" id="exampleInputEmail3" placeholder="title"
-              ngModel [ngModelOptions]="{standalone: true}" placeholder="title" [(ngModel)] ="offer.title">
+               placeholder="title" [(ngModel)] ="offer.title"
+              formControlName="title"
+              name="title"
+              [ngClass]="{
+                'is-invalid':
+                form.get('title')?.touched &&
+                  !form.get('title')?.valid
+              }"
+              >
+              <div class="invalid-feedback">
+                <span *ngIf="form.get('title')?.errors?.required">
+                  Entrez le titre de votre offre
+                </span>
+                <span *ngIf="form.get('title')?.errors?.minlength">
+                  Minimum 5 caractères
+                </span>
+              </div>
             </div>
            
               <div class="form-group">
                 <label for="exampleInputEmail3">endsAt</label>
-                <input type="date" class="form-control" id="exampleInputEmail3" placeholder="endsAt"
-                ngModel [ngModelOptions]="{standalone: true}"  placeholder="endsAt" [(ngModel)] ="offer.endsAt">
-              </div>
+                <input name="endsAt" required  minlength="4" type="date" class="form-control" id="exampleInputEmail3" placeholder="endsAt"
+                  placeholder="endsAt" [(ngModel)] ="offer.endsAt"
+                   
+                formControlName="endsAt" 
+                [ngClass]="{
+                  'is-invalid':
+                  form.get('endsAt')?.touched &&
+                    !form.get('endsAt')?.valid
+                }"
+                >
+                <div class="invalid-feedback">
+                  <span *ngIf="form.get('endsAt')?.errors?.required">
+                    Entrez la date de fin de votre offre
+                  </span>
+                 </div>
+                </div>
               <div class="form-group">
                 <label for="exampleInputEmail3">startsAt</label>
                 <input type="date" class="form-control" id="exampleInputEmail3" placeholder="startsAt"
-                ngModel [ngModelOptions]="{standalone: true}" placeholder="startsAt" [(ngModel)] ="offer.startsAt">
+                 placeholder="startsAt" [(ngModel)] ="offer.startsAt"
+               name="startsAt"
+                formControlName="startsAt"
+                [ngClass]="{
+                  'is-invalid':
+                  form.get('startsAt')?.touched &&
+                    !form.get('startsAt')?.valid
+                }"
+                
+                
+                >
+                <div class="invalid-feedback">
+                  <span *ngIf="form.get('startsAt')?.errors?.required">
+                    Entrez la date de début de votre offre
+                  </span>
+                 
+                 </div>
               </div>
               
             
+    
             <div class="form-group">
-              <label>File upload</label>
-              <input type="file" name="file" class="file-upload-default" (change)="uploadFile($event)">
-              <div class="input-group col-xs-12">
-                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                <span class="input-group-append">
-                  <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                </span>
-              </div>
+              
+              
+              <input type="file" name="file" 
+              formControlName="file"
+                [ngClass]="{
+                  'is-invalid':
+                  form.get('file')?.touched &&
+                    !form.get('file')?.valid
+                }"
+              
+              class="file-upload-browse btn btn-primary" accept="image/*" (change)="uploadFile($event)" >
+
+              <span *ngIf="form.get('file')?.errors?.required" style="color:red ;">
+                choisissez une image pour votre offre
+              </span>
+                
             </div>
             
             <div class="form-group">
               <label for="exampleTextarea1">description</label>
-              <textarea class="form-control" rows="4" ngModel [ngModelOptions]="{standalone : true}"
-               placeholder="description..."[(ngModel)] ="offer.description" >
+              <textarea class="form-control" rows="4" 
+               placeholder="description..."[(ngModel)] ="offer.description" 
+               name="description"
+               
+               formControlName="description"
+                [ngClass]="{
+                  'is-invalid':
+                  form.get('description')?.touched &&
+                    !form.get('description')?.valid
+                }"
+                >
                 
   
               </textarea>
-            </div>
+              <div class="invalid-feedback">
+                <span *ngIf="form.get('description')?.errors?.required">
+                  Entrez une description de votre offre
+                </span>
+                <span *ngIf="form.get('description')?.errors?.minlength">
+                  Minimum 20 caractères
+                </span>
+               </div>
+              </div>
+             
 
           
-            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-            type="submit"(click)="sendOffer(offer)" >Submit</button>
-            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                    type="submit" (click)="Cancel()">Cancel</button>
+            <button 
+            type="submit"(click)="sendOffer(offer)" [disabled]="form.invalid">Submit</button>
+            <button 
+                                    type="submit" (click)="Cancel()" >Cancel</button>
           </form>
         </div>
       </div>

@@ -34,7 +34,7 @@ export class ListQuizQuestionsBackComponent implements OnInit {
   }
  
   addQuizQuestion(Quiz: any){
-    this.router.navigate(['addquizquestions'],Quiz);
+    this.router.navigate(['/dashboard/addquizquestions'],Quiz);
   }
   
   deleteQuizQuestion(idQuestion : any){
@@ -42,13 +42,13 @@ export class ListQuizQuestionsBackComponent implements OnInit {
 
 }
 getQuizQuestionAnswers(Question: any){
-  this.router.navigate(['quizquestionAnswers', Question]);
+  this.router.navigate(['/dashboard/quizquestionAnswers', Question]);
 }
 editQuizQuestions(){
-  this.router.navigate([`/editquizquestion/${this.route.snapshot.params.id}`]);
+  this.router.navigate([`/dashboard/editquizquestion/${this.route.snapshot.params.id}`]);
 }
 Cancel() {
-  this.router.navigate(['/listquiz']);
+  this.router.navigate(['/dashboard/listquiz']);
 }
 
 }

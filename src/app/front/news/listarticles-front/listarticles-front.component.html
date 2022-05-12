@@ -6,7 +6,9 @@
                     <article class="blog_item">
                         <div class="blog_item_img">
                             <!-- <img class="card-img rounded-0" src="../../assets/img/blog/single_blog_1.png" alt=""> -->
- <img class="card-img rounded-0" src="{{'http://localhost/FileUploads/'+article.image.path}}" 
+ <!-- <img class="card-img rounded-0" src="{{'http://localhost/FileUploads/'+article.image.path}}" 
+            width="300" height="400" alt=""> -->
+            <img class="card-img rounded-0" src="{{'http://localhost:7882/FileUploads/'+article.image.path}}" 
             width="300" height="400" alt="">
                         
                         
@@ -68,7 +70,8 @@
                         <h3 class="widget_title">Recommended Post</h3>
                         <ng-container *ngFor="let pref of userPreferences">
                         <div class="media post_item">
-                            <img src="{{'http://localhost/FileUploads/'+pref.image.path}}" 
+                            <!-- <img src="{{'http://localhost/FileUploads/'+pref.image.path}}"  -->
+                            <img src="{{'http://localhost:7882/FileUploads/'+pref.image.path}}" 
                             width="50px" length="20px" alt="post">
                             <div class="media-body">
                                 <a (click)="articleDetails(pref)">

@@ -7,6 +7,14 @@ import { ConversationComponent } from '../chat/conversation/conversation.compone
 import { ArticledetailsFrontComponent } from '../news/articledetails-front/articledetails-front.component';
 import { ArticlesNavComponent } from '../news/articles-nav/articles-nav.component';
 import { FollowingarticlesFrontComponent } from '../news/followingarticles-front/followingarticles-front.component';
+import { ListoffersFrontComponent } from '../offer/listoffers-front/listoffers-front.component';
+import { OfferdetailsFrontComponent } from '../offer/offerdetails-front/offerdetails-front.component';
+import { SendofferFrontComponent } from '../offer/sendoffer-front/sendoffer-front.component';
+import { UploadFileComponent } from '../offer/sendoffer-front/upload-file/upload-file.component';
+import { QuizpageFrontComponent } from '../quiz/quizpage-front/quizpage-front.component';
+import { ResultQuizFrontComponent } from '../quiz/result-quiz-front/result-quiz-front.component';
+import { ShowResultQuizFrontComponent } from '../quiz/show-result-quiz-front/show-result-quiz-front.component';
+import { StartQuizFrontComponent } from '../quiz/start-quiz-front/start-quiz-front.component';
 
 
 const routes: Routes = [
@@ -19,7 +27,16 @@ const routes: Routes = [
   {path: 'contact', component: ContactListComponent},
   //{path: 'articles', component: ListarticlesFrontComponent},
   {path: 'articles', component: ArticlesNavComponent},
-  {path: 'followingarticles', component: FollowingarticlesFrontComponent}
+  {path: 'followingarticles', component: FollowingarticlesFrontComponent},
+  {path: 'listoffersFront', component: ListoffersFrontComponent },
+  {path: 'sendOfferFront', component: SendofferFrontComponent },
+  {path: 'uploadOfferFile', component: UploadFileComponent},
+  {path: 'resultQuiz/:idQuiz', component: ResultQuizFrontComponent},
+  {path: 'offerDetailsFront/:id', component: OfferdetailsFrontComponent},
+  {path: 'quizpageFront', component: QuizpageFrontComponent},
+  {path: 'startQuiz/:id', component: StartQuizFrontComponent},
+  {path: 'resultQuiz/:id', component: ResultQuizFrontComponent },
+  {path: 'ShowresultQuiz/:id', component: ShowResultQuizFrontComponent }
   
 ];
 

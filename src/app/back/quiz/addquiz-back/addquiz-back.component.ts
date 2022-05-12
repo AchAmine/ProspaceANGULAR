@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Quiz } from 'src/app/model/Quiz';
 import { QuizService } from 'src/app/service/quiz.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-addquiz-back',
@@ -12,13 +13,27 @@ import { QuizService } from 'src/app/service/quiz.service';
 export class AddquizBackComponent implements OnInit {
   listQuiz?: any;
   quiz: Quiz = new Quiz();
-  form: boolean=false;
+  form: FormGroup;
   categories : any = [];
 		category: any;
-  constructor(private quizService: QuizService,private router: Router, public fb: FormBuilder) { }
+    user: any;
+  constructor(private quizService: QuizService,private router: Router, public fb: FormBuilder, private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getConnectedUser().subscribe(data => this.user = data)
+
     this.categories = ['General knowledge','Sports','History','Art and Literature'];
+
+    this.form= this.fb.group({
+      quiz: [''],
+      category:['', [Validators.required]],
+      title:['', [Validators.required, Validators.minLength(5)]],
+      nbQuestions:['', [Validators.required]],
+      description:['', [Validators.required, Validators.minLength(20)]],
+
+sendCatalog: false
+    })
+   
    
   }
 
@@ -27,10 +42,9 @@ export class AddquizBackComponent implements OnInit {
   }
 addQuiz(quiz: any) {
   quiz.categorie = this.category;
-  this.quizService.addQuiz(quiz).subscribe(() => {
+  this.quizService.addQuiz(quiz,this.user.idUser).subscribe(() => {
    // this.getAllQuiz();
-   this.router.navigate(['/listquiz']);
-    this.form = false;
+   this.router.navigate(['/dashboard/listquiz']);
   });
 }
 
@@ -42,7 +56,7 @@ getCategory(event: any) {
 }
 
 Cancel() {
-  this.router.navigate(['/listquiz']);
+  this.router.navigate(['/dashboard/listquiz']);
 }
 
 

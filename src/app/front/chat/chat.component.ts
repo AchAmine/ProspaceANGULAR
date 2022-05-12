@@ -131,6 +131,9 @@ export class ChatComponent implements OnInit {
     // this.stompClient.disconnect();
       this.msg.splice(0);
       console.log("new msg list",this.msg);
+      if (this.subscription) {
+      this.subscription.unsubscribe();
+      }
       this.connect();
       this.router.navigate(['/home/chat', user]);
     }

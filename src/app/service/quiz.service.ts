@@ -12,8 +12,8 @@ export class QuizService {
   public getAllQuiz(){
     return this.http.get(`http://localhost:8089/SpringMVC/Quizz/retrieve-all-Quizz`);
   } 
-  public addQuiz(quiz: any){
-    return this.http.post(`http://localhost:8089/SpringMVC/Quizz/add-quizz/1`,quiz);
+  public addQuiz(quiz: any,idUser:any){
+    return this.http.post(`http://localhost:8089/SpringMVC/Quizz/add-quizz/${idUser}`,quiz);
   }
 
   deleteQuiz(idQuiz : any){

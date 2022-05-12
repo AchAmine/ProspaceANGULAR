@@ -67,7 +67,7 @@ Rating :  Rating=new Rating();
    }
 
    offerDetails(id: number){
-    this.router.navigate(['offerDetailsFront', id]);
+    this.router.navigate(['/home/offerDetailsFront', id]);
   }
 
   

@@ -3,3 +3,7 @@
     width:50%;
     margin:0 auto;
 }
+
+.ng-invalid.ng-touched{
+    border-color: red;
+}

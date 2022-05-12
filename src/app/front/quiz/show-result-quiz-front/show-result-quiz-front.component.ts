@@ -15,6 +15,7 @@ export class ShowResultQuizFrontComponent implements OnInit {
   form: boolean=false;
   listQuizQuestions? : any;
   quizz: Observable<Quiz[]>
+  listTop3ResultQuiz?: any;
 
   ResultQuiz:any;
   // user static
@@ -59,5 +60,9 @@ export class ShowResultQuizFrontComponent implements OnInit {
   
       
     }
+    public Top3QuizResults(){
+
+      this.resultQuizService.Top3QuizResults(this.route.snapshot.params.id).subscribe(res=> { this.listTop3ResultQuiz=res; console.log(res);})
+  }
 
 }

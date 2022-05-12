@@ -5,27 +5,57 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Post new quiz..</h4>
-          <form #form="ngForm">
+          <form  [formGroup]="form">
             <div class="form-group">
               <label for="exampleInputName1">Title</label>
-              <input class="form-control" name="title" ngModel [ngModelOptions]="{standalone: true}" 
+              <input class="form-control" name="title" 
+              formControlName="title"
+              type="text"  placeholder="Title" 
+              [(ngModel)] ="quiz.title"
+              [ngClass]="{
+                'is-invalid':
+                form.get('title')?.touched &&
+                  !form.get('title')?.valid
+              }"
+              >
               
-            type="text"  placeholder="Title" 
-            required [(ngModel)] ="quiz.title"
-            #title="ngModel"
-            [(ngModel)] ="quiz.title">
+          
+            
+            <div class="invalid-feedback">
+              <span *ngIf="form.get('title')?.errors?.required">
+                Entrez le titre de votre quiz
+              </span>
+              <span *ngIf="form.get('title')?.errors?.minlength">
+                Minimum 5 caractères
+              </span>
+            </div>
             </div>
       
             <div class="form-group">
               <label for="exampleTextarea1">Description</label>
-              <input class="form-control" rows="4" ngModel [ngModelOptions]="{standalone : true}" 
+              <input class="form-control" rows="4" ngModel  
               placeholder="Description..."  
               name="description"
               type="text"
-              required [(ngModel)] ="quiz.description"
-               #description="ngModel"
+               [(ngModel)] ="quiz.description"
+                
+               formControlName="description"
+                [ngClass]="{
+                  'is-invalid':
+                  form.get('description')?.touched &&
+                    !form.get('description')?.valid
+                }"
+               
               
-              />
+              >
+              <div class="invalid-feedback">
+                <span *ngIf="form.get('description')?.errors?.required">
+                  Entrez une description de votre quiz
+                </span>
+                <span *ngIf="form.get('description')?.errors?.minlength">
+                  Minimum 20 caractères
+                </span>
+               </div>
                 
   
             </div>
@@ -46,20 +76,47 @@
              > -->
              <div class="form-group">
               <label>Category</label>
-              <select class="js-example-basic-single w-100" id="category" name="category" (change)="getCategory($event)">
+              <select class="js-example-basic-single w-100" id="category" name="category" (change)="getCategory($event)" 
+              formControlName="category"
+              [ngClass]="{
+                'is-invalid':
+                form.get('category')?.touched &&
+                  !form.get('category')?.valid
+              }">
+
+            
                 <option value="0"></option>
-                <option selected="selected" *ngFor="let category of categories">{{category}}</option>
+                <option  *ngFor="let category of categories"
+                   
+              
+                
+                >{{category}}</option>
                 
               </select>
+              <div class="invalid-feedback">
+                <span *ngIf="form.get('category')?.errors?.required">
+                  choisissez une catégorie pour votre quiz
+                </span>
+               
+               </div>
             </div>
             <div class="form-group">
               <label for="exampleTextarea1">nbQuestions</label>
-                <input class="form-control" name="nbQuestions" ngModel [ngModelOptions]="{standalone: true}" type="number"  
+                <input class="form-control" name="nbQuestions"   type="number"  
                 name="nbQuestions"
                 required [(ngModel)] ="quiz.nbQuestions"
-                 #nbQuestions="ngModel"
   
-                placeholder="nbQuestions" [(ngModel)] ="quiz.nbQuestions">
+                placeholder="nbQuestions" [(ngModel)] ="quiz.nbQuestions"
+                
+                formControlName="nbQuestions"
+                [ngClass]="{
+                  'is-invalid':
+                  form.get('nbQuestions')?.touched &&
+                    !form.get('nbQuestions')?.valid
+                }">
+                <span *ngIf="form.get('nbQuestions')?.errors?.required" style="color: red;">
+                  Entrez le nombre de questions pour votre quiz
+                </span>
               
             </div>
             <button type="submit" class="btn btn-primary mr-2" (click)="addQuiz(quiz)"[disabled]="form.invalid">

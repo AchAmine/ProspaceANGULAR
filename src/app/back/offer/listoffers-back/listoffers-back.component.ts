@@ -29,12 +29,12 @@ export class ListoffersBackComponent implements OnInit {
   getAllOffers(){
     this.offerService.getAllOffers().subscribe(res=> { this.listOffers=res; console.log(res);})
   }
-  add(offer: any){
+  /* add(offer: any){
     this.offerService.addOffer(offer).subscribe(() => {
       this.getAllOffers();
       this.form = false;
     });
-  }
+  } */
   deleteOffer(idOffer : any){
     this.offerService.deleteOffer(idOffer).subscribe(() => {
       this.getAllOffers()

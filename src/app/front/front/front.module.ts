@@ -58,7 +58,12 @@ import { FrontRoutingModule } from './front-routing.module';
     SendofferFrontComponent,
     OfferdetailsFrontComponent,
     UploadFileComponent,
-    OfferFilterPipe
+    OfferFilterPipe,
+    ListoffersFrontComponent,
+    SendofferFrontComponent,
+    
+    
+
   ],
   imports: [
     CommonModule,

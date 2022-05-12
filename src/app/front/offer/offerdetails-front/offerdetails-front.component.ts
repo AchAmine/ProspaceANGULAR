@@ -6,6 +6,7 @@ import { Rating } from 'src/app/model/Rating';
 import { OfferCommentService } from 'src/app/service/offer-comment.service';
 import { OfferService } from 'src/app/service/offer.service';
 import { RatingService } from 'src/app/service/rating.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-offerdetails-front',
@@ -19,7 +20,7 @@ export class OfferdetailsFrontComponent implements OnInit {
   form: boolean=false;
   Rating :  Rating=new Rating();
   listRatings:any;
-  idUser = 1 ; 
+ user:any ; 
   offercomments:any;
   Offercomment: OfferComment= new OfferComment;
   comment_value: any;
@@ -31,14 +32,14 @@ export class OfferdetailsFrontComponent implements OnInit {
 
 
   constructor(private offerService : OfferService , public router : Router , public route : ActivatedRoute,
-   private ratingService:RatingService,private offerCommentService:OfferCommentService) { }
+   private ratingService:RatingService,private offerCommentService:OfferCommentService,private userService: UserService) { }
   ngOnInit(): void {
-  
-    this.id = this.route.snapshot.params['id'];
-    
-    this.offerService.getOneOffer(this.id)
+    this.userService.getConnectedUser().subscribe(data => {this.user = data;
+      this.id = this.route.snapshot.params['id'];
+
+      this.offerService.getOneOffer(this.id)
       .subscribe(data => { this.offer = data; });;
-     this.ratingService.getUserRating(this.id,this.idUser).subscribe(data => 
+     this.ratingService.getUserRating(this.id,this.user.idUser).subscribe(data => 
       {
         if (data != null) {
       this.currentRate = data.rate; 
@@ -52,6 +53,15 @@ export class OfferdetailsFrontComponent implements OnInit {
 
     this.getOfferComments(this.id);
      
+    
+    
+    
+    
+    
+    })
+
+    
+    
     
     }
 
@@ -74,7 +84,7 @@ export class OfferdetailsFrontComponent implements OnInit {
       console.log("-------------RATING--------------",rating);
       //this.Rating.rate = rating;
 
-      this.ratingService.getUserRating(this.id,this.idUser).subscribe(data => 
+      this.ratingService.getUserRating(this.id,this.user.idUser).subscribe(data => 
         {
         this.Rating = data;
         console.log("rating  -- ", this.Rating);
@@ -85,11 +95,11 @@ export class OfferdetailsFrontComponent implements OnInit {
           else {
           let newRating = new Rating();
           newRating.rate = rating;
-            this.ratingService.addRating(newRating,this.idUser,this.id).subscribe(() => 
+            this.ratingService.addRating(newRating,this.user.idUser,this.id).subscribe(() => 
             console.log("new rating",this.Rating));
           }
           
-          this.router.navigate([`offerDetailsFront/${this.route.snapshot.params.id}`]);
+          this.router.navigate([`/home/offerDetailsFront/${this.route.snapshot.params.id}`]);
           })
 
       
@@ -105,7 +115,7 @@ export class OfferdetailsFrontComponent implements OnInit {
      
       this.Offercomment.content = this.comment_value.toString();
       
-      this.offerCommentService.addComment(this.Offercomment,this.route.snapshot.params.id,this.idUser).subscribe(
+      this.offerCommentService.addComment(this.Offercomment,this.route.snapshot.params.id,this.user.idUser).subscribe(
         () => {
           this.getOfferComments(this.id) ; 
           this.comment_value='';

@@ -52,7 +52,7 @@ rejectOffer() {
   });
 }
   Cancel(){
-    this.router.navigate(['/listoffersBack']);
+    this.router.navigate(['/dashboard/listoffersBack']);
   }
 
 

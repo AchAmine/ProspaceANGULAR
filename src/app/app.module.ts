@@ -27,6 +27,7 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { FrontmenuComponent } from './common/front/frontmenu/frontmenu.component';
 import { RequestInterceptorService } from './service/request-interceptor.service';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { OffersNavComponent } from './front/offer/offers-nav/offers-nav.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     BackFooterComponent,
     BackNavbarComponent,
     BackSidebarComponent,
-    FrontmenuComponent
+    FrontmenuComponent,
+    OffersNavComponent
   ],
   imports: [
     AppRoutingModule,

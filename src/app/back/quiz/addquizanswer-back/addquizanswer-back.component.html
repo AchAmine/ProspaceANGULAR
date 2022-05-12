@@ -6,19 +6,63 @@
         <div class="card-body">
           <h4 class="card-title">Post new quiz question answer..</h4>
           <form class="forms-sample">
-            <div class="form-group">
+            <div class="form-group" [formGroup]="form">
               <label for="exampleInputName1">Content</label>
-              <input class="form-control" name="Content" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="Content" [(ngModel)] ="answer.content
+              <input class="form-control" name="Content"  
+              
+              formControlName="Content"
+              [ngClass]="{
+                'is-invalid':
+                form.get('Content')?.touched &&
+                  !form.get('Content')?.valid
+              }"
+              type="text" 
+              
+              
+              placeholder="Content" [(ngModel)] ="answer.content
             ">
+            <div class="invalid-feedback">
+              <span *ngIf="form.get('Content')?.errors?.required">
+                Entrez votre question
+              </span>
+              <span *ngIf="form.get('Content')?.errors?.minlength">
+                Minimum  10 caractères
+              </span>
+             
+             </div>
             <label for="exampleInputName1">is Correct</label>
-            <input class="form-control" is Correct="title" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="is Correct" [(ngModel)] ="answer.isCorrect
+            <input class="form-control" is Correct="title" 
+            formControlName="isCorrect"
+            [ngClass]="{
+              'is-invalid':
+              form.get('isCorrect')?.touched &&
+                !form.get('isCorrect')?.valid
+            }"
+            
+            
+            type="text"  placeholder="is Correct" [(ngModel)] ="answer.isCorrect
             ">
+         
             <label for="exampleInputName1">nb pts </label>
 
-            <input class="form-control" name="nb pts" ngModel [ngModelOptions]="{standalone: true}" type="number"  placeholder="nb pts" [(ngModel)] ="answer.nbreptsanswer
+            <input class="form-control" name="nbreptsanswer" 
+            formControlName="nbreptsanswer"
+            [ngClass]="{
+              'is-invalid':
+              form.get('nbreptsanswer')?.touched &&
+                !form.get('nbreptsanswer')?.valid
+            }"
+            type="number"  placeholder="nb pts" [(ngModel)] ="answer.nbreptsanswer
             ">
+            <div class="invalid-feedback">
+              <span *ngIf="form.get('Content')?.errors?.required">
+                Choissisez le nombre des point de cette réponse
+              </span>
+             
+             
+             </div>
             </div>      
-            <button type="submit" class="btn btn-primary mr-2" (click)="addQuizQuestionAnswer(answer)" >Add</button>
+            <button type="submit" class="btn btn-primary mr-2" (click)="addQuizQuestionAnswer(answer)" [disabled]="form.invalid">Add</button>
             <button class="btn btn-light" (click)="Cancel()">Cancel</button>
           </form>
         </div>

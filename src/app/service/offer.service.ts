@@ -12,8 +12,8 @@ export class OfferService {
   public getAllOffers(){
     return this.http.get(`http://localhost:8089/SpringMVC/Offer/retrieve-all-offers`);
   } 
-  public addOffer(offer: any){
-    return this.http.post(`http://localhost:8089/SpringMVC/Offer/add-offer/1`,offer);
+  public addOffer(offer: any,idUser: any){
+    return this.http.post(`http://localhost:8089/SpringMVC/Offer/add-offer/${idUser}`,offer);
   }
 
   deleteOffer(idOffer : any){

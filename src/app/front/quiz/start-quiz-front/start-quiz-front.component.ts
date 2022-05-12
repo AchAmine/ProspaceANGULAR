@@ -9,6 +9,7 @@ import { QuestionService } from 'src/app/service/question.service';
 import { QuizService } from 'src/app/service/quiz.service';
 import { ResponseQuizService } from 'src/app/service/response-quiz.service';
 import { ResultQuizService } from 'src/app/service/result-quiz.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-start-quiz-front',
@@ -34,16 +35,17 @@ resultQuizz: ResultQuiz = new ResultQuiz();
 timer: any;
 listTop3ResultQuiz?: any;
 
-// static user
-  iduser = 1 ;
+user: any;
+
 
   constructor(private route: ActivatedRoute, private questionService: QuestionService,
     private responseService: ResponseQuizService,private router: Router , private quizService : QuizService
-   ,private resultQuizService : ResultQuizService,public formBuilder: FormBuilder
+   ,private resultQuizService : ResultQuizService,public formBuilder: FormBuilder,private userService: UserService
    ){ }
 
   ngOnInit(): void {
-  
+    this.userService.getConnectedUser().subscribe(data => this.user = data)
+
     this.quizzId = this.route.snapshot.params.id; 
     this.quizService.getQuiz(this.quizzId).subscribe(data => this.quiz = data);
     this.Top3QuizResults();
@@ -98,11 +100,12 @@ this.questionService.getQuizQuestionsForTest(this.quizzId).subscribe(
     console.log("Response -------------: ",this.Response); 
     console.log("Selected answers --------",this.Response.selectedAnswers);
   //  this.Response.user = this.iduser; 
-     this.responseService.AddResponse(this.Response,this.quizzId).subscribe(() => {
+     this.responseService.AddResponse(this.Response,this.quizzId,this.user.idUser).subscribe(() => {
       
-      this.router.navigate([`resultQuiz/${this.route.snapshot.params.id}`]);
+      this.router.navigate([`/home/resultQuiz/${this.route.snapshot.params.id}`]);
       // this.getAllQuiz();
        this.form = false;
+       console.log("id useer",this.user.idUser)
  
      });
      

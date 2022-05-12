@@ -11,8 +11,12 @@
               <input class="form-control" name="title" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="Title" [(ngModel)] ="article.title">
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail3">Type</label>
-              <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+              <label>Category</label>
+              <select class="js-example-basic-single w-100" id="category" name="category" (change)="getCategory($event)">
+                <!-- <option value="0"></option> -->
+                <option *ngFor="let category of categories">{{category}}</option>
+                
+              </select>
             </div>
             
             <div class="form-group">

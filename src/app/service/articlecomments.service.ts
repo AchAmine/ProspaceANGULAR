@@ -32,4 +32,8 @@ export class ArticlecommentsService {
   }
   
 
+
+  public getForbiddenwords(){
+    return this.http.get(`${this.host}/profanity/retrieve-badwords`);
+  }
 }

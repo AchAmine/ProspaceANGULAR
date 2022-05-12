@@ -17,6 +17,7 @@ export class ArticlesBackComponent implements OnInit {
   listArticles?: any;
   article :  Article=new Article();
   date: any;
+  user:any;
 
   articles: Observable<Article[]>
   constructor(private articleService :ArticleService, private userService: UserService,private router: Router,public datepipe: DatePipe) { }
@@ -24,6 +25,7 @@ export class ArticlesBackComponent implements OnInit {
   ngOnInit(): void {
     this.getAllArticles();;
     console.log(this.listArticles);
+    this.userService.getConnectedUser().subscribe(data => this.user = data);
   }
   getAllArticles(){
     this.articleService.getAllArticles().subscribe(res=> { this.listArticles=res; console.log(res);})

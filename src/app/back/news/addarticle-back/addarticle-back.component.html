@@ -8,12 +8,15 @@
           <form class="forms-sample" [formGroup]="form">
             <div class="form-group">
               <label for="exampleInputName1">Title</label>
-              <input class="form-control" name="title" ngModel [ngModelOptions]="{standalone: true}" type="text"  placeholder="Title" [(ngModel)] ="article.title">
+              <input class="form-control" name="title" formControlName="title" id="title" required type="text"  placeholder="Title" [(ngModel)] ="article.title">
+              <div *ngIf="form.get('title')?.touched && form.get('title')?.hasError('required')" class="alert alert-danger">
+                Please type something.
+              </div>
             </div>
             <div class="form-group">
               <label>Category</label>
               <select class="js-example-basic-single w-100" id="category" name="category" (change)="getCategory($event)">
-                <option value="0"></option>
+                <!-- <option value="0"></option> -->
                 <option *ngFor="let category of categories">{{category}}</option>
                 
               </select>
@@ -21,17 +24,18 @@
             
             <div class="form-group">
               <label for="exampleTextarea1">Content</label>
-              <textarea class="form-control" rows="6" ngModel [ngModelOptions]="{standalone : true}" placeholder="Text..."[(ngModel)] ="article.content" >
-                
-  
+              <textarea class="form-control" rows="6" formControlName="content" id="content" placeholder="Text..."[(ngModel)] ="article.content" >
               </textarea>
+              <div *ngIf="form.get('content')?.touched && form.get('content')?.hasError('required')" class="alert alert-danger">
+                Please type something.
+              </div>
             </div>
             <div class="form-group">
               <label>File upload</label>
-              
-              
-              <input type="file" name="file" class="file-upload-browse btn btn-primary" accept="image/*" (change)="uploadFile($event)" >
-                
+              <input type="file" name="file" formControlName="file" id="file" class="file-upload-browse btn btn-primary" accept="image/*" (change)="uploadFile($event)" >
+              <div *ngIf="form.get('file')?.touched && form.get('file')?.hasError('required')" class="alert alert-danger">
+                Please insert an image.
+              </div>
             </div>
 
            <!--  <div class="form-group">
@@ -52,7 +56,7 @@
                     Enable comments
                 </label>
             </div>
-            <button type="submit" class="btn btn-primary mr-2" (click)="addArticle(article)" >Submit</button>
+            <button type="submit" class="btn btn-primary mr-2" [disabled]="form.invalid"  (click)="addArticle(article)" >Submit</button>
             <button class="btn btn-light" (click)="Cancel()" >Cancel</button>
           </form>
         </div>

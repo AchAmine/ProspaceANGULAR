@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/model/Article';
 import { ArticleService } from 'src/app/service/article.service';
@@ -24,6 +24,12 @@ export class AddarticleBackComponent implements OnInit {
     this.form = this.fb.group({
       article: [''],
       file: [null],
+    });
+
+    this.form = this.fb.group({
+      'title': ['', [Validators.required]],
+      'content': ['', [Validators.required]],
+      'file': ['', [Validators.required]]
     });
     this.categories = ['News','Jokes','Facts'];
     this.userService.getConnectedUser().subscribe(data => this.user = data)

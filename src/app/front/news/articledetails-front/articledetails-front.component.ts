@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Article_Comment } from 'src/app/model/Article_Comment';
 import { ArticleService } from 'src/app/service/article.service';
@@ -22,17 +23,20 @@ export class ArticledetailsFrontComponent implements OnInit {
   //user: any;
   nbrComments: any;
   date: any;
+  commentForm: FormGroup;
+  editcommentForm: FormGroup;
   // commentaire saisie par l'utilisateur
   comment_value: any='';
   commentToEdit:Article_Comment;
   hide=false;
+  forbiddenValues:any = [] ;
   // instance commentaire a ajouter
   newcomment: Article_Comment;
 
   public isEmojiPickerVisible: boolean;
 
   constructor(private articleService: ArticleService, private route: ActivatedRoute,private router: Router,
-    private commentService: ArticlecommentsService,private userService: UserService,public datepipe: DatePipe) { }
+    private commentService: ArticlecommentsService,private userService: UserService,public datepipe: DatePipe, public fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -48,6 +52,17 @@ export class ArticledetailsFrontComponent implements OnInit {
 
     // recuperation des commentaires de l'article avc id
     this.getComments(this.id);
+    this.getForbbidenwords();
+
+    this.commentForm = this.fb.group({
+      'comment': ['', [Validators.required, this.isForbidden()]]
+    });
+
+    this.editcommentForm = this.fb.group({
+      'editcomment': ['', [Validators.required, this.isForbidden()]]
+    });
+
+    
 
     
   }
@@ -135,5 +150,30 @@ export class ArticledetailsFrontComponent implements OnInit {
     console.log("DELETE ID:",idArticle);}
     )
     }
+  }
+
+  getForbbidenwords(){
+    let words:any
+    this.commentService.getForbiddenwords().subscribe(data => {
+      //let word: keyof typeof data;
+     words = data
+     for(const word in data) {
+       console.log("data words",data);
+      this.forbiddenValues.push(words[word].word);
+      console.log("forbidden values",this.forbiddenValues);
+     }
+    })
+    console.log("forbidden words : ",this.forbiddenValues);
+  }
+
+   isForbidden(): ValidatorFn {
+   
+    return (c: AbstractControl): { [key: string]: boolean } | null => {
+      if (this.forbiddenValues.indexOf(c.value) !== -1) {
+        console.log("forbidden true")
+        return { 'forbiddenValues': true };
+      }
+      return null;
+    };
   }
 }

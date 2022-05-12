@@ -16,6 +16,8 @@ export class UpdatearticleBackComponent implements OnInit {
   id: number;
   article: Article = new Article();
   form: FormGroup;
+  categories : any = [];
+  category: any;
   constructor(private articleService: ArticleService,private userService: UserService,private router: Router,private route: ActivatedRoute,public fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -29,6 +31,8 @@ export class UpdatearticleBackComponent implements OnInit {
       article: [''],
       file: [null],
     });
+
+    this.categories = ['News','Jokes','Facts'];
   }
 
   uploadFile(event: any) {
@@ -39,6 +43,7 @@ export class UpdatearticleBackComponent implements OnInit {
   }
 
   editArticle(article: any) {
+    article.type = this.category;
     console.log(article);
     const formData = new FormData();
     formData.append('file', this.form.get('file')?.value);
@@ -49,6 +54,13 @@ export class UpdatearticleBackComponent implements OnInit {
       this.router.navigate(['dashboard/listarticles']);
     });
     
+  }
+
+  getCategory(event: any) {
+    if (event.target.value != 0) {
+     console.log("category",event.target.value);
+      this.category = event.target.value;
+    } 
   }
 
   Cancel() {

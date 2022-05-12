@@ -104,7 +104,7 @@ export class ArticledetailsFrontComponent implements OnInit {
 
 
   ToArticles() {
-    this.router.navigate(['/articles']);
+    this.router.navigate(['/home/articles']);
   }
 
   public addEmoji(event: any) {
@@ -130,7 +130,9 @@ export class ArticledetailsFrontComponent implements OnInit {
   }
 
   Cancel() {
-    this.router.navigate(['home/article',this.id]);
+    this.commentToEdit = new Article_Comment();
+    this.hide = true;
+    this.ngOnInit();
   }
 
 

@@ -12,7 +12,7 @@ import { SectionService } from 'src/app/service/section.service';
 export class UpdateSectionBackComponent implements OnInit {
 
   id: number;
-  section: Section = new Section();
+  section: any;
   form: FormGroup;
   constructor(private sectionService: SectionService,private router: Router,private route: ActivatedRoute,public fb: FormBuilder) { }
 

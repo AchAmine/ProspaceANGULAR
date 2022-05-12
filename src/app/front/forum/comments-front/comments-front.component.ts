@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ForumReactionType } from 'src/app/enum/ForumReactionType.enum';
 import { ForumReaction } from 'src/app/model/ForumReaction';
 import { Post_Comment } from 'src/app/model/Post_Comment';
 import { PostCommentService } from 'src/app/service/post-comment.service';
@@ -25,11 +26,25 @@ date:any;
 listPosts?: any;
 commentToEdit:Post_Comment;
 hide=false;
+reaction: ForumReaction=new ForumReaction;
+idPost:any;
 
 listComments?:any;
 newReaction:any;
+reaction_value:any='';
+reactions: any;
+ like = ForumReactionType[ForumReactionType.Like]; // "Two"
+ dislike = ForumReactionType[ForumReactionType.Dislike]; // "Two"
 
 
+emojiList = ['Like','Dislike'];
+usersReaction = new Map();
+// reactions count (all)
+reactionsCount:any;
+// reaction count (per type)
+reactionCount:any;
+// check currentReaction of a user 
+currentReaction: any;
 
 
 
@@ -266,36 +281,109 @@ listCommentsReplies?:any;
       
      
 
-      // addReaction(){
-      //   this.newReaction= new ForumReaction();
-      //    this.newReaction.type=this.comment.content;
-      //   // console.log('topic_value',this.topic_value);
-      //   // console.log('new topic:',this.newTopic);
-      //   this.post_commentService.addComment(this.newComment,this.post.idPost).subscribe(
-      //     () => {
-      //       this.getComments(this.id) ; 
-      //       this.comment_value='';
-      //     }
+      addReaction(){
+        this.newReaction= new ForumReaction();
+        //  this.newReaction.Rtype=this.reaction_value.like;
+       
+        this.post_commentService.addPost_Reaction(this.newReaction,this.post.idPost).subscribe(
+          () => {
+            this.getComments(this.id) ; 
+            this.reaction_value='';
+            this.reactionCount++;
+
+          }
       
-      //   );
+        );
       
-      // } 
+      } 
+     
+      
+      addReactionDislike(){
+        this.newReaction= new ForumReaction();
+        //  this.newReaction.Rtype=this.reaction_value.like;
+       
+        this.post_commentService.addPost_ReactionDislike(this.newReaction,this.post.idPost).subscribe(
+          () => {
+            this.getComments(this.id) ; 
+            this.reaction_value='';
+          }
+      
+        );
+     return this.reactionCount;
+      } 
       
 
 
 
 
 
+// react(val: any){
+//   this.reaction = new ForumReaction();
+//   this.reaction.Rtype = this.emojiList[val] as ForumReactionType;
+//   console.log(this.reaction.Rtype);
+//   console.log(this.reaction);
+//   console.log("1ST-----------------------")
+//   //  check whether the user reacted or not , if so we get the reaction type
+//  // this.getCurrentReaction();
+//   console.log(" DID USER REACT ? ",this.currentReaction);
+//   console.log("2ND-----------------------")
+//   // if user reacted already : 
+//   if (this.currentReaction) {
+//     console.log("ARE THE REACTIONS THE SAME ? ",this.currentReaction.type == this.emojiList[val] as ForumReactionType)
+//     console.log("3RD-----------------------")
+//     // if the reaction is the same we delete it 
+//     if (this.currentReaction.type == this.emojiList[val] as ForumReactionType) {
+//         console.log("DELETING THE REACTION : ",this.reaction.idReaction);
+//         this.post_commentService.removeReaction(this.currentReaction.idReaction).subscribe(() => this.ngOnInit());
+//     } else {
+//       // setting the new reaction and updating it 
+//       this.currentReaction.type = this.emojiList[val] as ForumReactionType;
+//       console.log("updating reaction",this.currentReaction);
+//     this.post_commentService.updateReaction(this.currentReaction).subscribe(
+//       () => {
+//         console.log("CHANGING CURRENT REACTION TO : ");
+//         console.log(this.reaction);
+//         this.ngOnInit() ; 
+//       }
+//     );
+//     }
+
+//     console.log("React : ",this.emojiList[val]);
+//   }
+
+// // if user hasnt reacted yet :
+// if (!this.currentReaction) {
+// this.post_commentService.addPost_ReactionLike(this.idPost,this.reaction).subscribe(
+//   () => {
+//     console.log("NEW REACTION : ",this.reaction.Rtype);
+//     console.log(this.reaction);
+//     this.ngOnInit() ; 
+//   }
+// );
+// console.log("React : ",this.emojiList[val]);
+// }
+// }
 
 
 
-
-
-
+// get count for each reaction type
+// getReactionCountByType(val: any) {
+  
+ 
+//     this.reactionCount= 0;
+//     for (let reaction in this.reactions) {
+//       if (this.reactions[reaction].type ==  )
+//       {
+//         this.reactionCount++;
+//       }
+//     }
+//     console.log("REACTION COUNT",this.reactionCount);
+//     return this.reactionCount;
+// }
 
 
       
        
       
      
-}
+  }

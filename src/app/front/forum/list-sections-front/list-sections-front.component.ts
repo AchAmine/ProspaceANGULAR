@@ -17,6 +17,7 @@ import { SectionService } from 'src/app/service/section.service';
     form: boolean=false;
     idUser=1;
     section_value: any='';
+searchTerm:string; 
 
   
     public isEmojiPickerVisible: boolean;

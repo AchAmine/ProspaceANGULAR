@@ -2,6 +2,7 @@
          
 </div>
 
+
 <section class="blog_area section-padding">
     <div class="container">
         <div class="row">
@@ -13,13 +14,18 @@
                         </div>
                         <h2> &nbsp;&nbsp;   Welcome to our forum</h2>
                         <span> &nbsp;&nbsp;   Feel free to choose topic you're interested in.
-                            <br>
+                            <br> 
+                           
                         </span> 
                     </div>
-                </div>
+                </div> 
+                <br>
+                <div class="form-group">
+                    <input type="text" class ="form-control" placeholder="Search Sections" style="width:300px" 
+                    [(ngModel)]="searchTerm" /></div>
                 <br><br>
                 <div class="container2">
-                <div class="blog_left_sidebar" *ngFor="let section of listSections">
+                <div class="blog_left_sidebar" *ngFor="let section of listSections |sectionFilter:searchTerm">
                     <article class="blog_item shadow p-3 mb-5 bg-white rounded" >
                         <div class="blog_item_img">
                             <!-- <img class="card-img rounded-0" src="../../assets/img/blog/single_blog_1.png" alt=""> -->

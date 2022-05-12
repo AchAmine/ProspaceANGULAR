@@ -30,6 +30,7 @@ import { ListTopicsFrontComponent } from './front/forum/list-topics-front/list-t
 import { SectionDetailsComponent } from './front/forum/section-details/section-details.component';
 import { TopicDetailsFrontComponent } from './front/forum/topic-details-front/topic-details-front.component';
 import { CommentsFrontComponent } from './front/forum/comments-front/comments-front.component';
+import { sectionFilterPipe } from './front/forum/list-sections-front/section-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,9 @@ import { CommentsFrontComponent } from './front/forum/comments-front/comments-fr
     ListTopicsFrontComponent,
     SectionDetailsComponent,
     TopicDetailsFrontComponent,
-    CommentsFrontComponent  ],
+    CommentsFrontComponent,
+    sectionFilterPipe
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
